@@ -1,35 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0a0a0f"/>
-      <stop offset="100%" style="stop-color:#0f0f1a"/>
+      <stop offset="0%" style="stop-color:#0a0a0f"/><stop offset="100%" style="stop-color:#0f0f1a"/>
     </linearGradient>
-    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#d4af37"/>
-      <stop offset="100%" style="stop-color:#f0d060"/>
+    <linearGradient id="fg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FFD700"/><stop offset="100%" style="stop-color:#FF6B35"/>
     </linearGradient>
-    <linearGradient id="em" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#10b981"/>
-      <stop offset="100%" style="stop-color:#34d399"/>
+    <linearGradient id="cg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#40E0FF"/><stop offset="100%" style="stop-color:#7B6FFF"/>
     </linearGradient>
   </defs>
-  <!-- Background -->
   <rect width="1200" height="630" fill="url(#bg)"/>
-  <!-- Glow circles -->
-  <circle cx="200" cy="200" r="300" fill="rgba(212,175,55,0.06)"/>
-  <circle cx="1000" cy="430" r="250" fill="rgba(16,185,129,0.06)"/>
-  <!-- Border -->
-  <rect x="2" y="2" width="1196" height="626" rx="16" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
-  <!-- Icon -->
-  <text x="100" y="220" font-family="Arial,sans-serif" font-size="120" fill="#d4af37">⚡</text>
-  <!-- Title -->
-  <text x="100" y="340" font-family="Arial,sans-serif" font-size="72" font-weight="bold" fill="white">Claude Code 한국</text>
-  <!-- Subtitle -->
-  <text x="100" y="420" font-family="Arial,sans-serif" font-size="36" fill="#8888aa">AI 에이전트 &amp; 스킬 마켓플레이스</text>
-  <!-- Stats -->
-  <text x="100" y="510" font-family="Arial,sans-serif" font-size="28" fill="url(#gold)">1,000+ 스킬</text>
-  <text x="320" y="510" font-family="Arial,sans-serif" font-size="28" fill="rgba(255,255,255,0.3)">·</text>
-  <text x="360" y="510" font-family="Arial,sans-serif" font-size="28" fill="url(#em)">600+ 에이전트</text>
-  <text x="620" y="510" font-family="Arial,sans-serif" font-size="28" fill="rgba(255,255,255,0.3)">·</text>
-  <text x="660" y="510" font-family="Arial,sans-serif" font-size="28" fill="white">120+ MCP</text>
+  <ellipse cx="300" cy="250" rx="400" ry="350" fill="rgba(255,215,0,0.08)"/>
+  <ellipse cx="950" cy="420" rx="350" ry="300" fill="rgba(64,224,255,0.07)"/>
+  <rect x="2" y="2" width="1196" height="626" rx="20" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+  <text x="80" y="280" font-family="Arial Black,Arial,sans-serif" font-size="155" font-weight="900" fill="url(#fg)">FREE</text>
+  <text x="590" y="280" font-family="Arial Black,Arial,sans-serif" font-size="155" font-weight="900" fill="white">-</text>
+  <text x="645" y="280" font-family="Arial Black,Arial,sans-serif" font-size="155" font-weight="900" fill="url(#cg)">CODE</text>
+  <rect x="80" y="308" width="218" height="46" rx="23" fill="#22c55e"/>
+  <text x="189" y="339" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="white" text-anchor="middle">100% FREE!</text>
+  <text x="80" y="430" font-family="Arial,sans-serif" font-size="38" fill="#8888aa">AI 에이전트 &amp; 스킬 마켓플레이스</text>
+  <text x="80" y="510" font-family="Arial,sans-serif" font-size="28" fill="#FFD700">1,000+ 스킬</text>
+  <text x="310" y="510" font-family="Arial,sans-serif" font-size="28" fill="rgba(255,255,255,0.3)"> · </text>
+  <text x="370" y="510" font-family="Arial,sans-serif" font-size="28" fill="#40E0FF">600+ 에이전트</text>
+  <text x="635" y="510" font-family="Arial,sans-serif" font-size="28" fill="rgba(255,255,255,0.3)"> · </text>
+  <text x="695" y="510" font-family="Arial,sans-serif" font-size="28" fill="white">120+ MCP</text>
+  <text x="80" y="585" font-family="Courier New,monospace" font-size="24" fill="rgba(64,224,255,0.45)">freecode.oppa19.com</text>
 </svg>

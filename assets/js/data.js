@@ -5,8 +5,8 @@
 
 const SITE_DATA = {
   meta: {
-    siteName: 'Claude Code 한국',
-    tagline: '1000개+ 에이전트, 명령어, 스킬 & MCP 통합',
+    siteName: 'FREE-CODE',
+    tagline: 'FREE-CODE — 1000개+ 에이전트, 명령어, 스킬 & MCP 통합',
     description: 'Claude Code 컴포넌트 마켓플레이스 — 에이전트, 명령어, 스킬, 설정, 훅, MCP를 한국어로'
   },
 
