@@ -27,6 +27,35 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* 앰비언트 라이트 — 배경 글로우 오브 */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 50%;
+  filter: blur(120px);
+}
+body::before {
+  /* 골드 오브 — 좌상단 */
+  width: 60vw; height: 60vw;
+  top: -20vw; left: -15vw;
+  background: radial-gradient(circle,
+    rgba(255,215,0,0.10) 0%,
+    rgba(255,215,0,0.04) 50%,
+    transparent 70%);
+}
+body::after {
+  /* 에메랄드 오브 — 우하단 */
+  width: 55vw; height: 55vw;
+  bottom: -15vw; right: -15vw;
+  background: radial-gradient(circle,
+    rgba(0,221,163,0.09) 0%,
+    rgba(77,159,255,0.05) 40%,
+    transparent 70%);
+}
+
 /* 커스텀 스크롤바 */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg-surface); }

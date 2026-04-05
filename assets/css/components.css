@@ -11,27 +11,43 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  box-shadow: var(--shadow-card);
   transition:
     transform var(--duration-base) var(--ease-out-expo),
     box-shadow var(--duration-base) ease,
     border-color var(--duration-base) ease,
     background var(--duration-base) ease;
 }
+/* 상단 하이라이트 라인 */
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent, rgba(255,255,255,0.25), transparent);
+  transition: opacity var(--duration-base) ease;
+}
 .card::before {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg,
-    rgba(212,175,55,0.05) 0%,
-    transparent 50%);
+    rgba(255,215,0,0.09) 0%,
+    transparent 55%);
   opacity: 0;
   transition: opacity var(--duration-base) ease;
 }
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px) scale(1.01);
   background: var(--glass-bg-hover);
-  border-color: var(--gold-dim);
-  box-shadow: var(--shadow-gold);
+  border-color: rgba(255,215,0,0.32);
+  box-shadow:
+    0 0 0 1px rgba(255,215,0,0.12),
+    0 0 32px rgba(255,215,0,0.28),
+    0 0 72px rgba(255,215,0,0.10),
+    0 12px 40px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.12);
 }
 .card:hover::before { opacity: 1; }
 
@@ -43,19 +59,40 @@
   margin-bottom: var(--space-3);
 }
 .card__icon {
-  width: 44px; height: 44px;
+  width: 48px; height: 48px;
   border-radius: var(--radius-sm);
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   flex-shrink: 0;
-  background: var(--gold-dim);
-  border: 1px solid rgba(212,175,55,0.2);
+  background: rgba(255,215,0,0.18);
+  border: 1px solid rgba(255,215,0,0.32);
+  box-shadow: 0 0 16px rgba(255,215,0,0.18), inset 0 1px 0 rgba(255,255,255,0.15);
 }
-.card__icon--emerald { background: var(--emerald-dim); border-color: rgba(16,185,129,0.2); }
-.card__icon--purple  { background: var(--purple-dim);  border-color: rgba(124,58,237,0.2); }
-.card__icon--blue    { background: var(--blue-dim);    border-color: rgba(59,130,246,0.2); }
-.card__icon--pink    { background: var(--pink-dim);    border-color: rgba(236,72,153,0.2); }
-.card__icon--orange  { background: var(--orange-dim);  border-color: rgba(245,158,11,0.2); }
+.card__icon--emerald {
+  background: rgba(0,221,163,0.18);
+  border-color: rgba(0,221,163,0.32);
+  box-shadow: 0 0 16px rgba(0,221,163,0.18), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+.card__icon--purple {
+  background: rgba(155,93,229,0.20);
+  border-color: rgba(155,93,229,0.35);
+  box-shadow: 0 0 16px rgba(155,93,229,0.18), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+.card__icon--blue {
+  background: rgba(77,159,255,0.18);
+  border-color: rgba(77,159,255,0.32);
+  box-shadow: 0 0 16px rgba(77,159,255,0.15), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+.card__icon--pink {
+  background: rgba(255,107,181,0.18);
+  border-color: rgba(255,107,181,0.32);
+  box-shadow: 0 0 16px rgba(255,107,181,0.15), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+.card__icon--orange {
+  background: rgba(255,159,28,0.18);
+  border-color: rgba(255,159,28,0.32);
+  box-shadow: 0 0 16px rgba(255,159,28,0.15), inset 0 1px 0 rgba(255,255,255,0.15);
+}
 
 .card__name {
   font-size: var(--text-base);
@@ -128,24 +165,40 @@
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-card);
   transition:
     transform var(--duration-base) var(--ease-out-expo),
     border-color var(--duration-base) ease,
-    box-shadow var(--duration-base) ease;
+    box-shadow var(--duration-base) ease,
+    background var(--duration-base) ease;
+}
+/* 상단 하이라이트 */
+.cat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 5%; right: 5%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
 }
 .cat-card::after {
   content: '';
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--gold), var(--emerald));
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--emerald), var(--blue));
   transform: scaleX(0);
-  transition: transform var(--duration-base) ease;
+  transform-origin: left;
+  transition: transform var(--duration-base) var(--ease-out-expo);
 }
 .cat-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--gold-dim);
-  box-shadow: var(--shadow-gold);
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(255,215,0,0.28);
+  background: var(--glass-bg-hover);
+  box-shadow:
+    0 0 32px rgba(255,215,0,0.22),
+    0 0 64px rgba(255,215,0,0.08),
+    0 16px 48px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.12);
 }
 .cat-card:hover::after { transform: scaleX(1); }
 .cat-card__icon {
@@ -184,11 +237,13 @@
 .btn--gold {
   background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
   color: #000;
-  box-shadow: 0 0 20px var(--gold-glow);
+  box-shadow: 0 0 24px rgba(255,215,0,0.45), 0 2px 8px rgba(0,0,0,0.3),
+              inset 0 1px 0 rgba(255,255,255,0.35);
 }
 .btn--gold:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 30px var(--gold-glow), 0 4px 12px rgba(0,0,0,0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 0 40px rgba(255,215,0,0.6), 0 0 80px rgba(255,215,0,0.2),
+              0 6px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.35);
 }
 .btn--ghost {
   background: var(--glass-bg);

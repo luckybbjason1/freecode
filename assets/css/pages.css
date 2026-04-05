@@ -9,12 +9,18 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: radial-gradient(
-    ellipse 80% 60% at 50% 0%,
-    rgba(212,175,55,0.08) 0%,
-    rgba(16,185,129,0.04) 40%,
-    transparent 70%
-  ), var(--bg-base);
+  background:
+    radial-gradient(ellipse 70% 55% at 50% -5%,
+      rgba(255,215,0,0.16) 0%,
+      rgba(255,215,0,0.06) 35%,
+      transparent 65%),
+    radial-gradient(ellipse 50% 40% at 80% 80%,
+      rgba(0,221,163,0.10) 0%,
+      transparent 60%),
+    radial-gradient(ellipse 40% 30% at 20% 70%,
+      rgba(155,93,229,0.08) 0%,
+      transparent 55%),
+    var(--bg-base);
 }
 #particles-canvas {
   position: absolute;
@@ -35,9 +41,9 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.35rem 1rem;
-  background: var(--gold-dim);
-  border: 1px solid rgba(212,175,55,0.25);
+  padding: 0.4rem 1.1rem;
+  background: rgba(255,215,0,0.12);
+  border: 1px solid rgba(255,215,0,0.38);
   border-radius: var(--radius-full);
   font-size: var(--text-xs);
   font-weight: 600;
@@ -45,6 +51,7 @@
   letter-spacing: 0.05em;
   margin-bottom: var(--space-6);
   animation: fadeDown 0.8s var(--ease-out-expo) both;
+  box-shadow: 0 0 20px rgba(255,215,0,0.20), inset 0 1px 0 rgba(255,255,255,0.12);
 }
 .hero__eyebrow-dot {
   width: 6px; height: 6px;
@@ -107,9 +114,13 @@
   font-family: var(--font-numeric);
   font-size: var(--text-3xl);
   font-weight: 700;
-  color: var(--text-primary);
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 60%, var(--emerald) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   line-height: 1;
   margin-bottom: var(--space-1);
+  filter: drop-shadow(0 0 12px rgba(255,215,0,0.35));
 }
 .hero__stat-label {
   font-size: var(--text-xs);
@@ -261,7 +272,18 @@
 .section {
   padding: var(--space-section) 0;
 }
-.section--alt { background: var(--bg-surface); }
+.section--alt {
+  background: var(--bg-surface);
+  position: relative;
+}
+.section--alt::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 40% at 50% 50%,
+    rgba(255,215,0,0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
 
 /* ---- 애니메이션 keyframes ---- */
 @keyframes fadeUp {
