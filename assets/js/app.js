@@ -77,14 +77,19 @@ function renderCard(item, opts) {
   const copyBtn = document.createElement('button');
   copyBtn.className = 'card__copy-btn';
   copyBtn.textContent = '복사';
-  copyBtn.setAttribute('aria-label', item.name + ' ID 복사');
+  copyBtn.setAttribute('aria-label', item.name + ' 설치 명령어 복사');
   copyBtn.addEventListener('click', function(e) {
     e.stopPropagation();
-    copyToClipboard(item.id, item.name);
+    copyToClipboard(getInstallCmd(item), item.name);
   });
   footer.appendChild(copyBtn);
 
   card.appendChild(footer);
+
+  // 카드 클릭 → 상세 모달
+  card.style.cursor = 'pointer';
+  card.addEventListener('click', function() { openDetailModal(item); });
+
   return card;
 }
 
@@ -181,14 +186,53 @@ function animateCounters() {
   els.forEach(function(el) { obs.observe(el); });
 }
 
-/* ---- 클립보드 복사 ---- */
+/* ---- 설치 명령어 생성 ---- */
+
+function getInstallCmd(item) {
+  var cat = item.category;
+  if (cat === 'mcps') {
+    return JSON.stringify({ mcpServers: { [item.id]: { command: 'npx', args: ['-y', '@' + item.id + '/mcp'] } } }, null, 2);
+  }
+  if (cat === 'hooks') {
+    return '# .claude/settings.json > hooks 에 추가\n{ "matcher": "' + (item.matcher || 'Write|Edit') + '", "command": "' + item.id + '" }';
+  }
+  if (cat === 'commands') {
+    return '/' + item.id;
+  }
+  if (cat === 'plugins') {
+    return 'claude plugins install ' + item.id;
+  }
+  // skills, agents
+  return 'claude skills install ' + item.id;
+}
+
+/* ---- 클립보드 복사 (HTTP 폴백 포함) ---- */
 
 function copyToClipboard(text, label) {
-  navigator.clipboard.writeText(text).then(function() {
-    showToast((label || text) + ' ID가 복사되었습니다');
-  }).catch(function() {
-    showToast('복사 실패');
-  });
+  var msg = (label || text) + ' 복사되었습니다';
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(function() {
+      showToast(msg);
+    }).catch(function() { fallbackCopy(text, msg); });
+  } else {
+    fallbackCopy(text, msg);
+  }
+}
+
+function fallbackCopy(text, msg) {
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  try {
+    document.execCommand('copy');
+    showToast(msg);
+  } catch (_) {
+    showToast('복사 실패 — 직접 선택해 복사하세요');
+  }
+  document.body.removeChild(ta);
 }
 
 /* ---- 토스트 알림 ---- */
@@ -422,3 +466,147 @@ document.addEventListener('DOMContentLoaded', function() {
     renderHomeGrids();
   }
 });
+
+/* ---- 카드 상세 모달 ---- */
+
+function getInstallCmd(item) {
+  var cat = item.category;
+  if (cat === 'mcps') {
+    return 'npx -y @' + item.id + '/mcp';
+  }
+  if (cat === 'commands') { return '/' + item.id; }
+  if (cat === 'plugins')  { return 'claude plugins install ' + item.id; }
+  if (cat === 'hooks') {
+    return '# .claude/settings.json 에 추가\n"' + item.id + '"';
+  }
+  return 'claude skills install ' + item.id;
+}
+
+function openDetailModal(item) {
+  var overlay = document.createElement('div');
+  overlay.className = 'detail-overlay';
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) document.body.removeChild(overlay);
+  });
+  function onKey(e) {
+    if (e.key === 'Escape') {
+      if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+      document.removeEventListener('keydown', onKey);
+    }
+  }
+  document.addEventListener('keydown', onKey);
+
+  var modal = document.createElement('div');
+  modal.className = 'detail-modal';
+  modal.setAttribute('role', 'dialog');
+  modal.setAttribute('aria-modal', 'true');
+
+  /* 닫기 버튼 */
+  var closeBtn = document.createElement('button');
+  closeBtn.className = 'detail-modal__close';
+  closeBtn.textContent = '✕';
+  closeBtn.addEventListener('click', function() { document.body.removeChild(overlay); });
+  modal.appendChild(closeBtn);
+
+  /* 헤더: 아이콘 + 이름 */
+  var mhead = document.createElement('div');
+  mhead.className = 'detail-modal__head';
+
+  var iconEl = document.createElement('div');
+  iconEl.className = 'detail-modal__icon card__icon--' + (item.color || 'gold');
+  iconEl.setAttribute('aria-hidden', 'true');
+  iconEl.textContent = item.icon || '⚡';
+  mhead.appendChild(iconEl);
+
+  var titleWrap = document.createElement('div');
+  titleWrap.style.flex = '1';
+
+  var titleEl = document.createElement('h2');
+  titleEl.className = 'detail-modal__title';
+  titleEl.textContent = item.name;
+  titleWrap.appendChild(titleEl);
+
+  var metaEl = document.createElement('div');
+  metaEl.className = 'detail-modal__meta';
+
+  var catBadge = document.createElement('span');
+  catBadge.className = 'badge badge--' + (item.color === 'emerald' ? 'emerald' : item.color === 'purple' ? 'purple' : 'gold');
+  catBadge.textContent = getCategoryLabel(item.category);
+
+  var starSpan = document.createElement('span');
+  starSpan.className = 'detail-modal__stat';
+  starSpan.textContent = '★ ' + (item.stars || 0).toFixed(1);
+
+  var instSpan = document.createElement('span');
+  instSpan.className = 'detail-modal__stat';
+  instSpan.textContent = '↓ ' + formatInstalls(item.installs || 0) + '회 설치';
+
+  metaEl.appendChild(catBadge);
+  metaEl.appendChild(starSpan);
+  metaEl.appendChild(instSpan);
+  titleWrap.appendChild(metaEl);
+  mhead.appendChild(titleWrap);
+  modal.appendChild(mhead);
+
+  /* 설명 */
+  var descEl = document.createElement('p');
+  descEl.className = 'detail-modal__desc';
+  descEl.textContent = item.desc;
+  modal.appendChild(descEl);
+
+  /* 태그 */
+  if (item.tags && item.tags.length) {
+    var tagsEl = document.createElement('div');
+    tagsEl.className = 'detail-modal__tags';
+    item.tags.forEach(function(t) {
+      var sp = document.createElement('span');
+      sp.className = 'tag';
+      sp.textContent = t;
+      tagsEl.appendChild(sp);
+    });
+    modal.appendChild(tagsEl);
+  }
+
+  /* 명령어 박스 */
+  var cmd = getInstallCmd(item);
+  var codeSection = document.createElement('div');
+  codeSection.className = 'detail-modal__code-section';
+
+  var codeLabel = document.createElement('div');
+  codeLabel.className = 'detail-modal__code-label';
+  codeLabel.textContent = '설치 / 사용 명령어';
+  codeSection.appendChild(codeLabel);
+
+  var codePre = document.createElement('pre');
+  codePre.className = 'detail-modal__code';
+  var codeEl = document.createElement('code');
+  codeEl.textContent = cmd;
+  codePre.appendChild(codeEl);
+  codeSection.appendChild(codePre);
+  modal.appendChild(codeSection);
+
+  /* 액션 버튼 */
+  var actionsEl = document.createElement('div');
+  actionsEl.className = 'detail-modal__actions';
+
+  var copyBtn = document.createElement('button');
+  copyBtn.className = 'btn btn--gold';
+  copyBtn.textContent = '📋  명령어 복사';
+  copyBtn.addEventListener('click', function() {
+    copyToClipboard(cmd, item.name);
+    copyBtn.textContent = '✓  복사됨!';
+    setTimeout(function() { copyBtn.textContent = '📋  명령어 복사'; }, 2000);
+  });
+  actionsEl.appendChild(copyBtn);
+
+  var closeBtn2 = document.createElement('button');
+  closeBtn2.className = 'btn btn--ghost';
+  closeBtn2.textContent = '닫기';
+  closeBtn2.addEventListener('click', function() { document.body.removeChild(overlay); });
+  actionsEl.appendChild(closeBtn2);
+
+  modal.appendChild(actionsEl);
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
+  closeBtn.focus();
+}
