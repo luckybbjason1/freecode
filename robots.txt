@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /xp-admin-2025/
+
+Sitemap: https://USERNAME.github.io/REPO/sitemap.xml

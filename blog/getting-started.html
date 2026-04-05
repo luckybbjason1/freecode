@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code 한국어 시작 가이드 | Claude Code 한국 블로그</title>
+  <meta name="description" content="Claude Code를 처음 사용하는 분들을 위한 완전한 한국어 가이드. 설치부터 첫 번째 에이전트 실행까지 단계별 안내.">
+  <meta name="keywords" content="Claude Code 설치, 시작 가이드, 한국어, Node.js, AI 에이전트">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://USERNAME.github.io/REPO/blog/getting-started.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="Claude Code 한국어 시작 가이드">
+  <meta property="og:description" content="Claude Code를 처음 사용하는 분들을 위한 완전한 한국어 가이드. 설치부터 첫 번째 에이전트 실행까지 단계별 안내.">
+  <meta property="og:image" content="https://USERNAME.github.io/REPO/assets/img/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"Claude Code 한국어 시작 가이드","description":"Claude Code를 처음 사용하는 분들을 위한 완전한 한국어 가이드. 설치부터 첫 번째 에이전트 실행까지 단계별 안내.","inLanguage":"ko","author":{"@type":"Organization","name":"Claude Code 한국"},"publisher":{"@type":"Organization","name":"Claude Code 한국"},"datePublished":"2025-01-01","url":"https://USERNAME.github.io/REPO/blog/getting-started.html"}
+  </script>
+  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#d4af37">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.5/dist/purify.min.js" integrity="sha384-nszIONF2FGC59kn+pPFaRa6WUNGwsZgXZiJxJwQbym+TzcH7smolUviLgpPbNx7V" crossorigin="anonymous"></script>
+  <style>
+    .article-hero { padding: 8rem 0 4rem; text-align: center; background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(212,175,55,0.06) 0%, transparent 70%); }
+    .article-body { max-width: 760px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .article-body h2 { font-size: var(--text-xl); font-weight: 700; color: var(--text-primary); margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .article-body h3 { font-size: var(--text-lg); font-weight: 700; color: var(--text-primary); margin: 2rem 0 0.75rem; }
+    .article-body p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { color: var(--text-secondary); padding-left: 1.5rem; margin-bottom: 1.25rem; line-height: 1.8; }
+    .article-body li { margin-bottom: 0.5rem; }
+    .article-body li::marker { color: var(--gold); }
+    .article-body code { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-xs); padding: 0.15rem 0.4rem; font-family: var(--font-numeric); font-size: 0.875em; color: var(--gold); }
+    .article-body pre { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; overflow-x: auto; }
+    .article-body pre code { background: none; border: none; padding: 0; color: var(--text-primary); font-size: 0.9em; }
+    .article-body blockquote { border-left: 3px solid var(--gold); background: var(--gold-dim); padding: 1rem 1.25rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+    .article-body blockquote p { color: var(--text-primary); margin: 0; }
+    .article-body .callout { background: var(--emerald-dim); border: 1px solid rgba(16,185,129,0.2); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; }
+    .article-breadcrumb { font-size: var(--text-xs); color: var(--text-muted); margin-bottom: 1.5rem; }
+    .article-breadcrumb a { color: var(--gold); }
+  </style>
+</head>
+<body>
+<nav class="nav" id="main-nav" role="navigation" aria-label="주요 네비게이션">
+  <a href="../index.html" class="nav__logo"><div class="nav__logo-icon" aria-hidden="true">⚡</div><span>Claude Code 한국</span></a>
+  <ul class="nav__links" role="list">
+    <li><a href="../skills.html">스킬</a></li>
+    <li><a href="../agents.html">에이전트</a></li>
+    <li><a href="../mcps.html">MCP</a></li>
+    <li><a href="../blog.html" class="active">블로그</a></li>
+  </ul>
+  <div class="nav__actions"><a href="https://github.com" class="nav__github" target="_blank" rel="noopener">GitHub</a></div>
+  <button class="nav__hamburger" id="nav-hamburger" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav__mobile" id="nav-mobile">
+  <a href="../skills.html">스킬</a><a href="../agents.html">에이전트</a><a href="../mcps.html">MCP</a><a href="../blog.html">블로그</a>
+</div>
+
+<div id="ad-header-banner" class="ad-slot ad-slot--header" aria-label="광고"></div>
+
+<header class="article-hero">
+  <div class="container--narrow container">
+    <div class="article-breadcrumb">
+      <a href="../index.html">홈</a> &gt; <a href="../blog.html">블로그</a> &gt; Claude Code 한국어 시작 가이드
+    </div>
+    <h1 style="font-size:var(--text-3xl);font-weight:700;margin-bottom:1rem;line-height:1.2;">Claude Code 한국어 시작 가이드</h1>
+    <p style="color:var(--text-secondary);max-width:600px;margin:0 auto 1.5rem;">Claude Code를 처음 사용하는 분들을 위한 완전한 한국어 가이드. 설치부터 첫 번째 에이전트 실행까지 단계별 안내.</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:1rem;font-size:var(--text-xs);color:var(--text-muted);">
+      <span>Claude Code 한국</span><span>·</span><span>2025년 1월</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body" itemscope itemtype="https://schema.org/Article">
+<h2>Claude Code란 무엇인가?</h2>
+<p>Claude Code는 Anthropic이 개발한 터미널 기반 AI 코딩 어시스턴트입니다. 단순한 코드 생성 도구를 넘어, 파일을 읽고 편집하며, 명령어를 실행하고, 복잡한 소프트웨어 엔지니어링 작업을 처음부터 끝까지 수행할 수 있는 강력한 에이전트형 도구입니다.</p>
+<blockquote><p>Claude Code는 여러분의 개발 워크플로우를 자동화하는 가장 강력한 AI 도구입니다. 에이전트, 스킬, 훅을 통해 무한히 확장 가능합니다.</p></blockquote>
+<h2>설치 요구사항</h2>
+<ul>
+<li><strong>Node.js 18+</strong> — 공식 사이트에서 다운로드</li>
+<li><strong>Anthropic API 키</strong> — console.anthropic.com에서 발급</li>
+<li><strong>운영체제</strong> — Windows, macOS, Linux 모두 지원</li>
+</ul>
+<h2>Claude Code 설치하기</h2>
+<p>터미널을 열고 다음 명령어를 실행합니다:</p>
+<pre><code>npm install -g @anthropic-ai/claude-code</code></pre>
+<p>설치가 완료되면 API 키를 설정합니다:</p>
+<pre><code>export ANTHROPIC_API_KEY="your-api-key-here"</code></pre>
+<h2>첫 번째 실행</h2>
+<p>프로젝트 디렉토리에서 claude 명령어를 실행합니다:</p>
+<pre><code>cd your-project
+claude</code></pre>
+<p>Claude Code가 실행되면 자연어로 작업을 지시할 수 있습니다. 예를 들어 "이 파일에 있는 버그를 찾아서 수정해 줘"와 같이 입력하면 됩니다.</p>
+<h2>스킬 설치하기</h2>
+<p>Claude Code의 진정한 힘은 스킬과 에이전트에 있습니다. 이 마켓플레이스에서 원하는 스킬을 찾아 설치하세요:</p>
+<pre><code># 스킬 ID를 복사하여 설치
+claude skill install tdd-workflow</code></pre>
+<h2>기본 명령어</h2>
+<ul>
+<li><code>/help</code> — 도움말 보기</li>
+<li><code>/clear</code> — 대화 기록 초기화</li>
+<li><code>/commit</code> — 자동 커밋 메시지 생성</li>
+<li><code>/review</code> — 코드 리뷰 실행</li>
+<li><code>/plan</code> — 구현 계획 작성</li>
+</ul>
+<h2>다음 단계</h2>
+<div class="callout">
+<p>스킬 마켓플레이스에서 TDD 워크플로우, 보안 리뷰어, MCP 서버 등 다양한 컴포넌트를 설치하여 개발 생산성을 극대화하세요. 모든 컴포넌트는 무료로 제공됩니다.</p>
+</div>
+<p>다음 단계로 에이전트 목록을 탐색하거나, MCP 가이드를 읽어보세요.</p>
+</article>
+
+<div id="ad-before-footer" class="ad-slot ad-slot--before-footer" aria-label="광고"></div>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__bottom" style="border-top:var(--border-glass);padding-top:2rem;">
+      <a href="../index.html" style="color:var(--gold);font-weight:700;">⚡ Claude Code 한국</a>
+      <a href="../blog.html" style="color:var(--text-muted);font-size:var(--text-xs);">← 블로그 목록으로</a>
+      <span style="color:var(--text-muted);font-size:var(--text-xs);">© 2025 MIT 라이선스</span>
+    </div>
+  </div>
+</footer>
+
+<div id="ad-sticky-bottom" class="ad-slot ad-slot--sticky" aria-label="광고"></div>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/ads.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function(){ initNav(); renderAds(); });</script>
+</body>
+</html>

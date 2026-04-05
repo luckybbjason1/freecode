@@ -1,0 +1,18 @@
+{
+  "name": "Claude Code 한국",
+  "short_name": "CC 한국",
+  "description": "Claude Code 컴포넌트 마켓플레이스 - 에이전트, 스킬, MCP 통합",
+  "lang": "ko",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#d4af37",
+  "icons": [
+    {
+      "src": "assets/img/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["productivity", "developer", "utilities"]
+}

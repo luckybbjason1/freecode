@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code 한국 — AI 에이전트, 스킬 & MCP 통합 마켓플레이스</title>
+  <meta name="description" content="1000개 이상의 Claude Code 에이전트, 스킬, 명령어, MCP 통합 컴포넌트를 한국어로 탐색하세요. AI 워크플로우를 즉시 강화하는 최고의 마켓플레이스입니다.">
+  <meta name="keywords" content="Claude Code, AI 에이전트, 스킬, MCP, 명령어, 자동화, Claude 템플릿, AI 개발, 한국어">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Claude Code 한국">
+  <link rel="canonical" href="https://USERNAME.github.io/REPO/">
+  <link rel="alternate" hreflang="ko" href="https://USERNAME.github.io/REPO/">
+  <link rel="alternate" hreflang="x-default" href="https://USERNAME.github.io/REPO/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="Claude Code 한국 — AI 에이전트 & 스킬 마켓플레이스">
+  <meta property="og:description" content="1000개+ Claude Code 컴포넌트를 한국어로 탐색하세요. 에이전트, 스킬, MCP, 명령어 모두 무료.">
+  <meta property="og:image" content="https://USERNAME.github.io/REPO/assets/img/og-image.svg">
+  <meta property="og:url" content="https://USERNAME.github.io/REPO/">
+  <meta property="og:site_name" content="Claude Code 한국">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Claude Code 한국 — AI 에이전트 마켓플레이스">
+  <meta name="twitter:description" content="1000개+ AI 컴포넌트를 한국어로. Claude Code 전용 마켓플레이스.">
+  <meta name="twitter:image" content="https://USERNAME.github.io/REPO/assets/img/og-image.svg">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://USERNAME.github.io/REPO/#website",
+        "url": "https://USERNAME.github.io/REPO/",
+        "name": "Claude Code 한국",
+        "description": "Claude Code 컴포넌트 마켓플레이스 — 에이전트, 스킬, MCP, 명령어",
+        "inLanguage": "ko",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://USERNAME.github.io/REPO/skills.html?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://USERNAME.github.io/REPO/#org",
+        "name": "Claude Code 한국",
+        "url": "https://USERNAME.github.io/REPO/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://USERNAME.github.io/REPO/assets/img/logo.svg"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#d4af37">
+
+  <!-- 폰트 프리로드 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+  <!-- DOMPurify (XSS 방어 - 광고 렌더링용) -->
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.5/dist/purify.min.js" integrity="sha384-nszIONF2FGC59kn+pPFaRa6WUNGwsZgXZiJxJwQbym+TzcH7smolUviLgpPbNx7V" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- ===== 네비게이션 ===== -->
+<nav class="nav" id="main-nav" role="navigation" aria-label="주요 네비게이션">
+  <a href="index.html" class="nav__logo">
+    <div class="nav__logo-icon" aria-hidden="true">⚡</div>
+    <span>Claude Code 한국</span>
+  </a>
+
+  <ul class="nav__links" role="list">
+    <li><a href="skills.html">스킬</a></li>
+    <li><a href="agents.html">에이전트</a></li>
+    <li><a href="commands.html">명령어</a></li>
+    <li><a href="hooks.html">훅</a></li>
+    <li><a href="mcps.html">MCP</a></li>
+    <li><a href="plugins.html">플러그인 <span class="nav__new">NEW</span></a></li>
+    <li><a href="blog.html">블로그</a></li>
+  </ul>
+
+  <div class="nav__actions">
+    <button class="nav__search-btn" onclick="focusHeroSearch()" aria-label="검색">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="6.5" cy="6.5" r="4.5"/><line x1="10.5" y1="10.5" x2="14" y2="14"/>
+      </svg>
+    </button>
+    <a href="https://github.com" class="nav__github" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.57v-2.01c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.3-1.23 3.3-1.23.65 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.83.57C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/>
+      </svg>
+      GitHub
+    </a>
+  </div>
+
+  <button class="nav__hamburger" id="nav-hamburger" aria-label="메뉴 열기" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- 모바일 메뉴 -->
+<div class="nav__mobile" id="nav-mobile" role="navigation">
+  <a href="skills.html">스킬</a>
+  <a href="agents.html">에이전트</a>
+  <a href="commands.html">명령어</a>
+  <a href="hooks.html">훅</a>
+  <a href="mcps.html">MCP</a>
+  <a href="plugins.html">플러그인</a>
+  <a href="blog.html">블로그</a>
+</div>
+
+<!-- ===== 광고: 헤더 배너 ===== -->
+<div id="ad-header-banner" class="ad-slot ad-slot--header" aria-label="광고"></div>
+
+<!-- ===== 히어로 섹션 ===== -->
+<section class="hero" aria-labelledby="hero-title">
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+  <div class="hero__content">
+    <div class="hero__eyebrow" data-aos="fade-down">
+      <span class="hero__eyebrow-dot"></span>
+      한국어 공식 마켓플레이스 — 무료 오픈소스
+    </div>
+
+    <h1 class="hero__title" id="hero-title" data-aos="fade-up" data-aos-delay="80">
+      Claude Code<br>
+      <span class="line2 gradient-text">컴포넌트 마켓플레이스</span>
+    </h1>
+
+    <p class="hero__desc" data-aos="fade-up" data-aos-delay="160">
+      1000개 이상의 AI 에이전트, 스킬, 명령어 &amp; MCP 통합으로<br>
+      개발 워크플로우를 즉시 자동화하세요
+    </p>
+
+    <div class="hero__search-wrap" data-aos="fade-up" data-aos-delay="240">
+      <div class="search-wrapper">
+        <span class="search-wrapper__icon" aria-hidden="true">🔍</span>
+        <input
+          type="search"
+          class="search-input"
+          id="hero-search"
+          placeholder="스킬, 에이전트, MCP 검색..."
+          aria-label="컴포넌트 검색"
+          autocomplete="off"
+        >
+      </div>
+      <button class="btn btn--gold" onclick="handleHeroSearch()">검색하기</button>
+    </div>
+
+    <div class="hero__stats" data-aos="fade-up" data-aos-delay="320">
+      <div class="hero__stat">
+        <div class="hero__stat-num" data-count="1000" id="stat-skills">0</div>
+        <div class="hero__stat-label">스킬</div>
+      </div>
+      <div class="hero__stat-divider" aria-hidden="true"></div>
+      <div class="hero__stat">
+        <div class="hero__stat-num" data-count="600" id="stat-agents">0</div>
+        <div class="hero__stat-label">에이전트</div>
+      </div>
+      <div class="hero__stat-divider" aria-hidden="true"></div>
+      <div class="hero__stat">
+        <div class="hero__stat-num" data-count="120" id="stat-mcps">0</div>
+        <div class="hero__stat-label">MCP 통합</div>
+      </div>
+      <div class="hero__stat-divider" aria-hidden="true"></div>
+      <div class="hero__stat">
+        <div class="hero__stat-num" data-count="450" id="stat-commands">0</div>
+        <div class="hero__stat-label">명령어</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 광고: 히어로 하단 ===== -->
+<div id="ad-hero-below" class="ad-slot ad-slot--hero-below" aria-label="광고"></div>
+
+<!-- ===== 카테고리 섹션 ===== -->
+<section class="section" aria-labelledby="cats-title">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-header__label">카테고리</div>
+        <h2 class="section-header__title" id="cats-title">모든 컴포넌트 유형</h2>
+      </div>
+    </div>
+    <div class="cats-grid" id="cats-grid" role="list"></div>
+  </div>
+</section>
+
+<!-- ===== 인기 스킬 섹션 ===== -->
+<section class="section section--alt" aria-labelledby="skills-title">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-header__label">인기 스킬</div>
+        <h2 class="section-header__title" id="skills-title">최고 평점 스킬</h2>
+      </div>
+      <a href="skills.html" class="section-header__link">
+        모두 보기 <span aria-hidden="true">→</span>
+      </a>
+    </div>
+    <div class="cards-grid" id="skills-grid"></div>
+  </div>
+</section>
+
+<!-- ===== 인기 에이전트 섹션 ===== -->
+<section class="section" aria-labelledby="agents-title">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-header__label">추천 에이전트</div>
+        <h2 class="section-header__title" id="agents-title">전문 AI 에이전트</h2>
+      </div>
+      <a href="agents.html" class="section-header__link">
+        모두 보기 <span aria-hidden="true">→</span>
+      </a>
+    </div>
+    <div class="cards-grid" id="agents-grid"></div>
+  </div>
+</section>
+
+<!-- ===== MCP 섹션 ===== -->
+<section class="section section--alt" aria-labelledby="mcps-title">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-header__label">MCP 통합</div>
+        <h2 class="section-header__title" id="mcps-title">Model Context Protocol</h2>
+      </div>
+      <a href="mcps.html" class="section-header__link">
+        모두 보기 <span aria-hidden="true">→</span>
+      </a>
+    </div>
+    <div class="cards-grid" id="mcps-grid"></div>
+  </div>
+</section>
+
+<!-- ===== 광고: 푸터 상단 ===== -->
+<div id="ad-before-footer" class="ad-slot ad-slot--before-footer" aria-label="광고"></div>
+
+<!-- ===== 푸터 ===== -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div class="footer__logo">
+          <span aria-hidden="true">⚡</span> Claude Code 한국
+        </div>
+        <p class="footer__tagline">
+          Claude Code 컴포넌트 마켓플레이스.<br>
+          에이전트, 스킬, MCP 통합을 한국어로 제공합니다.
+        </p>
+      </div>
+
+      <div>
+        <div class="footer__col-title">컴포넌트</div>
+        <ul class="footer__links" role="list">
+          <li><a href="skills.html">스킬</a></li>
+          <li><a href="agents.html">에이전트</a></li>
+          <li><a href="commands.html">명령어</a></li>
+          <li><a href="mcps.html">MCP</a></li>
+          <li><a href="plugins.html">플러그인</a></li>
+          <li><a href="hooks.html">훅</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer__col-title">리소스</div>
+        <ul class="footer__links" role="list">
+          <li><a href="blog.html">블로그</a></li>
+          <li><a href="blog/getting-started.html">시작 가이드</a></li>
+          <li><a href="blog/mcp-guide.html">MCP 가이드</a></li>
+          <li><a href="blog/best-agents-2025.html">에이전트 TOP 10</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer__col-title">정보</div>
+        <ul class="footer__links" role="list">
+          <li><a href="https://github.com/anthropics/claude-code" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="sitemap.xml">사이트맵</a></li>
+          <li><a href="404.html">404 페이지</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 광고: 푸터 배너 -->
+    <div id="ad-footer-banner" class="ad-slot ad-slot--footer" aria-label="광고"></div>
+
+    <div class="footer__bottom">
+      <span>© 2025 Claude Code 한국. MIT 라이선스.</span>
+      <span>Node.js 18+, Claude Code CLI 필요</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== 광고: 하단 고정바 ===== -->
+<div id="ad-sticky-bottom" class="ad-slot ad-slot--sticky" aria-label="광고"></div>
+
+<!-- ===== 광고: 팝업 ===== -->
+<div id="ad-popup" class="ad-slot ad-slot--popup" style="display:none;" role="dialog" aria-label="팝업 광고"></div>
+
+<!-- ===== 토스트 ===== -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- Scripts -->
+<script src="assets/js/data.js"></script>
+<script src="assets/js/ads.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/particles-config.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 600, easing: 'ease-out-expo', once: true, offset: 60 });
+</script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCP 서버 완전 정복: 설치부터 활용까지 | Claude Code 한국 블로그</title>
+  <meta name="description" content="Model Context Protocol(MCP)란 무엇인지, 어떻게 설치하고 활용하는지 완전히 이해할 수 있는 가이드. GitHub, PostgreSQL, Figma MCP 설치 및 활용법 포함.">
+  <meta name="keywords" content="MCP, Model Context Protocol, MCP 서버, Claude Code MCP, GitHub MCP, PostgreSQL MCP">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://USERNAME.github.io/REPO/blog/mcp-guide.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="MCP 서버 완전 정복: 설치부터 활용까지">
+  <meta property="og:description" content="Model Context Protocol(MCP)란 무엇인지, 어떻게 설치하고 활용하는지 완전히 이해할 수 있는 가이드. GitHub, PostgreSQL, Figma MCP 설치 및 활용법 포함.">
+  <meta property="og:image" content="https://USERNAME.github.io/REPO/assets/img/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"MCP 서버 완전 정복: 설치부터 활용까지","description":"Model Context Protocol(MCP)란 무엇인지, 어떻게 설치하고 활용하는지 완전히 이해할 수 있는 가이드. GitHub, PostgreSQL, Figma MCP 설치 및 활용법 포함.","inLanguage":"ko","author":{"@type":"Organization","name":"Claude Code 한국"},"publisher":{"@type":"Organization","name":"Claude Code 한국"},"datePublished":"2025-01-01","url":"https://USERNAME.github.io/REPO/blog/mcp-guide.html"}
+  </script>
+  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#d4af37">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.5/dist/purify.min.js" integrity="sha384-nszIONF2FGC59kn+pPFaRa6WUNGwsZgXZiJxJwQbym+TzcH7smolUviLgpPbNx7V" crossorigin="anonymous"></script>
+  <style>
+    .article-hero { padding: 8rem 0 4rem; text-align: center; background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(212,175,55,0.06) 0%, transparent 70%); }
+    .article-body { max-width: 760px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .article-body h2 { font-size: var(--text-xl); font-weight: 700; color: var(--text-primary); margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .article-body h3 { font-size: var(--text-lg); font-weight: 700; color: var(--text-primary); margin: 2rem 0 0.75rem; }
+    .article-body p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { color: var(--text-secondary); padding-left: 1.5rem; margin-bottom: 1.25rem; line-height: 1.8; }
+    .article-body li { margin-bottom: 0.5rem; }
+    .article-body li::marker { color: var(--gold); }
+    .article-body code { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-xs); padding: 0.15rem 0.4rem; font-family: var(--font-numeric); font-size: 0.875em; color: var(--gold); }
+    .article-body pre { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; overflow-x: auto; }
+    .article-body pre code { background: none; border: none; padding: 0; color: var(--text-primary); font-size: 0.9em; }
+    .article-body blockquote { border-left: 3px solid var(--gold); background: var(--gold-dim); padding: 1rem 1.25rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+    .article-body blockquote p { color: var(--text-primary); margin: 0; }
+    .article-body .callout { background: var(--emerald-dim); border: 1px solid rgba(16,185,129,0.2); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; }
+    .article-breadcrumb { font-size: var(--text-xs); color: var(--text-muted); margin-bottom: 1.5rem; }
+    .article-breadcrumb a { color: var(--gold); }
+  </style>
+</head>
+<body>
+<nav class="nav" id="main-nav" role="navigation" aria-label="주요 네비게이션">
+  <a href="../index.html" class="nav__logo"><div class="nav__logo-icon" aria-hidden="true">⚡</div><span>Claude Code 한국</span></a>
+  <ul class="nav__links" role="list">
+    <li><a href="../skills.html">스킬</a></li>
+    <li><a href="../agents.html">에이전트</a></li>
+    <li><a href="../mcps.html">MCP</a></li>
+    <li><a href="../blog.html" class="active">블로그</a></li>
+  </ul>
+  <div class="nav__actions"><a href="https://github.com" class="nav__github" target="_blank" rel="noopener">GitHub</a></div>
+  <button class="nav__hamburger" id="nav-hamburger" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav__mobile" id="nav-mobile">
+  <a href="../skills.html">스킬</a><a href="../agents.html">에이전트</a><a href="../mcps.html">MCP</a><a href="../blog.html">블로그</a>
+</div>
+
+<div id="ad-header-banner" class="ad-slot ad-slot--header" aria-label="광고"></div>
+
+<header class="article-hero">
+  <div class="container--narrow container">
+    <div class="article-breadcrumb">
+      <a href="../index.html">홈</a> &gt; <a href="../blog.html">블로그</a> &gt; MCP 서버 완전 정복: 설치부터 활용까지
+    </div>
+    <h1 style="font-size:var(--text-3xl);font-weight:700;margin-bottom:1rem;line-height:1.2;">MCP 서버 완전 정복: 설치부터 활용까지</h1>
+    <p style="color:var(--text-secondary);max-width:600px;margin:0 auto 1.5rem;">Model Context Protocol(MCP)란 무엇인지, 어떻게 설치하고 활용하는지 완전히 이해할 수 있는 가이드. GitHub, PostgreSQL, Figma MCP 설치 및 활용법 포함.</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:1rem;font-size:var(--text-xs);color:var(--text-muted);">
+      <span>Claude Code 한국</span><span>·</span><span>2025년 1월</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body" itemscope itemtype="https://schema.org/Article">
+<h2>MCP란 무엇인가?</h2>
+<p>Model Context Protocol(MCP)은 Anthropic이 개발한 개방형 표준으로, AI 모델이 외부 도구 및 데이터 소스와 상호작용할 수 있게 해주는 프로토콜입니다. MCP를 통해 Claude Code는 GitHub, 데이터베이스, 디자인 도구, 업무 시스템과 직접 통신할 수 있습니다.</p>
+<blockquote><p>MCP는 AI와 외부 세계 사이의 표준화된 다리입니다. 한번 익히면 무수히 많은 서비스를 AI로 제어할 수 있게 됩니다.</p></blockquote>
+<h2>MCP 아키텍처 이해하기</h2>
+<p>MCP는 세 가지 핵심 요소로 구성됩니다:</p>
+<ul>
+<li><strong>MCP 서버</strong> — 외부 서비스와 통신하는 소프트웨어</li>
+<li><strong>MCP 클라이언트</strong> — Claude Code (서버와 통신하는 AI)</li>
+<li><strong>도구(Tools)</strong> — 서버가 제공하는 기능 목록</li>
+</ul>
+<h2>GitHub MCP 설치하기</h2>
+<p>가장 인기 있는 GitHub MCP 서버를 설치하는 방법입니다:</p>
+<pre><code>npx @modelcontextprotocol/server-github</code></pre>
+<p>설정 파일에 추가:</p>
+<pre><code>{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "your-token"
+      }
+    }
+  }
+}</code></pre>
+<h2>PostgreSQL MCP 설치하기</h2>
+<p>데이터베이스를 자연어로 쿼리하고 싶다면 PostgreSQL MCP를 설치하세요:</p>
+<pre><code>{
+  "mcpServers": {
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres", "postgresql://localhost/mydb"]
+    }
+  }
+}</code></pre>
+<h2>Figma MCP 활용하기</h2>
+<p>디자인 파일에서 직접 코드를 생성하는 Figma MCP는 프론트엔드 개발자에게 필수입니다. Figma 디자인 URL을 공유하면 Claude Code가 자동으로 컴포넌트 코드를 생성합니다.</p>
+<h2>직접 MCP 서버 만들기</h2>
+<p>MCP 서버 빌더 스킬을 활용하면 나만의 MCP 서버를 쉽게 제작할 수 있습니다:</p>
+<pre><code>npm install @modelcontextprotocol/sdk</code></pre>
+<div class="callout">
+<p>MCP 마켓플레이스에서 120개 이상의 사전 제작된 MCP 서버를 탐색하세요. GitHub, Slack, Notion, Stripe, Supabase 등 인기 서비스가 모두 준비되어 있습니다.</p>
+</div>
+<h2>마치며</h2>
+<p>MCP는 AI 도구 생태계의 미래입니다. 지금 바로 MCP 서버를 설치하여 Claude Code를 더욱 강력하게 만들어 보세요.</p>
+</article>
+
+<div id="ad-before-footer" class="ad-slot ad-slot--before-footer" aria-label="광고"></div>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__bottom" style="border-top:var(--border-glass);padding-top:2rem;">
+      <a href="../index.html" style="color:var(--gold);font-weight:700;">⚡ Claude Code 한국</a>
+      <a href="../blog.html" style="color:var(--text-muted);font-size:var(--text-xs);">← 블로그 목록으로</a>
+      <span style="color:var(--text-muted);font-size:var(--text-xs);">© 2025 MIT 라이선스</span>
+    </div>
+  </div>
+</footer>
+
+<div id="ad-sticky-bottom" class="ad-slot ad-slot--sticky" aria-label="광고"></div>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/ads.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function(){ initNav(); renderAds(); });</script>
+</body>
+</html>

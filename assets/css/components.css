@@ -1,0 +1,369 @@
+/* ===================================================
+   COMPONENTS — 카드, 버튼, 배지, 검색, 필터
+   =================================================== */
+
+/* ---- 글래스 카드 ---- */
+.card {
+  background: var(--glass-bg);
+  border: var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    transform var(--duration-base) var(--ease-out-expo),
+    box-shadow var(--duration-base) ease,
+    border-color var(--duration-base) ease,
+    background var(--duration-base) ease;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(212,175,55,0.05) 0%,
+    transparent 50%);
+  opacity: 0;
+  transition: opacity var(--duration-base) ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  background: var(--glass-bg-hover);
+  border-color: var(--gold-dim);
+  box-shadow: var(--shadow-gold);
+}
+.card:hover::before { opacity: 1; }
+
+.card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+.card__icon {
+  width: 44px; height: 44px;
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  background: var(--gold-dim);
+  border: 1px solid rgba(212,175,55,0.2);
+}
+.card__icon--emerald { background: var(--emerald-dim); border-color: rgba(16,185,129,0.2); }
+.card__icon--purple  { background: var(--purple-dim);  border-color: rgba(124,58,237,0.2); }
+.card__icon--blue    { background: var(--blue-dim);    border-color: rgba(59,130,246,0.2); }
+.card__icon--pink    { background: var(--pink-dim);    border-color: rgba(236,72,153,0.2); }
+.card__icon--orange  { background: var(--orange-dim);  border-color: rgba(245,158,11,0.2); }
+
+.card__name {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+  line-height: 1.3;
+}
+.card__desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-bottom: var(--space-4);
+}
+.card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+.card__installs {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.card__stars {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--gold);
+}
+.card__copy-btn {
+  padding: 0.3rem 0.7rem;
+  background: var(--gold-dim);
+  border: 1px solid rgba(212,175,55,0.3);
+  border-radius: var(--radius-xs);
+  color: var(--gold);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  transition: all var(--duration-fast) ease;
+  opacity: 0;
+}
+.card:hover .card__copy-btn { opacity: 1; }
+.card__copy-btn:hover {
+  background: var(--gold);
+  color: #000;
+}
+
+/* 카테고리 카드 (홈페이지) */
+.cat-card {
+  background: var(--glass-bg);
+  border: var(--border-glass);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform var(--duration-base) var(--ease-out-expo),
+    border-color var(--duration-base) ease,
+    box-shadow var(--duration-base) ease;
+}
+.cat-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--emerald));
+  transform: scaleX(0);
+  transition: transform var(--duration-base) ease;
+}
+.cat-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold-dim);
+  box-shadow: var(--shadow-gold);
+}
+.cat-card:hover::after { transform: scaleX(1); }
+.cat-card__icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-4);
+  display: block;
+}
+.cat-card__name {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+.cat-card__count {
+  font-family: var(--font-numeric);
+  font-size: var(--text-sm);
+  color: var(--gold);
+}
+
+/* ---- 버튼 ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  font-family: var(--font-korean);
+  cursor: pointer;
+  border: none;
+  transition: all var(--duration-fast) var(--ease-out-expo);
+  white-space: nowrap;
+}
+.btn--gold {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  color: #000;
+  box-shadow: 0 0 20px var(--gold-glow);
+}
+.btn--gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px var(--gold-glow), 0 4px 12px rgba(0,0,0,0.3);
+}
+.btn--ghost {
+  background: var(--glass-bg);
+  border: var(--border-glass);
+  color: var(--text-primary);
+}
+.btn--ghost:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--gold-dim);
+  color: var(--gold);
+}
+.btn--emerald {
+  background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 100%);
+  color: #000;
+}
+.btn--sm { padding: 0.4rem 0.9rem; font-size: var(--text-xs); }
+.btn--lg { padding: 0.85rem 2rem; font-size: var(--text-base); }
+.btn--full { width: 100%; }
+
+/* ---- 배지 ---- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+.badge--gold    { background: var(--gold-dim);    color: var(--gold);    border: 1px solid rgba(212,175,55,0.3); }
+.badge--emerald { background: var(--emerald-dim); color: var(--emerald); border: 1px solid rgba(16,185,129,0.3); }
+.badge--purple  { background: var(--purple-dim);  color: var(--purple);  border: 1px solid rgba(124,58,237,0.3); }
+.badge--blue    { background: var(--blue-dim);    color: var(--blue);    border: 1px solid rgba(59,130,246,0.3); }
+.badge--pink    { background: var(--pink-dim);    color: var(--pink);    border: 1px solid rgba(236,72,153,0.3); }
+.badge--new {
+  background: linear-gradient(135deg, var(--emerald), var(--blue));
+  color: #fff;
+  font-size: 0.6rem;
+  padding: 0.15rem 0.5rem;
+}
+
+/* ---- 태그 ---- */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.5rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius-xs);
+  font-size: var(--text-2xs);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+}
+.tag:hover, .tag.active {
+  background: var(--gold-dim);
+  border-color: rgba(212,175,55,0.3);
+  color: var(--gold);
+}
+
+/* ---- 검색창 ---- */
+.search-input {
+  width: 100%;
+  background: var(--glass-bg);
+  border: var(--border-glass);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 1rem 0.65rem 2.5rem;
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  font-family: var(--font-korean);
+  transition: border-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
+}
+.search-input::placeholder { color: var(--text-muted); }
+.search-input:focus {
+  outline: none;
+  border-color: var(--gold-dim);
+  box-shadow: 0 0 0 3px rgba(212,175,55,0.1);
+}
+.search-wrapper {
+  position: relative;
+}
+.search-wrapper__icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+  font-size: 0.9rem;
+}
+
+/* ---- 필터 패널 ---- */
+.filter-panel {
+  background: var(--glass-bg);
+  border: var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+}
+.filter-panel__title {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: var(--border-glass);
+}
+.filter-panel__section { margin-bottom: var(--space-5); }
+.filter-panel__label {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-3);
+  display: block;
+}
+.filter-panel__tags { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.filter-panel__sort {
+  width: 100%;
+  background: var(--glass-bg);
+  border: var(--border-glass);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.75rem;
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+}
+.filter-panel__sort option { background: var(--bg-elevated); }
+
+/* ---- 별점 ---- */
+.stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  color: var(--gold);
+  font-size: 0.8rem;
+}
+
+/* ---- 토스트 ---- */
+.toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--bg-elevated);
+  border: var(--border-glass);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1.25rem;
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-lg);
+  z-index: var(--z-toast);
+  transition: transform var(--duration-base) var(--ease-out-expo);
+  white-space: nowrap;
+}
+.toast--show { transform: translateX(-50%) translateY(0); }
+
+/* ---- 섹션 구분선 ---- */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+  margin: var(--space-section) 0;
+}
+
+/* ---- 로딩 스켈레톤 ---- */
+.skeleton {
+  background: linear-gradient(90deg,
+    var(--bg-surface) 25%,
+    var(--bg-elevated) 50%,
+    var(--bg-surface) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+@keyframes skeleton-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
