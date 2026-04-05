@@ -141,18 +141,25 @@
 .card__copy-btn {
   padding: 0.3rem 0.7rem;
   background: var(--gold-dim);
-  border: 1px solid rgba(212,175,55,0.3);
+  border: 1px solid rgba(255,215,0,0.35);
   border-radius: var(--radius-xs);
   color: var(--gold);
   font-size: var(--text-xs);
   font-weight: 600;
   transition: all var(--duration-fast) ease;
-  opacity: 0;
+  opacity: 0.5;
 }
 .card:hover .card__copy-btn { opacity: 1; }
-.card__copy-btn:hover {
+.card__copy-btn:hover,
+.card__copy-btn:focus {
   background: var(--gold);
   color: #000;
+  opacity: 1;
+  box-shadow: 0 0 12px rgba(255,215,0,0.4);
+}
+/* 터치 기기에서는 항상 표시 */
+@media (pointer: coarse) {
+  .card__copy-btn { opacity: 0.8; }
 }
 
 /* 카테고리 카드 (홈페이지) */

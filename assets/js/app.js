@@ -469,30 +469,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* ---- 카드 상세 모달 ---- */
 
-function getInstallCmd(item) {
-  var cat = item.category;
-  if (cat === 'mcps') {
-    return 'npx -y @' + item.id + '/mcp';
-  }
-  if (cat === 'commands') { return '/' + item.id; }
-  if (cat === 'plugins')  { return 'claude plugins install ' + item.id; }
-  if (cat === 'hooks') {
-    return '# .claude/settings.json 에 추가\n"' + item.id + '"';
-  }
-  return 'claude skills install ' + item.id;
-}
-
 function openDetailModal(item) {
   var overlay = document.createElement('div');
   overlay.className = 'detail-overlay';
+  function closeModal() {
+    if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+    document.removeEventListener('keydown', onKey);
+  }
   overlay.addEventListener('click', function(e) {
-    if (e.target === overlay) document.body.removeChild(overlay);
+    if (e.target === overlay) closeModal();
   });
   function onKey(e) {
-    if (e.key === 'Escape') {
-      if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
-      document.removeEventListener('keydown', onKey);
-    }
+    if (e.key === 'Escape') closeModal();
   }
   document.addEventListener('keydown', onKey);
 
@@ -505,7 +493,7 @@ function openDetailModal(item) {
   var closeBtn = document.createElement('button');
   closeBtn.className = 'detail-modal__close';
   closeBtn.textContent = '✕';
-  closeBtn.addEventListener('click', function() { document.body.removeChild(overlay); });
+  closeBtn.addEventListener('click', closeModal);
   modal.appendChild(closeBtn);
 
   /* 헤더: 아이콘 + 이름 */
