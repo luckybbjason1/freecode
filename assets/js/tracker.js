@@ -395,16 +395,21 @@ var CCTracker = {
     } catch (_) {}
   },
 
-  /* ---- 마지막 세션에 Geo 적용 ---- */
+  /* ---- geo 데이터를 country 미설정 세션 전체에 소급 적용 ---- */
   _applyGeoToLastSession: function(geo) {
     try {
       var sessions = this._loadSessions();
       if (sessions.length === 0) return;
-      var last = sessions[sessions.length - 1];
-      last.country     = geo.country_name || '';
-      last.countryCode = geo.country_code || '';
-      last.city        = geo.city || '';
-      localStorage.setItem(TRACK_SESSION_KEY, JSON.stringify(sessions));
+      var changed = false;
+      for (var i = 0; i < sessions.length; i++) {
+        if (!sessions[i].country) {
+          sessions[i].country     = geo.country_name || '';
+          sessions[i].countryCode = geo.country_code || '';
+          sessions[i].city        = geo.city || '';
+          changed = true;
+        }
+      }
+      if (changed) localStorage.setItem(TRACK_SESSION_KEY, JSON.stringify(sessions));
     } catch (_) {}
   },
 

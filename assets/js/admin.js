@@ -1233,6 +1233,11 @@ function renderAdStatsSection() {
 
   var clicks = CCTracker.adClicks();
   var slots  = (typeof getAdSlots === 'function') ? getAdSlots() : [];
+  // 현재 슬롯 목록에 없지만 클릭 데이터가 있는 슬롯도 표시 (삭제된 슬롯 포함)
+  var slotIds = slots.map(function(s) { return s.id; });
+  Object.keys(clicks).forEach(function(id) {
+    if (slotIds.indexOf(id) === -1) slots.push({ id: id, label: id + ' (삭제됨)' });
+  });
   var maxClicks = 0;
   slots.forEach(function(s) { var c = clicks[s.id] || 0; if (c > maxClicks) maxClicks = c; });
 
@@ -1288,6 +1293,11 @@ function renderPartnerStatsSection() {
 
   var clicks   = CCTracker.partnerClicks();
   var partners = (typeof loadPartners === 'function') ? loadPartners() : [];
+  // 현재 파트너 목록에 없지만 클릭 데이터가 있는 항목도 표시 (삭제된 파트너 포함)
+  var partnerIds = partners.map(function(p) { return p.id; });
+  Object.keys(clicks).forEach(function(id) {
+    if (partnerIds.indexOf(id) === -1) partners.push({ id: id, name: id + ' (삭제됨)', icon: '🔗' });
+  });
 
   if (partners.length === 0) { _noData(el); return; }
 
