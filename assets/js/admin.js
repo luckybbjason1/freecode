@@ -63,7 +63,290 @@ function showDashboard() {
   const login = document.getElementById('login-screen');
   const dash  = document.getElementById('dashboard-screen');
   if (login) login.style.display = 'none';
-  if (dash)  { dash.style.display = 'flex'; renderAdSlotsList(); }
+  if (dash)  { dash.style.display = 'flex'; showSection('ads'); }
+}
+
+/* ---- 섹션 전환 ---- */
+
+function showSection(name) {
+  // 네비 활성화
+  document.querySelectorAll('.admin-nav-item[data-section]').forEach(function(btn) {
+    btn.classList.toggle('active', btn.getAttribute('data-section') === name);
+  });
+  // 섹션 표시
+  document.querySelectorAll('.admin-section').forEach(function(sec) {
+    sec.style.display = sec.getAttribute('data-section') === name ? 'block' : 'none';
+  });
+  // 헤더 업데이트
+  const headerTitle = document.querySelector('.admin-header__title');
+  const headerSub   = document.querySelector('.admin-header__sub');
+  if (name === 'ads') {
+    if (headerTitle) headerTitle.textContent = '광고 관리';
+    if (headerSub)   headerSub.textContent   = '광고 슬롯을 추가, 편집, 활성화/비활성화하세요';
+    renderAdSlotsList();
+  }
+  if (name === 'partners') {
+    if (headerTitle) headerTitle.textContent = '파트너 링크 관리';
+    if (headerSub)   headerSub.textContent   = '파트너 링크를 추가하고 신청을 승인/거절하세요';
+    renderPartnersList();
+  }
+}
+
+/* ---- 파트너 링크 관리 ---- */
+
+function renderPartnersList() {
+  const listEl = document.getElementById('partners-list');
+  const appsEl = document.getElementById('applications-list');
+  if (!listEl || !appsEl) return;
+
+  // 통계
+  const partners = loadPartners();
+  const apps     = loadApplications();
+  const statP = document.getElementById('stat-partners');
+  const statA = document.getElementById('stat-apps');
+  if (statP) statP.textContent = String(partners.length);
+  if (statA) statA.textContent = String(apps.length);
+
+  // ── 승인된 파트너 ──
+  listEl.textContent = '';
+  if (partners.length === 0) {
+    const empty = document.createElement('div');
+    empty.style.cssText = 'padding:2rem;text-align:center;color:var(--text-muted);font-size:var(--text-sm);';
+    empty.textContent = '등록된 파트너 링크가 없습니다.';
+    listEl.appendChild(empty);
+  } else {
+    partners.forEach(function(p) {
+      listEl.appendChild(makePartnerRow(p));
+    });
+  }
+
+  // ── 신청 대기 ──
+  appsEl.textContent = '';
+  if (apps.length === 0) {
+    const empty = document.createElement('div');
+    empty.style.cssText = 'padding:1.5rem;text-align:center;color:var(--text-muted);font-size:var(--text-sm);';
+    empty.textContent = '대기 중인 신청이 없습니다.';
+    appsEl.appendChild(empty);
+  } else {
+    apps.forEach(function(app) {
+      appsEl.appendChild(makeAppRow(app));
+    });
+  }
+}
+
+function makePartnerRow(p) {
+  const row = document.createElement('div');
+  row.className = 'ad-slot-row' + (p.enabled ? ' ad-slot-row--active' : '');
+  row.id = 'prow-' + p.id;
+
+  const info = document.createElement('div');
+  info.className = 'ad-slot-row__info';
+
+  const name = document.createElement('div');
+  name.className = 'ad-slot-row__name';
+  name.textContent = (p.icon || '🔗') + ' ' + p.name;
+  info.appendChild(name);
+
+  const url = document.createElement('div');
+  url.className = 'ad-slot-row__id';
+  url.textContent = p.url;
+  info.appendChild(url);
+
+  row.appendChild(info);
+
+  const status = document.createElement('span');
+  status.className = 'ad-slot-row__status ad-slot-row__status--' + (p.enabled ? 'on' : 'off');
+  status.id = 'pstatus-' + p.id;
+  status.textContent = p.enabled ? '표시중' : '숨김';
+  row.appendChild(status);
+
+  const actions = document.createElement('div');
+  actions.className = 'ad-slot-row__actions';
+
+  // 토글
+  const toggleLabel = document.createElement('label');
+  toggleLabel.className = 'toggle-switch';
+  const toggleInput = document.createElement('input');
+  toggleInput.type = 'checkbox';
+  toggleInput.checked = !!p.enabled;
+  toggleInput.addEventListener('change', function() {
+    updatePartner(p.id, { enabled: this.checked });
+    const s = document.getElementById('pstatus-' + p.id);
+    const r = document.getElementById('prow-' + p.id);
+    if (s) { s.textContent = this.checked ? '표시중' : '숨김'; s.className = 'ad-slot-row__status ad-slot-row__status--' + (this.checked ? 'on' : 'off'); }
+    if (r) { r.classList.toggle('ad-slot-row--active', this.checked); }
+    renderPartnersList();
+  });
+  const track = document.createElement('span'); track.className = 'toggle-switch__track';
+  const thumb = document.createElement('span'); thumb.className = 'toggle-switch__thumb';
+  toggleLabel.appendChild(toggleInput);
+  toggleLabel.appendChild(track);
+  toggleLabel.appendChild(thumb);
+  actions.appendChild(toggleLabel);
+
+  // 편집
+  const editBtn = document.createElement('button');
+  editBtn.className = 'btn btn--ghost btn--sm';
+  editBtn.textContent = '편집';
+  editBtn.addEventListener('click', function() { openPartnerModal(p); });
+  actions.appendChild(editBtn);
+
+  // 삭제
+  const delBtn = document.createElement('button');
+  delBtn.className = 'btn btn--sm';
+  delBtn.style.cssText = 'background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.2);color:#f87171;';
+  delBtn.textContent = '삭제';
+  delBtn.addEventListener('click', function() {
+    if (confirm('"' + p.name + '" 파트너 링크를 삭제하시겠습니까?')) {
+      deletePartner(p.id);
+      renderPartnersList();
+      showAdminToast('삭제되었습니다.');
+    }
+  });
+  actions.appendChild(delBtn);
+
+  row.appendChild(actions);
+  return row;
+}
+
+function makeAppRow(app) {
+  const row = document.createElement('div');
+  row.className = 'ad-slot-row';
+
+  const info = document.createElement('div');
+  info.className = 'ad-slot-row__info';
+
+  const name = document.createElement('div');
+  name.className = 'ad-slot-row__name';
+  name.textContent = app.name;
+  info.appendChild(name);
+
+  const url = document.createElement('div');
+  url.className = 'ad-slot-row__id';
+  url.textContent = app.url + (app.desc ? ' — ' + app.desc : '');
+  info.appendChild(url);
+
+  const date = document.createElement('div');
+  date.className = 'ad-slot-row__id';
+  date.textContent = new Date(app.submittedAt).toLocaleString('ko-KR');
+  info.appendChild(date);
+
+  row.appendChild(info);
+
+  const actions = document.createElement('div');
+  actions.className = 'ad-slot-row__actions';
+
+  const approveBtn = document.createElement('button');
+  approveBtn.className = 'btn btn--gold btn--sm';
+  approveBtn.textContent = '승인';
+  approveBtn.addEventListener('click', function() {
+    approveApplication(app.id);
+    renderPartnersList();
+    showAdminToast('"' + app.name + '" 승인되어 파트너 링크에 추가되었습니다.');
+  });
+  actions.appendChild(approveBtn);
+
+  const rejectBtn = document.createElement('button');
+  rejectBtn.className = 'btn btn--sm';
+  rejectBtn.style.cssText = 'background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.2);color:#f87171;';
+  rejectBtn.textContent = '거절';
+  rejectBtn.addEventListener('click', function() {
+    rejectApplication(app.id);
+    renderPartnersList();
+    showAdminToast('거절 처리되었습니다.');
+  });
+  actions.appendChild(rejectBtn);
+
+  row.appendChild(actions);
+  return row;
+}
+
+function openPartnerModal(existing) {
+  var isEdit = !!existing;
+  var p = existing || { id: null, name: '', url: '', icon: '🔗', desc: '' };
+
+  const overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closeModal(overlay);
+  });
+
+  const modal = document.createElement('div');
+  modal.className = 'modal';
+  modal.setAttribute('role', 'dialog');
+  modal.setAttribute('aria-label', isEdit ? '파트너 편집' : '파트너 추가');
+
+  const title = document.createElement('div');
+  title.className = 'modal__title';
+  title.textContent = isEdit ? '파트너 링크 편집' : '파트너 링크 추가';
+  modal.appendChild(title);
+
+  function makeField(labelText, inputEl) {
+    const field = document.createElement('div');
+    field.className = 'modal__field';
+    const lbl = document.createElement('label');
+    lbl.className = 'modal__label';
+    lbl.textContent = labelText;
+    field.appendChild(lbl);
+    field.appendChild(inputEl);
+    return field;
+  }
+
+  const nameInput = document.createElement('input');
+  nameInput.className = 'modal__input'; nameInput.type = 'text';
+  nameInput.placeholder = '사이트명'; nameInput.value = p.name;
+  modal.appendChild(makeField('사이트명 *', nameInput));
+
+  const urlInput = document.createElement('input');
+  urlInput.className = 'modal__input'; urlInput.type = 'url';
+  urlInput.placeholder = 'https://...'; urlInput.value = p.url;
+  modal.appendChild(makeField('URL *', urlInput));
+
+  const iconInput = document.createElement('input');
+  iconInput.className = 'modal__input'; iconInput.type = 'text';
+  iconInput.placeholder = '🔗'; iconInput.value = p.icon || '🔗';
+  iconInput.style.maxWidth = '80px';
+  modal.appendChild(makeField('아이콘 (이모지)', iconInput));
+
+  const descInput = document.createElement('input');
+  descInput.className = 'modal__input'; descInput.type = 'text';
+  descInput.placeholder = '한 줄 설명 (선택)'; descInput.value = p.desc || '';
+  modal.appendChild(makeField('설명', descInput));
+
+  const actions = document.createElement('div');
+  actions.className = 'modal__actions';
+
+  const cancelBtn = document.createElement('button');
+  cancelBtn.className = 'btn btn--ghost';
+  cancelBtn.textContent = '취소';
+  cancelBtn.addEventListener('click', function() { closeModal(overlay); });
+  actions.appendChild(cancelBtn);
+
+  const saveBtn = document.createElement('button');
+  saveBtn.className = 'btn btn--gold';
+  saveBtn.textContent = isEdit ? '저장' : '추가';
+  saveBtn.addEventListener('click', function() {
+    var name = nameInput.value.trim();
+    var url  = urlInput.value.trim();
+    if (!name || !url) { alert('사이트명과 URL을 입력하세요.'); return; }
+    try { new URL(url); } catch (_) { alert('올바른 URL을 입력하세요.'); return; }
+    var data = { name: name, url: url, icon: iconInput.value.trim() || '🔗', desc: descInput.value.trim() };
+    if (isEdit) {
+      updatePartner(p.id, data);
+      showAdminToast('파트너 링크가 수정되었습니다.');
+    } else {
+      addPartner(data);
+      showAdminToast('파트너 링크가 추가되었습니다.');
+    }
+    closeModal(overlay);
+    renderPartnersList();
+  });
+  actions.appendChild(saveBtn);
+  modal.appendChild(actions);
+
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
+  nameInput.focus();
 }
 
 /* ---- 로그인 속도 제한 ---- */
