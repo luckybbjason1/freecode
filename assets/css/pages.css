@@ -91,6 +91,76 @@
   padding-top: 62px;
 }
 
+/* ── 커튼 & Claude 로고 워터마크 ─────────────────── */
+.hero__curtain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* 세로 주름 — 벨벳 커튼 빛 산란 효과 */
+.hero__curtain-folds {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent                         0px,
+      rgba(255,255,255,0.012)            14px,
+      rgba(124,106,245,0.035)            24px,
+      rgba(255,255,255,0.018)            32px,
+      rgba(0,0,0,0.09)                   46px,
+      rgba(124,106,245,0.018)            56px,
+      transparent                        70px,
+      rgba(0,0,0,0.11)                   84px,
+      rgba(255,255,255,0.014)            94px,
+      rgba(124,106,245,0.028)           106px,
+      rgba(255,255,255,0.010)           116px,
+      transparent                       130px,
+      rgba(0,0,0,0.07)                  144px,
+      transparent                       158px
+    );
+  /* 오른쪽 절반에만 강하게, 왼쪽으로 갈수록 사라짐 */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.8) 55%, rgba(0,0,0,1) 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.8) 55%, rgba(0,0,0,1) 100%);
+}
+
+/* Claude 로고 워터마크 위치 */
+.hero__curtain-logo {
+  position: absolute;
+  right: -6%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 62%;
+  opacity: 1;
+  /* 오른쪽 중심부에만 표시 */
+  -webkit-mask-image: radial-gradient(ellipse 85% 70% at 60% 50%, rgba(0,0,0,1) 30%, transparent 80%);
+  mask-image: radial-gradient(ellipse 85% 70% at 60% 50%, rgba(0,0,0,1) 30%, transparent 80%);
+}
+.hero__curtain-logo svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 베일 — 왼쪽(텍스트) 보호 + 오른쪽 깊이감 */
+.hero__curtain-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      var(--bg-base)              0%,
+      rgba(16,19,31,0.94)        22%,
+      rgba(16,19,31,0.70)        42%,
+      rgba(16,19,31,0.28)        65%,
+      transparent                 85%,
+      rgba(8,10,18,0.18)        100%
+    );
+}
+
 /* 움직이는 메쉬 오브 배경 */
 .hero__mesh {
   position: absolute;

@@ -99,6 +99,50 @@
     <div class="hero__orb hero__orb--gold"></div>
   </div>
 
+  <!-- 커튼 & Claude 로고 워터마크 -->
+  <div class="hero__curtain" aria-hidden="true">
+    <div class="hero__curtain-folds"></div>
+    <div class="hero__curtain-logo">
+      <svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="hcg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%"   stop-color="#a695f8" stop-opacity="1"/>
+            <stop offset="45%"  stop-color="#0df0ff" stop-opacity="1"/>
+            <stop offset="100%" stop-color="#f5c842" stop-opacity="1"/>
+          </linearGradient>
+          <filter id="hcf" x="-10%" y="-30%" width="120%" height="160%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="hcf2" x="-10%" y="-30%" width="120%" height="160%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <!-- 글로우 레이어 — 부드러운 빛 번짐 -->
+        <text x="450" y="185"
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="Georgia,'Times New Roman',serif"
+          font-size="230" font-weight="700" letter-spacing="-18"
+          fill="url(#hcg)" opacity="0.06" filter="url(#hcf)">Claude</text>
+        <!-- 채워진 기본 레이어 -->
+        <text x="450" y="185"
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="Georgia,'Times New Roman',serif"
+          font-size="230" font-weight="700" letter-spacing="-18"
+          fill="url(#hcg)" opacity="0.04">Claude</text>
+        <!-- 윤곽선 레이어 — 수놓인 느낌 -->
+        <text x="450" y="185"
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="Georgia,'Times New Roman',serif"
+          font-size="230" font-weight="700" letter-spacing="-18"
+          fill="none" stroke="url(#hcg)" stroke-width="0.8"
+          opacity="0.22" filter="url(#hcf2)">Claude</text>
+      </svg>
+    </div>
+    <div class="hero__curtain-veil"></div>
+  </div>
+
   <div class="container hero__grid">
     <!-- 왼쪽: 텍스트 -->
     <div class="hero__left">
