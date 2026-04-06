@@ -104,7 +104,7 @@ function renderCatCard(cat) {
   const a = document.createElement('a');
   a.href = cat.id + '.html';
   a.className = 'cat-card';
-  a.setAttribute('data-aos', 'scale-in');
+  a.setAttribute('data-aos', 'zoom-in');
   a.setAttribute('role', 'listitem');
 
   const icon = document.createElement('span');
@@ -307,7 +307,7 @@ function focusHeroSearch() {
 function renderHomeGrids() {
   // 카테고리
   const catsGrid = document.getElementById('cats-grid');
-  if (catsGrid) {
+  if (catsGrid && catsGrid.children.length === 0) {
     SITE_DATA.categories.forEach(function(cat) {
       catsGrid.appendChild(renderCatCard(cat));
     });
