@@ -92,6 +92,13 @@ function renderAds() {
 
       el.style.display = 'block';
       el.classList.add('ad-slot--active');
+
+      // 광고 클릭 추적
+      (function(slotId, elem) {
+        elem.onclick = function() {
+          try { CCTracker.rec('ad', { slot: slotId }); } catch (_) {}
+        };
+      })(slot.id, el);
     } else {
       el.style.display = 'none';
       el.classList.remove('ad-slot--active');

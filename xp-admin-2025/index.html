@@ -118,6 +118,27 @@
         <span aria-hidden="true">🔗</span> 파트너 링크
         <span class="nav-badge" id="sidebar-app-badge" style="display:none;">0</span>
       </button>
+      <button class="admin-nav-item" data-section="analytics" onclick="showSection('analytics')">
+        <span>📈</span> 트래픽 분석
+      </button>
+      <button class="admin-nav-item" data-section="content-stats" onclick="showSection('content-stats')">
+        <span>🏆</span> 인기 콘텐츠
+      </button>
+      <button class="admin-nav-item" data-section="geo-stats" onclick="showSection('geo-stats')">
+        <span>🌏</span> 방문자 지역
+      </button>
+      <button class="admin-nav-item" data-section="tech-stats" onclick="showSection('tech-stats')">
+        <span>💻</span> 기기·브라우저
+      </button>
+      <button class="admin-nav-item" data-section="ad-stats" onclick="showSection('ad-stats')">
+        <span>📢</span> 광고 클릭
+      </button>
+      <button class="admin-nav-item" data-section="partner-stats" onclick="showSection('partner-stats')">
+        <span>🔗</span> 파트너 클릭
+      </button>
+      <button class="admin-nav-item" data-section="search-stats" onclick="showSection('search-stats')">
+        <span>🔍</span> 검색어 통계
+      </button>
       <button class="admin-nav-item" onclick="window.open('../index.html','_blank')">
         <span aria-hidden="true">🌐</span> 사이트 보기
       </button>
@@ -206,6 +227,144 @@
 
       </div><!-- /section-ads -->
 
+      <!-- ════ 분석 섹션들 ════ -->
+
+      <!-- 트래픽 분석 -->
+      <div id="section-analytics" class="section-block">
+        <div class="sec-hd">
+          <div>
+            <div class="sec-hd__title">트래픽 분석</div>
+            <div class="sec-hd__sub">이벤트 및 세션 집계 데이터</div>
+          </div>
+        </div>
+        <!-- 요약 카드 -->
+        <div class="dash-grid" id="analytics-summary" style="grid-template-columns:repeat(4,1fr);margin-bottom:1.5rem;"></div>
+        <!-- 30일 차트 -->
+        <div class="dash-card" style="margin-bottom:1.5rem;">
+          <div class="dash-card__label" style="margin-bottom:1rem;">최근 30일 이벤트</div>
+          <div id="analytics-daily-chart" style="width:100%;height:180px;"></div>
+        </div>
+        <!-- 시간대 차트 -->
+        <div class="dash-card">
+          <div class="dash-card__label" style="margin-bottom:1rem;">오늘 시간대별 이벤트 (0-23시)</div>
+          <div id="analytics-hourly-chart" style="display:flex;align-items:flex-end;gap:4px;height:120px;overflow-x:auto;padding:0 0 .5rem;"></div>
+        </div>
+      </div>
+
+      <!-- 인기 콘텐츠 -->
+      <div id="section-content-stats" class="section-block">
+        <div class="sec-hd">
+          <div>
+            <div class="sec-hd__title">인기 콘텐츠</div>
+            <div class="sec-hd__sub">카드 클릭 기반 인기도</div>
+          </div>
+        </div>
+        <div class="dash-card" style="margin-bottom:1.5rem;">
+          <div class="dash-card__label" style="margin-bottom:1rem;">카테고리별 클릭</div>
+          <div class="bar-chart" id="content-cat-chart"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;">
+          <div class="dash-card">
+            <div class="dash-card__label" style="margin-bottom:1rem;">인기 스킬 Top 20</div>
+            <div id="top-skills-list" class="bar-chart"></div>
+          </div>
+          <div class="dash-card">
+            <div class="dash-card__label" style="margin-bottom:1rem;">인기 에이전트 Top 10</div>
+            <div id="top-agents-list" class="bar-chart"></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div class="dash-card">
+            <div class="dash-card__label" style="margin-bottom:1rem;">인기 커맨드 Top 10</div>
+            <div id="top-commands-list" class="bar-chart"></div>
+          </div>
+          <div class="dash-card">
+            <div class="dash-card__label" style="margin-bottom:1rem;">검색어 Top 10</div>
+            <div id="content-search-list" class="bar-chart"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 방문자 지역 -->
+      <div id="section-geo-stats" class="section-block">
+        <div class="sec-hd">
+          <div>
+            <div class="sec-hd__title">방문자 지역</div>
+            <div class="sec-hd__sub">국가 및 도시 분포</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div class="dash-card">
+            <div class="dash-card__label" style="margin-bottom:1rem;">국가별 방문</div>
+            <div id="geo-country-table"></div>
+          </div>
+          <div class="dash-card">
+            <div class="dash-card__label" style="margin-bottom:1rem;">도시별 방문</div>
+            <div id="geo-city-list" class="bar-chart"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 기기·브라우저 -->
+      <div id="section-tech-stats" class="section-block">
+        <div class="sec-hd">
+          <div>
+            <div class="sec-hd__title">기기·브라우저</div>
+            <div class="sec-hd__sub">기기, OS, 브라우저 분포</div>
+          </div>
+        </div>
+        <div class="dash-grid" id="tech-device-cards" style="grid-template-columns:repeat(3,1fr);margin-bottom:1.5rem;"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div class="dash-card">
+            <div class="dash-card__label" style="margin-bottom:1rem;">브라우저</div>
+            <div class="bar-chart" id="tech-browser-chart"></div>
+          </div>
+          <div class="dash-card">
+            <div class="dash-card__label" style="margin-bottom:1rem;">운영체제</div>
+            <div class="bar-chart" id="tech-os-chart"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 광고 클릭 -->
+      <div id="section-ad-stats" class="section-block">
+        <div class="sec-hd">
+          <div>
+            <div class="sec-hd__title">광고 클릭 통계</div>
+            <div class="sec-hd__sub">슬롯별 클릭 집계</div>
+          </div>
+        </div>
+        <div class="dash-card">
+          <div id="ad-stats-table"></div>
+        </div>
+      </div>
+
+      <!-- 파트너 클릭 -->
+      <div id="section-partner-stats" class="section-block">
+        <div class="sec-hd">
+          <div>
+            <div class="sec-hd__title">파트너 클릭 통계</div>
+            <div class="sec-hd__sub">파트너별 클릭 집계</div>
+          </div>
+        </div>
+        <div class="dash-card">
+          <div id="partner-stats-table"></div>
+        </div>
+      </div>
+
+      <!-- 검색어 통계 -->
+      <div id="section-search-stats" class="section-block">
+        <div class="sec-hd">
+          <div>
+            <div class="sec-hd__title">검색어 통계</div>
+            <div class="sec-hd__sub">사용자 검색어 Top 30</div>
+          </div>
+        </div>
+        <div class="dash-card">
+          <div id="search-stats-table"></div>
+        </div>
+      </div>
+
       <!-- ════ 파트너 링크 섹션 ════ -->
       <div id="section-partners" class="section-block">
 
@@ -241,6 +400,7 @@
 </div>
 
 <script src="../assets/js/data.js"></script>
+<script src="../assets/js/tracker.js"></script>
 <script src="../assets/js/ads.js"></script>
 <script src="../assets/js/partners.js"></script>
 <script src="../assets/js/admin.js"></script>

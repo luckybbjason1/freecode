@@ -69,9 +69,16 @@ function showDashboard() {
 /* ---- 섹션 전환 ---- */
 
 var SECTION_META = {
-  dashboard: { title: '대시보드',       sub: '사이트 현황을 한눈에 파악하세요' },
-  ads:       { title: '광고 관리',       sub: '광고 슬롯을 추가, 편집, 활성화/비활성화하세요' },
-  partners:  { title: '파트너 링크 관리', sub: '파트너 링크를 추가하고 신청을 승인/거절하세요' }
+  dashboard:      { title: '대시보드',         sub: '사이트 현황을 한눈에 파악하세요' },
+  ads:            { title: '광고 관리',         sub: '광고 슬롯을 추가, 편집, 활성화/비활성화하세요' },
+  partners:       { title: '파트너 링크 관리',  sub: '파트너 링크를 추가하고 신청을 승인/거절하세요' },
+  analytics:      { title: '트래픽 분석',       sub: '이벤트 및 세션 집계 데이터' },
+  'content-stats':{ title: '인기 콘텐츠',       sub: '카드 클릭 기반 인기도' },
+  'geo-stats':    { title: '방문자 지역',        sub: '국가 및 도시 분포' },
+  'tech-stats':   { title: '기기·브라우저',      sub: '기기, OS, 브라우저 분포' },
+  'ad-stats':     { title: '광고 클릭 통계',     sub: '슬롯별 클릭 집계' },
+  'partner-stats':{ title: '파트너 클릭 통계',   sub: '파트너별 클릭 집계' },
+  'search-stats': { title: '검색어 통계',        sub: '사용자 검색어 Top 30' }
 };
 
 function showSection(name) {
@@ -92,9 +99,16 @@ function showSection(name) {
   if (titleEl) titleEl.textContent = meta.title;
   if (subEl)   subEl.textContent   = meta.sub;
   // 섹션별 렌더
-  if (name === 'dashboard') renderDashboard();
-  if (name === 'ads')       renderAdSlotsList();
-  if (name === 'partners')  { renderPartnersList(); updateAppBadge(); }
+  if (name === 'dashboard')      renderDashboard();
+  if (name === 'ads')            renderAdSlotsList();
+  if (name === 'partners')       { renderPartnersList(); updateAppBadge(); }
+  if (name === 'analytics')      renderAnalyticsSection();
+  if (name === 'content-stats')  renderContentStatsSection();
+  if (name === 'geo-stats')      renderGeoSection();
+  if (name === 'tech-stats')     renderTechSection();
+  if (name === 'ad-stats')       renderAdStatsSection();
+  if (name === 'partner-stats')  renderPartnerStatsSection();
+  if (name === 'search-stats')   renderSearchStatsSection();
 }
 
 /* ---- 대시보드 렌더 ---- */
@@ -865,6 +879,514 @@ function showAdminToast(msg) {
   showAdminToast._t = setTimeout(function() {
     toast.style.transform = 'translateX(-50%) translateY(80px)';
   }, 2500);
+}
+
+/* ===================================================
+   분석 섹션 렌더 함수들
+   =================================================== */
+
+/* ---- 공통: 빈 데이터 안내 ---- */
+function _noData(el) {
+  if (!el) return;
+  el.textContent = '';
+  var msg = document.createElement('div');
+  msg.style.cssText = 'padding:2rem;text-align:center;color:var(--text-muted);font-size:var(--text-sm);';
+  msg.textContent = '데이터 없음 — 사이트 방문 후 데이터가 쌓입니다.';
+  el.appendChild(msg);
+}
+
+/* ---- 공통: 바 차트 항목 생성 ---- */
+function _makeBarItem(label, count, maxCount, color) {
+  color = color || 'var(--gold)';
+  var pct = maxCount > 0 ? Math.round(count / maxCount * 100) : 0;
+  var item = document.createElement('div');
+  item.className = 'bar-item';
+  var lbl = document.createElement('div');
+  lbl.className = 'bar-label';
+  lbl.style.cssText = 'white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100px;';
+  lbl.textContent = label;
+  item.appendChild(lbl);
+  var track = document.createElement('div');
+  track.className = 'bar-track';
+  var fill = document.createElement('div');
+  fill.className = 'bar-fill';
+  fill.style.width = '0%';
+  fill.style.background = color;
+  track.appendChild(fill);
+  item.appendChild(track);
+  var cnt = document.createElement('div');
+  cnt.className = 'bar-count';
+  cnt.textContent = count;
+  item.appendChild(cnt);
+  requestAnimationFrame(function() {
+    setTimeout(function() { fill.style.width = pct + '%'; }, 30);
+  });
+  return item;
+}
+
+/* ---- 공통: 요약 카드 생성 ---- */
+function _makeSummaryCard(label, value, color) {
+  var card = document.createElement('div');
+  card.className = 'dash-card';
+  var accent = document.createElement('div');
+  accent.className = 'dash-card__accent';
+  accent.style.background = color || 'var(--gold)';
+  card.appendChild(accent);
+  var lbl = document.createElement('div');
+  lbl.className = 'dash-card__label';
+  lbl.textContent = label;
+  card.appendChild(lbl);
+  var val = document.createElement('div');
+  val.className = 'dash-card__value';
+  val.style.color = color || 'var(--gold)';
+  val.textContent = typeof value === 'number' ? value.toLocaleString('ko-KR') : value;
+  card.appendChild(val);
+  return card;
+}
+
+/* ---- 트래픽 분석 ---- */
+function renderAnalyticsSection() {
+  if (typeof CCTracker === 'undefined') return;
+
+  // 요약 카드
+  var summaryEl = document.getElementById('analytics-summary');
+  if (summaryEl) {
+    summaryEl.textContent = '';
+    var s = CCTracker.summary();
+    var cards = [
+      { label: '전체 이벤트수', value: s.totalEvents,   color: 'var(--gold)' },
+      { label: '오늘 이벤트',   value: s.todayEvents,   color: 'var(--emerald)' },
+      { label: '총 세션수',     value: s.totalSessions, color: 'var(--accent-blue,#5ab5ff)' },
+      { label: '오늘 세션수',   value: s.todaySessions, color: 'var(--accent-purple)' }
+    ];
+    cards.forEach(function(c) {
+      summaryEl.appendChild(_makeSummaryCard(c.label, c.value, c.color));
+    });
+  }
+
+  // 30일 SVG 꺾은선+채움 차트
+  var dailyEl = document.getElementById('analytics-daily-chart');
+  if (dailyEl) {
+    dailyEl.textContent = '';
+    var daily = CCTracker.daily30();
+    var totalEvCount = daily.reduce(function(s, d) { return s + d.count; }, 0);
+    if (totalEvCount === 0) {
+      _noData(dailyEl);
+    } else {
+      var W = 700, H = 160, PAD = 10;
+      var maxCount = Math.max.apply(null, daily.map(function(d) { return d.count; })) || 1;
+      var points = daily.map(function(d, i) {
+        var x = PAD + i * (W - PAD * 2) / (daily.length - 1);
+        var y = H - PAD - (d.count / maxCount) * (H - PAD * 2);
+        return [x, y];
+      });
+      var polyPts  = points.map(function(p) { return p[0] + ',' + p[1]; }).join(' ');
+      var fillPts  = (PAD + ',' + (H - PAD)) + ' ' + polyPts + ' ' + ((W - PAD) + ',' + (H - PAD));
+
+      var svgNS = 'http://www.w3.org/2000/svg';
+      var svg   = document.createElementNS(svgNS, 'svg');
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      svg.setAttribute('preserveAspectRatio', 'none');
+      svg.style.cssText = 'width:100%;height:100%;display:block;';
+
+      var defs = document.createElementNS(svgNS, 'defs');
+      var grad = document.createElementNS(svgNS, 'linearGradient');
+      grad.setAttribute('id', 'daily-grad');
+      grad.setAttribute('x1', '0'); grad.setAttribute('y1', '0');
+      grad.setAttribute('x2', '0'); grad.setAttribute('y2', '1');
+      var stop1 = document.createElementNS(svgNS, 'stop');
+      stop1.setAttribute('offset', '0%');
+      stop1.setAttribute('stop-color', '#d4af37');
+      stop1.setAttribute('stop-opacity', '0.35');
+      var stop2 = document.createElementNS(svgNS, 'stop');
+      stop2.setAttribute('offset', '100%');
+      stop2.setAttribute('stop-color', '#d4af37');
+      stop2.setAttribute('stop-opacity', '0.02');
+      grad.appendChild(stop1); grad.appendChild(stop2);
+      defs.appendChild(grad);
+      svg.appendChild(defs);
+
+      var fillPoly = document.createElementNS(svgNS, 'polygon');
+      fillPoly.setAttribute('points', fillPts);
+      fillPoly.setAttribute('fill', 'url(#daily-grad)');
+      svg.appendChild(fillPoly);
+
+      var line = document.createElementNS(svgNS, 'polyline');
+      line.setAttribute('points', polyPts);
+      line.setAttribute('fill', 'none');
+      line.setAttribute('stroke', '#d4af37');
+      line.setAttribute('stroke-width', '2');
+      line.setAttribute('stroke-linejoin', 'round');
+      svg.appendChild(line);
+
+      points.forEach(function(p) {
+        var circle = document.createElementNS(svgNS, 'circle');
+        circle.setAttribute('cx', p[0]);
+        circle.setAttribute('cy', p[1]);
+        circle.setAttribute('r', '2.5');
+        circle.setAttribute('fill', '#d4af37');
+        svg.appendChild(circle);
+      });
+
+      dailyEl.appendChild(svg);
+
+      var labels = document.createElement('div');
+      labels.style.cssText = 'display:flex;justify-content:space-between;font-size:10px;color:var(--text-muted);margin-top:4px;';
+      [0, Math.floor(daily.length / 2), daily.length - 1].forEach(function(idx) {
+        var sp = document.createElement('span');
+        sp.textContent = daily[idx] ? daily[idx].date.slice(5) : '';
+        labels.appendChild(sp);
+      });
+      dailyEl.appendChild(labels);
+    }
+  }
+
+  // 시간대별 CSS 바 차트
+  var hourlyEl = document.getElementById('analytics-hourly-chart');
+  if (hourlyEl) {
+    hourlyEl.textContent = '';
+    var hourly = CCTracker.hourlyToday();
+    var maxH = Math.max.apply(null, hourly) || 1;
+    hourly.forEach(function(count, h) {
+      var wrap = document.createElement('div');
+      wrap.style.cssText = 'display:flex;flex-direction:column;align-items:center;flex:1;min-width:20px;';
+      var bar = document.createElement('div');
+      var pct = Math.round(count / maxH * 100);
+      bar.style.cssText = 'width:100%;background:var(--gold);border-radius:3px 3px 0 0;opacity:0.85;min-height:2px;transition:height .4s ease;';
+      bar.style.height = pct + '%';
+      bar.title = h + '시: ' + count + '건';
+      var lbl = document.createElement('div');
+      lbl.style.cssText = 'font-size:9px;color:var(--text-muted);margin-top:2px;';
+      lbl.textContent = h % 6 === 0 ? String(h) : '';
+      wrap.appendChild(bar);
+      wrap.appendChild(lbl);
+      hourlyEl.appendChild(wrap);
+    });
+  }
+}
+
+/* ---- 인기 콘텐츠 ---- */
+function renderContentStatsSection() {
+  if (typeof CCTracker === 'undefined') return;
+
+  var cats = ['skills', 'agents', 'commands', 'hooks', 'mcps', 'plugins'];
+  var colors = ['var(--gold)', 'var(--emerald)', 'var(--accent-purple)', 'var(--accent-blue,#5ab5ff)', '#f97316', '#ec4899'];
+  var catLabels = {
+    skills: '스킬', agents: '에이전트', commands: '커맨드',
+    hooks: '훅', mcps: 'MCP', plugins: '플러그인'
+  };
+
+  var catChartEl = document.getElementById('content-cat-chart');
+  if (catChartEl) {
+    catChartEl.textContent = '';
+    var catCounts = cats.map(function(cat) {
+      return { cat: cat, count: CCTracker.topClicks(cat, 9999).reduce(function(s, i) { return s + i.count; }, 0) };
+    });
+    var maxCat = Math.max.apply(null, catCounts.map(function(c) { return c.count; })) || 0;
+    if (maxCat === 0) {
+      _noData(catChartEl);
+    } else {
+      catCounts.forEach(function(c, i) {
+        catChartEl.appendChild(_makeBarItem(catLabels[c.cat] || c.cat, c.count, maxCat, colors[i % colors.length]));
+      });
+    }
+  }
+
+  function renderTopList(elId, category, n) {
+    var el = document.getElementById(elId);
+    if (!el) return;
+    el.textContent = '';
+    var items = CCTracker.topClicks(category, n);
+    if (items.length === 0) { _noData(el); return; }
+    var max = items[0].count;
+    items.forEach(function(item) {
+      el.appendChild(_makeBarItem(item.name || item.id, item.count, max, 'var(--gold)'));
+    });
+  }
+
+  renderTopList('top-skills-list',   'skills',   20);
+  renderTopList('top-agents-list',   'agents',   10);
+  renderTopList('top-commands-list', 'commands', 10);
+
+  var searchListEl = document.getElementById('content-search-list');
+  if (searchListEl) {
+    searchListEl.textContent = '';
+    var queries = CCTracker.searchStats(10);
+    if (queries.length === 0) { _noData(searchListEl); }
+    else {
+      var maxQ = queries[0].count;
+      queries.forEach(function(q) {
+        searchListEl.appendChild(_makeBarItem(q.query, q.count, maxQ, 'var(--emerald)'));
+      });
+    }
+  }
+}
+
+/* ---- 방문자 지역 ---- */
+function renderGeoSection() {
+  if (typeof CCTracker === 'undefined') return;
+
+  var countryEl = document.getElementById('geo-country-table');
+  if (countryEl) {
+    countryEl.textContent = '';
+    var countries = CCTracker.countryStats();
+    if (countries.length === 0) {
+      _noData(countryEl);
+    } else {
+      var total = countries.reduce(function(s, c) { return s + c.count; }, 0);
+      var tableDiv = document.createElement('div');
+      tableDiv.style.cssText = 'display:flex;flex-direction:column;gap:.5rem;';
+      countries.slice(0, 15).forEach(function(c) {
+        var pct = total > 0 ? Math.round(c.count / total * 100) : 0;
+        var row = document.createElement('div');
+        row.style.cssText = 'display:grid;grid-template-columns:2rem 1fr 4rem 3rem;align-items:center;gap:.5rem;';
+        var flag = document.createElement('span');
+        flag.style.cssText = 'font-size:1.1rem;';
+        flag.textContent = c.flag;
+        var name = document.createElement('div');
+        name.style.cssText = 'font-size:var(--text-sm);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;';
+        name.textContent = c.country;
+        var barEl = document.createElement('div');
+        barEl.style.cssText = 'height:6px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden;';
+        var fillEl = document.createElement('div');
+        fillEl.style.cssText = 'height:100%;background:var(--gold);border-radius:3px;transition:width .6s ease;width:0%;';
+        barEl.appendChild(fillEl);
+        var cntEl = document.createElement('div');
+        cntEl.style.cssText = 'font-size:var(--text-xs);color:var(--text-muted);text-align:right;font-family:var(--font-numeric);';
+        cntEl.textContent = c.count + ' (' + pct + '%)';
+        row.appendChild(flag); row.appendChild(name); row.appendChild(barEl); row.appendChild(cntEl);
+        tableDiv.appendChild(row);
+        requestAnimationFrame(function() { setTimeout(function() { fillEl.style.width = pct + '%'; }, 30); });
+      });
+      countryEl.appendChild(tableDiv);
+    }
+  }
+
+  var cityEl = document.getElementById('geo-city-list');
+  if (cityEl) {
+    cityEl.textContent = '';
+    var cities = CCTracker.cityStats(15);
+    if (cities.length === 0) { _noData(cityEl); }
+    else {
+      var maxCity = cities[0].count;
+      cities.forEach(function(c) {
+        cityEl.appendChild(_makeBarItem(c.city, c.count, maxCity, 'var(--accent-blue,#5ab5ff)'));
+      });
+    }
+  }
+}
+
+/* ---- 기기·브라우저 ---- */
+function renderTechSection() {
+  if (typeof CCTracker === 'undefined') return;
+
+  var deviceCardsEl = document.getElementById('tech-device-cards');
+  if (deviceCardsEl) {
+    deviceCardsEl.textContent = '';
+    var deviceData = CCTracker.deviceStats();
+    var deviceMap  = {};
+    deviceData.forEach(function(d) { deviceMap[d.name] = d.count; });
+    [
+      { key: 'desktop', label: '데스크톱', color: 'var(--gold)' },
+      { key: 'mobile',  label: '모바일',   color: 'var(--emerald)' },
+      { key: 'tablet',  label: '태블릿',   color: 'var(--accent-blue,#5ab5ff)' }
+    ].forEach(function(d) {
+      deviceCardsEl.appendChild(_makeSummaryCard(d.label, deviceMap[d.key] || 0, d.color));
+    });
+  }
+
+  var browserEl = document.getElementById('tech-browser-chart');
+  if (browserEl) {
+    browserEl.textContent = '';
+    var browsers = CCTracker.browserStats();
+    if (browsers.length === 0) { _noData(browserEl); }
+    else {
+      var maxBr = browsers[0].count;
+      var brColors = ['var(--gold)', 'var(--emerald)', 'var(--accent-blue,#5ab5ff)', 'var(--accent-purple)', '#f97316', '#ec4899'];
+      browsers.forEach(function(b, i) {
+        browserEl.appendChild(_makeBarItem(b.name, b.count, maxBr, brColors[i % brColors.length]));
+      });
+    }
+  }
+
+  var osEl = document.getElementById('tech-os-chart');
+  if (osEl) {
+    osEl.textContent = '';
+    var osList = CCTracker.osStats();
+    if (osList.length === 0) { _noData(osEl); }
+    else {
+      var maxOs = osList[0].count;
+      var osColors = ['var(--emerald)', 'var(--gold)', 'var(--accent-purple)', 'var(--accent-blue,#5ab5ff)', '#f97316'];
+      osList.forEach(function(o, i) {
+        osEl.appendChild(_makeBarItem(o.name, o.count, maxOs, osColors[i % osColors.length]));
+      });
+    }
+  }
+}
+
+/* ---- 광고 클릭 통계 ---- */
+function renderAdStatsSection() {
+  if (typeof CCTracker === 'undefined') return;
+  var el = document.getElementById('ad-stats-table');
+  if (!el) return;
+  el.textContent = '';
+
+  var clicks = CCTracker.adClicks();
+  var slots  = (typeof getAdSlots === 'function') ? getAdSlots() : [];
+  var maxClicks = 0;
+  slots.forEach(function(s) { var c = clicks[s.id] || 0; if (c > maxClicks) maxClicks = c; });
+
+  if (slots.length === 0) { _noData(el); return; }
+
+  var tableDiv = document.createElement('div');
+  tableDiv.style.cssText = 'display:flex;flex-direction:column;gap:.5rem;';
+
+  var header = document.createElement('div');
+  header.style.cssText = 'display:grid;grid-template-columns:1fr 3fr 4rem;gap:.75rem;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,0.08);font-size:var(--text-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;';
+  ['슬롯 이름', '클릭 비율', '클릭수'].forEach(function(h) {
+    var th = document.createElement('div'); th.textContent = h; header.appendChild(th);
+  });
+  tableDiv.appendChild(header);
+
+  slots.forEach(function(slot) {
+    var count = clicks[slot.id] || 0;
+    var row = document.createElement('div');
+    row.style.cssText = 'display:grid;grid-template-columns:1fr 3fr 4rem;gap:.75rem;align-items:center;padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,0.04);';
+
+    var nameEl = document.createElement('div');
+    nameEl.style.cssText = 'font-size:var(--text-sm);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;';
+    nameEl.textContent = slot.label;
+    nameEl.title = '#' + slot.id;
+    row.appendChild(nameEl);
+
+    var barWrap = document.createElement('div');
+    barWrap.style.cssText = 'height:6px;background:rgba(255,255,255,0.07);border-radius:3px;overflow:hidden;';
+    var barFill = document.createElement('div');
+    var pct = maxClicks > 0 ? Math.round(count / maxClicks * 100) : 0;
+    barFill.style.cssText = 'height:100%;background:var(--gold);border-radius:3px;transition:width .6s ease;width:0%;';
+    barWrap.appendChild(barFill);
+    row.appendChild(barWrap);
+    requestAnimationFrame(function() { setTimeout(function() { barFill.style.width = pct + '%'; }, 30); });
+
+    var cntEl = document.createElement('div');
+    cntEl.style.cssText = 'font-size:var(--text-sm);color:var(--text-muted);text-align:right;font-family:var(--font-numeric);';
+    cntEl.textContent = count;
+    row.appendChild(cntEl);
+
+    tableDiv.appendChild(row);
+  });
+
+  el.appendChild(tableDiv);
+}
+
+/* ---- 파트너 클릭 통계 ---- */
+function renderPartnerStatsSection() {
+  if (typeof CCTracker === 'undefined') return;
+  var el = document.getElementById('partner-stats-table');
+  if (!el) return;
+  el.textContent = '';
+
+  var clicks   = CCTracker.partnerClicks();
+  var partners = (typeof loadPartners === 'function') ? loadPartners() : [];
+
+  if (partners.length === 0) { _noData(el); return; }
+
+  var maxClicks = 0;
+  partners.forEach(function(p) { var c = clicks[p.id] || 0; if (c > maxClicks) maxClicks = c; });
+
+  var tableDiv = document.createElement('div');
+  tableDiv.style.cssText = 'display:flex;flex-direction:column;gap:.5rem;';
+
+  var header = document.createElement('div');
+  header.style.cssText = 'display:grid;grid-template-columns:1fr 3fr 4rem;gap:.75rem;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,0.08);font-size:var(--text-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;';
+  ['파트너명', '클릭 비율', '클릭수'].forEach(function(h) {
+    var th = document.createElement('div'); th.textContent = h; header.appendChild(th);
+  });
+  tableDiv.appendChild(header);
+
+  partners.forEach(function(p) {
+    var count = clicks[p.id] || 0;
+    var row = document.createElement('div');
+    row.style.cssText = 'display:grid;grid-template-columns:1fr 3fr 4rem;gap:.75rem;align-items:center;padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,0.04);';
+
+    var nameEl = document.createElement('div');
+    nameEl.style.cssText = 'font-size:var(--text-sm);color:var(--text-primary);';
+    nameEl.textContent = (p.icon || '') + ' ' + p.name;
+    row.appendChild(nameEl);
+
+    var barWrap = document.createElement('div');
+    barWrap.style.cssText = 'height:6px;background:rgba(255,255,255,0.07);border-radius:3px;overflow:hidden;';
+    var barFill = document.createElement('div');
+    var pct = maxClicks > 0 ? Math.round(count / maxClicks * 100) : 0;
+    barFill.style.cssText = 'height:100%;background:var(--emerald);border-radius:3px;transition:width .6s ease;width:0%;';
+    barWrap.appendChild(barFill);
+    row.appendChild(barWrap);
+    requestAnimationFrame(function() { setTimeout(function() { barFill.style.width = pct + '%'; }, 30); });
+
+    var cntEl = document.createElement('div');
+    cntEl.style.cssText = 'font-size:var(--text-sm);color:var(--text-muted);text-align:right;font-family:var(--font-numeric);';
+    cntEl.textContent = count;
+    row.appendChild(cntEl);
+
+    tableDiv.appendChild(row);
+  });
+
+  el.appendChild(tableDiv);
+}
+
+/* ---- 검색어 통계 ---- */
+function renderSearchStatsSection() {
+  if (typeof CCTracker === 'undefined') return;
+  var el = document.getElementById('search-stats-table');
+  if (!el) return;
+  el.textContent = '';
+
+  var queries = CCTracker.searchStats(30);
+  if (queries.length === 0) { _noData(el); return; }
+
+  var tableDiv = document.createElement('div');
+  tableDiv.style.cssText = 'display:flex;flex-direction:column;gap:.4rem;';
+
+  var header = document.createElement('div');
+  header.style.cssText = 'display:grid;grid-template-columns:2rem 1fr 3fr 4rem;gap:.75rem;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,0.08);font-size:var(--text-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;';
+  ['#', '검색어', '비율', '횟수'].forEach(function(h) {
+    var th = document.createElement('div'); th.textContent = h; header.appendChild(th);
+  });
+  tableDiv.appendChild(header);
+
+  var maxQ = queries[0].count;
+  queries.forEach(function(q, idx) {
+    var row = document.createElement('div');
+    row.style.cssText = 'display:grid;grid-template-columns:2rem 1fr 3fr 4rem;gap:.75rem;align-items:center;padding:.35rem 0;border-bottom:1px solid rgba(255,255,255,0.04);';
+
+    var rank = document.createElement('div');
+    rank.style.cssText = 'font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-numeric);';
+    rank.textContent = String(idx + 1);
+    row.appendChild(rank);
+
+    var qEl = document.createElement('div');
+    qEl.style.cssText = 'font-size:var(--text-sm);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;';
+    qEl.textContent = q.query;
+    row.appendChild(qEl);
+
+    var barWrap = document.createElement('div');
+    barWrap.style.cssText = 'height:5px;background:rgba(255,255,255,0.07);border-radius:3px;overflow:hidden;align-self:center;';
+    var barFill = document.createElement('div');
+    var pct = maxQ > 0 ? Math.round(q.count / maxQ * 100) : 0;
+    barFill.style.cssText = 'height:100%;background:var(--accent-blue,#5ab5ff);border-radius:3px;transition:width .6s ease;width:0%;';
+    barWrap.appendChild(barFill);
+    row.appendChild(barWrap);
+    requestAnimationFrame(function() { setTimeout(function() { barFill.style.width = pct + '%'; }, 30); });
+
+    var cntEl = document.createElement('div');
+    cntEl.style.cssText = 'font-size:var(--text-sm);color:var(--text-muted);text-align:right;font-family:var(--font-numeric);';
+    cntEl.textContent = q.count;
+    row.appendChild(cntEl);
+
+    tableDiv.appendChild(row);
+  });
+
+  el.appendChild(tableDiv);
 }
 
 /* ---- 초기화 ---- */

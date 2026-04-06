@@ -133,6 +133,11 @@ function renderPartnerLinks() {
     a.rel = 'noopener noreferrer';
     a.className = 'partner-link-card';
     a.setAttribute('title', p.desc || p.name);
+    (function(partner) {
+      a.addEventListener('click', function() {
+        try { CCTracker.rec('partner', { id: partner.id, name: partner.name }); } catch (_) {}
+      });
+    })(p);
 
     var icon = document.createElement('span');
     icon.className = 'partner-link-card__icon';

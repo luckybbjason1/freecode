@@ -88,7 +88,10 @@ function renderCard(item, opts) {
 
   // 카드 클릭 → 상세 모달
   card.style.cursor = 'pointer';
-  card.addEventListener('click', function() { openDetailModal(item); });
+  card.addEventListener('click', function() {
+    try { CCTracker.rec('card', { id: item.id, name: item.name, cat: item.category }); } catch (_) {}
+    openDetailModal(item);
+  });
 
   return card;
 }
@@ -209,6 +212,7 @@ function getInstallCmd(item) {
 /* ---- 클립보드 복사 (HTTP 폴백 포함) ---- */
 
 function copyToClipboard(text, label) {
+  try { CCTracker.rec('copy', { label: label || text }); } catch (_) {}
   var msg = (label || text) + ' 복사되었습니다';
   if (navigator.clipboard && window.isSecureContext) {
     navigator.clipboard.writeText(text).then(function() {
@@ -381,6 +385,7 @@ function renderListingPage(category) {
   // 검색 이벤트
   if (searchInput) {
     searchInput.addEventListener('input', function() {
+      try { CCTracker.rec('search', { q: this.value, cat: category }); } catch (_) {}
       debouncedSearch(this.value, category, doRender);
     });
     searchInput.addEventListener('keydown', function(e) {
@@ -452,6 +457,7 @@ document.addEventListener('DOMContentLoaded', function() {
   animateCounters();
   renderAds();
   if (typeof initParticles === 'function') initParticles('particles-canvas');
+  try { CCTracker.recordSession(); } catch (_) {}
 
   // 히어로 검색 엔터
   const heroSearch = document.getElementById('hero-search');
