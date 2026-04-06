@@ -573,6 +573,40 @@ function openDetailModal(item) {
   codeSection.appendChild(codePre);
   modal.appendChild(codeSection);
 
+  /* 프롬프트 섹션 */
+  if (item.prompt) {
+    var promptSection = document.createElement('div');
+    promptSection.className = 'detail-modal__code-section';
+    promptSection.style.marginTop = '1rem';
+
+    var promptLabel = document.createElement('div');
+    promptLabel.className = 'detail-modal__code-label';
+    promptLabel.textContent = '📝  사용 방법 & 프롬프트';
+    promptSection.appendChild(promptLabel);
+
+    var promptPre = document.createElement('pre');
+    promptPre.className = 'detail-modal__code detail-modal__prompt';
+    promptPre.style.maxHeight = '320px';
+    promptPre.style.overflowY = 'auto';
+    var promptCode = document.createElement('code');
+    promptCode.textContent = item.prompt;
+    promptPre.appendChild(promptCode);
+    promptSection.appendChild(promptPre);
+
+    var copyPromptBtn = document.createElement('button');
+    copyPromptBtn.className = 'btn btn--ghost';
+    copyPromptBtn.style.cssText = 'margin-top:0.5rem;font-size:var(--text-sm);';
+    copyPromptBtn.textContent = '📋  프롬프트 복사';
+    copyPromptBtn.addEventListener('click', function() {
+      copyToClipboard(item.prompt, item.name + ' 프롬프트');
+      copyPromptBtn.textContent = '✓  복사됨!';
+      setTimeout(function() { copyPromptBtn.textContent = '📋  프롬프트 복사'; }, 2000);
+    });
+    promptSection.appendChild(copyPromptBtn);
+
+    modal.appendChild(promptSection);
+  }
+
   /* 액션 버튼 */
   var actionsEl = document.createElement('div');
   actionsEl.className = 'detail-modal__actions';
@@ -590,7 +624,7 @@ function openDetailModal(item) {
   var closeBtn2 = document.createElement('button');
   closeBtn2.className = 'btn btn--ghost';
   closeBtn2.textContent = '닫기';
-  closeBtn2.addEventListener('click', function() { document.body.removeChild(overlay); });
+  closeBtn2.addEventListener('click', closeModal);
   actionsEl.appendChild(closeBtn2);
 
   modal.appendChild(actionsEl);
