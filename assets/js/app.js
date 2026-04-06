@@ -451,7 +451,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initNav();
   animateCounters();
   renderAds();
-  initParticles('particles-canvas');
+  if (typeof initParticles === 'function') initParticles('particles-canvas');
 
   // 히어로 검색 엔터
   const heroSearch = document.getElementById('hero-search');
