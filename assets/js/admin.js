@@ -63,33 +63,222 @@ function showDashboard() {
   const login = document.getElementById('login-screen');
   const dash  = document.getElementById('dashboard-screen');
   if (login) login.style.display = 'none';
-  if (dash)  { dash.style.display = 'flex'; showSection('ads'); }
+  if (dash)  { dash.style.display = 'flex'; showSection('dashboard'); }
 }
 
 /* ---- 섹션 전환 ---- */
+
+var SECTION_META = {
+  dashboard: { title: '대시보드',       sub: '사이트 현황을 한눈에 파악하세요' },
+  ads:       { title: '광고 관리',       sub: '광고 슬롯을 추가, 편집, 활성화/비활성화하세요' },
+  partners:  { title: '파트너 링크 관리', sub: '파트너 링크를 추가하고 신청을 승인/거절하세요' }
+};
 
 function showSection(name) {
   // 네비 활성화
   document.querySelectorAll('.admin-nav-item[data-section]').forEach(function(btn) {
     btn.classList.toggle('active', btn.getAttribute('data-section') === name);
   });
-  // 섹션 표시
-  document.querySelectorAll('.admin-section').forEach(function(sec) {
-    sec.style.display = sec.getAttribute('data-section') === name ? 'block' : 'none';
+  // 섹션 표시: .section-block / .section-block.active 방식
+  document.querySelectorAll('.section-block').forEach(function(sec) {
+    sec.classList.remove('active');
   });
+  var target = document.getElementById('section-' + name);
+  if (target) target.classList.add('active');
   // 헤더 업데이트
-  const headerTitle = document.querySelector('.admin-header__title');
-  const headerSub   = document.querySelector('.admin-header__sub');
-  if (name === 'ads') {
-    if (headerTitle) headerTitle.textContent = '광고 관리';
-    if (headerSub)   headerSub.textContent   = '광고 슬롯을 추가, 편집, 활성화/비활성화하세요';
-    renderAdSlotsList();
+  var meta = SECTION_META[name] || { title: name, sub: '' };
+  var titleEl = document.getElementById('main-title');
+  var subEl   = document.getElementById('main-sub');
+  if (titleEl) titleEl.textContent = meta.title;
+  if (subEl)   subEl.textContent   = meta.sub;
+  // 섹션별 렌더
+  if (name === 'dashboard') renderDashboard();
+  if (name === 'ads')       renderAdSlotsList();
+  if (name === 'partners')  { renderPartnersList(); updateAppBadge(); }
+}
+
+/* ---- 대시보드 렌더 ---- */
+
+function renderDashboard() {
+  renderContentStats();
+  renderCategoryBarChart();
+  renderOpsStats();
+  renderPartnerSummary();
+  renderAdsSummary();
+  updateAppBadge();
+}
+
+function renderContentStats() {
+  var grid = document.getElementById('content-stat-cards');
+  if (!grid) return;
+  grid.textContent = '';
+  if (typeof SITE_DATA === 'undefined' || !SITE_DATA.categories) return;
+  SITE_DATA.categories.forEach(function(cat) {
+    var card = document.createElement('div');
+    card.className = 'dash-card';
+    var accent = document.createElement('div');
+    accent.className = 'dash-card__accent';
+    accent.style.background = cat.id === 'skills' ? 'var(--gold)' :
+      cat.id === 'agents' ? 'var(--emerald)' : 'var(--accent-purple)';
+    card.appendChild(accent);
+    var label = document.createElement('div');
+    label.className = 'dash-card__label';
+    label.textContent = cat.icon + ' ' + cat.label;
+    card.appendChild(label);
+    var value = document.createElement('div');
+    value.className = 'dash-card__value';
+    value.textContent = (cat.count || 0).toLocaleString('ko-KR');
+    card.appendChild(value);
+    var sub = document.createElement('div');
+    sub.className = 'dash-card__sub';
+    var dataArr = SITE_DATA[cat.id];
+    sub.textContent = '샘플 ' + (Array.isArray(dataArr) ? dataArr.length : 0) + '개 등록';
+    card.appendChild(sub);
+    grid.appendChild(card);
+  });
+}
+
+function renderCategoryBarChart() {
+  var chart = document.getElementById('category-bar-chart');
+  if (!chart) return;
+  chart.textContent = '';
+  if (typeof SITE_DATA === 'undefined' || !SITE_DATA.categories) return;
+  var total = SITE_DATA.categories.reduce(function(s, c) { return s + (c.count || 0); }, 0);
+  var colors = ['var(--gold)', 'var(--emerald)', 'var(--accent-purple)', 'var(--accent-blue)', '#f97316', '#ec4899'];
+  SITE_DATA.categories.forEach(function(cat, i) {
+    var pct = total > 0 ? Math.round((cat.count || 0) / total * 100) : 0;
+    var item = document.createElement('div');
+    item.className = 'bar-item';
+    var lbl = document.createElement('div');
+    lbl.className = 'bar-label';
+    lbl.textContent = cat.label;
+    item.appendChild(lbl);
+    var track = document.createElement('div');
+    track.className = 'bar-track';
+    var fill = document.createElement('div');
+    fill.className = 'bar-fill';
+    fill.style.width = '0%';
+    fill.style.background = colors[i % colors.length];
+    track.appendChild(fill);
+    item.appendChild(track);
+    var cnt = document.createElement('div');
+    cnt.className = 'bar-count';
+    cnt.textContent = pct + '%';
+    item.appendChild(cnt);
+    chart.appendChild(item);
+    // 애니메이션
+    requestAnimationFrame(function() {
+      setTimeout(function() { fill.style.width = pct + '%'; }, 50);
+    });
+  });
+}
+
+function renderOpsStats() {
+  var el = document.getElementById('ops-stats');
+  if (!el) return;
+  el.textContent = '';
+  var ads      = loadAds();
+  var slots    = getAdSlots();
+  var partners = loadPartners();
+  var apps     = loadApplications();
+  var activeAds = slots.filter(function(s) { var a = ads[s.id]; return a && a.enabled; }).length;
+  var rows = [
+    { label: '전체 광고 슬롯',    value: String(slots.length),         color: '' },
+    { label: '활성화된 광고',      value: String(activeAds),            color: 'var(--emerald)' },
+    { label: '등록된 파트너',      value: String(partners.length),      color: 'var(--gold)' },
+    { label: '승인 대기 신청',     value: String(apps.length),          color: apps.length > 0 ? 'var(--gold)' : '' }
+  ];
+  rows.forEach(function(r) {
+    var row = document.createElement('div');
+    row.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,0.06);';
+    var lbl = document.createElement('span');
+    lbl.style.cssText = 'font-size:var(--text-sm);color:var(--text-secondary);';
+    lbl.textContent = r.label;
+    var val = document.createElement('span');
+    val.style.cssText = 'font-family:var(--font-numeric);font-weight:700;font-size:var(--text-base);' + (r.color ? 'color:' + r.color + ';' : 'color:var(--text-primary);');
+    val.textContent = r.value;
+    row.appendChild(lbl);
+    row.appendChild(val);
+    el.appendChild(row);
+  });
+}
+
+function renderPartnerSummary() {
+  var card = document.getElementById('partner-summary-card');
+  if (!card) return;
+  card.textContent = '';
+  var partners = loadPartners();
+  var apps     = loadApplications();
+  var enabled  = partners.filter(function(p) { return p.enabled; }).length;
+  var lbl = document.createElement('div');
+  lbl.className = 'dash-card__label';
+  lbl.style.marginBottom = '1rem';
+  lbl.textContent = '파트너 링크 현황';
+  card.appendChild(lbl);
+  var val = document.createElement('div');
+  val.className = 'dash-card__value dash-card__value--em';
+  val.textContent = String(partners.length);
+  card.appendChild(val);
+  var sub = document.createElement('div');
+  sub.className = 'dash-card__sub';
+  sub.style.marginTop = '.5rem';
+  var t1 = document.createTextNode('표시중 ');
+  sub.appendChild(t1);
+  var s1 = document.createElement('strong');
+  s1.style.color = 'var(--emerald)';
+  s1.textContent = String(enabled) + '개';
+  sub.appendChild(s1);
+  sub.appendChild(document.createTextNode(' \u00a0|\u00a0 대기 신청 '));
+  var s2 = document.createElement('strong');
+  s2.style.color = 'var(--gold)';
+  s2.textContent = String(apps.length) + '건';
+  sub.appendChild(s2);
+  card.appendChild(sub);
+}
+
+function renderAdsSummary() {
+  var card = document.getElementById('ads-summary-card');
+  if (!card) return;
+  card.textContent = '';
+  var ads   = loadAds();
+  var slots = getAdSlots();
+  var active = slots.filter(function(s) { var a = ads[s.id]; return a && a.enabled; }).length;
+  var lbl = document.createElement('div');
+  lbl.className = 'dash-card__label';
+  lbl.style.marginBottom = '1rem';
+  lbl.textContent = '광고 현황';
+  card.appendChild(lbl);
+  var val = document.createElement('div');
+  val.className = 'dash-card__value dash-card__value--blue';
+  val.textContent = String(active);
+  card.appendChild(val);
+  var sub = document.createElement('div');
+  sub.className = 'dash-card__sub';
+  sub.style.marginTop = '.5rem';
+  sub.appendChild(document.createTextNode('전체 '));
+  var s1 = document.createElement('strong');
+  s1.style.color = 'var(--accent-blue,#5ab5ff)';
+  s1.textContent = String(slots.length) + '개';
+  sub.appendChild(s1);
+  sub.appendChild(document.createTextNode(' 슬롯 중 활성화'));
+  card.appendChild(sub);
+}
+
+function updateAppBadge() {
+  var badge = document.getElementById('sidebar-app-badge');
+  if (!badge) return;
+  var apps = loadApplications();
+  if (apps.length > 0) {
+    badge.textContent = String(apps.length);
+    badge.style.display = '';
+  } else {
+    badge.style.display = 'none';
   }
-  if (name === 'partners') {
-    if (headerTitle) headerTitle.textContent = '파트너 링크 관리';
-    if (headerSub)   headerSub.textContent   = '파트너 링크를 추가하고 신청을 승인/거절하세요';
-    renderPartnersList();
-  }
+}
+
+function refreshCurrentSection() {
+  var active = document.querySelector('.admin-nav-item.active[data-section]');
+  if (active) showSection(active.getAttribute('data-section'));
 }
 
 /* ---- 파트너 링크 관리 ---- */
