@@ -220,8 +220,7 @@ const SITE_DATA = {
     { id: 'wordpress-penetration-testing', name: 'Wordpress Penetration Testing', nameEn: 'wordpress-penetration-testing', category: 'skills', desc: 'This skill should be used when the user asks to "pentest WordPress sites", "scan WordPress for vulnerabilities", "enumerate WordPress users, themes, o...', tags: ['보안'], stars: 4.6, installs: 160 },
     { id: 'quality-documentation-manager', name: 'Quality Documentation Manager', nameEn: 'quality-documentation-manager', category: 'skills', desc: 'Senior Quality Documentation Manager for comprehensive documentation control and regulatory document review. Provides document management system desig...', tags: ['enterprise-communication', '문서화'], stars: 4.6, installs: 159 },
     { id: 'micro-saas-launcher', name: 'Micro Saas Launcher', nameEn: 'micro-saas-launcher', category: 'skills', desc: '"Expert in launching small, focused SaaS products fast - the indie hacker approach to building profitable software. Covers idea validation, MVP develo...', tags: ['business-marketing'], stars: 4.6, installs: 156 },
-    { id: 'command-development', name: 'Command Development', nameEn: 'command-development', category: 'skills', desc: 'This skill should be used when the user asks to "create a slash command", "add a command", "write a custom command", "define command arguments", "use ...', tags: ['개발'], stars: 4.6, installs: 155 }
-  ]
+    { id: 'command-development', name: 'Command Development', nameEn: 'command-development', category: 'skills', desc: 'This skill should be used when the user asks to "create a slash command", "add a command", "write a custom command", "define command arguments", "use ...', tags: ['개발'], stars: 4.6, installs: 155 }  ],
 
   agents: [
     { id: 'frontend-developer', name: '프론트엔드 개발자', nameEn: 'frontend-developer', category: 'agents', desc: '"Use when building complete frontend applications across React, Vue, and Angular frameworks requiring multi-framework expertise and full-stack integra...', tags: ['development-team', '프론트엔드'], stars: 4.9, installs: 26590 },
@@ -373,8 +372,7 @@ const SITE_DATA = {
     { id: 'c-pro', name: 'C Pro', nameEn: 'c-pro', category: 'agents', desc: 'C Pro 자동화 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['programming-languages'], stars: 4.7, installs: 475 },
     { id: 'url-context-validator', name: 'Url Context Validator', nameEn: 'url-context-validator', category: 'agents', desc: 'Url Context Validator 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['web-tools'], stars: 4.7, installs: 475 },
     { id: 'api-architect', name: 'Api Architect', nameEn: 'api-architect', category: 'agents', desc: 'Your role is that of an API architect. Help mentor the engineer by providing guidance, support, and working code.', tags: ['api-graphql', 'API'], stars: 4.7, installs: 472 },
-    { id: 'vault-optimizer', name: 'Vault Optimizer', nameEn: 'vault-optimizer', category: 'agents', desc: 'Vault Optimizer 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['obsidian-ops-team'], stars: 4.7, installs: 461 }
-  ]
+    { id: 'vault-optimizer', name: 'Vault Optimizer', nameEn: 'vault-optimizer', category: 'agents', desc: 'Vault Optimizer 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['obsidian-ops-team'], stars: 4.7, installs: 461 }  ],
 
   commands: [
     { id: 'generate-tests', name: 'Generate Tests', nameEn: 'generate-tests', category: 'commands', desc: 'Generate a complete test file for a specified source file or component. Use when the user explicitly asks to write, create, or generate tests for a sp...', tags: ['테스트'], stars: 4.9, installs: 8450 },
@@ -476,8 +474,7 @@ const SITE_DATA = {
     { id: 'setup-kubernetes-deployment', name: 'Setup Kubernetes Deployment', nameEn: 'setup-kubernetes-deployment', category: 'commands', desc: 'Configure comprehensive Kubernetes deployment with manifests, security, scaling, and production best practices', tags: ['deployment'], stars: 4.7, installs: 210 },
     { id: 'test-quality-analyzer', name: 'Test Quality Analyzer', nameEn: 'test-quality-analyzer', category: 'commands', desc: 'Analyze test suite quality with comprehensive metrics and improvement recommendations', tags: ['테스트'], stars: 4.7, installs: 207 },
     { id: 'nextjs-scaffold', name: 'Nextjs Scaffold', nameEn: 'nextjs-scaffold', category: 'commands', desc: 'Create a new Next.js application with best practices and optimal configuration', tags: ['nextjs-vercel', 'Next.js'], stars: 4.7, installs: 205 },
-    { id: 'setup-ci-cd-pipeline', name: 'Setup Ci Cd Pipeline', nameEn: 'setup-ci-cd-pipeline', category: 'commands', desc: 'Setup comprehensive CI/CD pipeline with automated testing, deployment, and monitoring', tags: ['setup'], stars: 4.7, installs: 204 }
-  ]
+    { id: 'setup-ci-cd-pipeline', name: 'Setup Ci Cd Pipeline', nameEn: 'setup-ci-cd-pipeline', category: 'commands', desc: 'Setup comprehensive CI/CD pipeline with automated testing, deployment, and monitoring', tags: ['setup'], stars: 4.7, installs: 204 }  ],
 
   hooks: [
     { id: 'simple-notifications', name: 'Simple Notifications', nameEn: 'simple-notifications', category: 'hooks', desc: 'Claude Code 훅: Send simple desktop notifications when Claude Code operations complete. Works on macOS and Linux systems.', tags: ['자동화'], stars: 4.9, installs: 6415 },
@@ -533,8 +530,7 @@ const SITE_DATA = {
     { id: 'change-logger', name: 'Change Logger', nameEn: 'change-logger', category: 'hooks', desc: 'Claude Code 훅: Log every file mutation to CSV for demo prep. Records timestamp, tool, file path, action, and details for Edit, MultiEdi...', tags: ['자동화'], stars: 4.4, installs: 45 },
     { id: 'env-file-protection', name: 'Env File Protection', nameEn: 'env-file-protection', category: 'hooks', desc: 'Claude Code 훅: Prevent writing to .env files using the if condition for lightweight filtering. Blocks any Write tool call targeting .en...', tags: ['보안'], stars: 4.4, installs: 8 },
     { id: 'force-push-blocker', name: 'Force Push Blocker', nameEn: 'force-push-blocker', category: 'hooks', desc: 'Claude Code 훅: Block git force push commands using the if condition for efficient filtering. Prevents accidental force pushes that can ...', tags: ['보안'], stars: 4.4, installs: 3 },
-    { id: 'edit-audit-log', name: 'Edit Audit Log', nameEn: 'edit-audit-log', category: 'hooks', desc: 'Claude Code 훅: Log all file edits to a project-local audit file with timestamps. Records every Edit tool usage to .claude/edit-log.txt ...', tags: ['development-tools'], stars: 4.4, installs: 0 }
-  ]
+    { id: 'edit-audit-log', name: 'Edit Audit Log', nameEn: 'edit-audit-log', category: 'hooks', desc: 'Claude Code 훅: Log all file edits to a project-local audit file with timestamps. Records every Edit tool usage to .claude/edit-log.txt ...', tags: ['development-tools'], stars: 4.4, installs: 0 }  ],
 
   mcps: [
     { id: 'context7', name: 'Context7', nameEn: 'context7', category: 'mcps', desc: 'Context7 MCP 서버입니다. Context7 MCP pulls up-to-date, version-specific documentation and code examples straight from the so...', tags: ['devtools'], stars: 4.9, installs: 11528 },
@@ -605,8 +601,7 @@ const SITE_DATA = {
     { id: 'footballbin-predictions', name: 'Footballbin Predictions', nameEn: 'footballbin-predictions', category: 'mcps', desc: 'Footballbin Predictions MCP 서버입니다. AI-powered football match predictions for Premier League and Champions League. Returns half-time sco...', tags: ['integration'], stars: 4.4, installs: 25 },
     { id: 'devplan-mcp', name: 'Devplan Mcp', nameEn: 'devplan-mcp', category: 'mcps', desc: 'Devplan Mcp — Claude Code용 MCP 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['devtools', 'MCP'], stars: 4.4, installs: 19 },
     { id: 'browseract', name: 'Browseract', nameEn: 'browseract', category: 'mcps', desc: 'Browseract MCP 서버입니다. BrowserAct cloud browser automation for structured data extraction from Amazon, YouTube, Google Maps...', tags: ['web-data'], stars: 4.4, installs: 0 },
-    { id: 'tinyfish', name: 'Tinyfish', nameEn: 'tinyfish', category: 'mcps', desc: 'Tinyfish MCP 서버입니다. TinyFish Web Agent - Web browsing and data extraction via MCP with real-time progress streaming, asy...', tags: ['web'], stars: 4.4, installs: 0 }
-  ]
+    { id: 'tinyfish', name: 'Tinyfish', nameEn: 'tinyfish', category: 'mcps', desc: 'Tinyfish MCP 서버입니다. TinyFish Web Agent - Web browsing and data extraction via MCP with real-time progress streaming, asy...', tags: ['web'], stars: 4.4, installs: 0 }  ],
 
   plugins: [
     { id: 'ai-ml-toolkit', name: 'Ai Ml Toolkit', nameEn: 'ai-ml-toolkit', category: 'plugins', desc: 'AI and Machine Learning development suite with data engineering and model deployment tools', tags: ['플러그인', 'AI', '머신러닝'], stars: 4.4, installs: 0 },
