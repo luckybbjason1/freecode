@@ -1,11 +1,15 @@
 /* ===================================================
-   BASE — 리셋, body, 전역 스타일
+   BASE — 리셋, body, 전역 스타일 · v3 Void Editorial
    =================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
 
 body {
   font-family: var(--font-korean);
@@ -13,43 +17,119 @@ body {
   color: var(--text-primary);
   line-height: 1.65;
   min-height: 100vh;
-  background-image:
-    radial-gradient(ellipse 80% 50% at 50% -10%,
-      rgba(245,200,66,0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 35% at 0% 100%,
-      rgba(16,232,176,0.06) 0%, transparent 55%),
-    radial-gradient(ellipse 40% 30% at 100% 60%,
-      rgba(90,181,255,0.05) 0%, transparent 50%);
-  background-attachment: fixed;
   overflow-x: hidden;
+  position: relative;
 }
 
-::-webkit-scrollbar { width: 6px; height: 6px; }
+/* ── 그레인 텍스처 오버레이 ──────────────────────── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.028;
+  pointer-events: none;
+  z-index: 9998;
+  mix-blend-mode: overlay;
+}
+
+/* ── 전역 배경 분위기 ────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 45% at 20% 10%,
+      rgba(124,106,245,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 85% 85%,
+      rgba(13,240,255,0.05) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 35% at 60% 50%,
+      rgba(245,200,66,0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── 스크롤바 ────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg-base); }
-::-webkit-scrollbar-thumb { background: rgba(245,200,66,0.22); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(245,200,66,0.42); }
+::-webkit-scrollbar-thumb {
+  background: rgba(124,106,245,0.28);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(124,106,245,0.5); }
 
-::selection { background: rgba(245,200,66,0.22); color: var(--text-primary); }
+/* ── 선택 ────────────────────────────────────────── */
+::selection {
+  background: rgba(124,106,245,0.25);
+  color: var(--text-primary);
+}
 
+/* ── 링크·이미지·버튼 기본 ──────────────────────── */
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; height: auto; display: block; }
 button { cursor: pointer; font-family: inherit; border: none; background: none; }
 
+/* ── 포커스 ──────────────────────────────────────── */
 :focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--violet);
   outline-offset: 3px;
   border-radius: var(--radius-sm);
 }
 
+/* ── 그라디언트 텍스트 유틸 ─────────────────────── */
 .gradient-text {
-  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--emerald) 100%);
+  background: linear-gradient(135deg, var(--violet-light) 0%, var(--cyan) 60%, var(--gold) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.visually-hidden {
-  position: absolute; width: 1px; height: 1px;
-  padding: 0; margin: -1px; overflow: hidden;
-  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+.gradient-text--violet {
+  background: linear-gradient(135deg, var(--violet-light) 0%, var(--violet) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── 표시/숨김 유틸 ─────────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── 페이드인 공통 애니메이션 ────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes orbDrift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(30px, -20px) scale(1.05); }
+  66%       { transform: translate(-20px, 15px) scale(0.95); }
+}
+
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to   { background-position: 200% 0; }
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.45; transform: scale(0.75); }
 }

@@ -1,66 +1,81 @@
 /* ===================================================
-   DESIGN TOKENS — oppa19
-   Navy-first palette · better color balance
+   DESIGN TOKENS — oppa19  v3
+   VOID EDITORIAL · Violet/Cyan/Gold · Seoul Code
    =================================================== */
 :root {
 
-  /* ── 배경 (Deep Navy → 명확한 계층) ─────────────── */
-  --bg-base:        #0c1829;   /* 깊은 네이비 — 기본 배경 */
-  --bg-surface:     #0f2040;   /* 섹션 배경 — 명확히 구분됨 */
-  --bg-elevated:    #152848;   /* 카드, 모달 */
-  --bg-card:        #192f52;   /* 카드 솔리드 배경 */
+  /* ── 배경 (Near-Void Dark) ───────────────────────── */
+  --bg-base:        #09090e;
+  --bg-surface:     #0d0e15;
+  --bg-elevated:    #12141c;
+  --bg-card:        #181a24;
 
-  /* ── 글래스 효과 (더 선명하게) ──────────────────── */
-  --glass-bg:       rgba(255,255,255,0.07);
-  --glass-bg-hover: rgba(255,255,255,0.11);
-  --glass-border:   rgba(255,255,255,0.14);
-  --glass-border-bright: rgba(255,255,255,0.24);
+  /* ── 글래스 효과 ──────────────────────────────────── */
+  --glass-bg:       rgba(255,255,255,0.035);
+  --glass-bg-hover: rgba(255,255,255,0.065);
+  --glass-border:   rgba(255,255,255,0.08);
+  --glass-border-bright: rgba(255,255,255,0.16);
   --glass-blur:     blur(24px);
-  --border-glass:   1px solid rgba(255,255,255,0.14);
+  --border-glass:   1px solid rgba(255,255,255,0.08);
 
-  /* ── 골드 (메인 액센트) ──────────────────────────── */
+  /* ── 바이올렛 (주 액센트) ────────────────────────── */
+  --violet:         #7c6af5;
+  --violet-light:   #a695f8;
+  --violet-dark:    #5543d1;
+  --violet-dim:     rgba(124,106,245,0.12);
+  --violet-glow:    rgba(124,106,245,0.38);
+  --border-violet:  1px solid rgba(124,106,245,0.28);
+
+  /* ── 사이언 (보조 액센트) ─────────────────────────── */
+  --cyan:           #0df0ff;
+  --cyan-light:     #66f5ff;
+  --cyan-dark:      #00c4d4;
+  --cyan-dim:       rgba(13,240,255,0.09);
+  --cyan-glow:      rgba(13,240,255,0.30);
+  --border-cyan:    1px solid rgba(13,240,255,0.25);
+
+  /* ── 골드 (3차 액센트, UI 포인트) ───────────────── */
   --gold:           #f5c842;
   --gold-light:     #ffe066;
   --gold-dark:      #c9a020;
-  --gold-dim:       rgba(245,200,66,0.15);
-  --gold-glow:      rgba(245,200,66,0.4);
-  --border-gold:    1px solid rgba(245,200,66,0.3);
-
-  /* ── 에메랄드 (보조 액센트) ─────────────────────── */
-  --emerald:        #10e8b0;
-  --emerald-light:  #3bffcc;
-  --emerald-dim:    rgba(16,232,176,0.13);
-  --emerald-glow:   rgba(16,232,176,0.32);
+  --gold-dim:       rgba(245,200,66,0.11);
+  --gold-glow:      rgba(245,200,66,0.32);
+  --border-gold:    1px solid rgba(245,200,66,0.28);
 
   /* ── 보조 색상 ──────────────────────────────────── */
-  --purple:         #9d6fff;
-  --purple-dim:     rgba(157,111,255,0.14);
-  --blue:           #5ab5ff;
-  --blue-dim:       rgba(90,181,255,0.14);
-  --pink:           #ff79c6;
-  --pink-dim:       rgba(255,121,198,0.14);
-  --orange:         #ffab5e;
-  --orange-dim:     rgba(255,171,94,0.14);
+  --emerald:        #10e8b0;
+  --emerald-light:  #3bffcc;
+  --emerald-dim:    rgba(16,232,176,0.10);
+  --emerald-glow:   rgba(16,232,176,0.28);
+  --purple:         #c084fc;
+  --purple-dim:     rgba(192,132,252,0.11);
+  --pink:           #f472b6;
+  --pink-dim:       rgba(244,114,182,0.11);
+  --orange:         #fb923c;
+  --orange-dim:     rgba(251,146,60,0.11);
+  --blue:           #60a5fa;
+  --blue-dim:       rgba(96,165,250,0.11);
 
   /* ── 텍스트 ──────────────────────────────────────── */
-  --text-primary:   #e8f0ff;   /* 따뜻한 블루-화이트 */
-  --text-secondary: #7a9bc0;   /* 블루-그레이 */
-  --text-muted:     #3d5a7a;   /* 어두운 블루-그레이 */
-  --text-disabled:  #2a3f58;
+  --text-primary:   #edeaff;
+  --text-secondary: #9290b0;
+  --text-muted:     #6e6e90;
+  --text-disabled:  #3a3a52;
 
   /* ── 타이포그래피 ────────────────────────────────── */
+  --font-display:   'Noto Serif KR', 'Apple SD Gothic Neo', 'Batang', serif;
   --font-korean:    'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
-  --font-numeric:   'Space Grotesk', monospace;
+  --font-mono:      'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
 
-  --text-2xs: clamp(0.65rem, 0.62rem + 0.15vw, 0.73rem);
+  --text-2xs: clamp(0.65rem, 0.62rem + 0.15vw, 0.72rem);
   --text-xs:  clamp(0.75rem, 0.70rem + 0.20vw, 0.875rem);
-  --text-sm:  clamp(0.875rem,0.82rem + 0.25vw, 1rem);
-  --text-base:clamp(1rem,    0.92rem + 0.40vw, 1.125rem);
-  --text-lg:  clamp(1.125rem,1rem   + 0.60vw, 1.375rem);
+  --text-sm:  clamp(0.875rem, 0.82rem + 0.25vw, 1rem);
+  --text-base: clamp(1rem, 0.92rem + 0.40vw, 1.125rem);
+  --text-lg:  clamp(1.125rem, 1rem + 0.60vw, 1.375rem);
   --text-xl:  clamp(1.25rem, 1.10rem + 0.75vw, 1.75rem);
-  --text-2xl: clamp(1.5rem,  1.20rem + 1.50vw, 2.5rem);
-  --text-3xl: clamp(2rem,    1.50rem + 2.50vw, 3.5rem);
-  --text-hero:clamp(2.4rem,  1.40rem + 5.20vw, 5.8rem);
+  --text-2xl: clamp(1.5rem, 1.20rem + 1.50vw, 2.5rem);
+  --text-3xl: clamp(2rem, 1.50rem + 2.50vw, 3.5rem);
+  --text-hero: clamp(3.2rem, 1.80rem + 6.80vw, 7.5rem);
 
   /* ── 간격 ────────────────────────────────────────── */
   --space-1:  0.25rem;  --space-2:  0.5rem;
@@ -69,24 +84,26 @@
   --space-8:  2rem;     --space-10: 2.5rem;
   --space-12: 3rem;     --space-16: 4rem;
   --space-20: 5rem;
-  --space-section: clamp(3.5rem, 2.5rem + 5vw, 8rem);
+  --space-section: clamp(4.5rem, 2.5rem + 6.5vw, 9.5rem);
 
   /* ── 애니메이션 ──────────────────────────────────── */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
-  --duration-fast: 140ms;
-  --duration-base: 280ms;
-  --duration-slow: 500ms;
+  --ease-in-out:   cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 130ms;
+  --duration-base: 260ms;
+  --duration-slow: 480ms;
 
   /* ── 그림자 ──────────────────────────────────────── */
-  --shadow-xs:      0 1px 4px rgba(0,0,0,0.4);
-  --shadow-sm:      0 2px 12px rgba(0,0,0,0.4);
-  --shadow-card:    0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
-  --shadow-gold:    0 0 28px rgba(245,200,66,0.28), 0 4px 16px rgba(0,0,0,0.4);
-  --shadow-elevated:0 12px 48px rgba(0,0,0,0.55);
+  --shadow-xs:      0 1px 4px rgba(0,0,0,0.6);
+  --shadow-sm:      0 2px 12px rgba(0,0,0,0.55);
+  --shadow-card:    0 4px 28px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.04);
+  --shadow-violet:  0 0 36px rgba(124,106,245,0.28), 0 4px 20px rgba(0,0,0,0.5);
+  --shadow-gold:    0 0 28px rgba(245,200,66,0.22), 0 4px 16px rgba(0,0,0,0.45);
+  --shadow-elevated:0 16px 56px rgba(0,0,0,0.70);
 
   /* ── 반지름 ──────────────────────────────────────── */
-  --radius-xs:  4px;
+  --radius-xs:  3px;
   --radius-sm:  8px;
   --radius-md:  14px;
   --radius-lg:  22px;
