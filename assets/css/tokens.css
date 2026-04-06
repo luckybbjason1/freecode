@@ -1,47 +1,49 @@
 /* ===================================================
-   DESIGN TOKENS — Claude Code 한국
+   DESIGN TOKENS — FREE-CODE
    =================================================== */
 :root {
-  /* 배경 팔레트 */
-  --bg-base:        #0a0a0f;
-  --bg-surface:     #0f0f1a;
-  --bg-elevated:    #141428;
-  --bg-card:        #12121f;
+  /* 배경 — 딥 인디고 (순수 블랙 대신 깊은 네이비) */
+  --bg-base:        #0c0c1e;
+  --bg-surface:     #10102a;
+  --bg-elevated:    #16163a;
+  --bg-card:        #13132e;
 
-  /* 글래스모피즘 */
-  --glass-bg:       rgba(255,255,255,0.04);
-  --glass-bg-hover: rgba(255,255,255,0.07);
-  --glass-border:   rgba(255,255,255,0.08);
-  --glass-blur:     blur(20px);
+  /* 글래스모피즘 (더 선명하게) */
+  --glass-bg:       rgba(255,255,255,0.06);
+  --glass-bg-hover: rgba(255,255,255,0.11);
+  --glass-border:   rgba(255,255,255,0.13);
+  --glass-border-bright: rgba(255,255,255,0.22);
+  --glass-blur:     blur(32px);
+  --border-glass:   1px solid var(--glass-border);
 
-  /* 골드 액센트 */
-  --gold:           #d4af37;
-  --gold-light:     #f0d060;
-  --gold-dark:      #a88c20;
-  --gold-dim:       rgba(212,175,55,0.15);
-  --gold-glow:      rgba(212,175,55,0.3);
+  /* 골드 — 더 밝고 선명하게 */
+  --gold:           #FFD700;
+  --gold-light:     #FFE966;
+  --gold-dark:      #C8A800;
+  --gold-dim:       rgba(255,215,0,0.18);
+  --gold-glow:      rgba(255,215,0,0.45);
 
-  /* 에메랄드 액센트 */
-  --emerald:        #10b981;
-  --emerald-light:  #34d399;
-  --emerald-dim:    rgba(16,185,129,0.12);
-  --emerald-glow:   rgba(16,185,129,0.25);
+  /* 에메랄드 — 더 선명한 시안-그린 */
+  --emerald:        #00DDA3;
+  --emerald-light:  #2DFFC4;
+  --emerald-dim:    rgba(0,221,163,0.15);
+  --emerald-glow:   rgba(0,221,163,0.35);
 
-  /* 보조 색상 */
-  --purple:         #7c3aed;
-  --purple-dim:     rgba(124,58,237,0.12);
-  --blue:           #3b82f6;
-  --blue-dim:       rgba(59,130,246,0.12);
-  --pink:           #ec4899;
-  --pink-dim:       rgba(236,72,153,0.12);
-  --orange:         #f59e0b;
-  --orange-dim:     rgba(245,158,11,0.12);
+  /* 보조 색상 (더 선명) */
+  --purple:         #9B5DE5;
+  --purple-dim:     rgba(155,93,229,0.16);
+  --blue:           #4D9FFF;
+  --blue-dim:       rgba(77,159,255,0.15);
+  --pink:           #FF6BB5;
+  --pink-dim:       rgba(255,107,181,0.15);
+  --orange:         #FF9F1C;
+  --orange-dim:     rgba(255,159,28,0.15);
 
-  /* 텍스트 */
-  --text-primary:   #f0f0f5;
-  --text-secondary: #8888aa;
-  --text-muted:     #555577;
-  --text-disabled:  #333355;
+  /* 텍스트 (더 밝고 선명) */
+  --text-primary:   #f2f2fa;
+  --text-secondary: #9494c8;
+  --text-muted:     #6060a8;
+  --text-disabled:  #40407a;
 
   /* 타이포그래피 */
   --font-korean:    'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
@@ -79,13 +81,14 @@
   --duration-slow:  600ms;
   --duration-xl:    1000ms;
 
-  /* 그림자 */
-  --shadow-xs:   0 1px 3px rgba(0,0,0,0.4);
-  --shadow-sm:   0 2px 8px rgba(0,0,0,0.5);
-  --shadow-md:   0 4px 24px rgba(0,0,0,0.4), 0 1px 3px rgba(0,0,0,0.6);
-  --shadow-lg:   0 8px 48px rgba(0,0,0,0.5);
-  --shadow-gold: 0 0 30px rgba(212,175,55,0.2), 0 0 60px rgba(212,175,55,0.1);
-  --shadow-emerald: 0 0 30px rgba(16,185,129,0.2);
+  /* 그림자 (더 강하게) */
+  --shadow-xs:   0 1px 4px rgba(0,0,0,0.5);
+  --shadow-sm:   0 2px 10px rgba(0,0,0,0.5);
+  --shadow-md:   0 4px 28px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.7);
+  --shadow-lg:   0 8px 56px rgba(0,0,0,0.6);
+  --shadow-gold: 0 0 24px rgba(255,215,0,0.35), 0 0 56px rgba(255,215,0,0.15), 0 4px 20px rgba(0,0,0,0.4);
+  --shadow-emerald: 0 0 24px rgba(0,221,163,0.3), 0 0 48px rgba(0,221,163,0.12);
+  --shadow-card: 0 4px 24px rgba(0,0,12,0.5), inset 0 1px 0 rgba(255,255,255,0.09);
 
   /* 둥글기 */
   --radius-xs: 4px;
@@ -96,8 +99,7 @@
   --radius-full: 9999px;
 
   /* 경계선 */
-  --border-glass: 1px solid var(--glass-border);
-  --border-gold:  1px solid var(--gold-dim);
+  --border-gold:  1px solid rgba(255,215,0,0.28);
 
   /* z-index */
   --z-base:    1;
