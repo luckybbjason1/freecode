@@ -5,336 +5,342 @@
        crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>oppa19 — AI 에이전트 · 스킬 · MCP 마켓플레이스</title>
-  <meta name="description" content="1000개 이상의 Claude Code 에이전트, 스킬, 명령어, MCP 통합 컴포넌트를 한국어로 탐색하세요. AI 워크플로우를 즉시 강화하는 최고의 마켓플레이스입니다.">
-  <meta name="keywords" content="Claude Code, AI 에이전트, 스킬, MCP, 명령어, 자동화, Claude 템플릿, AI 개발, 한국어">
+  <title>oppa19 — Claude Code 시작 가이드 · AI 에이전트 & 스킬 마켓플레이스</title>
+  <meta name="description" content="Claude Code 완전 정복 가이드. 설치부터 활용까지 한국어로 배우고 1000개+ 에이전트, 스킬, MCP를 무료로 탐색하세요.">
+  <meta name="keywords" content="Claude Code, AI 에이전트, 스킬, MCP, 명령어, 자동화, Claude 템플릿, AI 개발, 한국어 가이드">
   <meta name="robots" content="index, follow">
   <meta name="author" content="oppa19">
   <link rel="canonical" href="https://freecode.oppa19.com/">
   <link rel="alternate" hreflang="ko" href="https://freecode.oppa19.com/">
   <link rel="alternate" hreflang="x-default" href="https://freecode.oppa19.com/">
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ko_KR">
-  <meta property="og:title" content="oppa19 — AI 에이전트 & 스킬 마켓플레이스">
-  <meta property="og:description" content="1000개+ Claude Code 컴포넌트를 한국어로 탐색하세요. 에이전트, 스킬, MCP, 명령어 모두 무료.">
+  <meta property="og:title" content="oppa19 — Claude Code 한국어 가이드 & 마켓플레이스">
+  <meta property="og:description" content="Claude Code 완전 정복. 1000개+ 에이전트, 스킬, MCP, 명령어 무료 탐색.">
   <meta property="og:image" content="https://freecode.oppa19.com/assets/img/og-image.svg">
   <meta property="og:url" content="https://freecode.oppa19.com/">
   <meta property="og:site_name" content="oppa19">
-
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="oppa19 — AI 에이전트 마켓플레이스">
-  <meta name="twitter:description" content="1000개+ AI 컴포넌트를 한국어로. Claude Code 전용 마켓플레이스.">
+  <meta name="twitter:title" content="oppa19 — Claude Code 마켓플레이스">
+  <meta name="twitter:description" content="Claude Code 완전 정복 한국어 가이드 + 1000개+ 컴포넌트">
   <meta name="twitter:image" content="https://freecode.oppa19.com/assets/img/og-image.svg">
-
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://freecode.oppa19.com/#website",
-        "url": "https://freecode.oppa19.com/",
-        "name": "oppa19",
-        "description": "Claude Code 컴포넌트 마켓플레이스 — 에이전트, 스킬, MCP, 명령어",
-        "inLanguage": "ko",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": {
-            "@type": "EntryPoint",
-            "urlTemplate": "https://freecode.oppa19.com/skills.html?q={search_term_string}"
-          },
-          "query-input": "required name=search_term_string"
-        }
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://freecode.oppa19.com/#org",
-        "name": "oppa19",
-        "url": "https://freecode.oppa19.com/",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://freecode.oppa19.com/assets/img/logo.svg"
-        }
-      }
-    ]
-  }
-  </script>
-
-  <!-- PWA -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#d4af37">
-
-  <!-- 폰트 프리로드 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/pages.css">
-
-  <!-- AOS -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
-
-  <!-- DOMPurify (XSS 방어 - 광고 렌더링용) -->
-  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.5/dist/purify.min.js" integrity="sha384-nszIONF2FGC59kn+pPFaRa6WUNGwsZgXZiJxJwQbym+TzcH7smolUviLgpPbNx7V" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","name":"oppa19","url":"https://freecode.oppa19.com/","inLanguage":"ko-KR","potentialAction":{"@type":"SearchAction","target":"https://freecode.oppa19.com/skills.html?q={search_term_string}","query-input":"required name=search_term_string"}}
+  </script>
 </head>
 <body>
 
-<!-- ===== 네비게이션 ===== -->
-<nav class="nav" id="main-nav" role="navigation" aria-label="주요 네비게이션">
-  <a href="index.html" class="nav__logo"><img src="assets/img/logo.svg" alt="oppa19" class="nav__logo-img">
+<!-- 네비게이션 -->
+<nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
+  <a href="index.html" class="nav__logo" aria-label="oppa19 홈">
+    <img src="assets/img/logo.svg" alt="oppa19 로고" class="nav__logo-img">
   </a>
-
   <ul class="nav__links" role="list">
+    <li><a href="index.html" class="active">홈</a></li>
     <li><a href="skills.html">스킬</a></li>
-    <li><a href="agents.html">에이전트</a></li>
+    <li><a href="agents.html">에이전트 <span class="nav__new">NEW</span></a></li>
     <li><a href="commands.html">명령어</a></li>
-    <li><a href="hooks.html">훅</a></li>
     <li><a href="mcps.html">MCP</a></li>
-    <li><a href="plugins.html">플러그인 <span class="nav__new">NEW</span></a></li>
+    <li><a href="plugins.html">플러그인</a></li>
+    <li><a href="hooks.html">훅</a></li>
     <li><a href="blog.html">블로그</a></li>
   </ul>
-
   <div class="nav__actions">
-    <button class="nav__search-btn" onclick="focusHeroSearch()" aria-label="검색">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="6.5" cy="6.5" r="4.5"/><line x1="10.5" y1="10.5" x2="14" y2="14"/>
-      </svg>
+    <button class="nav__search-btn" id="nav-search-toggle" aria-label="검색 (Ctrl+K)">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
     </button>
-    <a href="https://github.com" class="nav__github" target="_blank" rel="noopener">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.57v-2.01c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.3-1.23 3.3-1.23.65 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.83.57C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/>
-      </svg>
-      GitHub
+    <a href="https://claude.ai" target="_blank" rel="noopener" class="nav__github">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+      <span>Claude 시작</span>
     </a>
   </div>
-
   <button class="nav__hamburger" id="nav-hamburger" aria-label="메뉴 열기" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
-
-<!-- 모바일 메뉴 -->
-<div class="nav__mobile" id="nav-mobile" role="navigation">
+<nav class="nav__mobile" id="nav-mobile" aria-label="모바일 메뉴">
+  <a href="index.html">홈</a>
   <a href="skills.html">스킬</a>
   <a href="agents.html">에이전트</a>
   <a href="commands.html">명령어</a>
-  <a href="hooks.html">훅</a>
   <a href="mcps.html">MCP</a>
   <a href="plugins.html">플러그인</a>
+  <a href="hooks.html">훅</a>
   <a href="blog.html">블로그</a>
-</div>
+</nav>
 
-<!-- ===== 광고: 헤더 배너 ===== -->
-<div id="ad-header-banner" class="ad-slot ad-slot--header" aria-label="광고"></div>
+<!-- 헤더 광고 -->
+<div id="ad-header-banner" class="ad-slot ad-slot--banner" style="margin-top:64px;padding:0.5rem 0;"></div>
 
-<!-- ===== 히어로 섹션 ===== -->
-<section class="hero" aria-labelledby="hero-title">
-  <canvas id="particles-canvas" aria-hidden="true"></canvas>
-
-  <div class="hero__content">
-    <div class="hero__eyebrow" data-aos="fade-down">
-      <span class="hero__eyebrow-dot"></span>
-      한국어 공식 마켓플레이스 — 무료 오픈소스
-    </div>
-
-    <h1 class="hero__title" id="hero-title" data-aos="fade-up" data-aos-delay="80">
-      Claude Code<br>
-      <span class="line2 gradient-text">컴포넌트 마켓플레이스</span>
-    </h1>
-
-    <p class="hero__desc" data-aos="fade-up" data-aos-delay="160">
-      1000개 이상의 AI 에이전트, 스킬, 명령어 &amp; MCP 통합으로<br>
-      개발 워크플로우를 즉시 자동화하세요
-    </p>
-
-    <div class="hero__search-wrap" data-aos="fade-up" data-aos-delay="240">
-      <div class="search-wrapper">
-        <span class="search-wrapper__icon" aria-hidden="true">🔍</span>
-        <input
-          type="search"
-          class="search-input"
-          id="hero-search"
-          placeholder="스킬, 에이전트, MCP 검색..."
-          aria-label="컴포넌트 검색"
-          autocomplete="off"
-        >
+<!-- 히어로 -->
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="hero__bg">
+    <canvas id="particles-canvas"></canvas>
+    <div class="hero__glow hero__glow--gold"></div>
+    <div class="hero__glow hero__glow--emerald"></div>
+    <div class="hero__glow hero__glow--blue"></div>
+  </div>
+  <div class="container" style="width:100%;position:relative;z-index:1;">
+    <div class="hero__content">
+      <div class="hero__badge">
+        <span class="hero__badge-dot"></span>
+        한국어 Claude Code 완전 정복 가이드 — 무료
       </div>
-      <button class="btn btn--gold" onclick="handleHeroSearch()">검색하기</button>
-    </div>
-
-    <div class="hero__stats" data-aos="fade-up" data-aos-delay="320">
-      <div class="hero__stat">
-        <div class="hero__stat-num" data-count="1000" id="stat-skills">0</div>
-        <div class="hero__stat-label">스킬</div>
-      </div>
-      <div class="hero__stat-divider" aria-hidden="true"></div>
-      <div class="hero__stat">
-        <div class="hero__stat-num" data-count="600" id="stat-agents">0</div>
-        <div class="hero__stat-label">에이전트</div>
-      </div>
-      <div class="hero__stat-divider" aria-hidden="true"></div>
-      <div class="hero__stat">
-        <div class="hero__stat-num" data-count="120" id="stat-mcps">0</div>
-        <div class="hero__stat-label">MCP 통합</div>
-      </div>
-      <div class="hero__stat-divider" aria-hidden="true"></div>
-      <div class="hero__stat">
-        <div class="hero__stat-num" data-count="450" id="stat-commands">0</div>
-        <div class="hero__stat-label">명령어</div>
+      <h1 class="hero__title" id="hero-heading">
+        AI 개발의 새 기준
+        <span class="line2">Claude Code</span>
+      </h1>
+      <p class="hero__subtitle">터미널에서 바로 쓰는 AI 개발 도우미. 에이전트·스킬·MCP·명령어 1000개+를 한국어로 탐색하고 나의 워크플로우를 완성하세요.</p>
+      <form class="hero__search" role="search" action="skills.html" method="get" onsubmit="return doHeroSearch(event)">
+        <input type="search" class="hero__search-input" id="hero-search" name="q"
+          placeholder="에이전트, 스킬, MCP 검색..."
+          aria-label="컴포넌트 검색" autocomplete="off">
+        <button class="hero__search-btn" type="submit">검색</button>
+      </form>
+      <div class="hero__stats" role="list">
+        <div class="hero__stat" role="listitem">
+          <span class="hero__stat-num" data-count="1000">0</span>
+          <span class="hero__stat-label">스킬</span>
+        </div>
+        <div class="hero__stat-divider" role="separator"></div>
+        <div class="hero__stat" role="listitem">
+          <span class="hero__stat-num" data-count="600">0</span>
+          <span class="hero__stat-label">에이전트</span>
+        </div>
+        <div class="hero__stat-divider" role="separator"></div>
+        <div class="hero__stat" role="listitem">
+          <span class="hero__stat-num" data-count="120">0</span>
+          <span class="hero__stat-label">MCP</span>
+        </div>
+        <div class="hero__stat-divider" role="separator"></div>
+        <div class="hero__stat" role="listitem">
+          <span class="hero__stat-num" data-count="450">0</span>
+          <span class="hero__stat-label">명령어</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== 광고: 히어로 하단 ===== -->
-<div id="ad-hero-below" class="ad-slot ad-slot--hero-below" aria-label="광고"></div>
+<!-- 히어로 하단 광고 -->
+<div id="ad-hero-below" class="ad-slot ad-slot--banner" style="padding:0.75rem 0;"></div>
 
-<!-- ===== 카테고리 섹션 ===== -->
-<section class="section" aria-labelledby="cats-title">
+<!-- 빠른 시작 -->
+<section class="section" aria-labelledby="quickstart-heading">
   <div class="container">
-    <div class="section-header">
-      <div>
-        <div class="section-header__label">카테고리</div>
-        <h2 class="section-header__title" id="cats-title">모든 컴포넌트 유형</h2>
+    <header class="section__header" data-aos="fade-up">
+      <span class="section__eyebrow">빠른 시작</span>
+      <h2 class="section__title" id="quickstart-heading">4단계로 시작하는 Claude Code</h2>
+      <p class="section__desc">설치부터 첫 번째 AI 에이전트 실행까지 5분이면 충분합니다</p>
+    </header>
+    <div class="steps-grid">
+      <div class="step-card" data-aos="fade-up" data-aos-delay="0">
+        <span class="step-card__num">01</span>
+        <span class="step-card__icon" aria-hidden="true">📦</span>
+        <h3 class="step-card__title">설치</h3>
+        <p class="step-card__desc">Node.js 18+ 환경에서 npm으로 글로벌 설치합니다. 터미널 하나면 충분합니다.</p>
+        <code class="step-card__code">npm install -g @anthropic-ai/claude-code</code>
+      </div>
+      <div class="step-card" data-aos="fade-up" data-aos-delay="80">
+        <span class="step-card__num">02</span>
+        <span class="step-card__icon" aria-hidden="true">🔑</span>
+        <h3 class="step-card__title">인증</h3>
+        <p class="step-card__desc">프로젝트 폴더로 이동 후 claude 명령어 실행. Anthropic 계정으로 로그인하세요.</p>
+        <code class="step-card__code">cd my-project &amp;&amp; claude</code>
+      </div>
+      <div class="step-card" data-aos="fade-up" data-aos-delay="160">
+        <span class="step-card__num">03</span>
+        <span class="step-card__icon" aria-hidden="true">🔍</span>
+        <h3 class="step-card__title">탐색</h3>
+        <p class="step-card__desc">이 사이트에서 원하는 에이전트·스킬·MCP를 찾아 프롬프트를 복사하세요.</p>
+        <code class="step-card__code"># 위 검색창에서 탐색하세요</code>
+      </div>
+      <div class="step-card" data-aos="fade-up" data-aos-delay="240">
+        <span class="step-card__num">04</span>
+        <span class="step-card__icon" aria-hidden="true">🚀</span>
+        <h3 class="step-card__title">활용</h3>
+        <p class="step-card__desc">복사한 명령어를 Claude Code에 붙여넣고 AI와 함께 코딩을 시작하세요.</p>
+        <code class="step-card__code">/skill tdd-workflow</code>
       </div>
     </div>
-    <div class="cats-grid" id="cats-grid" role="list"></div>
   </div>
 </section>
 
-<!-- ===== 인기 스킬 섹션 ===== -->
-<section class="section section--alt" aria-labelledby="skills-title">
+<!-- Claude Code란? -->
+<section class="section--alt" aria-labelledby="whatis-heading">
   <div class="container">
-    <div class="section-header">
-      <div>
-        <div class="section-header__label">인기 스킬</div>
-        <h2 class="section-header__title" id="skills-title">최고 평점 스킬</h2>
+    <header class="section__header" data-aos="fade-up">
+      <span class="section__eyebrow">Claude Code란?</span>
+      <h2 class="section__title" id="whatis-heading">터미널 속 AI 개발 파트너</h2>
+      <p class="section__desc">Anthropic이 만든 Claude Code는 코드베이스를 이해하고, 파일을 편집하며, 터미널 명령어를 직접 실행하는 AI 코딩 어시스턴트입니다.</p>
+    </header>
+    <div class="features-grid">
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="feature-card__accent" style="background:rgba(245,200,66,0.25);" aria-hidden="true"></div>
+        <div class="feature-card__icon" style="background:var(--gold-dim);" aria-hidden="true">⚡</div>
+        <h3 class="feature-card__title">에이전트 자동화</h3>
+        <p class="feature-card__desc">복잡한 멀티스텝 작업을 에이전트가 자율적으로 처리합니다. 코드 리뷰, 테스트 작성, 리팩토링을 AI에게 위임하세요.</p>
       </div>
-      <a href="skills.html" class="section-header__link">
-        모두 보기 <span aria-hidden="true">→</span>
-      </a>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="feature-card__accent" style="background:rgba(16,232,176,0.2);" aria-hidden="true"></div>
+        <div class="feature-card__icon" style="background:var(--emerald-dim);" aria-hidden="true">🔌</div>
+        <h3 class="feature-card__title">MCP 통합</h3>
+        <p class="feature-card__desc">Model Context Protocol로 GitHub, Notion, Figma, Slack 등 외부 서비스와 연결하여 AI 워크플로우를 확장합니다.</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="feature-card__accent" style="background:rgba(157,111,255,0.2);" aria-hidden="true"></div>
+        <div class="feature-card__icon" style="background:var(--purple-dim);" aria-hidden="true">🧩</div>
+        <h3 class="feature-card__title">스킬 & 명령어</h3>
+        <p class="feature-card__desc">커뮤니티가 검증한 스킬과 슬래시 명령어로 Claude Code의 기능을 즉시 확장합니다. 설치 한 줄로 완성.</p>
+      </div>
     </div>
-    <div class="cards-grid" id="skills-grid"></div>
   </div>
 </section>
 
-<!-- ===== 인기 에이전트 섹션 ===== -->
-<section class="section" aria-labelledby="agents-title">
+<!-- 카테고리 탐색 -->
+<section class="section" aria-labelledby="categories-heading">
   <div class="container">
-    <div class="section-header">
-      <div>
-        <div class="section-header__label">추천 에이전트</div>
-        <h2 class="section-header__title" id="agents-title">전문 AI 에이전트</h2>
-      </div>
-      <a href="agents.html" class="section-header__link">
-        모두 보기 <span aria-hidden="true">→</span>
-      </a>
-    </div>
-    <div class="cards-grid" id="agents-grid"></div>
+    <header class="section__header" data-aos="fade-up">
+      <span class="section__eyebrow">카테고리</span>
+      <h2 class="section__title" id="categories-heading">원하는 컴포넌트를 찾아보세요</h2>
+      <p class="section__desc">스킬부터 MCP까지 — 필요한 모든 Claude Code 컴포넌트</p>
+    </header>
+    <div class="categories-grid" data-aos="fade-up" data-aos-delay="60" id="cats-grid" role="list" aria-label="카테고리 목록"></div>
   </div>
 </section>
 
-<!-- ===== MCP 섹션 ===== -->
-<section class="section section--alt" aria-labelledby="mcps-title">
+<!-- 인기 스킬 -->
+<section class="section--alt" aria-labelledby="skills-section-heading">
   <div class="container">
-    <div class="section-header">
-      <div>
-        <div class="section-header__label">MCP 통합</div>
-        <h2 class="section-header__title" id="mcps-title">Model Context Protocol</h2>
-      </div>
-      <a href="mcps.html" class="section-header__link">
-        모두 보기 <span aria-hidden="true">→</span>
-      </a>
+    <header class="section__header" data-aos="fade-up">
+      <span class="section__eyebrow">인기 스킬</span>
+      <h2 class="section__title" id="skills-section-heading">지금 가장 많이 쓰이는 스킬</h2>
+      <p class="section__desc">커뮤니티가 검증한 최고 인기 스킬 모음</p>
+    </header>
+    <div class="cards-grid" id="skills-grid" data-aos="fade-up" data-aos-delay="60"></div>
+    <div class="section-footer">
+      <a href="skills.html" class="btn btn--outline">모든 스킬 보기 →</a>
     </div>
-    <div class="cards-grid" id="mcps-grid"></div>
   </div>
 </section>
 
-<!-- ===== 광고: 푸터 상단 ===== -->
-<div id="ad-before-footer" class="ad-slot ad-slot--before-footer" aria-label="광고"></div>
+<!-- 추천 에이전트 -->
+<section class="section" aria-labelledby="agents-section-heading">
+  <div class="container">
+    <header class="section__header" data-aos="fade-up">
+      <span class="section__eyebrow">추천 에이전트</span>
+      <h2 class="section__title" id="agents-section-heading">팀처럼 일하는 AI 에이전트</h2>
+      <p class="section__desc">자율적으로 복잡한 작업을 처리하는 전문 에이전트들</p>
+    </header>
+    <div class="cards-grid" id="agents-grid" data-aos="fade-up" data-aos-delay="60"></div>
+    <div class="section-footer">
+      <a href="agents.html" class="btn btn--outline">모든 에이전트 보기 →</a>
+    </div>
+  </div>
+</section>
 
-<!-- ===== 푸터 ===== -->
+<!-- 푸터 상단 광고 -->
+<div id="ad-before-footer" class="ad-slot ad-slot--banner" style="padding:1rem 0;"></div>
+
+<!-- 푸터 -->
 <footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer__grid">
-      <div class="footer__brand">
-        <div class="footer__logo">
-          <span aria-hidden="true">⚡</span> oppa19
-        </div>
-        <p class="footer__tagline">
-          Claude Code 컴포넌트 마켓플레이스.<br>
-          에이전트, 스킬, MCP 통합을 한국어로 제공합니다.
-        </p>
-      </div>
-
       <div>
-        <div class="footer__col-title">컴포넌트</div>
-        <ul class="footer__links" role="list">
+        <div class="footer__logo">
+          <img src="assets/img/logo.svg" alt="oppa19" style="height:28px;width:auto;">
+          oppa19
+        </div>
+        <p class="footer__tagline">Claude Code 에이전트, 스킬, MCP, 명령어를 한국어로 탐색하는 마켓플레이스. AI 워크플로우를 지금 강화하세요.</p>
+      </div>
+      <div>
+        <p class="footer__col-title">컴포넌트</p>
+        <ul class="footer__links">
           <li><a href="skills.html">스킬</a></li>
           <li><a href="agents.html">에이전트</a></li>
           <li><a href="commands.html">명령어</a></li>
           <li><a href="mcps.html">MCP</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__col-title">더보기</p>
+        <ul class="footer__links">
           <li><a href="plugins.html">플러그인</a></li>
           <li><a href="hooks.html">훅</a></li>
+          <li><a href="blog.html">블로그</a></li>
         </ul>
       </div>
-
       <div>
-        <div class="footer__col-title">리소스</div>
-        <ul class="footer__links" role="list">
-          <li><a href="blog.html">블로그</a></li>
+        <p class="footer__col-title">리소스</p>
+        <ul class="footer__links">
+          <li><a href="https://claude.ai" target="_blank" rel="noopener">Claude AI</a></li>
+          <li><a href="https://docs.anthropic.com" target="_blank" rel="noopener">공식 문서</a></li>
           <li><a href="blog/getting-started.html">시작 가이드</a></li>
           <li><a href="blog/mcp-guide.html">MCP 가이드</a></li>
-          <li><a href="blog/best-agents-2025.html">에이전트 TOP 10</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <div class="footer__col-title">정보</div>
-        <ul class="footer__links" role="list">
-          <li><a href="https://github.com/anthropics/claude-code" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="sitemap.xml">사이트맵</a></li>
-          <li><a href="404.html">404 페이지</a></li>
         </ul>
       </div>
     </div>
-
-    <!-- 광고: 푸터 배너 -->
-    <div id="ad-footer-banner" class="ad-slot ad-slot--footer" aria-label="광고"></div>
-
     <div class="footer__bottom">
-      <span>© 2025 oppa19.</span>
-      <span>Node.js 18+, Claude Code CLI 필요</span>
+      <p>© 2025 oppa19. All rights reserved.</p>
+      <p>Claude Code 컴포넌트는 각 원저작자의 저작물입니다.</p>
     </div>
   </div>
+  <div id="ad-footer-banner" class="ad-slot ad-slot--banner" style="padding:0.5rem 0;"></div>
 </footer>
 
-<!-- ===== 광고: 하단 고정바 ===== -->
-<div id="ad-sticky-bottom" class="ad-slot ad-slot--sticky" aria-label="광고"></div>
+<!-- 하단 고정 광고 -->
+<div id="ad-sticky-bottom" class="ad-slot ad-slot--sticky"></div>
 
-<!-- ===== 광고: 팝업 ===== -->
-<div id="ad-popup" class="ad-slot ad-slot--popup" style="display:none;" role="dialog" aria-label="팝업 광고"></div>
+<!-- 팝업 광고 -->
+<div id="ad-popup" class="ad-slot ad-slot--popup" hidden>
+  <div id="ad-popup-inner" style="position:relative;max-width:400px;width:90%;"></div>
+</div>
 
-<!-- ===== 토스트 ===== -->
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<!-- 검색 모달 -->
+<div id="search-modal-overlay"
+  style="display:none;position:fixed;inset:0;z-index:var(--z-modal);background:rgba(0,0,0,0.72);backdrop-filter:blur(8px);align-items:flex-start;justify-content:center;padding-top:8vh;"
+  role="dialog" aria-modal="true" aria-label="검색">
+  <div style="width:100%;max-width:640px;padding:0 1rem;">
+    <div style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.14);border-radius:var(--radius-lg);overflow:hidden;">
+      <div style="display:flex;align-items:center;padding:0 1.25rem;border-bottom:1px solid rgba(255,255,255,0.08);">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+          style="color:var(--text-muted);flex-shrink:0;" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input type="search" id="modal-search-input"
+          placeholder="에이전트, 스킬, MCP 검색..."
+          style="flex:1;padding:1rem 0.75rem;background:none;border:none;outline:none;color:var(--text-primary);font-size:var(--text-base);font-family:var(--font-korean);"
+          aria-label="통합 검색" autocomplete="off">
+        <button onclick="if(window.closeSearchModal)closeSearchModal();"
+          style="color:var(--text-muted);font-size:var(--text-sm);padding:0.5rem;background:none;border:none;cursor:pointer;"
+          aria-label="검색 닫기">ESC</button>
+      </div>
+      <div id="modal-search-results" style="max-height:400px;overflow-y:auto;padding:0.75rem;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 토스트 -->
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
 
 <!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script src="assets/js/data.js"></script>
 <script src="assets/js/ads.js"></script>
 <script src="assets/js/search.js"></script>
-<script src="assets/js/particles-config.js"></script>
 <script src="assets/js/app.js"></script>
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-  try { AOS.init({ duration: 600, easing: 'ease-out-expo', once: true, offset: 60 }); } catch(e) {}
-</script>
+<script src="assets/js/particles-config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="assets/js/home.js"></script>
 </body>
 </html>
