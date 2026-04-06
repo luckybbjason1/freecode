@@ -649,3 +649,54 @@
   .page-hero { padding: 6rem 0 2.5rem; }
   .page-hero__title { font-size: var(--text-2xl); }
 }
+
+/* ── 파트너 링크 ─────────────────────────────────── */
+.partner-links {
+  padding: var(--space-10) 0;
+  background: var(--bg-surface);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.partner-links__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: var(--space-6);
+}
+.partner-links__title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.partner-links__divider {
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.07);
+}
+.partner-links__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.partner-link-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 1.1rem;
+  background: var(--bg-elevated);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: border-color var(--duration-fast), color var(--duration-fast), box-shadow var(--duration-fast);
+  white-space: nowrap;
+}
+.partner-link-card:hover {
+  border-color: rgba(245,200,66,0.35);
+  color: var(--gold);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+}
+.partner-link-card__icon { font-size: 1rem; flex-shrink: 0; }
