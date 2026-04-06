@@ -11,2577 +11,613 @@ const SITE_DATA = {
   },
 
   categories: [
-    { id: 'skills',   label: '스킬',     icon: '⚡', count: 1000, color: 'gold',    desc: '워크플로우 자동화 템플릿' },
-    { id: 'agents',   label: '에이전트', icon: '🤖', count: 600,  color: 'emerald', desc: 'AI 전문 에이전트' },
-    { id: 'commands', label: '명령어',   icon: '⌘',  count: 450,  color: 'purple',  desc: '슬래시 커맨드' },
-    { id: 'mcps',     label: 'MCP',      icon: '🔌', count: 120,  color: 'blue',    desc: 'Model Context Protocol' },
-    { id: 'plugins',  label: '플러그인', icon: '🧩', count: 85,   color: 'pink',    desc: '확장 플러그인' },
-    { id: 'hooks',    label: '훅',       icon: '🪝',  count: 200,  color: 'orange',  desc: '자동화 훅' },
+    { id: 'skills',   label: '스킬',     icon: '⚡', count: 804, color: 'gold',    desc: '워크플로우 자동화 템플릿' },
+    { id: 'agents',   label: '에이전트', icon: '🤖', count: 417, color: 'emerald', desc: 'AI 전문 에이전트' },
+    { id: 'commands', label: '명령어',   icon: '⌘',  count: 280, color: 'purple',  desc: '슬래시 커맨드' },
+    { id: 'mcps',     label: 'MCP',      icon: '🔌', count: 69,  color: 'blue',    desc: 'Model Context Protocol' },
+    { id: 'plugins',  label: '플러그인', icon: '🧩', count: 10,  color: 'pink',    desc: '확장 플러그인' },
+    { id: 'hooks',    label: '훅',       icon: '🪝',  count: 54,  color: 'orange',  desc: '자동화 훅' },
   ],
+
 
   skills: [
-    {
-      id: 'tdd-workflow', name: 'TDD 워크플로우', category: 'skills',
-      desc: '테스트 주도 개발 방법론으로 고품질 코드 작성을 자동화합니다. RED→GREEN→REFACTOR 사이클을 강제하고 80%+ 커버리지를 보장합니다.',
-      tags: ['테스트', '품질', '자동화', 'TDD'], stars: 4.9, installs: 12400, icon: '🧪', color: 'emerald',
-      prompt: `# TDD 워크플로우 스킬
-
-이 스킬을 활성화하여 테스트 주도 개발 방법론으로 코드를 작성하세요.
-
-## 사용 방법
-새 기능을 구현할 때 다음 순서를 반드시 지키세요:
-
-1. **RED**: 실패하는 테스트를 먼저 작성하세요
-   - 구현하려는 기능을 테스트 코드로 명확히 정의하세요
-   - 테스트를 실행하여 실패하는지 확인하세요
-
-2. **GREEN**: 테스트를 통과시키는 최소한의 코드를 작성하세요
-   - 불필요한 코드는 절대 작성하지 마세요
-   - 테스트를 통과시키는 가장 단순한 구현을 선택하세요
-
-3. **REFACTOR**: 코드를 개선하세요
-   - 중복을 제거하고 가독성을 높이세요
-   - 테스트가 여전히 통과하는지 확인하세요
-
-## 프롬프트 예시
-"[기능명] 기능을 TDD로 구현해주세요. 먼저 테스트를 작성하고, 테스트가 실패하는 것을 확인한 후, 구현 코드를 작성해주세요. 최종적으로 테스트 커버리지가 80% 이상이 되도록 해주세요."
-
-## 커버리지 목표
-- 단위 테스트: 90% 이상
-- 통합 테스트: 80% 이상
-- E2E 테스트: 핵심 사용자 플로우 100%`
-    },
-    {
-      id: 'frontend-design', name: '프론트엔드 디자인', category: 'skills',
-      desc: '최신 UI/UX 패턴과 디자인 시스템 구현을 위한 완벽한 가이드입니다. Tailwind, shadcn/ui, 애니메이션 패턴을 포함합니다.',
-      tags: ['UI', 'UX', '디자인', 'Tailwind'], stars: 4.8, installs: 9800, icon: '🎨', color: 'pink',
-      prompt: `# 프론트엔드 디자인 스킬
-
-최신 UI/UX 패턴으로 아름답고 사용하기 쉬운 인터페이스를 구현하세요.
-
-## 디자인 원칙
-
-### 시각적 계층
-- 크기, 색상, 간격으로 정보 계층을 표현하세요
-- 한 페이지에 하나의 주요 행동(CTA)만 배치하세요
-
-### 컴포넌트 설계
-- 재사용 가능한 원자적 컴포넌트를 만드세요
-- Props로 변형을 처리하고 상태를 외부로 노출하세요
-
-### 반응형 디자인
-- 모바일 우선(Mobile First) 접근법을 사용하세요
-- Tailwind 브레이크포인트: sm(640px), md(768px), lg(1024px), xl(1280px)
-
-## 프롬프트 예시
-"[페이지/컴포넌트명]을 디자인해주세요. 다크 모드를 지원하고, Tailwind CSS를 사용하며, 접근성(WCAG 2.1 AA) 기준을 충족해야 합니다. 모바일 우선으로 설계하고, 호버/포커스/액티브 상태를 모두 구현해주세요."
-
-## 기술 스택
-- CSS 프레임워크: Tailwind CSS
-- 컴포넌트 라이브러리: shadcn/ui
-- 애니메이션: Framer Motion / CSS transitions
-- 아이콘: Lucide React`
-    },
-    {
-      id: 'api-design', name: 'API 설계 원칙', category: 'skills',
-      desc: 'RESTful 및 GraphQL API를 설계하는 모범 사례를 제공합니다. 버전 관리, 에러 처리, 인증 패턴이 포함됩니다.',
-      tags: ['API', 'REST', 'GraphQL', '설계'], stars: 4.7, installs: 8200, icon: '🔗', color: 'blue',
-      prompt: `# API 설계 원칙 스킬
-
-일관성 있고 사용하기 쉬운 API를 설계하세요.
-
-## RESTful API 규칙
-
-### URL 설계
-- 명사 복수형 사용: /users, /products, /orders
-- 중첩 리소스: /users/{id}/orders
-- 버전 관리: /api/v1/users
-
-### HTTP 메서드
-- GET: 데이터 조회 (멱등성 보장)
-- POST: 리소스 생성
-- PUT: 전체 업데이트 (멱등성 보장)
-- PATCH: 부분 업데이트
-- DELETE: 삭제 (멱등성 보장)
-
-### 응답 형식
-\`\`\`json
-{
-  "success": true,
-  "data": { ... },
-  "error": null,
-  "meta": { "total": 100, "page": 1, "limit": 20 }
-}
-\`\`\`
-
-### 에러 처리
-- 400 Bad Request: 잘못된 요청
-- 401 Unauthorized: 인증 필요
-- 403 Forbidden: 권한 없음
-- 404 Not Found: 리소스 없음
-- 429 Too Many Requests: 속도 제한
-- 500 Internal Server Error: 서버 오류
-
-## 프롬프트 예시
-"[서비스명]의 REST API를 설계해주세요. OpenAPI 3.0 스펙으로 문서화하고, 인증은 JWT Bearer 토큰을 사용하며, 모든 엔드포인트에 속도 제한을 적용해주세요."`
-    },
-    {
-      id: 'security-best', name: '보안 모범 사례', category: 'skills',
-      desc: 'OWASP Top 10 및 보안 취약점 방어 전략을 자동으로 검토합니다. SQL 인젝션, XSS, CSRF 방어 체크리스트가 포함됩니다.',
-      tags: ['보안', 'OWASP', '취약점', '방어'], stars: 4.9, installs: 11000, icon: '🛡️', color: 'gold',
-      prompt: `# 보안 모범 사례 스킬
-
-OWASP Top 10을 기반으로 코드의 보안 취약점을 검토하세요.
-
-## 필수 보안 체크리스트
-
-### 입력 검증
-- 모든 사용자 입력을 서버에서 검증하세요
-- 화이트리스트 방식으로 허용된 값만 허용하세요
-- 파라미터화된 쿼리로 SQL 인젝션을 방지하세요
-
-### 인증/인가
-- 비밀번호는 bcrypt(cost factor 12+)로 해시하세요
-- JWT 만료 시간을 짧게 설정하고 리프레시 토큰을 사용하세요
-- 모든 민감한 엔드포인트에 권한 검증을 추가하세요
-
-### XSS 방어
-- 사용자 입력을 HTML에 삽입할 때 반드시 이스케이프 처리하세요
-- Content Security Policy(CSP) 헤더를 설정하세요
-- innerHTML 대신 textContent를 사용하세요
-
-### CSRF 방어
-- 상태 변경 요청에 CSRF 토큰을 검증하세요
-- SameSite=Strict 쿠키 속성을 사용하세요
-
-### 시크릿 관리
-- 소스 코드에 API 키, 비밀번호를 절대 하드코딩하지 마세요
-- 환경 변수 또는 시크릿 관리자를 사용하세요
-
-## 프롬프트 예시
-"이 코드의 보안 취약점을 OWASP Top 10 기준으로 검토해주세요. 발견된 각 취약점에 대해 심각도(Critical/High/Medium/Low)와 수정 방법을 제시해주세요."`
-    },
-    {
-      id: 'database-schema', name: '데이터베이스 스키마 설계', category: 'skills',
-      desc: '효율적인 데이터베이스 스키마와 인덱싱 전략을 설계합니다. 정규화, 성능 최적화, 마이그레이션 전략을 다룹니다.',
-      tags: ['데이터베이스', 'SQL', '최적화', 'ORM'], stars: 4.6, installs: 7500, icon: '🗄️', color: 'purple',
-      prompt: `# 데이터베이스 스키마 설계 스킬
-
-효율적이고 확장 가능한 데이터베이스 스키마를 설계하세요.
-
-## 설계 원칙
-
-### 정규화
-- 1NF: 원자적 값, 중복 제거
-- 2NF: 부분 함수 종속 제거
-- 3NF: 이행 함수 종속 제거
-- 필요 시 성능을 위해 비정규화 허용
-
-### 인덱스 전략
-- 자주 조회하는 컬럼에 인덱스를 생성하세요
-- 복합 인덱스는 선택도(Cardinality)가 높은 컬럼을 앞에 배치하세요
-- 과도한 인덱스는 쓰기 성능을 저하시킵니다
-
-### 네이밍 컨벤션
-- 테이블명: snake_case 복수형 (users, order_items)
-- 컬럼명: snake_case (created_at, user_id)
-- 기본키: id (BIGSERIAL 또는 UUID)
-- 외래키: {테이블명}_id (user_id, product_id)
-
-### 필수 컬럼
-- id: PRIMARY KEY
-- created_at: TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-- updated_at: TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-
-## 프롬프트 예시
-"[서비스명]의 데이터베이스 스키마를 설계해주세요. PostgreSQL을 사용하며, 사용자 인증, [핵심 기능들]을 지원해야 합니다. ERD와 함께 각 테이블의 인덱스 전략을 설명해주세요."`
-    },
-    {
-      id: 'python-patterns', name: '파이썬 디자인 패턴', category: 'skills',
-      desc: 'Pythonic 코드 작성과 고급 디자인 패턴 구현 방법을 안내합니다. 데코레이터, 컨텍스트 매니저, 비동기 패턴을 포함합니다.',
-      tags: ['Python', '패턴', '모범사례', '비동기'], stars: 4.8, installs: 10200, icon: '🐍', color: 'emerald',
-      prompt: `# 파이썬 디자인 패턴 스킬
-
-Pythonic하고 유지보수하기 쉬운 코드를 작성하세요.
-
-## 핵심 패턴
-
-### 데코레이터
-\`\`\`python
-import functools
-from typing import Callable
-
-def retry(max_attempts: int = 3):
-    def decorator(func: Callable):
-        @functools.wraps(func)
-        def wrapper(*args, **kwargs):
-            for attempt in range(max_attempts):
-                try:
-                    return func(*args, **kwargs)
-                except Exception as e:
-                    if attempt == max_attempts - 1:
-                        raise
-            return None
-        return wrapper
-    return decorator
-\`\`\`
-
-### 컨텍스트 매니저
-\`\`\`python
-from contextlib import contextmanager
-
-@contextmanager
-def managed_resource():
-    resource = acquire_resource()
-    try:
-        yield resource
-    finally:
-        release_resource(resource)
-\`\`\`
-
-### 타입 힌트
-- 모든 함수에 타입 힌트를 추가하세요
-- dataclasses 또는 Pydantic으로 데이터 모델을 정의하세요
-
-### 비동기
-- asyncio, aiohttp로 I/O 바운드 작업을 처리하세요
-- async/await 패턴을 일관되게 사용하세요
-
-## 프롬프트 예시
-"다음 Python 코드를 Pythonic하게 리팩토링해주세요. 타입 힌트를 추가하고, 적절한 디자인 패턴을 적용하며, PEP 8 스타일 가이드를 따르도록 해주세요."`
-    },
-    {
-      id: 'react-best', name: 'React 모범 사례', category: 'skills',
-      desc: 'React 컴포넌트 최적화, 상태 관리, 성능 개선 전략입니다. useMemo, useCallback, 코드 스플리팅 기법을 다룹니다.',
-      tags: ['React', '최적화', '성능', 'Hooks'], stars: 4.7, installs: 13500, icon: '⚛️', color: 'blue',
-      prompt: `# React 모범 사례 스킬
-
-성능이 최적화된 React 애플리케이션을 구축하세요.
-
-## 컴포넌트 설계
-
-### 단일 책임 원칙
-- 각 컴포넌트는 하나의 역할만 수행해야 합니다
-- 200줄 이상이면 분리를 고려하세요
-
-### Custom Hooks
-- 로직을 재사용 가능한 훅으로 추출하세요
-- 이름은 "use"로 시작하세요 (useUserData, useFetch)
-
-## 성능 최적화
-
-### 불필요한 리렌더링 방지
-\`\`\`typescript
-// 무거운 계산 메모이제이션
-const expensiveValue = useMemo(() =>
-  calculateExpensive(data), [data]);
-
-// 콜백 함수 메모이제이션
-const handleClick = useCallback(() => {
-  onAction(id);
-}, [id, onAction]);
-
-// 컴포넌트 메모이제이션
-const MemoComponent = React.memo(Component);
-\`\`\`
-
-### 코드 스플리팅
-\`\`\`typescript
-const LazyComponent = React.lazy(() =>
-  import('./HeavyComponent'));
-\`\`\`
-
-### 상태 관리
-- 전역 상태: Zustand 또는 Jotai
-- 서버 상태: TanStack Query (React Query)
-- 폼 상태: React Hook Form
-
-## 프롬프트 예시
-"이 React 컴포넌트의 성능을 최적화해주세요. 불필요한 리렌더링을 제거하고, 적절한 메모이제이션을 적용하며, TypeScript 타입을 강화해주세요."`
-    },
-    {
-      id: 'nextjs-patterns', name: 'Next.js 패턴', category: 'skills',
-      desc: 'App Router, Server Components, 캐싱 전략 등 최신 Next.js 기법입니다. ISR, SSR, SSG 패턴과 최적화를 다룹니다.',
-      tags: ['Next.js', 'React', 'SSR', 'App Router'], stars: 4.9, installs: 15200, icon: '▲', color: 'gold',
-      prompt: `# Next.js 패턴 스킬
-
-App Router 기반의 최신 Next.js 애플리케이션을 구축하세요.
-
-## App Router 핵심 패턴
-
-### 렌더링 전략 선택
-- **Server Component (기본)**: 데이터 패칭, SEO 중요 페이지
-- **'use client'**: 인터랙티브, 브라우저 API 사용
-- **Server Actions**: 폼 처리, 데이터 변경
-
-### 데이터 패칭
-\`\`\`typescript
-// 서버 컴포넌트에서 직접 패치
-async function Page() {
-  const data = await fetch('https://api.example.com/data', {
-    next: { revalidate: 3600 } // ISR: 1시간마다 재검증
-  });
-  return <Component data={await data.json()} />;
-}
-\`\`\`
-
-### 캐싱 전략
-- **Static**: 빌드 시 생성, CDN 캐시
-- **ISR**: 특정 시간마다 재생성
-- **SSR**: 요청마다 새로 생성
-- **on-demand revalidation**: 특정 이벤트 시 재생성
-
-### 라우트 핸들러
-\`\`\`typescript
-// app/api/route.ts
-export async function GET(request: Request) {
-  return Response.json({ message: 'Hello' });
-}
-\`\`\`
-
-## 프롬프트 예시
-"Next.js App Router로 [기능]을 구현해주세요. Server Components를 최대한 활용하고, 적절한 캐싱 전략을 적용해주세요. 메타데이터 API로 SEO도 최적화해주세요."`
-    },
-    {
-      id: 'typescript-adv', name: 'TypeScript 고급 타입', category: 'skills',
-      desc: '제네릭, 조건부 타입, 유틸리티 타입 등 고급 TypeScript 기법입니다. 타입 안전성을 극대화하는 패턴을 제공합니다.',
-      tags: ['TypeScript', '타입', 'JavaScript', '제네릭'], stars: 4.8, installs: 11800, icon: '📘', color: 'blue',
-      prompt: `# TypeScript 고급 타입 스킬
-
-강력한 타입 시스템으로 런타임 오류를 컴파일 타임에 잡으세요.
-
-## 핵심 고급 타입
-
-### 조건부 타입
-\`\`\`typescript
-type IsArray<T> = T extends Array<any> ? true : false;
-type Flatten<T> = T extends Array<infer Item> ? Item : T;
-\`\`\`
-
-### 제네릭 제약
-\`\`\`typescript
-function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
-  return obj[key];
-}
-\`\`\`
-
-### 유틸리티 타입 활용
-\`\`\`typescript
-type UserUpdate = Partial<Pick<User, 'name' | 'email'>>;
-type RequiredUser = Required<User>;
-type ReadonlyConfig = Readonly<Config>;
-\`\`\`
-
-### 템플릿 리터럴 타입
-\`\`\`typescript
-type EventName = \`on\${Capitalize<string>}\`;
-type CSSProperty = \`--\${string}\`;
-\`\`\`
-
-### Discriminated Union
-\`\`\`typescript
-type Result<T> =
-  | { success: true; data: T }
-  | { success: false; error: string };
-\`\`\`
-
-### 타입 가드
-\`\`\`typescript
-function isUser(value: unknown): value is User {
-  return typeof value === 'object' && value !== null && 'id' in value;
-}
-\`\`\`
-
-## 프롬프트 예시
-"이 JavaScript 코드를 TypeScript로 마이그레이션해주세요. any 타입 사용을 최소화하고, 제네릭과 유틸리티 타입을 활용하여 타입 안전성을 극대화해주세요."`
-    },
-    {
-      id: 'mcp-builder', name: 'MCP 서버 빌더', category: 'skills',
-      desc: 'Model Context Protocol 서버를 처음부터 구축하는 완전한 가이드입니다. 도구 정의, 리소스 관리, 프롬프트 시스템을 다룹니다.',
-      tags: ['MCP', '서버', '프로토콜', 'SDK'], stars: 4.9, installs: 9600, icon: '🔌', color: 'purple',
-      prompt: `# MCP 서버 빌더 스킬
-
-Claude Code와 통합되는 Model Context Protocol 서버를 구축하세요.
-
-## MCP 서버 기본 구조
-
-### 설치
-\`\`\`bash
-npm create mcp-server@latest my-mcp-server
-cd my-mcp-server && npm install
-\`\`\`
-
-### 도구(Tool) 정의
-\`\`\`typescript
-import { Server } from "@modelcontextprotocol/sdk/server/index.js";
-
-const server = new Server({
-  name: "my-server",
-  version: "1.0.0",
-}, {
-  capabilities: { tools: {} }
-});
-
-server.setRequestHandler(ListToolsRequestSchema, async () => ({
-  tools: [{
-    name: "my_tool",
-    description: "도구 설명",
-    inputSchema: {
-      type: "object",
-      properties: {
-        input: { type: "string", description: "입력값" }
-      },
-      required: ["input"]
-    }
-  }]
-}));
-\`\`\`
-
-### 리소스 정의
-\`\`\`typescript
-server.setRequestHandler(ListResourcesRequestSchema, async () => ({
-  resources: [{
-    uri: "myapp://data",
-    name: "데이터",
-    mimeType: "application/json"
-  }]
-}));
-\`\`\`
-
-## Claude Code 설정
-\`\`\`json
-{
-  "mcpServers": {
-    "my-server": {
-      "command": "node",
-      "args": ["path/to/server/index.js"]
-    }
-  }
-}
-\`\`\`
-
-## 프롬프트 예시
-"[서비스/API명]을 위한 MCP 서버를 만들어주세요. [기능들]을 도구로 노출하고, TypeScript로 구현해주세요."`
-    },
-    {
-      id: 'docker-dev', name: 'Docker 개발 환경', category: 'skills',
-      desc: '컨테이너 기반 개발 환경 구축과 Docker Compose 설정을 자동화합니다. 멀티스테이지 빌드와 최적화된 이미지를 생성합니다.',
-      tags: ['Docker', '컨테이너', 'DevOps', 'Compose'], stars: 4.6, installs: 6800, icon: '🐳', color: 'blue',
-      prompt: `# Docker 개발 환경 스킬
-
-컨테이너 기반 일관된 개발 환경을 구축하세요.
-
-## 최적화된 Dockerfile
-
-### 멀티스테이지 빌드 (Node.js)
-\`\`\`dockerfile
-# 빌드 스테이지
-FROM node:20-alpine AS builder
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci --only=production
-
-# 프로덕션 스테이지
-FROM node:20-alpine AS production
-WORKDIR /app
-COPY --from=builder /app/node_modules ./node_modules
-COPY . .
-RUN npm run build
-
-EXPOSE 3000
-USER node
-CMD ["node", "dist/index.js"]
-\`\`\`
-
-## Docker Compose 설정
-\`\`\`yaml
-version: '3.8'
-services:
-  app:
-    build: .
-    ports: ["3000:3000"]
-    environment:
-      - NODE_ENV=development
-    volumes:
-      - .:/app
-      - /app/node_modules
-    depends_on:
-      - db
-      - redis
-
-  db:
-    image: postgres:16-alpine
-    environment:
-      POSTGRES_DB: myapp
-      POSTGRES_PASSWORD: \${DB_PASSWORD}
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-  redis:
-    image: redis:7-alpine
-
-volumes:
-  postgres_data:
-\`\`\`
-
-## .dockerignore
-\`\`\`
-node_modules
-.git
-.env
-dist
-\`\`\`
-
-## 프롬프트 예시
-"이 [언어/프레임워크] 애플리케이션을 위한 Docker 설정을 만들어주세요. 개발 환경과 프로덕션 환경을 분리하고, Docker Compose로 [데이터베이스], [캐시] 등 의존 서비스를 포함해주세요."`
-    },
-    {
-      id: 'git-workflow', name: 'Git 워크플로우', category: 'skills',
-      desc: '브랜치 전략, 커밋 메시지 규칙, PR 검토 프로세스를 최적화합니다. Conventional Commits와 GitFlow를 지원합니다.',
-      tags: ['Git', '버전관리', '협업', 'GitHub'], stars: 4.5, installs: 8900, icon: '🌿', color: 'emerald',
-      prompt: `# Git 워크플로우 스킬
-
-팀 협업을 위한 효율적인 Git 워크플로우를 구축하세요.
-
-## 브랜치 전략
-
-### Trunk-Based Development (소규모 팀 권장)
-- main: 항상 배포 가능한 상태
-- feature/기능명: 짧은 수명의 기능 브랜치 (1-3일)
-- hotfix/버그명: 긴급 수정
-
-### GitFlow (대규모 팀)
-- main: 프로덕션 릴리스
-- develop: 통합 브랜치
-- feature/*, release/*, hotfix/*
-
-## Conventional Commits
-\`\`\`
-<타입>(<범위>): <제목>
-
-<본문>
-
-<꼬리말>
-\`\`\`
-
-**타입**: feat, fix, docs, style, refactor, perf, test, chore, ci
-
-**예시**:
-\`\`\`
-feat(auth): JWT 리프레시 토큰 구현
-
-- 액세스 토큰 만료 시 자동 갱신
-- 리프레시 토큰은 HttpOnly 쿠키에 저장
-
-Closes #123
-\`\`\`
-
-## PR 검토 체크리스트
-- [ ] 테스트가 추가/수정되었는가?
-- [ ] 브레이킹 체인지가 있는가?
-- [ ] 문서가 업데이트되었는가?
-- [ ] 성능에 영향이 있는가?
-
-## 프롬프트 예시
-"현재 변경 사항을 분석하고 Conventional Commits 형식으로 커밋 메시지를 작성해주세요. 변경의 목적과 이유를 본문에 포함해주세요."`
-    },
-    {
-      id: 'rust-patterns', name: 'Rust 언어 패턴', category: 'skills',
-      desc: '소유권, 수명, 에러 처리 등 Rust의 핵심 패턴을 마스터합니다. Result/Option 모나드, 트레이트, 비동기 Rust를 다룹니다.',
-      tags: ['Rust', '시스템', '메모리', '안전성'], stars: 4.8, installs: 5400, icon: '🦀', color: 'orange',
-      prompt: `# Rust 언어 패턴 스킬
-
-메모리 안전성과 성능을 모두 갖춘 Rust 코드를 작성하세요.
-
-## 핵심 패턴
-
-### 에러 처리
-\`\`\`rust
-use thiserror::Error;
-
-#[derive(Error, Debug)]
-pub enum AppError {
-    #[error("데이터베이스 오류: {0}")]
-    Database(#[from] sqlx::Error),
-    #[error("유효하지 않은 입력: {message}")]
-    InvalidInput { message: String },
-}
-
-// Result 체이닝
-fn process(input: &str) -> Result<String, AppError> {
-    let parsed = parse_input(input)?;
-    let result = transform(parsed)?;
-    Ok(result)
-}
-\`\`\`
-
-### 소유권과 빌림
-\`\`\`rust
-// 소유권 이전
-let s1 = String::from("hello");
-let s2 = s1; // s1은 더 이상 유효하지 않음
-
-// 불변 빌림
-let len = calculate_length(&s2);
-
-// 가변 빌림 (동시에 하나만)
-let mut s = String::from("hello");
-let r = &mut s;
-r.push_str(", world");
-\`\`\`
-
-### 트레이트
-\`\`\`rust
-pub trait Processor {
-    fn process(&self, input: &str) -> Result<String, AppError>;
-    fn validate(&self, input: &str) -> bool { !input.is_empty() }
-}
-\`\`\`
-
-### 비동기 Rust (Tokio)
-\`\`\`rust
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let result = fetch_data().await?;
-    println!("{result}");
-    Ok(())
-}
-\`\`\`
-
-## 프롬프트 예시
-"이 Rust 코드를 관용적(idiomatic)으로 리팩토링해주세요. 에러 처리를 thiserror로 개선하고, 불필요한 clone()을 제거해주세요."`
-    },
-    {
-      id: 'golang-patterns', name: 'Go 언어 패턴', category: 'skills',
-      desc: '동시성, 인터페이스, 에러 처리 등 Go 관용적 패턴을 제공합니다. goroutine, channel, context 활용법을 포함합니다.',
-      tags: ['Go', '동시성', '백엔드', 'goroutine'], stars: 4.7, installs: 7100, icon: '🐹', color: 'blue',
-      prompt: `# Go 언어 패턴 스킬
-
-관용적인 Go 코드로 고성능 백엔드를 구축하세요.
-
-## 핵심 패턴
-
-### 에러 처리
-\`\`\`go
-// 에러 래핑 (Go 1.13+)
-if err != nil {
-    return fmt.Errorf("사용자 조회 실패: %w", err)
-}
-
-// 타입 에러
-type NotFoundError struct {
-    Resource string
-    ID       int64
-}
-
-func (e *NotFoundError) Error() string {
-    return fmt.Sprintf("%s ID %d를 찾을 수 없습니다", e.Resource, e.ID)
-}
-\`\`\`
-
-### 인터페이스
-\`\`\`go
-type UserRepository interface {
-    FindByID(ctx context.Context, id int64) (*User, error)
-    Create(ctx context.Context, user *User) error
-}
-
-// 의존성 주입
-type UserService struct {
-    repo UserRepository
-}
-\`\`\`
-
-### 동시성
-\`\`\`go
-// goroutine + channel
-results := make(chan Result, len(items))
-var wg sync.WaitGroup
-
-for _, item := range items {
-    wg.Add(1)
-    go func(item Item) {
-        defer wg.Done()
-        results <- process(item)
-    }(item)
-}
-
-go func() {
-    wg.Wait()
-    close(results)
-}()
-\`\`\`
-
-### Context 활용
-\`\`\`go
-func (s *Service) Process(ctx context.Context, id int64) error {
-    ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
-    defer cancel()
-    return s.repo.FindByID(ctx, id)
-}
-\`\`\`
-
-## 프롬프트 예시
-"이 Go 코드를 관용적으로 리팩토링해주세요. 에러 처리를 개선하고, 인터페이스를 활용한 의존성 주입을 적용해주세요."`
-    },
-    {
-      id: 'agent-browser', name: '에이전트 브라우저', category: 'skills',
-      desc: 'Playwright를 활용한 브라우저 자동화와 웹 스크래핑 에이전트입니다. 동적 페이지 처리, 인증, 스크린샷 캡처를 지원합니다.',
-      tags: ['브라우저', '자동화', 'Playwright', '스크래핑'], stars: 4.6, installs: 8300, icon: '🌐', color: 'purple',
-      prompt: `# 에이전트 브라우저 스킬
-
-Playwright로 브라우저를 자동화하고 웹 데이터를 수집하세요.
-
-## 기본 설정
-\`\`\`typescript
-import { chromium } from 'playwright';
-
-const browser = await chromium.launch({ headless: true });
-const context = await browser.newContext({
-  viewport: { width: 1280, height: 720 },
-  userAgent: 'Mozilla/5.0 ...'
-});
-const page = await context.newPage();
-\`\`\`
-
-## 주요 패턴
-
-### 요소 대기 및 클릭
-\`\`\`typescript
-// 요소가 나타날 때까지 대기
-await page.waitForSelector('.target-element');
-await page.click('button[type="submit"]');
-
-// 네트워크 요청 완료 대기
-await page.goto(url, { waitUntil: 'networkidle' });
-\`\`\`
-
-### 데이터 추출
-\`\`\`typescript
-const items = await page.evaluate(() => {
-  return Array.from(document.querySelectorAll('.item')).map(el => ({
-    title: el.querySelector('h2')?.textContent?.trim(),
-    price: el.querySelector('.price')?.textContent?.trim()
-  }));
-});
-\`\`\`
-
-### 스크린샷
-\`\`\`typescript
-await page.screenshot({ path: 'screenshot.png', fullPage: true });
-\`\`\`
-
-### 인증 처리
-\`\`\`typescript
-await page.fill('input[name="username"]', username);
-await page.fill('input[name="password"]', password);
-await page.click('button[type="submit"]');
-await page.waitForNavigation();
-\`\`\`
-
-## 프롬프트 예시
-"[웹사이트 URL]에서 [데이터 종류]를 수집하는 Playwright 스크립트를 작성해주세요. 페이지네이션을 처리하고 결과를 JSON으로 저장해주세요."`
-    },
-    {
-      id: 'deployment-auto', name: '배포 자동화', category: 'skills',
-      desc: 'CI/CD 파이프라인 설정과 무중단 배포 전략을 자동화합니다. GitHub Actions, Docker, Kubernetes 배포를 지원합니다.',
-      tags: ['CI/CD', '배포', 'DevOps', 'Kubernetes'], stars: 4.7, installs: 7800, icon: '🚀', color: 'emerald',
-      prompt: `# 배포 자동화 스킬
-
-GitHub Actions로 자동화된 CI/CD 파이프라인을 구축하세요.
-
-## GitHub Actions 워크플로우
-
-### 기본 CI/CD
-\`\`\`yaml
-name: CI/CD Pipeline
-on:
-  push:
-    branches: [main, develop]
-  pull_request:
-    branches: [main]
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: '20' }
-      - run: npm ci
-      - run: npm test -- --coverage
-      - run: npm run lint
-
-  deploy:
-    needs: test
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Deploy to production
-        env:
-          DEPLOY_KEY: \${{ secrets.DEPLOY_KEY }}
-        run: ./scripts/deploy.sh
-\`\`\`
-
-### 무중단 배포 전략
-- **Blue-Green**: 두 환경 교체
-- **Canary**: 점진적 트래픽 이전
-- **Rolling Update**: 순차적 인스턴스 교체
-
-### Docker 이미지 빌드
-\`\`\`yaml
-- name: Build and push Docker image
-  uses: docker/build-push-action@v5
-  with:
-    push: true
-    tags: \${{ env.REGISTRY }}/\${{ env.IMAGE_NAME }}:latest
-\`\`\`
-
-## 프롬프트 예시
-"이 [프로젝트 유형] 프로젝트를 위한 GitHub Actions CI/CD 파이프라인을 설정해주세요. 테스트 → 빌드 → [배포 환경] 배포 순서로 구성하고, 실패 시 알림을 보내주세요."`
-    },
-    {
-      id: 'code-review-skill', name: '코드 리뷰 스킬', category: 'skills',
-      desc: '버그, 보안 취약점, 코드 품질 문제를 자동으로 감지하고 리뷰합니다. PR 리뷰 체크리스트와 개선 제안을 제공합니다.',
-      tags: ['리뷰', '품질', '보안', '체크리스트'], stars: 4.8, installs: 10500, icon: '🔍', color: 'gold',
-      prompt: `# 코드 리뷰 스킬
-
-체계적인 코드 리뷰로 버그와 보안 취약점을 미리 발견하세요.
-
-## 리뷰 프레임워크
-
-### 1단계: 보안 검토
-- 하드코딩된 시크릿/API 키 확인
-- 사용자 입력 검증 여부
-- SQL/NoSQL 인젝션 취약점
-- 권한 검증 누락
-
-### 2단계: 버그 탐지
-- 경계값 처리 (null, undefined, 빈 배열)
-- 동시성 문제 (race condition)
-- 메모리 누출 가능성
-- 무한 루프 가능성
-
-### 3단계: 코드 품질
-- 함수 길이 (50줄 이상이면 분리)
-- 중복 코드 (DRY 원칙)
-- 변수/함수 명명 명확성
-- 에러 처리 누락
-
-### 4단계: 성능
-- N+1 쿼리 문제
-- 불필요한 데이터 처리
-- 캐시 활용 여부
-
-## 심각도 분류
-- **Critical**: 즉시 수정 (보안, 데이터 손실)
-- **High**: 배포 전 수정 (버그, 성능)
-- **Medium**: 다음 스프린트 (코드 품질)
-- **Low**: 선택적 개선 (스타일)
-
-## 프롬프트 예시
-"다음 코드를 리뷰해주세요. 보안 취약점, 잠재적 버그, 코드 품질 문제를 각각 심각도와 함께 나열하고, 구체적인 수정 방법을 제안해주세요."`
-    },
-    {
-      id: 'brainstorming', name: '브레인스토밍', category: 'skills',
-      desc: '기능 기획, 아키텍처 설계, 문제 해결을 위한 체계적인 브레인스토밍입니다. 다양한 관점에서 분석하고 최적 방안을 도출합니다.',
-      tags: ['기획', '설계', '창의성', '분석'], stars: 4.5, installs: 6200, icon: '💡', color: 'gold',
-      prompt: `# 브레인스토밍 스킬
-
-체계적인 사고 프레임워크로 최적의 해결책을 찾으세요.
-
-## 브레인스토밍 프레임워크
-
-### 문제 정의 (5W1H)
-- **What**: 무엇을 해결해야 하는가?
-- **Why**: 왜 이 문제가 중요한가?
-- **Who**: 누가 영향을 받는가?
-- **When**: 언제까지 해결해야 하는가?
-- **Where**: 어디서 발생하는 문제인가?
-- **How**: 어떻게 측정할 것인가?
-
-### 아이디어 발산
-1. 판단 없이 모든 아이디어를 나열하세요
-2. 다른 도메인에서 영감을 얻으세요
-3. 현재 제약을 무시하고 이상적인 해결책을 상상하세요
-4. 반대 접근법을 고려하세요
-
-### 아이디어 수렴
-1. 실현 가능성 평가 (기술, 시간, 비용)
-2. 영향도 vs 노력 매트릭스
-3. 리스크 분석
-4. 최적 방안 선택
-
-### 아키텍처 결정 기록 (ADR)
-\`\`\`markdown
-## ADR-001: [결정 제목]
-
-### 상태: [제안/승인/폐기]
-### 맥락: 왜 이 결정이 필요한가
-### 결정: 무엇을 결정했는가
-### 결과: 이 결정의 영향
-\`\`\`
-
-## 프롬프트 예시
-"[문제/기능]에 대해 브레인스토밍을 해주세요. 최소 5가지 접근법을 제안하고, 각각의 장단점과 구현 복잡도를 비교해주세요. 최종적으로 가장 추천하는 방안과 이유를 설명해주세요."`
-    },
-    {
-      id: 'django-patterns', name: 'Django 패턴', category: 'skills',
-      desc: 'Django ORM 최적화, 미들웨어, 시리얼라이저 등 고급 패턴입니다. DRF, Celery, Redis 연동 베스트 프랙티스를 포함합니다.',
-      tags: ['Django', 'Python', '웹', 'DRF'], stars: 4.6, installs: 5900, icon: '🎸', color: 'emerald',
-      prompt: `# Django 패턴 스킬
-
-Django와 DRF로 견고한 백엔드 API를 구축하세요.
-
-## 핵심 패턴
-
-### ORM 최적화
-\`\`\`python
-# N+1 쿼리 방지
-users = User.objects.select_related('profile').prefetch_related('orders')
-
-# 필요한 컬럼만 조회
-users = User.objects.only('id', 'email', 'name')
-
-# 집계
-from django.db.models import Count, Avg
-stats = Order.objects.aggregate(
-    total=Count('id'),
-    avg_amount=Avg('amount')
-)
-\`\`\`
-
-### DRF ViewSet
-\`\`\`python
-from rest_framework import viewsets, permissions
-from rest_framework.decorators import action
-
-class ProductViewSet(viewsets.ModelViewSet):
-    queryset = Product.objects.all()
-    serializer_class = ProductSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-    @action(detail=True, methods=['post'])
-    def publish(self, request, pk=None):
-        product = self.get_object()
-        product.is_published = True
-        product.save()
-        return Response({'status': 'published'})
-\`\`\`
-
-### Celery 비동기 태스크
-\`\`\`python
-from celery import shared_task
-
-@shared_task(bind=True, max_retries=3)
-def send_email(self, user_id: int, template: str):
-    try:
-        user = User.objects.get(id=user_id)
-        # 이메일 전송 로직
-    except Exception as exc:
-        raise self.retry(exc=exc, countdown=60)
-\`\`\`
-
-## 프롬프트 예시
-"Django DRF로 [기능]을 구현해주세요. JWT 인증, 페이지네이션, 필터링을 포함하고, ORM 쿼리를 최적화해주세요."`
-    },
-    {
-      id: 'nestjs-patterns', name: 'NestJS 패턴', category: 'skills',
-      desc: 'NestJS 모듈, 서비스, 가드, 인터셉터 패턴을 마스터합니다. TypeORM, JWT 인증, Swagger 문서화를 포함합니다.',
-      tags: ['NestJS', 'Node.js', '백엔드', 'TypeScript'], stars: 4.7, installs: 6700, icon: '🏗️', color: 'pink',
-      prompt: `# NestJS 패턴 스킬
-
-NestJS로 확장 가능한 엔터프라이즈 백엔드를 구축하세요.
-
-## 핵심 구조
-
-### 모듈 구조
-\`\`\`typescript
-@Module({
-  imports: [TypeOrmModule.forFeature([User])],
-  controllers: [UsersController],
-  providers: [UsersService, UsersRepository],
-  exports: [UsersService],
-})
-export class UsersModule {}
-\`\`\`
-
-### 서비스 + 리포지토리 패턴
-\`\`\`typescript
-@Injectable()
-export class UsersService {
-  constructor(
-    @InjectRepository(User)
-    private readonly userRepo: Repository<User>,
-  ) {}
-
-  async findOne(id: number): Promise<User> {
-    const user = await this.userRepo.findOne({ where: { id } });
-    if (!user) throw new NotFoundException(\`사용자 \${id}를 찾을 수 없습니다\`);
-    return user;
-  }
-}
-\`\`\`
-
-### JWT 가드
-\`\`\`typescript
-@Injectable()
-export class JwtAuthGuard extends AuthGuard('jwt') {
-  canActivate(context: ExecutionContext) {
-    return super.canActivate(context);
-  }
-}
-\`\`\`
-
-### 인터셉터
-\`\`\`typescript
-@Injectable()
-export class LoggingInterceptor implements NestInterceptor {
-  intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-    const start = Date.now();
-    return next.handle().pipe(
-      tap(() => console.log(\`\${Date.now() - start}ms\`))
-    );
-  }
-}
-\`\`\`
-
-## 프롬프트 예시
-"NestJS로 [기능] API를 구현해주세요. JWT 인증, 역할 기반 권한(RBAC), Swagger 문서화를 포함해주세요."`
-    }
-  ],
+    { id: 'frontend-design', name: 'Frontend Design', nameEn: 'frontend-design', category: 'skills', desc: 'Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, a...', tags: ['creative-design', '프론트엔드'], stars: 4.9, installs: 17102 },
+    { id: 'code-reviewer', name: '코드 리뷰어', nameEn: 'code-reviewer', category: 'skills', desc: 'Comprehensive code review skill for TypeScript, JavaScript, Python, Swift, Kotlin, Go. Includes automated code analysis, best practice checking, secur...', tags: ['개발'], stars: 4.9, installs: 12688 },
+    { id: 'senior-frontend', name: 'Senior Frontend', nameEn: 'senior-frontend', category: 'skills', desc: 'Comprehensive frontend development skill for building modern, performant web applications using ReactJS, NextJS, TypeScript, Tailwind CSS. Includes co...', tags: ['개발', '프론트엔드'], stars: 4.9, installs: 11899 },
+    { id: 'skill-creator', name: 'Skill Creator', nameEn: 'skill-creator', category: 'skills', desc: 'Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or opt...', tags: ['개발'], stars: 4.9, installs: 10502 },
+    { id: 'senior-backend', name: 'Senior Backend', nameEn: 'senior-backend', category: 'skills', desc: 'Comprehensive backend development skill for building scalable backend systems using NodeJS, Express, Go, Python, Postgres, GraphQL, REST APIs. Include...', tags: ['개발', '백엔드'], stars: 4.9, installs: 10083 },
+    { id: 'senior-architect', name: 'Senior Architect', nameEn: 'senior-architect', category: 'skills', desc: 'Comprehensive software architecture skill for designing scalable, maintainable systems using ReactJS, NextJS, NodeJS, Express, React Native, Swift, Ko...', tags: ['개발'], stars: 4.9, installs: 9467 },
+    { id: 'react-best-practices', name: 'React Best Practices', nameEn: 'react-best-practices', category: 'skills', desc: 'Comprehensive React and Next.js performance optimization guide with 40+ rules for eliminating waterfalls, optimizing bundles, and improving rendering....', tags: ['web-development', 'React', '성능'], stars: 4.9, installs: 7226 },
+    { id: 'ui-design-system', name: 'Ui Design System', nameEn: 'ui-design-system', category: 'skills', desc: 'UI design system toolkit for Senior UI Designer including design token generation, component documentation, responsive design calculations, and develo...', tags: ['creative-design'], stars: 4.9, installs: 7145 },
+    { id: 'ui-ux-pro-max', name: 'Ui Ux Pro Max', nameEn: 'ui-ux-pro-max', category: 'skills', desc: '"UI/UX design intelligence. 50 styles, 21 palettes, 50 font pairings, 20 charts, 9 stacks (React, Next.js, Vue, Svelte, SwiftUI, React Native, Flutter...', tags: ['creative-design'], stars: 4.9, installs: 6500 },
+    { id: 'webapp-testing', name: 'Webapp Testing', nameEn: 'webapp-testing', category: 'skills', desc: 'Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, ca...', tags: ['개발', '테스트'], stars: 4.9, installs: 5740 },
+    { id: 'canvas-design', name: 'Canvas Design', nameEn: 'canvas-design', category: 'skills', desc: 'Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece...', tags: ['creative-design'], stars: 4.9, installs: 4558 },
+    { id: 'senior-fullstack', name: 'Senior Fullstack', nameEn: 'senior-fullstack', category: 'skills', desc: 'Comprehensive fullstack development skill for building complete web applications with React, Next.js, Node.js, GraphQL, and PostgreSQL. Includes proje...', tags: ['개발'], stars: 4.9, installs: 4451 },
+    { id: 'git-commit-helper', name: 'Git Commit Helper', nameEn: 'git-commit-helper', category: 'skills', desc: 'Generate descriptive commit messages by analyzing git diffs. Use when the user asks for help writing commit messages or reviewing staged changes.', tags: ['개발', 'Git'], stars: 4.9, installs: 4347 },
+    { id: 'brainstorming', name: 'Brainstorming', nameEn: 'brainstorming', category: 'skills', desc: '"You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user inten...', tags: ['개발'], stars: 4.9, installs: 3934 },
+    { id: 'senior-prompt-engineer', name: 'Senior Prompt Engineer', nameEn: 'senior-prompt-engineer', category: 'skills', desc: 'World-class prompt engineering skill for LLM optimization, prompt patterns, structured outputs, and AI product development. Expertise in Claude, GPT-4...', tags: ['개발'], stars: 4.9, installs: 3784 },
+    { id: 'seo-optimizer', name: 'Seo Optimizer', nameEn: 'seo-optimizer', category: 'skills', desc: 'Search Engine Optimization specialist for content strategy, technical SEO, keyword research, and ranking improvements. Use when optimizing website con...', tags: ['business-marketing'], stars: 4.9, installs: 3511 },
+    { id: 'docx', name: 'Docx', nameEn: 'docx', category: 'skills', desc: '"Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files). Triggers include: any mention of \'Word doc\'...', tags: ['document-processing'], stars: 4.9, installs: 3496 },
+    { id: 'pdf-processing-pro', name: 'Pdf Processing Pro', nameEn: 'pdf-processing-pro', category: 'skills', desc: 'Production-ready PDF processing with forms, tables, OCR, validation, and batch operations. Use when working with complex PDF workflows in production e...', tags: ['document-processing'], stars: 4.9, installs: 3366 },
+    { id: 'mcp-builder', name: 'Mcp Builder', nameEn: 'mcp-builder', category: 'skills', desc: 'Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. ...', tags: ['개발', 'MCP'], stars: 4.9, installs: 3150 },
+    { id: 'senior-security', name: 'Senior Security', nameEn: 'senior-security', category: 'skills', desc: 'Comprehensive security engineering skill for application security, penetration testing, security architecture, and compliance auditing. Includes secur...', tags: ['개발', '보안'], stars: 4.9, installs: 2916 },
+    { id: 'xlsx', name: 'Xlsx', nameEn: 'xlsx', category: 'skills', desc: '"Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an e...', tags: ['document-processing'], stars: 4.9, installs: 2802 },
+    { id: 'pptx', name: 'Pptx', nameEn: 'pptx', category: 'skills', desc: '"Use this skill any time a .pptx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or present...', tags: ['document-processing'], stars: 4.9, installs: 2726 },
+    { id: 'file-organizer', name: 'File Organizer', nameEn: 'file-organizer', category: 'skills', desc: 'Intelligently organizes files and folders by understanding context, finding duplicates, and suggesting better organizational structures. Use when user...', tags: ['생산성'], stars: 4.9, installs: 2712 },
+    { id: 'mobile-design', name: 'Mobile Design', nameEn: 'mobile-design', category: 'skills', desc: 'Mobile-first design thinking and decision-making for iOS and Android apps. Touch interaction, performance patterns, platform conventions. Teaches prin...', tags: ['creative-design'], stars: 4.9, installs: 2446 },
+    { id: 'theme-factory', name: 'Theme Factory', nameEn: 'theme-factory', category: 'skills', desc: 'Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with...', tags: ['creative-design'], stars: 4.9, installs: 2175 },
+    { id: 'excel-analysis', name: 'Excel Analysis', nameEn: 'excel-analysis', category: 'skills', desc: 'Analyze Excel spreadsheets, create pivot tables, generate charts, and perform data analysis. Use when analyzing Excel files, spreadsheets, tabular dat...', tags: ['enterprise-communication'], stars: 4.9, installs: 2146 },
+    { id: 'react-best-practices', name: 'React Best Practices', nameEn: 'react-best-practices', category: 'skills', desc: 'React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React...', tags: ['개발', 'React'], stars: 4.9, installs: 1951 },
+    { id: 'ux-researcher-designer', name: 'Ux Researcher Designer', nameEn: 'ux-researcher-designer', category: 'skills', desc: 'UX research and design toolkit for Senior UX Designer/Researcher including data-driven persona generation, journey mapping, usability testing framewor...', tags: ['creative-design'], stars: 4.9, installs: 1821 },
+    { id: 'senior-devops', name: 'Senior Devops', nameEn: 'senior-devops', category: 'skills', desc: 'Comprehensive DevOps skill for CI/CD, infrastructure automation, containerization, and cloud platforms (AWS, GCP, Azure). Includes pipeline setup, inf...', tags: ['개발', 'DevOps'], stars: 4.9, installs: 1767 },
+    { id: 'content-creator', name: 'Content Creator', nameEn: 'content-creator', category: 'skills', desc: 'Create SEO-optimized marketing content with consistent brand voice. Includes brand voice analyzer, SEO optimizer, content frameworks, and social media...', tags: ['business-marketing'], stars: 4.9, installs: 1632 },
+    { id: 'clean-code', name: 'Clean Code', nameEn: 'clean-code', category: 'skills', desc: 'Pragmatic coding standards - concise, direct, no over-engineering, no unnecessary comments', tags: ['개발'], stars: 4.9, installs: 1605 },
+    { id: 'artifacts-builder', name: 'Artifacts Builder', nameEn: 'artifacts-builder', category: 'skills', desc: 'Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui...', tags: ['개발'], stars: 4.9, installs: 1411 },
+    { id: 'content-research-writer', name: 'Content Research Writer', nameEn: 'content-research-writer', category: 'skills', desc: 'Assists in writing high-quality content by conducting research, adding citations, improving hooks, iterating on outlines, and providing real-time feed...', tags: ['business-marketing'], stars: 4.9, installs: 1373 },
+    { id: 'pdf-anthropic', name: 'Pdf Anthropic', nameEn: 'pdf-anthropic', category: 'skills', desc: 'Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging ...', tags: ['document-processing'], stars: 4.9, installs: 1360 },
+    { id: 'api-integration-specialist', name: 'Api Integration Specialist', nameEn: 'api-integration-specialist', category: 'skills', desc: 'Expert in integrating third-party APIs with proper authentication, error handling, rate limiting, and retry logic. Use when integrating REST APIs, Gra...', tags: ['개발', 'API'], stars: 4.9, installs: 1359 },
+    { id: 'senior-qa', name: 'Senior Qa', nameEn: 'senior-qa', category: 'skills', desc: 'Comprehensive QA and testing skill for quality assurance, test automation, and testing strategies for ReactJS, NextJS, NodeJS applications. Includes t...', tags: ['개발'], stars: 4.9, installs: 1302 },
+    { id: 'senior-data-engineer', name: 'Senior Data Engineer', nameEn: 'senior-data-engineer', category: 'skills', desc: 'World-class data engineering skill for building scalable data pipelines, ETL/ELT systems, and data infrastructure. Expertise in Python, SQL, Spark, Ai...', tags: ['개발'], stars: 4.9, installs: 1222 },
+    { id: 'copywriting', name: 'Copywriting', nameEn: 'copywriting', category: 'skills', desc: 'When the user wants to write, rewrite, or improve marketing copy for any page — including homepage, landing pages, pricing pages, feature pages, about...', tags: ['business-marketing'], stars: 4.9, installs: 1189 },
+    { id: 'senior-data-scientist', name: 'Senior Data Scientist', nameEn: 'senior-data-scientist', category: 'skills', desc: 'World-class data science skill for statistical modeling, experimentation, causal inference, and advanced analytics. Expertise in Python (NumPy, Pandas...', tags: ['개발'], stars: 4.9, installs: 1175 },
+    { id: 'agent-development', name: 'Agent Development', nameEn: 'agent-development', category: 'skills', desc: 'This skill should be used when the user asks to "create an agent", "add an agent", "write a subagent", "agent frontmatter", "when to use description",...', tags: ['개발', '에이전트'], stars: 4.9, installs: 1168 },
+    { id: '3d-web-experience', name: '3d Web Experience', nameEn: '3d-web-experience', category: 'skills', desc: '"Expert in building 3D experiences for the web - Three.js, React Three Fiber, Spline, WebGL, and interactive 3D scenes. Covers product configurators, ...', tags: ['creative-design'], stars: 4.9, installs: 1144 },
+    { id: 'email-composer', name: 'Email Composer', nameEn: 'email-composer', category: 'skills', desc: 'Draft professional emails for various contexts including business, technical, and customer communication. Use when the user needs help writing emails ...', tags: ['enterprise-communication'], stars: 4.9, installs: 1079 },
+    { id: 'using-superpowers', name: 'Using Superpowers', nameEn: 'using-superpowers', category: 'skills', desc: 'Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying ...', tags: ['개발'], stars: 4.9, installs: 1042 },
+    { id: 'systematic-debugging', name: 'Systematic Debugging', nameEn: 'systematic-debugging', category: 'skills', desc: 'Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes', tags: ['개발'], stars: 4.9, installs: 1033 },
+    { id: 'writing-plans', name: 'Writing Plans', nameEn: 'writing-plans', category: 'skills', desc: 'Use when you have a spec or requirements for a multi-step task, before touching code', tags: ['개발'], stars: 4.8, installs: 965 },
+    { id: 'tailwind-patterns', name: 'Tailwind Patterns', nameEn: 'tailwind-patterns', category: 'skills', desc: 'Tailwind CSS v4 principles. CSS-first configuration, container queries, modern patterns, design token architecture.', tags: ['creative-design'], stars: 4.8, installs: 955 },
+    { id: 'web-performance-optimization', name: 'Web Performance Optimization', nameEn: 'web-performance-optimization', category: 'skills', desc: '"Optimize website and web application performance including loading speed, Core Web Vitals, bundle size, caching strategies, and runtime performance"', tags: ['web-development', '성능'], stars: 4.8, installs: 950 },
+    { id: 'lead-research-assistant', name: 'Lead Research Assistant', nameEn: 'lead-research-assistant', category: 'skills', desc: 'Identifies high-quality leads for your product or service by analyzing your business, searching for target companies, and providing actionable contact...', tags: ['business-marketing'], stars: 4.8, installs: 915 },
+    { id: 'pdf-processing', name: 'Pdf Processing', nameEn: 'pdf-processing', category: 'skills', desc: 'Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging ...', tags: ['document-processing'], stars: 4.8, installs: 909 },
+    { id: 'algorithmic-art', name: 'Algorithmic Art', nameEn: 'algorithmic-art', category: 'skills', desc: 'Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code...', tags: ['creative-design'], stars: 4.8, installs: 887 },
+    { id: 'supabase-postgres-best-practices', name: 'Supabase Postgres Best Practices', nameEn: 'supabase-postgres-best-practices', category: 'skills', desc: 'Postgres performance optimization and best practices from Supabase. Use this skill when writing, reviewing, or optimizing Postgres queries, schema des...', tags: ['데이터베이스'], stars: 4.8, installs: 877 },
+    { id: 'docker-expert', name: 'Docker Expert', nameEn: 'docker-expert', category: 'skills', desc: 'Docker Expert 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['개발', 'Docker'], stars: 4.8, installs: 876 },
+    { id: 'product-manager-toolkit', name: 'Product Manager Toolkit', nameEn: 'product-manager-toolkit', category: 'skills', desc: 'Comprehensive toolkit for product managers including RICE prioritization, customer interview analysis, PRD templates, discovery frameworks, and go-to-...', tags: ['business-marketing'], stars: 4.8, installs: 865 },
+    { id: 'marketing-strategy-pmm', name: 'Marketing Strategy Pmm', nameEn: 'marketing-strategy-pmm', category: 'skills', desc: 'Product marketing, positioning, GTM strategy, and competitive intelligence. Includes ICP definition, April Dunford positioning methodology, launch pla...', tags: ['business-marketing'], stars: 4.8, installs: 824 },
+    { id: 'ceo-advisor', name: 'Ceo Advisor', nameEn: 'ceo-advisor', category: 'skills', desc: 'Executive leadership guidance for strategic decision-making, organizational development, and stakeholder management. Includes strategy analyzer, finan...', tags: ['business-marketing'], stars: 4.8, installs: 771 },
+    { id: 'nextjs-best-practices', name: 'Nextjs Best Practices', nameEn: 'nextjs-best-practices', category: 'skills', desc: 'Next.js App Router principles. Server Components, data fetching, routing patterns.', tags: ['개발', 'Next.js'], stars: 4.8, installs: 769 },
+    { id: 'workflow-automation', name: 'Workflow Automation', nameEn: 'workflow-automation', category: 'skills', desc: '"Workflow automation is the infrastructure that makes AI agents reliable. Without durable execution, a network hiccup during a 10-step payment flow me...', tags: ['workflow-automation', '워크플로우', '자동화'], stars: 4.8, installs: 761 },
+    { id: 'vulnerability-scanner', name: 'Vulnerability Scanner', nameEn: 'vulnerability-scanner', category: 'skills', desc: 'Advanced vulnerability analysis principles. OWASP 2025, Supply Chain Security, attack surface mapping, risk prioritization.', tags: ['보안'], stars: 4.8, installs: 692 },
+    { id: 'product-strategist', name: 'Product Strategist', nameEn: 'product-strategist', category: 'skills', desc: 'Strategic product leadership toolkit for Head of Product including OKR cascade generation, market analysis, vision setting, and team scaling. Use for ...', tags: ['business-marketing'], stars: 4.8, installs: 688 },
+    { id: 'brand-guidelines', name: 'Brand Guidelines', nameEn: 'brand-guidelines', category: 'skills', desc: 'Applies Anthropic\'s official brand colors and typography to any sort of artifact that may benefit from having Anthropic\'s look-and-feel. Use it when b...', tags: ['enterprise-communication'], stars: 4.8, installs: 681 },
+    { id: 'api-security-best-practices', name: 'Api Security Best Practices', nameEn: 'api-security-best-practices', category: 'skills', desc: '"Implement secure API design patterns including authentication, authorization, input validation, rate limiting, and protection against common API vuln...', tags: ['API', '보안'], stars: 4.8, installs: 651 },
+    { id: 'software-architecture', name: 'Software Architecture', nameEn: 'software-architecture', category: 'skills', desc: 'Guide for quality focused software architecture. This skill should be used when users want to write code, design architecture, analyze code, in any ca...', tags: ['개발'], stars: 4.8, installs: 633 },
+    { id: 'social-content', name: 'Social Content', nameEn: 'social-content', category: 'skills', desc: '"When the user wants help creating, scheduling, or optimizing social media content for LinkedIn, Twitter/X, Instagram, TikTok, Facebook, or other plat...', tags: ['business-marketing'], stars: 4.8, installs: 630 },
+    { id: 'agents-langchain', name: 'Agents Langchain', nameEn: 'agents-langchain', category: 'skills', desc: 'Framework for building LLM-powered applications with agents, chains, and RAG. Supports multiple providers (OpenAI, Anthropic, Google), 500+ integratio...', tags: ['ai-research', 'React'], stars: 4.8, installs: 603 },
+    { id: 'seo-audit', name: 'Seo Audit', nameEn: 'seo-audit', category: 'skills', desc: 'When the user wants to audit, review, or diagnose SEO issues on their site. Also use when the user mentions "SEO audit," "technical SEO," "why am I no...', tags: ['business-marketing'], stars: 4.8, installs: 603 },
+    { id: 'video-downloader', name: 'Video Downloader', nameEn: 'video-downloader', category: 'skills', desc: 'Downloads videos from YouTube and other platforms for offline viewing, editing, or archival. Handles various formats and quality options.', tags: ['media'], stars: 4.8, installs: 602 },
+    { id: 'mermaid-diagrams', name: 'Mermaid Diagrams', nameEn: 'mermaid-diagrams', category: 'skills', desc: 'Comprehensive guide for creating software diagrams using Mermaid syntax. Use when users need to create, visualize, or document software through diagra...', tags: ['creative-design'], stars: 4.8, installs: 590 },
+    { id: 'web-design-guidelines', name: 'Web Design Guidelines', nameEn: 'web-design-guidelines', category: 'skills', desc: 'Review UI code for Web Interface Guidelines compliance. Use when asked to "review my UI", "check accessibility", "audit design", "review UX", or "chec...', tags: ['creative-design'], stars: 4.8, installs: 584 },
+    { id: 'python-patterns', name: 'Python Patterns', nameEn: 'python-patterns', category: 'skills', desc: 'Python development principles and decision-making. Framework selection, async patterns, type hints, project structure. Teaches thinking, not copying.', tags: ['개발', 'Python'], stars: 4.8, installs: 572 },
+    { id: 'marketing-psychology', name: 'Marketing Psychology', nameEn: 'marketing-psychology', category: 'skills', desc: '"When the user wants to apply psychological principles, mental models, or behavioral science to marketing. Also use when the user mentions \'psychology...', tags: ['business-marketing'], stars: 4.8, installs: 568 },
+    { id: 'changelog-generator', name: 'Changelog Generator', nameEn: 'changelog-generator', category: 'skills', desc: 'Automatically creates user-facing changelogs from git commits by analyzing commit history, categorizing changes, and transforming technical commits in...', tags: ['개발'], stars: 4.8, installs: 565 },
+    { id: 'cto-advisor', name: 'Cto Advisor', nameEn: 'cto-advisor', category: 'skills', desc: 'Technical leadership guidance for engineering teams, architecture decisions, and technology strategy. Includes tech debt analyzer, team scaling calcul...', tags: ['business-marketing'], stars: 4.8, installs: 557 },
+    { id: 'marketing-ideas', name: 'Marketing Ideas', nameEn: 'marketing-ideas', category: 'skills', desc: '"When the user needs marketing ideas, inspiration, or strategies for their SaaS or software product. Also use when the user asks for \'marketing ideas,...', tags: ['business-marketing'], stars: 4.8, installs: 550 },
+    { id: 'executing-marketing-campaigns', name: 'Executing Marketing Campaigns', nameEn: 'executing-marketing-campaigns', category: 'skills', desc: 'Plans, creates, and optimizes marketing campaigns including content strategy, social media, email, and analytics. Helps develop go-to-market strategie...', tags: ['creative-design'], stars: 4.8, installs: 534 },
+    { id: 'image-enhancer', name: 'Image Enhancer', nameEn: 'image-enhancer', category: 'skills', desc: 'Improves the quality of images, especially screenshots, by enhancing resolution, sharpness, and clarity. Perfect for preparing images for presentation...', tags: ['media'], stars: 4.8, installs: 526 },
+    { id: 'nestjs-expert', name: 'Nestjs Expert', nameEn: 'nestjs-expert', category: 'skills', desc: 'Nest.js framework expert specializing in module architecture, dependency injection, middleware, guards, interceptors, testing with Jest/Supertest, Typ...', tags: ['개발'], stars: 4.8, installs: 509 },
+    { id: 'pdf', name: 'Pdf', nameEn: 'pdf', category: 'skills', desc: 'Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging ...', tags: ['document-processing'], stars: 4.7, installs: 499 },
+    { id: 'scroll-experience', name: 'Scroll Experience', nameEn: 'scroll-experience', category: 'skills', desc: '"Expert in building immersive scroll-driven experiences - parallax storytelling, scroll animations, interactive narratives, and cinematic web experien...', tags: ['creative-design'], stars: 4.7, installs: 498 },
+    { id: 'competitive-ads-extractor', name: 'Competitive Ads Extractor', nameEn: 'competitive-ads-extractor', category: 'skills', desc: 'Extracts and analyzes competitors\' ads from ad libraries (Facebook, LinkedIn, etc.) to understand what messaging, problems, and creative approaches ar...', tags: ['business-marketing'], stars: 4.7, installs: 497 },
+    { id: 'error-resolver', name: 'Error Resolver', nameEn: 'error-resolver', category: 'skills', desc: 'Systematic error diagnosis and resolution using first-principle analysis. Use when encountering any error message, stack trace, or unexpected behavior...', tags: ['개발'], stars: 4.7, installs: 482 },
+    { id: 'google-analytics', name: 'Google Analytics', nameEn: 'google-analytics', category: 'skills', desc: 'Analyze Google Analytics data, review website performance metrics, identify traffic patterns, and suggest data-driven improvements. Use when the user ...', tags: ['analytics'], stars: 4.7, installs: 479 },
+    { id: 'agent-memory-systems', name: 'Agent Memory Systems', nameEn: 'agent-memory-systems', category: 'skills', desc: '"Memory is the cornerstone of intelligent agents. Without it, every interaction starts from zero. This skill covers the architecture of agent memory: ...', tags: ['ai-research', '에이전트'], stars: 4.7, installs: 476 },
+    { id: 'claude-code-guide', name: 'Claude Code Guide', nameEn: 'claude-code-guide', category: 'skills', desc: 'Master guide for using Claude Code effectively. Includes configuration templates, prompting strategies "Thinking" keywords, debugging techniques, and ...', tags: ['ai-research'], stars: 4.7, installs: 472 },
+    { id: 'devops-iac-engineer', name: 'Devops Iac Engineer', nameEn: 'devops-iac-engineer', category: 'skills', desc: 'Implements infrastructure as code using Terraform, Kubernetes, and cloud platforms. Designs scalable architectures, CI/CD pipelines, and observability...', tags: ['개발', 'DevOps'], stars: 4.7, installs: 455 },
+    { id: 'context7-auto-research', name: 'Context7 Auto Research', nameEn: 'context7-auto-research', category: 'skills', desc: 'Automatically fetch latest library/framework documentation for Claude Code via Context7 API', tags: ['ai-research'], stars: 4.7, installs: 452 },
+    { id: 'create-plan', name: 'Create Plan', nameEn: 'create-plan', category: 'skills', desc: 'Create a concise plan. Use when a user explicitly asks for a plan related to a coding task.', tags: ['개발'], stars: 4.7, installs: 440 },
+    { id: 'test-driven-development', name: 'Test Driven Development', nameEn: 'test-driven-development', category: 'skills', desc: 'Use when implementing any feature or bugfix, before writing implementation code', tags: ['개발'], stars: 4.7, installs: 437 },
+    { id: 'security-compliance', name: 'Security Compliance', nameEn: 'security-compliance', category: 'skills', desc: 'Guides security professionals in implementing defense-in-depth security architectures, achieving compliance with industry frameworks (SOC2, ISO27001, ...', tags: ['개발', '보안'], stars: 4.7, installs: 425 },
+    { id: 'marketing-demand-acquisition', name: 'Marketing Demand Acquisition', nameEn: 'marketing-demand-acquisition', category: 'skills', desc: 'Multi-channel demand generation, paid media optimization, SEO strategy, and partnership programs for Series A+ startups. Includes CAC calculator, chan...', tags: ['business-marketing'], stars: 4.7, installs: 418 },
+    { id: 'generate-image', name: 'Generate Image', nameEn: 'generate-image', category: 'skills', desc: 'Generate or edit images using AI models (FLUX, Gemini). Use for general-purpose image generation including photos, illustrations, artwork, visual asse...', tags: ['scientific'], stars: 4.7, installs: 415 },
+    { id: 'ai-agents-architect', name: 'Ai Agents Architect', nameEn: 'ai-agents-architect', category: 'skills', desc: '"Expert in designing and building autonomous AI agents. Masters tool use, memory systems, planning strategies, and multi-agent orchestration. Use when...', tags: ['ai-research', 'AI'], stars: 4.7, installs: 411 },
+    { id: 'find-bugs', name: 'Find Bugs', nameEn: 'find-bugs', category: 'skills', desc: 'Find bugs, security vulnerabilities, and code quality issues in local branch changes. Use when asked to review changes, find bugs, security review, or...', tags: ['sentry'], stars: 4.7, installs: 408 },
+    { id: 'senior-ml-engineer', name: 'Senior Ml Engineer', nameEn: 'senior-ml-engineer', category: 'skills', desc: 'World-class ML engineering skill for productionizing ML models, MLOps, and building scalable ML systems. Expertise in PyTorch, TensorFlow, model deplo...', tags: ['개발', '머신러닝'], stars: 4.7, installs: 397 },
+    { id: 'top-web-vulnerabilities', name: 'Top Web Vulnerabilities', nameEn: 'top-web-vulnerabilities', category: 'skills', desc: 'This skill should be used when the user asks to "identify web application vulnerabilities", "explain common security flaws", "understand vulnerability...', tags: ['보안'], stars: 4.7, installs: 391 },
+    { id: 'game-development', name: 'Game Development', nameEn: 'game-development', category: 'skills', desc: 'Game development orchestrator. Routes to platform-specific skills based on project needs.', tags: ['creative-design'], stars: 4.7, installs: 385 },
+    { id: 'markitdown', name: 'Markitdown', nameEn: 'markitdown', category: 'skills', desc: '"Convert files and office documents to Markdown. Supports PDF, DOCX, PPTX, XLSX, images (with OCR), audio (with transcription), HTML, CSV, JSON, XML, ...', tags: ['scientific'], stars: 4.7, installs: 382 },
+    { id: 'remotion', name: 'Remotion', nameEn: 'remotion', category: 'skills', desc: 'Best practices and comprehensive guide for Remotion - programmatic video creation in React with animations, compositions, and media handling', tags: ['video', 'React'], stars: 4.7, installs: 381 },
+    { id: 'paid-ads', name: 'Paid Ads', nameEn: 'paid-ads', category: 'skills', desc: '"When the user wants help with paid advertising campaigns on Google Ads, Meta (Facebook/Instagram), LinkedIn, Twitter/X, or other ad platforms. Also u...', tags: ['business-marketing'], stars: 4.7, installs: 370 },
+    { id: 'scientific-critical-thinking', name: 'Scientific Critical Thinking', nameEn: 'scientific-critical-thinking', category: 'skills', desc: '"Evaluate research rigor. Assess methodology, experimental design, statistical validity, biases, confounding, evidence quality (GRADE, Cochrane ROB), ...', tags: ['scientific'], stars: 4.7, installs: 361 },
+    { id: 'subagent-driven-development', name: 'Subagent Driven Development', nameEn: 'subagent-driven-development', category: 'skills', desc: 'Use when executing implementation plans with independent tasks in the current session', tags: ['개발'], stars: 4.7, installs: 359 },
+    { id: 'draw-io', name: 'Draw Io', nameEn: 'draw-io', category: 'skills', desc: 'draw.io diagram creation, editing, and review. Use for .drawio XML editing, PNG conversion, layout adjustment, and AWS icon usage.', tags: ['creative-design'], stars: 4.7, installs: 352 },
+    { id: 'postgres-best-practices', name: 'Postgres Best Practices', nameEn: 'postgres-best-practices', category: 'skills', desc: 'Postgres performance optimization and best practices from Supabase. Use this skill when writing, reviewing, or optimizing Postgres queries, schema des...', tags: ['개발'], stars: 4.7, installs: 350 },
+    { id: 'mcp-integration', name: 'Mcp Integration', nameEn: 'mcp-integration', category: 'skills', desc: 'This skill should be used when the user asks to "add MCP server", "integrate MCP", "configure MCP in plugin", "use .mcp.json", "set up Model Context P...', tags: ['개발', 'MCP'], stars: 4.7, installs: 343 },
+    { id: 'seo-fundamentals', name: 'Seo Fundamentals', nameEn: 'seo-fundamentals', category: 'skills', desc: 'SEO fundamentals, E-E-A-T, Core Web Vitals, and Google algorithm principles.', tags: ['business-marketing'], stars: 4.7, installs: 332 },
+    { id: 'typescript-expert', name: 'Typescript Expert', nameEn: 'typescript-expert', category: 'skills', desc: 'Typescript Expert — Claude Code용 스킬 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['개발', 'TypeScript'], stars: 4.7, installs: 330 },
+    { id: 'accessibility-auditor', name: 'Accessibility Auditor', nameEn: 'accessibility-auditor', category: 'skills', desc: 'Web accessibility specialist for WCAG compliance, ARIA implementation, and inclusive design. Use when auditing websites for accessibility issues, impl...', tags: ['creative-design'], stars: 4.7, installs: 329 },
+    { id: 'agents-crewai', name: 'Agents Crewai', nameEn: 'agents-crewai', category: 'skills', desc: 'Multi-agent orchestration framework for autonomous AI collaboration. Use when building teams of specialized agents working together on complex tasks, ...', tags: ['ai-research'], stars: 4.7, installs: 328 },
+    { id: 'agile-product-owner', name: 'Agile Product Owner', nameEn: 'agile-product-owner', category: 'skills', desc: 'Agile product ownership toolkit for Senior Product Owner including INVEST-compliant user story generation, sprint planning, backlog management, and ve...', tags: ['business-marketing'], stars: 4.7, installs: 326 },
+    { id: 'programmatic-seo', name: 'Programmatic Seo', nameEn: 'programmatic-seo', category: 'skills', desc: 'When the user wants to create SEO-driven pages at scale using templates and data. Also use when the user mentions "programmatic SEO," "template pages,...', tags: ['business-marketing'], stars: 4.7, installs: 325 },
+    { id: 'database-design', name: 'Database Design', nameEn: 'database-design', category: 'skills', desc: 'Database design principles and decision-making. Schema design, indexing strategy, ORM selection, serverless databases.', tags: ['개발', '데이터베이스'], stars: 4.7, installs: 325 },
+    { id: 'internal-comms', name: 'Internal Comms', nameEn: 'internal-comms', category: 'skills', desc: 'A set of resources to help me write all kinds of internal communications, using the formats that my company likes to use. Claude should use this skill...', tags: ['enterprise-communication'], stars: 4.7, installs: 325 },
+    { id: 'scientific-slides', name: 'Scientific Slides', nameEn: 'scientific-slides', category: 'skills', desc: '"Build slide decks and presentations for research talks. Use this for making PowerPoint slides, conference presentations, seminar talks, research pres...', tags: ['scientific'], stars: 4.7, installs: 320 },
+    { id: 'cf-crawl', name: 'Cf Crawl', nameEn: 'cf-crawl', category: 'skills', desc: '"Crawl entire websites using Cloudflare Browser Rendering /crawl API. Initiates async crawl jobs, polls for completion, and saves results as markdown ...', tags: ['utilities'], stars: 4.7, installs: 311 },
+    { id: 'database', name: 'Database', nameEn: 'database', category: 'skills', desc: 'Add official Railway database services (Postgres, Redis, MySQL, MongoDB). Use when user wants to add a database, says "add postgres", "add redis", "ad...', tags: ['railway', '데이터베이스'], stars: 4.7, installs: 294 },
+    { id: 'prompt-engineering', name: 'Prompt Engineering', nameEn: 'prompt-engineering', category: 'skills', desc: 'Expert guide on prompt engineering patterns, best practices, and optimization techniques. Use when user wants to improve prompts, learn prompting stra...', tags: ['ai-research'], stars: 4.7, installs: 291 },
+    { id: 'pricing-strategy', name: 'Pricing Strategy', nameEn: 'pricing-strategy', category: 'skills', desc: '"When the user wants help with pricing decisions, packaging, or monetization strategy. Also use when the user mentions \'pricing,\' \'pricing tiers,\' \'fr...', tags: ['business-marketing'], stars: 4.7, installs: 286 },
+    { id: 'figma', name: 'Figma', nameEn: 'figma', category: 'skills', desc: 'Use the Figma MCP server to fetch design context, screenshots, variables, and assets from Figma, and to translate Figma nodes into production code. Tr...', tags: ['creative-design'], stars: 4.7, installs: 286 },
+    { id: 'backend-dev-guidelines', name: 'Backend Dev Guidelines', nameEn: 'backend-dev-guidelines', category: 'skills', desc: 'Comprehensive backend development guide for Node.js/Express/TypeScript microservices. Use when creating routes, controllers, services, repositories, m...', tags: ['개발', '백엔드'], stars: 4.7, installs: 285 },
+    { id: 'launch-strategy', name: 'Launch Strategy', nameEn: 'launch-strategy', category: 'skills', desc: '"When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user mentions \'launch,\' \'Product Hunt,\' \'f...', tags: ['business-marketing'], stars: 4.7, installs: 273 },
+    { id: 'humanizer', name: 'Humanizer', nameEn: 'humanizer', category: 'skills', desc: 'Humanizer — Claude Code용 스킬 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['생산성'], stars: 4.7, installs: 272 },
+    { id: 'security-best-practices', name: 'Security Best Practices', nameEn: 'security-best-practices', category: 'skills', desc: '"Perform language and framework specific security best-practice reviews and suggest improvements. Trigger only when the user explicitly requests secur...', tags: ['보안'], stars: 4.7, installs: 272 },
+    { id: 'email-sequence', name: 'Email Sequence', nameEn: 'email-sequence', category: 'skills', desc: 'When the user wants to create or optimize an email sequence, drip campaign, automated email flow, or lifecycle email program. Also use when the user m...', tags: ['business-marketing'], stars: 4.7, installs: 271 },
+    { id: 'developer-growth-analysis', name: 'Developer Growth Analysis', nameEn: 'developer-growth-analysis', category: 'skills', desc: 'Analyzes your recent Claude Code chat history to identify coding patterns, development gaps, and areas for improvement, curates relevant learning reso...', tags: ['개발'], stars: 4.7, installs: 267 },
+    { id: 'roier-seo', name: 'Roier Seo', nameEn: 'roier-seo', category: 'skills', desc: 'Technical SEO auditor and fixer. Runs Lighthouse/PageSpeed audits on websites or local dev servers, analyzes SEO/performance/accessibility scores, and...', tags: ['web-development', '성능', 'React'], stars: 4.7, installs: 267 },
+    { id: 'api-patterns', name: 'Api Patterns', nameEn: 'api-patterns', category: 'skills', desc: 'API design principles and decision-making. REST vs GraphQL vs tRPC selection, response formats, versioning, pagination.', tags: ['개발', 'API'], stars: 4.7, installs: 261 },
+    { id: 'web-artifacts-builder', name: 'Web Artifacts Builder', nameEn: 'web-artifacts-builder', category: 'skills', desc: 'Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui...', tags: ['개발'], stars: 4.7, installs: 258 },
+    { id: 'agents-autogpt', name: 'Agents Autogpt', nameEn: 'agents-autogpt', category: 'skills', desc: 'Autonomous AI agent platform for building and deploying continuous agents. Use when creating visual workflow agents, deploying persistent autonomous a...', tags: ['ai-research'], stars: 4.7, installs: 249 },
+    { id: 'sql-injection-testing', name: 'Sql Injection Testing', nameEn: 'sql-injection-testing', category: 'skills', desc: 'This skill should be used when the user asks to "test for SQL injection vulnerabilities", "perform SQLi attacks", "bypass authentication using SQL inj...', tags: ['보안'], stars: 4.7, installs: 249 },
+    { id: 'market-research-reports', name: 'Market Research Reports', nameEn: 'market-research-reports', category: 'skills', desc: '"Generate comprehensive market research reports (50+ pages) in the style of top consulting firms (McKinsey, BCG, Gartner). Features professional LaTeX...', tags: ['scientific'], stars: 4.7, installs: 248 },
+    { id: 'plotly', name: 'Plotly', nameEn: 'plotly', category: 'skills', desc: 'Interactive scientific and statistical data visualization library for Python. Use when creating charts, plots, or visualizations including scatter plo...', tags: ['scientific'], stars: 4.7, installs: 247 },
+    { id: 'nodejs-best-practices', name: 'Nodejs Best Practices', nameEn: 'nodejs-best-practices', category: 'skills', desc: 'Node.js development principles and decision-making. Framework selection, async patterns, security, and architecture. Teaches thinking, not copying.', tags: ['개발'], stars: 4.7, installs: 246 },
+    { id: 'statistical-analysis', name: 'Statistical Analysis', nameEn: 'statistical-analysis', category: 'skills', desc: '"Statistical analysis toolkit. Hypothesis tests (t-test, ANOVA, chi-square), regression, correlation, Bayesian stats, power analysis, assumption check...', tags: ['scientific'], stars: 4.7, installs: 246 },
+    { id: 'dispatching-parallel-agents', name: 'Dispatching Parallel Agents', nameEn: 'dispatching-parallel-agents', category: 'skills', desc: 'Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies', tags: ['개발'], stars: 4.7, installs: 245 },
+    { id: 'obsidian-markdown', name: 'Obsidian Markdown', nameEn: 'obsidian-markdown', category: 'skills', desc: 'Create and edit Obsidian Flavored Markdown with wikilinks, embeds, callouts, properties, and other Obsidian-specific syntax. Use when working with .md...', tags: ['document-processing'], stars: 4.7, installs: 245 },
+    { id: 'literature-review', name: 'Literature Review', nameEn: 'literature-review', category: 'skills', desc: 'Conduct comprehensive, systematic literature reviews using multiple academic databases (PubMed, arXiv, bioRxiv, Semantic Scholar, etc.). This skill sh...', tags: ['scientific'], stars: 4.7, installs: 244 },
+    { id: 'invoice-organizer', name: 'Invoice Organizer', nameEn: 'invoice-organizer', category: 'skills', desc: 'Automatically organizes invoices and receipts for tax preparation by reading messy files, extracting key information, renaming them consistently, and ...', tags: ['생산성'], stars: 4.7, installs: 242 },
+    { id: 'scientific-writing', name: 'Scientific Writing', nameEn: 'scientific-writing', category: 'skills', desc: '"Core skill for the deep research and writing tool. Write scientific manuscripts in full paragraphs (never bullet points). Use two-stage process: (1) ...', tags: ['scientific'], stars: 4.7, installs: 241 },
+    { id: 'prompt-engineer', name: 'Prompt Engineer', nameEn: 'prompt-engineer', category: 'skills', desc: '"Expert in designing effective prompts for LLM-powered applications. Masters prompt structure, context management, output formatting, and prompt evalu...', tags: ['ai-research'], stars: 4.7, installs: 238 },
+    { id: 'frontend-dev-guidelines', name: 'Frontend Dev Guidelines', nameEn: 'frontend-dev-guidelines', category: 'skills', desc: 'Frontend development guidelines for React/TypeScript applications. Modern patterns including Suspense, lazy loading, useSuspenseQuery, file organizati...', tags: ['개발', '프론트엔드'], stars: 4.7, installs: 237 },
+    { id: 'figma-implement-design', name: 'Figma Implement Design', nameEn: 'figma-implement-design', category: 'skills', desc: '"Translate Figma nodes into production-ready code with 1:1 visual fidelity using the Figma MCP workflow (design context, screenshots, assets, and proj...', tags: ['creative-design'], stars: 4.7, installs: 235 },
+    { id: 'senior-computer-vision', name: 'Senior Computer Vision', nameEn: 'senior-computer-vision', category: 'skills', desc: 'World-class computer vision skill for image/video processing, object detection, segmentation, and visual AI systems. Expertise in PyTorch, OpenCV, YOL...', tags: ['개발'], stars: 4.7, installs: 235 },
+    { id: 'domain-name-brainstormer', name: 'Domain Name Brainstormer', nameEn: 'domain-name-brainstormer', category: 'skills', desc: 'Generates creative domain name ideas for your project and checks availability across multiple TLDs (.com, .io, .dev, .ai, etc.). Saves hours of brains...', tags: ['utilities'], stars: 4.7, installs: 235 },
+    { id: 'slack-gif-creator', name: 'Slack Gif Creator', nameEn: 'slack-gif-creator', category: 'skills', desc: 'Knowledge and utilities for creating animated GIFs optimized for Slack. Provides constraints, validation tools, and animation concepts. Use when users...', tags: ['creative-design'], stars: 4.7, installs: 233 },
+    { id: 'fastapi-endpoint', name: 'Fastapi Endpoint', nameEn: 'fastapi-endpoint', category: 'skills', desc: 'Plan and build production-ready FastAPI endpoints with async SQLAlchemy, Pydantic v2 models, dependency injection for auth, and pytest tests. Uses int...', tags: ['web-development', 'Python', 'API', '백엔드'], stars: 4.7, installs: 229 },
+    { id: 'database-schema-designer', name: 'Database Schema Designer', nameEn: 'database-schema-designer', category: 'skills', desc: 'Design robust, scalable database schemas for SQL and NoSQL databases. Provides normalization guidelines, indexing strategies, migration patterns, cons...', tags: ['개발', '데이터베이스'], stars: 4.7, installs: 228 },
+    { id: 'executing-plans', name: 'Executing Plans', nameEn: 'executing-plans', category: 'skills', desc: 'Use when you have a written implementation plan to execute in a separate session with review checkpoints', tags: ['개발'], stars: 4.7, installs: 228 },
+    { id: 'architecture', name: 'Architecture', nameEn: 'architecture', category: 'skills', desc: 'Architectural decision-making framework. Requirements analysis, trade-off evaluation, ADR documentation. Use when making architecture decisions or ana...', tags: ['개발'], stars: 4.7, installs: 225 },
+    { id: 'browser-automation', name: 'Browser Automation', nameEn: 'browser-automation', category: 'skills', desc: '"Browser automation powers web testing, scraping, and AI agent interactions. The difference between a flaky script and a reliable system comes down to...', tags: ['utilities', '자동화'], stars: 4.7, installs: 225 },
+    { id: 'skill-development', name: 'Skill Development', nameEn: 'skill-development', category: 'skills', desc: 'Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or opt...', tags: ['개발'], stars: 4.7, installs: 222 },
+    { id: 'agent-tool-builder', name: 'Agent Tool Builder', nameEn: 'agent-tool-builder', category: 'skills', desc: '"Tools are how AI agents interact with the world. A well-designed tool is the difference between an agent that works and one that hallucinates, fails ...', tags: ['ai-research', '에이전트'], stars: 4.7, installs: 218 },
+    { id: 'testing-patterns', name: 'Testing Patterns', nameEn: 'testing-patterns', category: 'skills', desc: 'Jest testing patterns, factory functions, mocking strategies, and TDD workflow. Use when writing unit tests, creating test factories, or following TDD...', tags: ['개발', '테스트'], stars: 4.7, installs: 218 },
+    { id: 'hook-development', name: 'Hook Development', nameEn: 'hook-development', category: 'skills', desc: 'This skill should be used when the user asks to "create a hook", "add a PreToolUse/PostToolUse/Stop hook", "validate tool use", "implement prompt-base...', tags: ['개발'], stars: 4.7, installs: 215 },
+    { id: 'firecrawl-scraper', name: 'Firecrawl Scraper', nameEn: 'firecrawl-scraper', category: 'skills', desc: 'Deep web scraping, screenshots, PDF parsing, and website crawling using Firecrawl API', tags: ['web-development'], stars: 4.7, installs: 209 },
+    { id: 'code-review', name: 'Code Review', nameEn: 'code-review', category: 'skills', desc: 'Perform code reviews following Sentry engineering practices. Use when reviewing pull requests, examining code changes, or providing feedback on code q...', tags: ['sentry'], stars: 4.7, installs: 208 },
+    { id: 'seo', name: 'Seo', nameEn: 'seo', category: 'skills', desc: 'Optimize for search engine visibility and ranking. Use when asked to "improve SEO", "optimize for search", "fix meta tags", "add structured data", "si...', tags: ['개발'], stars: 4.7, installs: 206 },
+    { id: 'claude-d3js-skill', name: 'Claude D3js Skill', nameEn: 'claude-d3js-skill', category: 'skills', desc: 'Creating interactive data visualisations using d3.js. This skill should be used when creating custom charts, graphs, network diagrams, geographic visu...', tags: ['creative-design'], stars: 4.7, installs: 205 },
+    { id: 'scientific-visualization', name: 'Scientific Visualization', nameEn: 'scientific-visualization', category: 'skills', desc: '"Create publication figures with matplotlib/seaborn/plotly. Multi-panel layouts, error bars, significance markers, colorblind-safe, export PDF/EPS/TIF...', tags: ['scientific'], stars: 4.7, installs: 205 },
+    { id: 'planning', name: 'Planning', nameEn: 'planning', category: 'skills', desc: 'Create and manage persistent markdown planning files for structured task execution. Use when the user asks to "create a plan", "track progress", "star...', tags: ['ai-maestro'], stars: 4.7, installs: 204 },
+    { id: 'playwright-skill', name: 'Playwright Skill', nameEn: 'playwright-skill', category: 'skills', desc: 'Complete browser automation with Playwright. Auto-detects dev servers, writes clean test scripts to /tmp. Test pages, fill forms, take screenshots, ch...', tags: ['utilities'], stars: 4.7, installs: 203 },
+    { id: 'app-builder', name: 'App Builder', nameEn: 'app-builder', category: 'skills', desc: 'Main application building orchestrator. Creates full-stack applications from natural language requests. Determines project type, selects tech stack, c...', tags: ['business-marketing'], stars: 4.7, installs: 202 },
+    { id: 'app-store-optimization', name: 'App Store Optimization', nameEn: 'app-store-optimization', category: 'skills', desc: 'Complete App Store Optimization (ASO) toolkit for researching, optimizing, and tracking mobile app performance on Apple App Store and Google Play Stor...', tags: ['business-marketing'], stars: 4.6, installs: 199 },
+    { id: 'planning-with-files', name: 'Planning With Files', nameEn: 'planning-with-files', category: 'skills', desc: 'Transforms workflow to use Manus-style persistent markdown files for planning, progress tracking, and knowledge storage. Use when starting complex tas...', tags: ['workflow-automation'], stars: 4.6, installs: 198 },
+    { id: 'agent-manager-skill', name: 'Agent Manager Skill', nameEn: 'agent-manager-skill', category: 'skills', desc: 'Manage multiple local CLI agents via tmux sessions (start/stop/monitor/assign) with cron-friendly scheduling.', tags: ['ai-research', '에이전트'], stars: 4.6, installs: 195 },
+    { id: 'stripe-integration', name: 'Stripe Integration', nameEn: 'stripe-integration', category: 'skills', desc: '"Get paid from day one. Payments, subscriptions, billing portal, webhooks, metered billing, Stripe Connect. The complete guide to implementing Stripe ...', tags: ['개발'], stars: 4.6, installs: 195 },
+    { id: 'code-review-checklist', name: 'Code Review Checklist', nameEn: 'code-review-checklist', category: 'skills', desc: '"Comprehensive checklist for conducting thorough code reviews covering functionality, security, performance, and maintainability"', tags: ['개발'], stars: 4.6, installs: 194 },
+    { id: 'brainstorming', name: 'Brainstorming', nameEn: 'brainstorming', category: 'skills', desc: '"You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user inten...', tags: ['생산성'], stars: 4.6, installs: 194 },
+    { id: 'agent-management', name: 'Agent Management', nameEn: 'agent-management', category: 'skills', desc: 'Create, manage, and orchestrate AI agents using the AI Maestro CLI. Use when the user asks to "create agent", "list agents", "delete agent", "hibernat...', tags: ['ai-maestro', '에이전트'], stars: 4.6, installs: 193 },
+    { id: 'game-changing-features', name: 'Game Changing Features', nameEn: 'game-changing-features', category: 'skills', desc: 'Find 10x product opportunities and high-leverage improvements. Use when user wants strategic product thinking, mentions \'10x\', wants to find high-impa...', tags: ['생산성'], stars: 4.6, installs: 193 },
+    { id: 'pptx-posters', name: 'Pptx Posters', nameEn: 'pptx-posters', category: 'skills', desc: '"Create professional research posters in LaTeX using beamerposter, tikzposter, or baposter. Support for conference presentations, academic posters, an...', tags: ['scientific'], stars: 4.6, installs: 193 },
+    { id: 'nextjs-supabase-auth', name: 'Nextjs Supabase Auth', nameEn: 'nextjs-supabase-auth', category: 'skills', desc: '"Expert integration of Supabase Auth with Next.js App Router Use when: supabase auth next, authentication next.js, login supabase, auth middleware, pr...', tags: ['개발', 'Next.js'], stars: 4.6, installs: 192 },
+    { id: 'remotion-best-practices', name: 'Remotion Best Practices', nameEn: 'remotion-best-practices', category: 'skills', desc: 'Best practices for Remotion - Video creation in React', tags: ['creative-design'], stars: 4.6, installs: 191 },
+    { id: 'writing-skills', name: 'Writing Skills', nameEn: 'writing-skills', category: 'skills', desc: 'Use when creating new skills, editing existing skills, or verifying skills work before deployment', tags: ['개발'], stars: 4.6, installs: 190 },
+    { id: 'browser-extension-builder', name: 'Browser Extension Builder', nameEn: 'browser-extension-builder', category: 'skills', desc: '"Expert in building browser extensions that solve real problems - Chrome, Firefox, and cross-browser extensions. Covers extension architecture, manife...', tags: ['utilities'], stars: 4.6, installs: 188 },
+    { id: 'competitor-alternatives', name: 'Competitor Alternatives', nameEn: 'competitor-alternatives', category: 'skills', desc: '"When the user wants to create competitor comparison or alternative pages for SEO and sales enablement. Also use when the user mentions \'alternative p...', tags: ['business-marketing'], stars: 4.6, installs: 187 },
+    { id: 'deslop', name: 'Deslop', nameEn: 'deslop', category: 'skills', desc: 'Remove AI-generated code slop from a branch. Use when cleaning up AI-generated code, removing unnecessary comments, defensive checks, or type casts. C...', tags: ['sentry'], stars: 4.6, installs: 187 },
+    { id: 'agent-memory-mcp', name: 'Agent Memory Mcp', nameEn: 'agent-memory-mcp', category: 'skills', desc: 'A hybrid memory system that provides persistent, searchable knowledge management for AI agents (Architecture, Patterns, Decisions).', tags: ['ai-research', '에이전트'], stars: 4.6, installs: 184 },
+    { id: 'playwright', name: 'Playwright', nameEn: 'playwright', category: 'skills', desc: '"Use when the task requires automating a real browser from the terminal (navigation, form filling, snapshots, screenshots, data extraction, UI-flow de...', tags: ['개발'], stars: 4.6, installs: 184 },
+    { id: 'matplotlib', name: 'Matplotlib', nameEn: 'matplotlib', category: 'skills', desc: '"Foundational plotting library. Create line plots, scatter, bar, histograms, heatmaps, 3D, subplots, export PNG/PDF/SVG, for scientific visualization ...', tags: ['scientific'], stars: 4.6, installs: 183 },
+    { id: 'agent-evaluation', name: 'Agent Evaluation', nameEn: 'agent-evaluation', category: 'skills', desc: '"Testing and benchmarking LLM agents including behavioral testing, capability assessment, reliability metrics, and production monitoring—where even to...', tags: ['ai-research', '에이전트'], stars: 4.6, installs: 182 },
+    { id: 'scientific-brainstorming', name: 'Scientific Brainstorming', nameEn: 'scientific-brainstorming', category: 'skills', desc: '"Research ideation partner. Generate hypotheses, explore interdisciplinary connections, challenge assumptions, develop methodologies, identify researc...', tags: ['scientific'], stars: 4.6, installs: 180 },
+    { id: 'interactive-portfolio', name: 'Interactive Portfolio', nameEn: 'interactive-portfolio', category: 'skills', desc: '"Expert in building portfolios that actually land jobs and clients - not just showing work, but creating memorable experiences. Covers developer portf...', tags: ['creative-design'], stars: 4.6, installs: 178 },
+    { id: 'conversation-memory', name: 'Conversation Memory', nameEn: 'conversation-memory', category: 'skills', desc: '"Persistent memory systems for LLM conversations including short-term, long-term, and entity-based memory Use when: conversation memory, remember, mem...', tags: ['ai-research'], stars: 4.6, installs: 177 },
+    { id: 'best-practices', name: 'Best Practices', nameEn: 'best-practices', category: 'skills', desc: 'Apply modern web development best practices for security, compatibility, and code quality. Use when asked to "apply best practices", "security audit",...', tags: ['개발'], stars: 4.6, installs: 177 },
+    { id: 'notebooklm', name: 'Notebooklm', nameEn: 'notebooklm', category: 'skills', desc: 'Use this skill to query your Google NotebookLM notebooks directly from Claude Code for source-grounded, citation-backed answers from Gemini. Browser a...', tags: ['생산성'], stars: 4.6, installs: 174 },
+    { id: 'langgraph', name: 'Langgraph', nameEn: 'langgraph', category: 'skills', desc: '"Expert in LangGraph - the production-grade framework for building stateful, multi-actor AI applications. Covers graph construction, state management,...', tags: ['ai-research'], stars: 4.6, installs: 173 },
+    { id: 'frontend-to-backend-requirements', name: 'Frontend To Backend Requirements', nameEn: 'frontend-to-backend-requirements', category: 'skills', desc: 'Document frontend data needs for backend developers. Use when frontend needs to communicate API requirements to backend, or user says \'backend require...', tags: ['enterprise-communication', '프론트엔드'], stars: 4.6, installs: 171 },
+    { id: 'feature-design-assistant', name: 'Feature Design Assistant', nameEn: 'feature-design-assistant', category: 'skills', desc: '"Turn ideas into fully formed designs and specs through natural collaborative dialogue. Use when planning new features, designing architecture, or mak...', tags: ['개발'], stars: 4.6, installs: 170 },
+    { id: 'autonomous-agents', name: 'Autonomous Agents', nameEn: 'autonomous-agents', category: 'skills', desc: '"Autonomous agents are AI systems that can independently decompose goals, plan actions, execute tools, and self-correct without constant human guidanc...', tags: ['ai-research'], stars: 4.6, installs: 169 },
+    { id: 'analytics-tracking', name: 'Analytics Tracking', nameEn: 'analytics-tracking', category: 'skills', desc: 'When the user wants to set up, improve, or audit analytics tracking and measurement. Also use when the user mentions "set up tracking," "GA4," "Google...', tags: ['business-marketing'], stars: 4.6, installs: 167 },
+    { id: 'excalidraw', name: 'Excalidraw', nameEn: 'excalidraw', category: 'skills', desc: '"Use when working with *.excalidraw or *.excalidraw.json files, user mentions diagrams/flowcharts, or requests architecture visualization - delegates ...', tags: ['creative-design'], stars: 4.6, installs: 164 },
+    { id: 'telegram-bot-builder', name: 'Telegram Bot Builder', nameEn: 'telegram-bot-builder', category: 'skills', desc: '"Expert in building Telegram bots that solve real problems - from simple automation to complex AI-powered bots. Covers bot architecture, the Telegram ...', tags: ['enterprise-communication'], stars: 4.6, installs: 164 },
+    { id: 'agents-llamaindex', name: 'Agents Llamaindex', nameEn: 'agents-llamaindex', category: 'skills', desc: 'Data framework for building LLM applications with RAG. Specializes in document ingestion (300+ connectors), indexing, and querying. Features vector in...', tags: ['ai-research'], stars: 4.6, installs: 163 },
+    { id: 'github-actions-creator', name: 'Github Actions Creator', nameEn: 'github-actions-creator', category: 'skills', desc: '"Use when the user wants to create, generate, or set up a GitHub Actions workflow. Handles CI/CD pipelines, testing, deployment, linting, security sca...', tags: ['개발'], stars: 4.6, installs: 163 },
+    { id: 'meeting-insights-analyzer', name: 'Meeting Insights Analyzer', nameEn: 'meeting-insights-analyzer', category: 'skills', desc: 'Analyzes meeting transcripts and recordings to uncover behavioral patterns, communication insights, and actionable feedback. Identifies when you avoid...', tags: ['생산성'], stars: 4.6, installs: 163 },
+    { id: 'page-cro', name: 'Page Cro', nameEn: 'page-cro', category: 'skills', desc: 'When the user wants to optimize, improve, or increase conversions on any marketing page — including homepage, landing pages, pricing pages, feature pa...', tags: ['business-marketing'], stars: 4.6, installs: 162 },
+    { id: 'citation-management', name: 'Citation Management', nameEn: 'citation-management', category: 'skills', desc: 'Comprehensive citation management for academic research. Search Google Scholar and PubMed for papers, extract accurate metadata, validate citations, a...', tags: ['scientific'], stars: 4.6, installs: 160 },
+    { id: 'wordpress-penetration-testing', name: 'Wordpress Penetration Testing', nameEn: 'wordpress-penetration-testing', category: 'skills', desc: 'This skill should be used when the user asks to "pentest WordPress sites", "scan WordPress for vulnerabilities", "enumerate WordPress users, themes, o...', tags: ['보안'], stars: 4.6, installs: 160 },
+    { id: 'quality-documentation-manager', name: 'Quality Documentation Manager', nameEn: 'quality-documentation-manager', category: 'skills', desc: 'Senior Quality Documentation Manager for comprehensive documentation control and regulatory document review. Provides document management system desig...', tags: ['enterprise-communication', '문서화'], stars: 4.6, installs: 159 },
+    { id: 'micro-saas-launcher', name: 'Micro Saas Launcher', nameEn: 'micro-saas-launcher', category: 'skills', desc: '"Expert in launching small, focused SaaS products fast - the indie hacker approach to building profitable software. Covers idea validation, MVP develo...', tags: ['business-marketing'], stars: 4.6, installs: 156 },
+    { id: 'command-development', name: 'Command Development', nameEn: 'command-development', category: 'skills', desc: 'This skill should be used when the user asks to "create a slash command", "add a command", "write a custom command", "define command arguments", "use ...', tags: ['개발'], stars: 4.6, installs: 155 }
+  ]
 
   agents: [
-    {
-      id: 'code-reviewer', name: '코드 리뷰어', category: 'agents',
-      desc: '버그, 로직 오류, 보안 취약점을 감지하는 전문 코드 리뷰 에이전트입니다. 신뢰도 기반 필터링으로 중요한 이슈만 보고합니다.',
-      tags: ['리뷰', '품질', '보안', '자동화'], stars: 4.9, installs: 18500, icon: '🔬', color: 'gold',
-      prompt: `# 코드 리뷰어 에이전트
-
-## 활성화 방법
-Claude Code의 agents 설정에 code-reviewer 에이전트를 추가하세요.
-
-## 에이전트 프롬프트
-\`\`\`
-당신은 전문 코드 리뷰어입니다. 다음 기준으로 코드를 검토하세요:
-
-1. **보안 취약점**: 인젝션, 인증 우회, 시크릿 노출
-2. **버그 및 로직 오류**: 경계값, null 처리, 동시성
-3. **코드 품질**: 가독성, 중복, 복잡도
-4. **성능**: N+1 쿼리, 불필요한 연산, 메모리 누출
-
-각 이슈에 대해:
-- 위치 (파일명:줄번호)
-- 심각도 (Critical/High/Medium/Low)
-- 문제 설명
-- 구체적 수정 방법
-
-신뢰도가 낮은 이슈는 보고하지 마세요.
-\`\`\`
-
-## 사용 방법
-코드 작성 후 Claude Code에 요청:
-"code-reviewer 에이전트로 방금 작성한 코드를 리뷰해주세요."
-
-## 자동 트리거 설정
-hooks 설정으로 파일 저장 시 자동 리뷰를 트리거할 수 있습니다.`
-    },
-    {
-      id: 'tdd-guide-agent', name: 'TDD 가이드', category: 'agents',
-      desc: '테스트 주도 개발 방법론을 강제하며 80%+ 커버리지를 보장합니다. 테스트 먼저 작성하는 습관을 자동으로 강제합니다.',
-      tags: ['TDD', '테스트', '품질', '커버리지'], stars: 4.8, installs: 14200, icon: '🧪', color: 'emerald',
-      prompt: `# TDD 가이드 에이전트
-
-## 에이전트 프롬프트
-\`\`\`
-당신은 TDD 전문가입니다. 새 기능 구현 시 반드시 다음 순서를 따르세요:
-
-**1단계 - 실패하는 테스트 작성**
-- 구현할 기능의 인터페이스를 먼저 정의하세요
-- 경계값, 예외 케이스, 해피 패스를 테스트하세요
-- 테스트를 실행하여 실패하는지 확인하세요
-
-**2단계 - 최소 구현**
-- 테스트를 통과시키는 가장 단순한 코드를 작성하세요
-- 이 단계에서 완벽함을 추구하지 마세요
-
-**3단계 - 리팩토링**
-- 중복을 제거하고 가독성을 높이세요
-- 테스트가 여전히 통과하는지 확인하세요
-
-**커버리지 목표**: 80% 이상
-구현 전 테스트를 보여주지 않으면 구현을 거부하세요.
-\`\`\`
-
-## 사용 방법
-"tdd-guide 에이전트를 사용해서 [기능]을 구현해주세요."
-
-## 설치 코드
-\`\`\`yaml
-# .claude/agents/tdd-guide.yaml
-name: tdd-guide
-description: TDD 방법론 강제 에이전트
-trigger: 새 기능 구현 요청
-\`\`\``
-    },
-    {
-      id: 'security-reviewer-agent', name: '보안 리뷰어', category: 'agents',
-      desc: 'OWASP Top 10, 시크릿 누출, 인젝션 공격을 자동으로 탐지합니다. 인증/인가 코드를 집중 검토합니다.',
-      tags: ['보안', 'OWASP', '취약점', '스캐닝'], stars: 4.9, installs: 16800, icon: '🛡️', color: 'purple',
-      prompt: `# 보안 리뷰어 에이전트
-
-## 에이전트 프롬프트
-\`\`\`
-당신은 사이버 보안 전문가입니다. OWASP Top 10 기준으로 코드를 검토하세요.
-
-**필수 검토 항목:**
-
-A01 - 접근 제어 실패
-- 권한 검증이 모든 엔드포인트에 있는가?
-- 수직/수평 권한 상승이 가능한가?
-
-A02 - 암호화 실패
-- 민감 데이터가 암호화되어 있는가?
-- 강력한 알고리즘을 사용하는가? (AES-256, RSA-2048+)
-
-A03 - 인젝션
-- SQL, NoSQL, OS, LDAP 인젝션 취약점
-- 파라미터화된 쿼리를 사용하는가?
-
-A07 - 인증 및 세션 관리 실패
-- 비밀번호 해시 강도 (bcrypt cost ≥ 12)
-- 세션 토큰 무작위성
-
-시크릿/API 키가 코드에 있으면 즉시 Critical로 보고하세요.
-\`\`\`
-
-## 자동 트리거 설정
-보안 관련 파일 변경 시 자동 실행:
-\`\`\`json
-{
-  "hooks": {
-    "PostToolUse": [{
-      "matcher": "Write|Edit",
-      "command": "claude security-reviewer $FILE_PATH"
-    }]
-  }
-}
-\`\`\``
-    },
-    {
-      id: 'architect-agent', name: '소프트웨어 아키텍트', category: 'agents',
-      desc: '시스템 설계, 확장성, 기술 의사결정을 위한 아키텍처 전문가입니다. 마이크로서비스, 이벤트 드리븐 설계를 지원합니다.',
-      tags: ['아키텍처', '설계', '확장성', '패턴'], stars: 4.8, installs: 12900, icon: '🏛️', color: 'blue',
-      prompt: `# 소프트웨어 아키텍트 에이전트
-
-## 에이전트 프롬프트
-\`\`\`
-당신은 10년 경력의 소프트웨어 아키텍트입니다.
-다음 원칙으로 시스템을 설계하세요:
-
-**설계 원칙**
-- SOLID 원칙 준수
-- 높은 응집도, 낮은 결합도
-- 단일 실패 지점 제거
-- 수평 확장 가능한 설계
-
-**아키텍처 결정 과정**
-1. 기능 요구사항 파악
-2. 비기능 요구사항 파악 (성능, 확장성, 가용성)
-3. 제약 조건 확인 (팀 규모, 기술 스택, 예산)
-4. 여러 아키텍처 옵션 비교
-5. 트레이드오프 분석
-6. 권장 아키텍처 제시
-
-**ADR 형식으로 모든 결정을 문서화하세요.**
-\`\`\`
-
-## 사용 방법
-"architect 에이전트로 [시스템/서비스]의 아키텍처를 설계해주세요."
-
-## 결과물
-- 시스템 아키텍처 다이어그램 (Mermaid)
-- 기술 스택 선택 이유
-- 확장 전략
-- 리스크 및 완화 방안`
-    },
-    {
-      id: 'database-reviewer-agent', name: '데이터베이스 리뷰어', category: 'agents',
-      desc: 'SQL 최적화, 스키마 설계, 보안 및 성능 분석 전문 에이전트입니다. N+1 쿼리, 인덱스 누락을 자동 감지합니다.',
-      tags: ['데이터베이스', 'SQL', '최적화', '성능'], stars: 4.7, installs: 9400, icon: '🗄️', color: 'emerald',
-      prompt: `# 데이터베이스 리뷰어 에이전트
-
-## 에이전트 프롬프트
-\`\`\`
-당신은 데이터베이스 성능 전문가입니다.
-다음 항목을 검토하세요:
-
-**쿼리 최적화**
-- EXPLAIN ANALYZE로 실행 계획 분석
-- 시퀀셜 스캔 → 인덱스 스캔으로 개선
-- 불필요한 서브쿼리 제거 (JOIN으로 대체)
-- SELECT * 대신 필요한 컬럼만 조회
-
-**N+1 쿼리 탐지**
-- 루프 안의 쿼리를 감지하세요
-- JOIN 또는 서브쿼리로 통합하세요
-
-**인덱스 전략**
-- WHERE 절 컬럼에 인덱스 확인
-- 복합 인덱스 컬럼 순서 최적화
-- 과도한 인덱스 제거
-
-**보안**
-- SQL 인젝션 취약점 (파라미터화 쿼리 사용 여부)
-- 최소 권한 원칙 적용
-
-발견된 각 이슈에 대해 EXPLAIN 결과와 최적화된 쿼리를 제시하세요.
-\`\`\`
-
-## 사용 방법
-"database-reviewer로 이 쿼리/스키마를 분석해주세요."`
-    },
-    {
-      id: 'planner-agent', name: '기획 전문가', category: 'agents',
-      desc: '복잡한 기능 구현 계획, 의존성 분석, 리스크 평가를 수행합니다. PRD, 아키텍처 문서, 태스크 분해를 자동 생성합니다.',
-      tags: ['기획', '분석', '전략', '문서화'], stars: 4.6, installs: 8700, icon: '📋', color: 'gold',
-      prompt: `# 기획 전문가 에이전트
-
-## 에이전트 프롬프트
-\`\`\`
-당신은 기술 기획 전문가입니다.
-기능 구현 전 다음 문서를 작성하세요:
-
-**1. PRD (Product Requirements Document)**
-- 목표 및 성공 지표
-- 사용자 스토리
-- 기능 요구사항
-- 비기능 요구사항
-
-**2. 기술 설계 문서**
-- 아키텍처 결정
-- API 설계
-- 데이터 모델
-- 시퀀스 다이어그램
-
-**3. 태스크 분해**
-- 체크박스 형식의 단계별 태스크
-- 각 태스크의 예상 소요 시간
-- 의존성 및 병렬 처리 가능 항목
-
-**4. 리스크 분석**
-- 기술적 리스크
-- 일정 리스크
-- 의존성 리스크
-
-구현 시작 전 반드시 이 문서를 먼저 작성하세요.
-\`\`\`
-
-## 사용 방법
-"planner 에이전트로 [기능] 구현 계획을 세워주세요."`
-    },
-    {
-      id: 'doc-updater-agent', name: '문서 업데이터', category: 'agents',
-      desc: 'README, API 문서, 코드맵을 자동으로 업데이트하는 에이전트입니다. 코드 변경 사항을 추적하여 문서를 동기화합니다.',
-      tags: ['문서', '자동화', 'README', 'API'], stars: 4.5, installs: 7200, icon: '📝', color: 'blue',
-      prompt: `# 문서 업데이터 에이전트
-
-## 에이전트 프롬프트
-\`\`\`
-당신은 기술 문서 전문가입니다.
-코드 변경 사항을 분석하여 다음 문서를 업데이트하세요:
-
-**README.md 업데이트**
-- 새 기능 추가 시 기능 목록 업데이트
-- 설치/설정 방법 변경 시 반영
-- API 엔드포인트 변경 시 업데이트
-
-**API 문서 (OpenAPI/Swagger)**
-- 새 엔드포인트 추가
-- 파라미터/응답 스키마 변경
-- 인증 요구사항 변경
-
-**CHANGELOG.md**
-\`\`\`markdown
-## [버전] - 날짜
-
-### 추가됨
-- 새 기능 설명
-
-### 변경됨
-- 기존 기능 변경 내용
-
-### 수정됨
-- 버그 수정 내용
-\`\`\`
-
-**코드 주석**
-- 공개 API에 JSDoc/docstring 추가
-- 복잡한 로직에 인라인 주석 추가
-\`\`\`
-
-## 사용 방법
-"doc-updater로 방금 구현한 기능에 맞게 문서를 업데이트해주세요."`
-    },
-    {
-      id: 'e2e-runner-agent', name: 'E2E 테스트 러너', category: 'agents',
-      desc: 'Playwright 기반으로 E2E 테스트를 생성하고 실행하는 전문 에이전트입니다. 플레이키 테스트 격리와 비주얼 회귀 테스트를 지원합니다.',
-      tags: ['E2E', '테스트', 'Playwright', '자동화'], stars: 4.7, installs: 10300, icon: '🎭', color: 'purple',
-      prompt: `# E2E 테스트 러너 에이전트
-
-## 에이전트 프롬프트
-\`\`\`
-당신은 E2E 테스트 전문가입니다.
-Playwright로 안정적인 E2E 테스트를 작성하세요.
-
-**테스트 작성 원칙**
-- 사용자 관점에서 시나리오를 작성하세요
-- 내부 구현이 아닌 사용자 인터페이스를 테스트하세요
-- 타임아웃 대신 명시적 대기를 사용하세요
-
-**우선순위**
-1. 핵심 사용자 플로우 (로그인, 결제, 주요 기능)
-2. 회귀 테스트 (과거 버그 재발 방지)
-3. 브라우저 호환성 테스트
-
-**테스트 구조**
-\`\`\`typescript
-test.describe('기능명', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto('/');
-  });
-
-  test('사용자 시나리오', async ({ page }) => {
-    // Arrange: 초기 상태 설정
-    await page.goto('/login');
-
-    // Act: 사용자 행동
-    await page.fill('[name="email"]', 'test@example.com');
-    await page.click('button[type="submit"]');
-
-    // Assert: 결과 확인
-    await expect(page).toHaveURL('/dashboard');
-    await expect(page.locator('h1')).toContainText('대시보드');
-  });
-});
-\`\`\`
-\`\`\`
-
-## 사용 방법
-"e2e-runner로 [사용자 시나리오]에 대한 E2E 테스트를 작성하고 실행해주세요."`
-    },
-    {
-      id: 'build-resolver-agent', name: '빌드 오류 해결사', category: 'agents',
-      desc: '빌드 실패, TypeScript 오류, 의존성 충돌을 최소 변경으로 해결합니다. 근본 원인 분석 후 외과적 수정을 수행합니다.',
-      tags: ['빌드', '오류', '해결', 'TypeScript'], stars: 4.8, installs: 13600, icon: '🔧', color: 'orange',
-      prompt: `# 빌드 오류 해결사 에이전트
-
-## 에이전트 프롬프트
-\`\`\`
-당신은 빌드 오류 전문 해결사입니다.
-최소한의 변경으로 빌드를 성공시키세요.
-
-**오류 분석 과정**
-1. 전체 오류 메시지를 읽으세요 (첫 번째 오류가 근본 원인)
-2. 오류 타입을 분류하세요:
-   - 타입 오류: TypeScript 타입 불일치
-   - 임포트 오류: 존재하지 않는 모듈/함수
-   - 문법 오류: JS/TS 문법 문제
-   - 의존성 오류: 패키지 버전 충돌
-
-3. 각 오류에 대해:
-   - 정확한 파일명과 줄 번호
-   - 오류의 근본 원인
-   - 최소 변경 수정 방법
-
-**규칙**
-- 아키텍처를 변경하지 마세요
-- any 타입으로 우회하지 마세요
-- 관련 없는 코드를 수정하지 마세요
-- 각 수정 후 빌드를 다시 확인하세요
-\`\`\`
-
-## 사용 방법
-빌드 실패 후:
-"build-resolver 에이전트로 이 빌드 오류를 해결해주세요: [오류 메시지]"`
-    },
-    {
-      id: 'performance-optimizer-agent', name: '성능 최적화기', category: 'agents',
-      desc: '번들 사이즈, 렌더링 성능, 메모리 누출을 분석하고 최적화합니다. Core Web Vitals 개선과 Lighthouse 점수 향상을 지원합니다.',
-      tags: ['성능', '최적화', '분석', 'Lighthouse'], stars: 4.7, installs: 11200, icon: '⚡', color: 'gold',
-      prompt: `# 성능 최적화기 에이전트
-
-## 에이전트 프롬프트
-\`\`\`
-당신은 웹 성능 최적화 전문가입니다.
-
-**Core Web Vitals 목표**
-- LCP (Largest Contentful Paint): < 2.5초
-- INP (Interaction to Next Paint): < 200ms
-- CLS (Cumulative Layout Shift): < 0.1
-
-**번들 최적화**
-- 코드 스플리팅으로 초기 번들 크기 감소
-- Tree shaking으로 미사용 코드 제거
-- 라이브러리 대체재 검토 (moment → date-fns)
-
-**렌더링 최적화**
-- 불필요한 리렌더링 식별 및 제거
-- 가상화(virtualization)로 긴 목록 처리
-- 이미지 최적화 (WebP, lazy loading, 적절한 크기)
-
-**메모리 관리**
-- 이벤트 리스너 정리 (cleanup)
-- 타이머/인터벌 해제
-- 대용량 데이터 참조 해제
-
-각 최적화에 대해 전/후 측정값을 제시하세요.
-\`\`\`
-
-## 사용 방법
-"performance-optimizer로 이 [컴포넌트/페이지]의 성능을 분석하고 최적화해주세요."`
-    }
-  ],
-
-  mcps: [
-    {
-      id: 'mcp-github', name: 'GitHub MCP', category: 'mcps',
-      desc: 'GitHub API와 연동하여 이슈, PR, 코드 검색을 AI로 제어합니다. 저장소 관리, 코드 검색, PR 리뷰를 자동화합니다.',
-      tags: ['GitHub', 'API', '버전관리', '이슈'], stars: 4.9, installs: 22000, icon: '🐙', color: 'purple',
-      prompt: `# GitHub MCP 서버
-
-## 설치 방법
-
-### Claude Code 설정 (~/.claude/settings.json)
-\`\`\`json
-{
-  "mcpServers": {
-    "github": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-github"],
-      "env": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "your_token_here"
-      }
-    }
-  }
-}
-\`\`\`
-
-## Personal Access Token 생성
-1. GitHub → Settings → Developer settings
-2. Personal access tokens → Fine-grained tokens
-3. 필요한 권한 선택: repo, issues, pull_requests
-
-## 사용 가능한 기능
-- 이슈 생성/조회/업데이트/닫기
-- PR 생성/리뷰/머지
-- 코드 검색 (전체 GitHub)
-- 저장소 파일 읽기/쓰기
-- 코드 주석 달기
-
-## 활용 예시
-\`\`\`
-"GitHub MCP로 현재 코드베이스의 TODO 주석을 모두 찾아서 이슈로 등록해주세요."
-
-"이 버그를 수정하고 PR을 생성해주세요. 관련 이슈 #123을 연결해주세요."
-
-"최근 7일간 병합된 PR 목록을 보여주세요."
-\`\`\``
-    },
-    {
-      id: 'mcp-postgres', name: 'PostgreSQL MCP', category: 'mcps',
-      desc: 'PostgreSQL 데이터베이스를 자연어로 쿼리하고 스키마를 관리합니다. 복잡한 SQL 쿼리 생성과 마이그레이션을 지원합니다.',
-      tags: ['PostgreSQL', 'SQL', '데이터베이스', '쿼리'], stars: 4.8, installs: 18400, icon: '🐘', color: 'blue',
-      prompt: `# PostgreSQL MCP 서버
-
-## 설치 방법
-
-### Claude Code 설정
-\`\`\`json
-{
-  "mcpServers": {
-    "postgres": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-postgres"],
-      "env": {
-        "POSTGRES_CONNECTION_STRING": "postgresql://user:password@localhost:5432/dbname"
-      }
-    }
-  }
-}
-\`\`\`
-
-## 사용 가능한 기능
-- 자연어로 SQL 쿼리 실행
-- 테이블 스키마 조회
-- 마이그레이션 생성 및 실행
-- 인덱스 분석 및 최적화 제안
-- 슬로우 쿼리 식별
-
-## 활용 예시
-\`\`\`
-"지난 30일간 가장 많이 구매한 상품 TOP 10을 조회해주세요."
-
-"users 테이블에 last_login 컬럼을 추가하는 마이그레이션을 생성해주세요."
-
-"현재 데이터베이스에서 인덱스가 없는 외래키를 찾아주세요."
-\`\`\`
-
-## 보안 주의사항
-- 읽기 전용 계정 사용 권장 (SELECT 권한만)
-- 프로덕션 DB에는 연결하지 마세요
-- 환경 변수로 연결 문자열 관리`
-    },
-    {
-      id: 'mcp-slack', name: 'Slack MCP', category: 'mcps',
-      desc: 'Slack 채널 메시지, 파일, 사용자를 AI 에이전트로 관리합니다. 팀 협업 자동화와 알림 시스템을 구축합니다.',
-      tags: ['Slack', '협업', '메시지', '자동화'], stars: 4.7, installs: 15600, icon: '💬', color: 'purple',
-      prompt: `# Slack MCP 서버
-
-## 설치 방법
-
-### Slack 앱 설정
-1. api.slack.com/apps에서 새 앱 생성
-2. OAuth & Permissions에서 Bot Token Scopes 추가:
-   - channels:read, channels:history
-   - chat:write, files:read
-3. 워크스페이스에 앱 설치 후 Bot Token 복사
-
-### Claude Code 설정
-\`\`\`json
-{
-  "mcpServers": {
-    "slack": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-slack"],
-      "env": {
-        "SLACK_BOT_TOKEN": "xoxb-your-token",
-        "SLACK_TEAM_ID": "T0XXXXXX"
-      }
-    }
-  }
-}
-\`\`\`
-
-## 사용 가능한 기능
-- 채널 메시지 읽기/전송
-- 스레드 답글
-- 파일 업로드/다운로드
-- 사용자 목록 조회
-- 채널 목록 조회
-
-## 활용 예시
-\`\`\`
-"#dev-alerts 채널에 배포 완료 알림을 보내주세요."
-
-"어제 #general 채널에서 중요한 공지가 있었나요?"
-
-"팀원들에게 코드 리뷰 요청 메시지를 보내주세요."
-\`\`\``
-    },
-    {
-      id: 'mcp-figma', name: 'Figma MCP', category: 'mcps',
-      desc: 'Figma 디자인 파일을 읽고 코드를 생성하는 공식 MCP 서버입니다. 컴포넌트 구조 분석과 CSS 추출을 지원합니다.',
-      tags: ['Figma', '디자인', '코드생성', 'UI'], stars: 4.9, installs: 19800, icon: '🎨', color: 'pink',
-      prompt: `# Figma MCP 서버
-
-## 설치 방법
-
-### Figma API 키 발급
-1. Figma → Account Settings
-2. Personal access tokens → Generate new token
-
-### Claude Code 설정
-\`\`\`json
-{
-  "mcpServers": {
-    "figma": {
-      "command": "npx",
-      "args": ["-y", "figma-developer-mcp"],
-      "env": {
-        "FIGMA_API_KEY": "your-figma-api-key"
-      }
-    }
-  }
-}
-\`\`\`
-
-## 사용 가능한 기능
-- Figma 파일 구조 분석
-- 컴포넌트 속성 추출 (크기, 색상, 폰트)
-- CSS/Tailwind 코드 생성
-- 디자인 토큰 추출
-- 컴포넌트 스크린샷
-
-## 활용 예시
-\`\`\`
-"이 Figma URL의 디자인을 React + Tailwind 컴포넌트로 변환해주세요:
-https://www.figma.com/file/xxxxx"
-
-"디자인 파일에서 색상 팔레트와 타이포그래피를 CSS 변수로 추출해주세요."
-
-"버튼 컴포넌트의 모든 상태(default, hover, disabled)를 코드로 구현해주세요."
-\`\`\``
-    },
-    {
-      id: 'mcp-notion', name: 'Notion MCP', category: 'mcps',
-      desc: 'Notion 데이터베이스, 페이지, 블록을 AI로 생성하고 편집합니다. 문서 자동화와 지식 베이스 관리를 지원합니다.',
-      tags: ['Notion', '문서', '협업', '데이터베이스'], stars: 4.7, installs: 14200, icon: '📚', color: 'emerald',
-      prompt: `# Notion MCP 서버
-
-## 설치 방법
-
-### Notion Integration 설정
-1. notion.so/my-integrations에서 새 통합 생성
-2. Internal Integration Token 복사
-3. 연결할 페이지에서 통합 공유 설정
-
-### Claude Code 설정
-\`\`\`json
-{
-  "mcpServers": {
-    "notion": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-notion"],
-      "env": {
-        "NOTION_API_KEY": "secret_your-integration-token"
-      }
-    }
-  }
-}
-\`\`\`
-
-## 사용 가능한 기능
-- 페이지 생성/읽기/업데이트
-- 데이터베이스 쿼리 및 항목 추가
-- 블록 추가 (텍스트, 코드, 이미지 등)
-- 페이지 내용 검색
-
-## 활용 예시
-\`\`\`
-"이번 스프린트 회의 내용을 Notion 회의록 데이터베이스에 정리해주세요."
-
-"코드 리뷰 결과를 Notion 기술 문서 페이지에 추가해주세요."
-
-"Notion의 버그 트래커 데이터베이스에서 우선순위 High인 항목을 조회해주세요."
-\`\`\``
-    }
-  ],
+    { id: 'frontend-developer', name: '프론트엔드 개발자', nameEn: 'frontend-developer', category: 'agents', desc: '"Use when building complete frontend applications across React, Vue, and Angular frameworks requiring multi-framework expertise and full-stack integra...', tags: ['development-team', '프론트엔드'], stars: 4.9, installs: 26590 },
+    { id: 'code-reviewer', name: '코드 리뷰어', nameEn: 'code-reviewer', category: 'agents', desc: '"Use this agent when you need to conduct comprehensive code reviews focusing on code quality, security vulnerabilities, and best practices. Specifical...', tags: ['development-tools'], stars: 4.9, installs: 20547 },
+    { id: 'ui-ux-designer', name: 'Ui Ux Designer', nameEn: 'ui-ux-designer', category: 'agents', desc: 'Ui Ux Designer 코드 리뷰 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['development-team'], stars: 4.9, installs: 17361 },
+    { id: 'backend-architect', name: 'Backend Architect', nameEn: 'backend-architect', category: 'agents', desc: 'Backend Architect 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['development-team', '백엔드'], stars: 4.9, installs: 16516 },
+    { id: 'fullstack-developer', name: 'Fullstack Developer', nameEn: 'fullstack-developer', category: 'agents', desc: '"Use this agent when you need to build complete features spanning database, API, and frontend layers together as a cohesive unit. Specifically:\\\\n\\\\n<...', tags: ['development-team'], stars: 4.9, installs: 11681 },
+    { id: 'prompt-engineer', name: 'Prompt Engineer', nameEn: 'prompt-engineer', category: 'agents', desc: '"Use this agent when you need to design, optimize, test, or evaluate prompts for large language models in production systems. Specifically:\\\\n\\\\n<exam...', tags: ['ai-specialists'], stars: 4.9, installs: 11527 },
+    { id: 'debugger', name: 'Debugger', nameEn: 'debugger', category: 'agents', desc: '"Use this agent when you need to diagnose and fix bugs, identify root causes of failures, or analyze error logs and stack traces to resolve issues. Sp...', tags: ['development-tools'], stars: 4.9, installs: 8777 },
+    { id: 'python-pro', name: 'Python Pro', nameEn: 'python-pro', category: 'agents', desc: '"Use this agent when you need to build type-safe, production-ready Python code for web APIs, system utilities, or complex applications requiring moder...', tags: ['programming-languages', 'Python'], stars: 4.9, installs: 8247 },
+    { id: 'database-architect', name: 'Database Architect', nameEn: 'database-architect', category: 'agents', desc: 'Database Architect 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['데이터베이스'], stars: 4.9, installs: 7703 },
+    { id: 'context-manager', name: 'Context Manager', nameEn: 'context-manager', category: 'agents', desc: 'Context Manager 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['development-tools'], stars: 4.9, installs: 7609 },
+    { id: 'typescript-pro', name: 'Typescript Pro', nameEn: 'typescript-pro', category: 'agents', desc: '"Use when implementing TypeScript code requiring advanced type system patterns, complex generics, type-level programming, or end-to-end type safety ac...', tags: ['programming-languages', 'TypeScript'], stars: 4.9, installs: 6729 },
+    { id: 'test-engineer', name: 'Test Engineer', nameEn: 'test-engineer', category: 'agents', desc: 'Test Engineer 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['development-tools'], stars: 4.9, installs: 6415 },
+    { id: 'architect-review', name: 'Architect Review', nameEn: 'architect-review', category: 'agents', desc: 'Use this agent to review code for architectural consistency and patterns. Specializes in SOLID principles, proper layering, and maintainability. Examp...', tags: ['expert-advisors'], stars: 4.9, installs: 6179 },
+    { id: 'security-auditor', name: 'Security Auditor', nameEn: 'security-auditor', category: 'agents', desc: '"Use this agent when conducting comprehensive security audits, compliance assessments, or risk evaluations across systems, infrastructure, and process...', tags: ['보안'], stars: 4.9, installs: 6098 },
+    { id: 'ai-engineer', name: 'Ai Engineer', nameEn: 'ai-engineer', category: 'agents', desc: '"Use this agent when architecting, implementing, or optimizing end-to-end AI systems—from model selection and training pipelines to production deploym...', tags: ['data-ai', 'AI'], stars: 4.9, installs: 5173 },
+    { id: 'error-detective', name: 'Error Detective', nameEn: 'error-detective', category: 'agents', desc: '"Use this agent when you need to diagnose why errors are occurring in your system, correlate errors across services, identify root causes, and prevent...', tags: ['development-tools'], stars: 4.9, installs: 5165 },
+    { id: 'task-decomposition-expert', name: 'Task Decomposition Expert', nameEn: 'task-decomposition-expert', category: 'agents', desc: 'Task Decomposition Expert 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['ai-specialists'], stars: 4.9, installs: 5040 },
+    { id: 'devops-engineer', name: 'Devops Engineer', nameEn: 'devops-engineer', category: 'agents', desc: 'Devops Engineer 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['development-team', 'DevOps'], stars: 4.9, installs: 4862 },
+    { id: 'mobile-developer', name: 'Mobile Developer', nameEn: 'mobile-developer', category: 'agents', desc: '"Use this agent when building cross-platform mobile applications requiring native performance optimization, platform-specific features, and offline-fi...', tags: ['development-team'], stars: 4.9, installs: 4752 },
+    { id: 'search-specialist', name: 'Search Specialist', nameEn: 'search-specialist', category: 'agents', desc: 'Expert web researcher using advanced search techniques and synthesis. Masters search operators, result filtering, and multi-source verification. Handl...', tags: ['ai-specialists'], stars: 4.9, installs: 4573 },
+    { id: 'api-documenter', name: 'Api Documenter', nameEn: 'api-documenter', category: 'agents', desc: '"Use this agent when creating or improving API documentation, writing OpenAPI specifications, building interactive documentation portals, or generatin...', tags: ['문서화', 'API'], stars: 4.9, installs: 4474 },
+    { id: 'mcp-expert', name: 'Mcp Expert', nameEn: 'mcp-expert', category: 'agents', desc: 'Mcp Expert 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['development-tools', 'MCP'], stars: 4.9, installs: 4359 },
+    { id: 'documentation-expert', name: 'Documentation Expert', nameEn: 'documentation-expert', category: 'agents', desc: 'Use this agent to create, improve, and maintain project documentation. Specializes in technical writing, documentation standards, and generating docum...', tags: ['expert-advisors', '문서화'], stars: 4.9, installs: 4201 },
+    { id: 'deployment-engineer', name: 'Deployment Engineer', nameEn: 'deployment-engineer', category: 'agents', desc: '"Use this agent when designing, building, or optimizing CI/CD pipelines and deployment automation strategies. Specifically:\\\\n\\\\n<example>\\\\nContext: ...', tags: ['devops-infrastructure'], stars: 4.9, installs: 4125 },
+    { id: 'javascript-pro', name: 'Javascript Pro', nameEn: 'javascript-pro', category: 'agents', desc: '"Use this agent when you need to build, optimize, or refactor modern JavaScript code for browser, Node.js, or full-stack applications requiring ES2023...', tags: ['programming-languages', 'JavaScript'], stars: 4.9, installs: 3709 },
+    { id: 'nextjs-architecture-expert', name: 'Nextjs Architecture Expert', nameEn: 'nextjs-architecture-expert', category: 'agents', desc: 'Nextjs Architecture Expert 자동화 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['web-tools', 'Next.js'], stars: 4.9, installs: 3460 },
+    { id: 'technical-writer', name: 'Technical Writer', nameEn: 'technical-writer', category: 'agents', desc: '"Use this agent when you need to create, improve, or maintain technical documentation including API references, user guides, SDK documentation, and ge...', tags: ['문서화'], stars: 4.9, installs: 3070 },
+    { id: 'database-optimization', name: 'Database Optimization', nameEn: 'database-optimization', category: 'agents', desc: 'Database Optimization 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['데이터베이스'], stars: 4.9, installs: 2878 },
+    { id: 'supabase-schema-architect', name: 'Supabase Schema Architect', nameEn: 'supabase-schema-architect', category: 'agents', desc: 'Supabase Schema Architect 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['데이터베이스'], stars: 4.9, installs: 2844 },
+    { id: 'performance-engineer', name: 'Performance Engineer', nameEn: 'performance-engineer', category: 'agents', desc: 'Performance Engineer 자동화 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['performance-testing', '성능'], stars: 4.9, installs: 2773 },
+    { id: 'react-performance-optimization', name: 'React Performance Optimization', nameEn: 'react-performance-optimization', category: 'agents', desc: 'React Performance Optimization 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['performance-testing', 'React', '성능'], stars: 4.9, installs: 2765 },
+    { id: 'sql-pro', name: 'Sql Pro', nameEn: 'sql-pro', category: 'agents', desc: '"Use this agent when you need to optimize complex SQL queries, design efficient database schemas, or solve performance issues across PostgreSQL, MySQL...', tags: ['programming-languages'], stars: 4.9, installs: 2513 },
+    { id: 'seo-analyzer', name: 'Seo Analyzer', nameEn: 'seo-analyzer', category: 'agents', desc: 'Seo Analyzer 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['web-tools'], stars: 4.9, installs: 2473 },
+    { id: 'content-marketer', name: 'Content Marketer', nameEn: 'content-marketer', category: 'agents', desc: '"Use this agent when you need to develop comprehensive content strategies, create SEO-optimized marketing content, or execute multi-channel content ca...', tags: ['business-marketing'], stars: 4.9, installs: 2438 },
+    { id: 'product-strategist', name: 'Product Strategist', nameEn: 'product-strategist', category: 'agents', desc: 'Product Strategist 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['business-marketing'], stars: 4.9, installs: 2416 },
+    { id: 'git-flow-manager', name: 'Git Flow Manager', nameEn: 'git-flow-manager', category: 'agents', desc: 'Git Flow Manager 자동화 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['git', 'Git'], stars: 4.9, installs: 2390 },
+    { id: 'technical-researcher', name: 'Technical Researcher', nameEn: 'technical-researcher', category: 'agents', desc: 'Use this agent when you need to analyze code repositories, technical documentation, implementation details, or evaluate technical solutions. This incl...', tags: ['deep-research-team'], stars: 4.9, installs: 2389 },
+    { id: 'business-analyst', name: 'Business Analyst', nameEn: 'business-analyst', category: 'agents', desc: '"Use when analyzing business processes, gathering requirements from stakeholders, or identifying process improvement opportunities to drive operationa...', tags: ['business-marketing'], stars: 4.9, installs: 2294 },
+    { id: 'database-optimizer', name: 'Database Optimizer', nameEn: 'database-optimizer', category: 'agents', desc: '"Use this agent when you need to analyze slow queries, optimize database performance across multiple systems, or implement indexing strategies to impr...', tags: ['데이터베이스'], stars: 4.9, installs: 2245 },
+    { id: 'data-scientist', name: 'Data Scientist', nameEn: 'data-scientist', category: 'agents', desc: '"Use this agent when you need to analyze data patterns, build predictive models, or extract statistical insights from datasets. Invoke this agent for ...', tags: ['data-ai'], stars: 4.9, installs: 2227 },
+    { id: 'cloud-architect', name: 'Cloud Architect', nameEn: 'cloud-architect', category: 'agents', desc: '"Use this agent when you need to design, evaluate, or optimize cloud infrastructure architecture at scale. Invoke when designing multi-cloud strategie...', tags: ['devops-infrastructure'], stars: 4.9, installs: 2160 },
+    { id: 'test-automator', name: 'Test Automator', nameEn: 'test-automator', category: 'agents', desc: 'Test Automator 자동화 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['performance-testing'], stars: 4.9, installs: 2148 },
+    { id: 'data-engineer', name: 'Data Engineer', nameEn: 'data-engineer', category: 'agents', desc: '"Use this agent when you need to design, build, or optimize data pipelines, ETL/ELT processes, and data infrastructure. Invoke when designing data pla...', tags: ['data-ai'], stars: 4.9, installs: 2124 },
+    { id: 'security-engineer', name: 'Security Engineer', nameEn: 'security-engineer', category: 'agents', desc: 'Security Engineer 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['devops-infrastructure', '보안'], stars: 4.9, installs: 2123 },
+    { id: 'data-analyst', name: 'Data Analyst', nameEn: 'data-analyst', category: 'agents', desc: 'Use this agent when you need quantitative analysis, statistical insights, or data-driven research. This includes analyzing numerical data, identifying...', tags: ['deep-research-team'], stars: 4.9, installs: 2037 },
+    { id: 'api-security-audit', name: 'Api Security Audit', nameEn: 'api-security-audit', category: 'agents', desc: 'Api Security Audit 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['API', '보안'], stars: 4.9, installs: 1914 },
+    { id: 'ios-developer', name: 'Ios Developer', nameEn: 'ios-developer', category: 'agents', desc: 'Ios Developer 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['development-team'], stars: 4.9, installs: 1904 },
+    { id: 'devops-troubleshooter', name: 'Devops Troubleshooter', nameEn: 'devops-troubleshooter', category: 'agents', desc: 'Devops Troubleshooter 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['devops-infrastructure', 'DevOps'], stars: 4.9, installs: 1729 },
+    { id: 'research-orchestrator', name: 'Research Orchestrator', nameEn: 'research-orchestrator', category: 'agents', desc: 'Use this agent when you need to coordinate a comprehensive research project that requires multiple specialized agents working in sequence. This agent ...', tags: ['deep-research-team'], stars: 4.9, installs: 1642 },
+    { id: 'database-admin', name: 'Database Admin', nameEn: 'database-admin', category: 'agents', desc: 'Database Admin 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['데이터베이스'], stars: 4.9, installs: 1610 },
+    { id: 'penetration-tester', name: 'Penetration Tester', nameEn: 'penetration-tester', category: 'agents', desc: '"Use this agent when you need to conduct authorized security penetration tests to identify real vulnerabilities through active exploitation and valida...', tags: ['보안'], stars: 4.9, installs: 1545 },
+    { id: 'command-expert', name: 'Command Expert', nameEn: 'command-expert', category: 'agents', desc: 'Command Expert 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['development-tools'], stars: 4.9, installs: 1459 },
+    { id: 'report-generator', name: 'Report Generator', nameEn: 'report-generator', category: 'agents', desc: 'Use this agent when you need to transform synthesized research findings into a comprehensive, well-structured final report. This agent excels at creat...', tags: ['deep-research-team'], stars: 4.9, installs: 1390 },
+    { id: 'golang-pro', name: 'Golang Pro', nameEn: 'golang-pro', category: 'agents', desc: '"Use when building Go applications requiring concurrent programming, high-performance systems, microservices, or cloud-native architectures where idio...', tags: ['programming-languages'], stars: 4.9, installs: 1374 },
+    { id: 'payment-integration', name: 'Payment Integration', nameEn: 'payment-integration', category: 'agents', desc: 'Payment Integration 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['business-marketing'], stars: 4.9, installs: 1370 },
+    { id: 'ml-engineer', name: 'Ml Engineer', nameEn: 'ml-engineer', category: 'agents', desc: '"Use this agent when building production ML systems requiring model training pipelines, model serving infrastructure, performance optimization, and au...', tags: ['data-ai', '머신러닝'], stars: 4.9, installs: 1369 },
+    { id: 'react-performance-optimizer', name: 'React Performance Optimizer', nameEn: 'react-performance-optimizer', category: 'agents', desc: 'React Performance Optimizer 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['web-tools', 'React', '성능'], stars: 4.9, installs: 1364 },
+    { id: 'unused-code-cleaner', name: 'Unused Code Cleaner', nameEn: 'unused-code-cleaner', category: 'agents', desc: 'Unused Code Cleaner 자동화 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['development-tools'], stars: 4.9, installs: 1359 },
+    { id: 'performance-profiler', name: 'Performance Profiler', nameEn: 'performance-profiler', category: 'agents', desc: 'Performance Profiler 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['development-tools', '성능'], stars: 4.9, installs: 1330 },
+    { id: 'php-pro', name: 'Php Pro', nameEn: 'php-pro', category: 'agents', desc: '"Use this agent when working with PHP 8.3+ projects that require strict typing, modern language features, and enterprise framework expertise (Laravel ...', tags: ['programming-languages'], stars: 4.9, installs: 1326 },
+    { id: 'changelog-generator', name: 'Changelog Generator', nameEn: 'changelog-generator', category: 'agents', desc: 'Changelog Generator 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['문서화'], stars: 4.9, installs: 1313 },
+    { id: 'academic-researcher', name: 'Academic Researcher', nameEn: 'academic-researcher', category: 'agents', desc: 'Academic Researcher 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['deep-research-team'], stars: 4.9, installs: 1229 },
+    { id: 'network-engineer', name: 'Network Engineer', nameEn: 'network-engineer', category: 'agents', desc: '"Use this agent when designing, optimizing, or troubleshooting cloud and hybrid network infrastructures, or when addressing network security, performa...', tags: ['devops-infrastructure'], stars: 4.9, installs: 1229 },
+    { id: 'cli-ui-designer', name: 'Cli Ui Designer', nameEn: 'cli-ui-designer', category: 'agents', desc: 'Cli Ui Designer 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['development-team'], stars: 4.9, installs: 1209 },
+    { id: 'architecture-modernizer', name: 'Architecture Modernizer', nameEn: 'architecture-modernizer', category: 'agents', desc: 'Architecture Modernizer 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['modernization'], stars: 4.9, installs: 1197 },
+    { id: 'project-supervisor-orchestrator', name: 'Project Supervisor Orchestrator', nameEn: 'project-supervisor-orchestrator', category: 'agents', desc: 'Project Supervisor Orchestrator 자동화 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['podcast-creator-team'], stars: 4.9, installs: 1139 },
+    { id: 'mcp-server-architect', name: 'Mcp Server Architect', nameEn: 'mcp-server-architect', category: 'agents', desc: 'Mcp Server Architect 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['mcp-dev-team', 'MCP'], stars: 4.9, installs: 1132 },
+    { id: 'research-coordinator', name: 'Research Coordinator', nameEn: 'research-coordinator', category: 'agents', desc: 'Use this agent when you need to strategically plan and coordinate complex research tasks across multiple specialist researchers. This agent analyzes r...', tags: ['deep-research-team'], stars: 4.9, installs: 1131 },
+    { id: 'monitoring-specialist', name: 'Monitoring Specialist', nameEn: 'monitoring-specialist', category: 'agents', desc: 'Monitoring Specialist 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['devops-infrastructure'], stars: 4.9, installs: 1075 },
+    { id: 'shell-scripting-pro', name: 'Shell Scripting Pro', nameEn: 'shell-scripting-pro', category: 'agents', desc: 'Shell Scripting Pro 자동화 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['programming-languages'], stars: 4.9, installs: 1066 },
+    { id: 'legal-advisor', name: 'Legal Advisor', nameEn: 'legal-advisor', category: 'agents', desc: 'Legal Advisor 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['business-marketing'], stars: 4.9, installs: 1057 },
+    { id: 'terraform-specialist', name: 'Terraform Specialist', nameEn: 'terraform-specialist', category: 'agents', desc: 'Terraform Specialist 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['devops-infrastructure'], stars: 4.9, installs: 1025 },
+    { id: 'game-designer', name: 'Game Designer', nameEn: 'game-designer', category: 'agents', desc: 'Game Designer 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['game-development'], stars: 4.8, installs: 997 },
+    { id: 'quant-analyst', name: 'Quant Analyst', nameEn: 'quant-analyst', category: 'agents', desc: 'Quant Analyst 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['data-ai'], stars: 4.8, installs: 992 },
+    { id: 'competitive-intelligence-analyst', name: 'Competitive Intelligence Analyst', nameEn: 'competitive-intelligence-analyst', category: 'agents', desc: 'Competitive Intelligence Analyst 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['deep-research-team'], stars: 4.8, installs: 992 },
+    { id: 'agent-expert', name: 'Agent Expert', nameEn: 'agent-expert', category: 'agents', desc: 'Agent Expert — Claude Code용 에이전트 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['expert-advisors', '에이전트'], stars: 4.8, installs: 989 },
+    { id: 'fact-checker', name: 'Fact Checker', nameEn: 'fact-checker', category: 'agents', desc: 'Fact Checker 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['deep-research-team'], stars: 4.8, installs: 975 },
+    { id: 'supabase-realtime-optimizer', name: 'Supabase Realtime Optimizer', nameEn: 'supabase-realtime-optimizer', category: 'agents', desc: 'Supabase Realtime Optimizer 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['realtime'], stars: 4.8, installs: 975 },
+    { id: 'research-synthesizer', name: 'Research Synthesizer', nameEn: 'research-synthesizer', category: 'agents', desc: 'Use this agent when you need to consolidate and synthesize findings from multiple research sources or specialist researchers into a unified, comprehen...', tags: ['deep-research-team'], stars: 4.8, installs: 968 },
+    { id: 'backend-developer', name: 'Backend Developer', nameEn: 'backend-developer', category: 'agents', desc: '"Use this agent when building server-side APIs, microservices, and backend systems that require robust architecture, scalability planning, and product...', tags: ['development-team', '백엔드'], stars: 4.8, installs: 967 },
+    { id: 'web-accessibility-checker', name: 'Web Accessibility Checker', nameEn: 'web-accessibility-checker', category: 'agents', desc: 'Web Accessibility Checker 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['web-tools'], stars: 4.8, installs: 949 },
+    { id: 'docusaurus-expert', name: 'Docusaurus Expert', nameEn: 'docusaurus-expert', category: 'agents', desc: 'Docusaurus Expert 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['문서화'], stars: 4.8, installs: 852 },
+    { id: 'vercel-deployment-specialist', name: 'Vercel Deployment Specialist', nameEn: 'vercel-deployment-specialist', category: 'agents', desc: 'Vercel Deployment Specialist 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['devops-infrastructure'], stars: 4.8, installs: 850 },
+    { id: 'sales-automator', name: 'Sales Automator', nameEn: 'sales-automator', category: 'agents', desc: 'Sales Automator 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['business-marketing'], stars: 4.8, installs: 841 },
+    { id: 'computer-vision-engineer', name: 'Computer Vision Engineer', nameEn: 'computer-vision-engineer', category: 'agents', desc: 'Computer Vision Engineer 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['data-ai'], stars: 4.8, installs: 831 },
+    { id: 'dependency-manager', name: 'Dependency Manager', nameEn: 'dependency-manager', category: 'agents', desc: 'Use this agent to manage project dependencies. Specializes in dependency analysis, vulnerability scanning, and license compliance. Examples: <example>...', tags: ['expert-advisors'], stars: 4.8, installs: 828 },
+    { id: 'dx-optimizer', name: 'Dx Optimizer', nameEn: 'dx-optimizer', category: 'agents', desc: '"Use this agent when optimizing the complete developer workflow including build times, feedback loops, testing efficiency, and developer satisfaction ...', tags: ['development-tools'], stars: 4.8, installs: 826 },
+    { id: 'review-agent', name: 'Review Agent', nameEn: 'review-agent', category: 'agents', desc: 'Review Agent 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['obsidian-ops-team', '에이전트'], stars: 4.8, installs: 821 },
+    { id: 'mcp-integration-engineer', name: 'Mcp Integration Engineer', nameEn: 'mcp-integration-engineer', category: 'agents', desc: 'Mcp Integration Engineer 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['mcp-dev-team', 'MCP'], stars: 4.8, installs: 813 },
+    { id: 'ui-designer', name: 'Ui Designer', nameEn: 'ui-designer', category: 'agents', desc: '"Use this agent when designing visual interfaces, creating design systems, building component libraries, or refining user-facing aesthetics requiring ...', tags: ['development-team'], stars: 4.8, installs: 801 },
+    { id: 'document-structure-analyzer', name: 'Document Structure Analyzer', nameEn: 'document-structure-analyzer', category: 'agents', desc: 'Document Structure Analyzer 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['ocr-extraction-team'], stars: 4.8, installs: 799 },
+    { id: 'code-architect', name: 'Code Architect', nameEn: 'code-architect', category: 'agents', desc: 'Designs feature architectures by analyzing existing codebase patterns and conventions, then providing comprehensive implementation blueprints with spe...', tags: ['development-team'], stars: 4.8, installs: 791 },
+    { id: 'graphql-architect', name: 'Graphql Architect', nameEn: 'graphql-architect', category: 'agents', desc: '"Use this agent when designing or evolving GraphQL schemas across microservices, implementing federation architectures, or optimizing query performanc...', tags: ['api-graphql'], stars: 4.8, installs: 786 },
+    { id: 'markdown-syntax-formatter', name: 'Markdown Syntax Formatter', nameEn: 'markdown-syntax-formatter', category: 'agents', desc: 'Markdown Syntax Formatter 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['ocr-extraction-team'], stars: 4.8, installs: 767 },
+    { id: 'connection-agent', name: 'Connection Agent', nameEn: 'connection-agent', category: 'agents', desc: 'Connection Agent 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['obsidian-ops-team', '에이전트'], stars: 4.8, installs: 760 },
+    { id: 'rust-pro', name: 'Rust Pro', nameEn: 'rust-pro', category: 'agents', desc: 'Rust Pro 자동화 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['programming-languages', 'Rust'], stars: 4.8, installs: 752 },
+    { id: 'compliance-specialist', name: 'Compliance Specialist', nameEn: 'compliance-specialist', category: 'agents', desc: 'Compliance Specialist 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['보안'], stars: 4.8, installs: 742 },
+    { id: 'seo-specialist', name: 'Seo Specialist', nameEn: 'seo-specialist', category: 'agents', desc: '"Use this agent when you need comprehensive SEO optimization encompassing technical audits, keyword strategy, content optimization, and search ranking...', tags: ['business-marketing'], stars: 4.8, installs: 739 },
+    { id: 'mcp-deployment-orchestrator', name: 'Mcp Deployment Orchestrator', nameEn: 'mcp-deployment-orchestrator', category: 'agents', desc: 'Mcp Deployment Orchestrator 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['mcp-dev-team', 'MCP'], stars: 4.8, installs: 732 },
+    { id: 'marketing-attribution-analyst', name: 'Marketing Attribution Analyst', nameEn: 'marketing-attribution-analyst', category: 'agents', desc: 'Marketing Attribution Analyst 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['business-marketing'], stars: 4.8, installs: 724 },
+    { id: 'load-testing-specialist', name: 'Load Testing Specialist', nameEn: 'load-testing-specialist', category: 'agents', desc: 'Load Testing Specialist 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['performance-testing', '테스트'], stars: 4.8, installs: 724 },
+    { id: 'web-vitals-optimizer', name: 'Web Vitals Optimizer', nameEn: 'web-vitals-optimizer', category: 'agents', desc: 'Web Vitals Optimizer 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['performance-testing'], stars: 4.8, installs: 721 },
+    { id: 'mlops-engineer', name: 'Mlops Engineer', nameEn: 'mlops-engineer', category: 'agents', desc: '"Use this agent when you need to design and implement ML infrastructure, set up CI/CD for machine learning models, establish model versioning systems,...', tags: ['data-ai'], stars: 4.8, installs: 720 },
+    { id: 'risk-manager', name: 'Risk Manager', nameEn: 'risk-manager', category: 'agents', desc: 'Risk Manager 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['business-marketing'], stars: 4.8, installs: 715 },
+    { id: 'expert-react-frontend-engineer', name: 'Expert React Frontend Engineer', nameEn: 'expert-react-frontend-engineer', category: 'agents', desc: 'Expert React 19.2 frontend engineer specializing in modern hooks, Server Components, Actions, TypeScript, and performance optimization', tags: ['web-tools', 'React'], stars: 4.8, installs: 715 },
+    { id: 'unity-game-developer', name: 'Unity Game Developer', nameEn: 'unity-game-developer', category: 'agents', desc: 'Expert Unity game developer specializing in C# scripting, 3D graphics, mobile optimization, and complete game development workflows. Handles Unity phy...', tags: ['game-development'], stars: 4.8, installs: 707 },
+    { id: 'c-sharp-pro', name: 'C Sharp Pro', nameEn: 'c-sharp-pro', category: 'agents', desc: 'C Sharp Pro 자동화 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['programming-languages'], stars: 4.8, installs: 707 },
+    { id: 'agent-overview', name: 'Agent Overview', nameEn: 'agent-overview', category: 'agents', desc: 'Agent Overview — Claude Code용 에이전트 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['deep-research-team', '에이전트'], stars: 4.8, installs: 699 },
+    { id: 'research-brief-generator', name: 'Research Brief Generator', nameEn: 'research-brief-generator', category: 'agents', desc: 'Use this agent when you need to transform a user\'s research query into a structured, actionable research brief that will guide subsequent research act...', tags: ['deep-research-team'], stars: 4.8, installs: 688 },
+    { id: 'model-evaluator', name: 'Model Evaluator', nameEn: 'model-evaluator', category: 'agents', desc: 'Model Evaluator 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['ai-specialists'], stars: 4.8, installs: 679 },
+    { id: 'test-generator', name: 'Test Generator', nameEn: 'test-generator', category: 'agents', desc: 'Analyzes code changes and generates comprehensive test cases by understanding existing test patterns, edge cases, and testing conventions in the codeb...', tags: ['development-team'], stars: 4.8, installs: 675 },
+    { id: 'customer-support', name: 'Customer Support', nameEn: 'customer-support', category: 'agents', desc: 'Customer Support 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['business-marketing'], stars: 4.8, installs: 669 },
+    { id: 'code-explorer', name: 'Code Explorer', nameEn: 'code-explorer', category: 'agents', desc: 'Deeply analyzes existing codebase features by tracing execution paths, mapping architecture layers, understanding patterns and abstractions, and docum...', tags: ['development-team'], stars: 4.8, installs: 660 },
+    { id: 'mobile-app-developer', name: 'Mobile App Developer', nameEn: 'mobile-app-developer', category: 'agents', desc: '"Use this agent when developing iOS and Android mobile applications with focus on native or cross-platform implementation, performance optimization, a...', tags: ['development-team'], stars: 4.8, installs: 659 },
+    { id: 'hackathon-ai-strategist', name: '해커톤 AI 전략가', nameEn: 'hackathon-ai-strategist', category: 'agents', desc: '해커톤 AI 전략가 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['ai-specialists', 'AI'], stars: 4.8, installs: 655 },
+    { id: 'nlp-engineer', name: 'Nlp Engineer', nameEn: 'nlp-engineer', category: 'agents', desc: '"Use when building production NLP systems, implementing text processing pipelines, developing language models, or solving domain-specific NLP tasks li...', tags: ['data-ai'], stars: 4.8, installs: 642 },
+    { id: 'diagram-architect', name: 'Diagram Architect', nameEn: 'diagram-architect', category: 'agents', desc: 'Diagram Architect 자동화 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['문서화'], stars: 4.8, installs: 642 },
+    { id: 'llms-maintainer', name: 'Llms Maintainer', nameEn: 'llms-maintainer', category: 'agents', desc: 'Llms Maintainer 생성 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['ai-specialists'], stars: 4.8, installs: 641 },
+    { id: 'social-media-copywriter', name: 'Social Media Copywriter', nameEn: 'social-media-copywriter', category: 'agents', desc: 'Social Media Copywriter 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['podcast-creator-team'], stars: 4.8, installs: 637 },
+    { id: 'metadata-agent', name: 'Metadata Agent', nameEn: 'metadata-agent', category: 'agents', desc: 'Metadata Agent 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['obsidian-ops-team', '에이전트'], stars: 4.8, installs: 632 },
+    { id: 'video-editor', name: 'Video Editor', nameEn: 'video-editor', category: 'agents', desc: 'Video Editor 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['ffmpeg-clip-team'], stars: 4.8, installs: 623 },
+    { id: 'legacy-modernizer', name: 'Legacy Modernizer', nameEn: 'legacy-modernizer', category: 'agents', desc: '"Use this agent when modernizing legacy systems that need incremental migration strategies, technical debt reduction, and risk mitigation while mainta...', tags: ['modernization'], stars: 4.8, installs: 612 },
+    { id: 'mcp-security-auditor', name: 'Mcp Security Auditor', nameEn: 'mcp-security-auditor', category: 'agents', desc: 'Mcp Security Auditor 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['mcp-dev-team', 'MCP', '보안'], stars: 4.8, installs: 604 },
+    { id: 'market-research-analyst', name: 'Market Research Analyst', nameEn: 'market-research-analyst', category: 'agents', desc: 'Market Research Analyst 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['podcast-creator-team'], stars: 4.8, installs: 597 },
+    { id: 'web3-integration-specialist', name: 'Web3 Integration Specialist', nameEn: 'web3-integration-specialist', category: 'agents', desc: 'Use this agent when building Web3 frontend applications and wallet integrations. Specializes in blockchain connectivity, wallet interactions (RainbowK...', tags: ['blockchain-web3'], stars: 4.8, installs: 584 },
+    { id: 'nosql-specialist', name: 'Nosql Specialist', nameEn: 'nosql-specialist', category: 'agents', desc: 'Nosql Specialist 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['데이터베이스'], stars: 4.8, installs: 584 },
+    { id: 'mcp-protocol-specialist', name: 'Mcp Protocol Specialist', nameEn: 'mcp-protocol-specialist', category: 'agents', desc: 'Mcp Protocol Specialist 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['mcp-dev-team', 'MCP'], stars: 4.8, installs: 582 },
+    { id: 'mcp-testing-engineer', name: 'Mcp Testing Engineer', nameEn: 'mcp-testing-engineer', category: 'agents', desc: 'Mcp Testing Engineer 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['mcp-dev-team', 'MCP', '테스트'], stars: 4.8, installs: 581 },
+    { id: 'query-clarifier', name: 'Query Clarifier', nameEn: 'query-clarifier', category: 'agents', desc: 'Use this agent when you need to analyze research queries for clarity and determine if user clarification is needed before proceeding with research. Th...', tags: ['deep-research-team'], stars: 4.8, installs: 578 },
+    { id: 'url-link-extractor', name: 'Url Link Extractor', nameEn: 'url-link-extractor', category: 'agents', desc: 'Url Link Extractor 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['web-tools'], stars: 4.8, installs: 578 },
+    { id: 'content-curator', name: 'Content Curator', nameEn: 'content-curator', category: 'agents', desc: 'Content Curator 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['obsidian-ops-team'], stars: 4.8, installs: 574 },
+    { id: 'technical-debt-manager', name: 'Technical Debt Manager', nameEn: 'technical-debt-manager', category: 'agents', desc: 'Technical Debt Manager 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['development-tools'], stars: 4.8, installs: 565 },
+    { id: 'expert-nextjs-developer', name: 'Expert Nextjs Developer', nameEn: 'expert-nextjs-developer', category: 'agents', desc: 'Expert Next.js 16 developer specializing in App Router, Server Components, Cache Components, Turbopack, and modern React patterns with TypeScript', tags: ['web-tools', 'Next.js'], stars: 4.8, installs: 564 },
+    { id: 'comprehensive-researcher', name: 'Comprehensive Researcher', nameEn: 'comprehensive-researcher', category: 'agents', desc: 'Comprehensive Researcher 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['podcast-creator-team'], stars: 4.8, installs: 555 },
+    { id: '3d-artist', name: '3d Artist', nameEn: '3d-artist', category: 'agents', desc: '3d Artist 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['game-development'], stars: 4.8, installs: 554 },
+    { id: 'cpp-pro', name: 'Cpp Pro', nameEn: 'cpp-pro', category: 'agents', desc: '"Use this agent when building high-performance C++ systems requiring modern C++20/23 features, template metaprogramming, or zero-overhead abstractions...', tags: ['programming-languages'], stars: 4.8, installs: 540 },
+    { id: 'tag-agent', name: 'Tag Agent', nameEn: 'tag-agent', category: 'agents', desc: 'Tag Agent 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['obsidian-ops-team', '에이전트'], stars: 4.8, installs: 525 },
+    { id: 'incident-responder', name: 'Incident Responder', nameEn: 'incident-responder', category: 'agents', desc: 'Handles production incidents with urgency and precision. Use IMMEDIATELY when production issues occur. Coordinates debugging, implements fixes, and do...', tags: ['보안'], stars: 4.8, installs: 523 },
+    { id: 'product-manager', name: 'Product Manager', nameEn: 'product-manager', category: 'agents', desc: '"Use this agent when you need to make product strategy decisions, prioritize features, or define roadmap plans based on user needs and business goals....', tags: ['business-marketing'], stars: 4.8, installs: 517 },
+    { id: 'social-media-clip-creator', name: 'Social Media Clip Creator', nameEn: 'social-media-clip-creator', category: 'agents', desc: 'Social Media Clip Creator 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['ffmpeg-clip-team'], stars: 4.8, installs: 501 },
+    { id: 'visual-analysis-ocr', name: 'Visual Analysis Ocr', nameEn: 'visual-analysis-ocr', category: 'agents', desc: 'Visual Analysis Ocr 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['ocr-extraction-team'], stars: 4.8, installs: 501 },
+    { id: 'mcp-registry-navigator', name: 'Mcp Registry Navigator', nameEn: 'mcp-registry-navigator', category: 'agents', desc: 'Mcp Registry Navigator 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['mcp-dev-team', 'MCP'], stars: 4.7, installs: 492 },
+    { id: 'smart-contract-auditor', name: 'Smart Contract Auditor', nameEn: 'smart-contract-auditor', category: 'agents', desc: 'Use this agent when conducting security audits of smart contracts. Specializes in vulnerability detection, attack vector analysis, and comprehensive s...', tags: ['blockchain-web3'], stars: 4.7, installs: 488 },
+    { id: 'smart-contract-specialist', name: 'Smart Contract Specialist', nameEn: 'smart-contract-specialist', category: 'agents', desc: 'Use this agent when developing production-level smart contracts. Specializes in Solidity development, Hardhat/Foundry toolchains, gas optimization, an...', tags: ['blockchain-web3'], stars: 4.7, installs: 486 },
+    { id: 'code-simplifier', name: 'Code Simplifier', nameEn: 'code-simplifier', category: 'agents', desc: 'Simplifies and refines code for clarity, consistency, and maintainability while preserving all functionality. Focuses on recently modified code unless...', tags: ['development-tools'], stars: 4.7, installs: 479 },
+    { id: 'screenshot-ui-analyzer', name: 'Screenshot Ui Analyzer', nameEn: 'screenshot-ui-analyzer', category: 'agents', desc: 'Analyzes visual components, layout structure, and design patterns from UI screenshots', tags: ['ui-analysis'], stars: 4.7, installs: 479 },
+    { id: 'c-pro', name: 'C Pro', nameEn: 'c-pro', category: 'agents', desc: 'C Pro 자동화 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['programming-languages'], stars: 4.7, installs: 475 },
+    { id: 'url-context-validator', name: 'Url Context Validator', nameEn: 'url-context-validator', category: 'agents', desc: 'Url Context Validator 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['web-tools'], stars: 4.7, installs: 475 },
+    { id: 'api-architect', name: 'Api Architect', nameEn: 'api-architect', category: 'agents', desc: 'Your role is that of an API architect. Help mentor the engineer by providing guidance, support, and working code.', tags: ['api-graphql', 'API'], stars: 4.7, installs: 472 },
+    { id: 'vault-optimizer', name: 'Vault Optimizer', nameEn: 'vault-optimizer', category: 'agents', desc: 'Vault Optimizer 전문 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['obsidian-ops-team'], stars: 4.7, installs: 461 }
+  ]
 
   commands: [
-    {
-      id: 'cmd-commit', name: '/commit', category: 'commands',
-      desc: '스테이지된 변경 사항을 분석하고 컨벤셔널 커밋 메시지를 자동 생성합니다. git diff를 읽고 의미있는 커밋 메시지를 작성합니다.',
-      tags: ['Git', '커밋', '자동화'], stars: 4.9, installs: 31000, icon: '💾', color: 'emerald',
-      prompt: `# /commit 명령어
-
-## 설치 방법
-\`~/.claude/commands/commit.md\` 파일을 생성하세요:
-
-\`\`\`markdown
-git diff --staged를 분석하여 Conventional Commits 형식으로
-커밋 메시지를 작성하세요.
-
-형식: <타입>(<범위>): <제목>
-
-타입: feat(새기능), fix(버그수정), docs(문서), style(스타일),
-      refactor(리팩토링), perf(성능), test(테스트), chore(기타)
-
-규칙:
-- 제목은 50자 이하, 현재형 동사로 시작
-- 본문은 무엇을, 왜 변경했는지 설명 (어떻게는 코드가 설명)
-- 중요한 경우 Breaking Change, Closes #이슈번호 추가
-\`\`\`
-
-## 사용 방법
-\`\`\`bash
-git add .
-claude /commit
-\`\`\`
-
-## 출력 예시
-\`\`\`
-feat(auth): 소셜 로그인 카카오 연동 구현
-
-카카오 OAuth 2.0을 사용한 소셜 로그인을 추가합니다.
-기존 이메일/비밀번호 로그인과 병행 사용 가능합니다.
-
-Closes #89
-\`\`\``
-    },
-    {
-      id: 'cmd-review', name: '/review', category: 'commands',
-      desc: '현재 변경 사항에 대한 종합적인 코드 리뷰를 수행합니다. 버그, 성능, 보안, 코드 품질을 동시에 분석합니다.',
-      tags: ['리뷰', '품질', '분석'], stars: 4.8, installs: 24500, icon: '🔍', color: 'gold',
-      prompt: `# /review 명령어
-
-## 설치 방법
-\`~/.claude/commands/review.md\` 파일을 생성하세요:
-
-\`\`\`markdown
-현재 git diff 또는 지정된 파일을 다음 기준으로 리뷰하세요:
-
-## 보안 검토
-- 하드코딩된 시크릿/키
-- 사용자 입력 검증 누락
-- 인증/인가 우회 가능성
-
-## 버그 탐지
-- 경계값 처리 (null, undefined, 빈 배열)
-- 비동기 에러 처리
-- 동시성 문제
-
-## 코드 품질
-- 함수 길이 (50줄 이상이면 분리 권장)
-- 중복 코드 (DRY 원칙)
-- 명확하지 않은 변수명
-
-## 성능
-- N+1 쿼리
-- 불필요한 리렌더링
-- 무거운 연산의 캐시 활용
-
-심각도(Critical/High/Medium/Low)와 수정 방법을 명시하세요.
-\`\`\`
-
-## 사용 방법
-\`\`\`bash
-claude /review                 # 현재 변경사항
-claude /review src/auth.ts     # 특정 파일
-\`\`\``
-    },
-    {
-      id: 'cmd-debug', name: '/debug', category: 'commands',
-      desc: '과학적 디버깅 방법론으로 버그를 체계적으로 추적합니다. 가설 설정, 검증, 수정 사이클을 자동으로 진행합니다.',
-      tags: ['디버깅', '오류', '분석'], stars: 4.7, installs: 19200, icon: '🐛', color: 'orange',
-      prompt: `# /debug 명령어
-
-## 설치 방법
-\`~/.claude/commands/debug.md\` 파일을 생성하세요:
-
-\`\`\`markdown
-과학적 디버깅 방법론으로 버그를 추적하세요:
-
-**1단계: 문제 재현**
-- 버그를 일관되게 재현하는 최소 테스트 케이스를 찾으세요
-- 어떤 조건에서 발생하고 어떤 조건에서 발생하지 않는지 파악하세요
-
-**2단계: 가설 수립**
-- 가능한 원인을 3-5가지 나열하세요
-- 가장 가능성 높은 순으로 정렬하세요
-
-**3단계: 가설 검증**
-- console.log, debugger, 로그를 추가하여 검증하세요
-- 하나씩 가설을 확인하세요
-
-**4단계: 수정**
-- 근본 원인을 수정하세요 (증상이 아닌 원인)
-- 단위 테스트를 추가하여 재발을 방지하세요
-
-오류 메시지와 스택 트레이스를 반드시 포함해주세요.
-\`\`\`
-
-## 사용 방법
-\`\`\`bash
-claude /debug "TypeError: Cannot read properties of undefined"
-\`\`\``
-    },
-    {
-      id: 'cmd-plan', name: '/plan', category: 'commands',
-      desc: '복잡한 기능 구현 전 체계적인 계획서를 작성합니다. 파일 구조, 구현 순서, 테스트 전략을 포함합니다.',
-      tags: ['기획', '계획', '설계'], stars: 4.8, installs: 16700, icon: '📋', color: 'blue',
-      prompt: `# /plan 명령어
-
-## 설치 방법
-\`~/.claude/commands/plan.md\` 파일을 생성하세요:
-
-\`\`\`markdown
-구현 전 다음 계획서를 작성하세요:
-
-## 1. 목표 및 범위
-- 구현할 기능의 명확한 정의
-- 포함/제외 범위
-
-## 2. 파일 구조
-수정할 파일과 생성할 파일을 나열하세요:
-\`\`\`
-수정: src/auth/service.ts
-생성: src/auth/oauth.ts
-테스트: src/auth/__tests__/oauth.test.ts
-\`\`\`
-
-## 3. 구현 단계 (체크박스)
-- [ ] 단계 1: 테스트 작성
-- [ ] 단계 2: 인터페이스 정의
-- [ ] 단계 3: 구현
-
-## 4. 의존성
-- 외부 라이브러리
-- 내부 모듈 의존성
-
-## 5. 테스트 전략
-- 단위 테스트 케이스
-- 통합 테스트 시나리오
-\`\`\`
-
-## 사용 방법
-\`\`\`bash
-claude /plan "카카오 소셜 로그인 구현"
-\`\`\``
-    },
-    {
-      id: 'cmd-test', name: '/test', category: 'commands',
-      desc: '현재 컨텍스트에 맞는 테스트를 자동으로 생성하고 실행합니다. 단위, 통합, E2E 테스트를 상황에 맞게 선택합니다.',
-      tags: ['테스트', '자동화', 'TDD'], stars: 4.7, installs: 21300, icon: '🧪', color: 'emerald',
-      prompt: `# /test 명령어
-
-## 설치 방법
-\`~/.claude/commands/test.md\` 파일을 생성하세요:
-
-\`\`\`markdown
-현재 컨텍스트에 맞는 테스트를 생성하세요.
-
-**테스트 유형 선택 기준:**
-- 순수 함수/유틸리티 → 단위 테스트 (Jest/Vitest)
-- API 엔드포인트 → 통합 테스트 (Supertest)
-- 사용자 플로우 → E2E 테스트 (Playwright)
-
-**테스트 케이스 포함 항목:**
-1. 해피 패스 (정상 동작)
-2. 경계값 테스트 (빈 값, 최대값, 최소값)
-3. 에러 케이스 (잘못된 입력, 서버 오류)
-4. 엣지 케이스 (동시 요청, 타임아웃)
-
-**AAA 패턴 사용:**
-- Arrange: 테스트 데이터 설정
-- Act: 테스트 대상 실행
-- Assert: 결과 검증
-
-커버리지 목표: 80% 이상
-\`\`\`
-
-## 사용 방법
-\`\`\`bash
-claude /test src/auth/service.ts   # 파일 테스트 생성
-claude /test                       # 현재 변경 사항 테스트
-\`\`\``
-    },
-    {
-      id: 'cmd-docs', name: '/docs', category: 'commands',
-      desc: '코드 변경 사항에 맞춰 문서를 자동 업데이트합니다. README, CHANGELOG, API 문서를 동기화합니다.',
-      tags: ['문서', '자동화', 'README'], stars: 4.5, installs: 12800, icon: '📖', color: 'purple',
-      prompt: `# /docs 명령어
-
-## 설치 방법
-\`~/.claude/commands/docs.md\` 파일을 생성하세요:
-
-\`\`\`markdown
-코드 변경 사항을 분석하여 다음 문서를 업데이트하세요:
-
-**README.md 업데이트 조건:**
-- 새 기능 추가 → Features 섹션에 추가
-- API 변경 → API Reference 업데이트
-- 설치/설정 방법 변경 → Getting Started 업데이트
-
-**CHANGELOG.md 항목 추가:**
-버전과 날짜를 포함하여 변경 사항을 분류하세요:
-- Added: 새 기능
-- Changed: 기존 기능 변경
-- Fixed: 버그 수정
-- Removed: 삭제된 기능
-
-**JSDoc/TSDoc 추가:**
-공개 함수에 다음을 포함하세요:
-- @description 기능 설명
-- @param 파라미터 설명
-- @returns 반환값 설명
-- @throws 발생 가능한 에러
-- @example 사용 예시
-\`\`\`
-
-## 사용 방법
-\`\`\`bash
-claude /docs   # 현재 변경사항에 맞게 문서 업데이트
-\`\`\``
-    },
-    {
-      id: 'cmd-refactor', name: '/refactor', category: 'commands',
-      desc: '선택한 코드를 분석하고 리팩토링 전략을 제안합니다. 중복 제거, 추상화, 가독성 개선을 자동으로 수행합니다.',
-      tags: ['리팩토링', '최적화', '품질'], stars: 4.6, installs: 15400, icon: '🔄', color: 'gold',
-      prompt: `# /refactor 명령어
-
-## 설치 방법
-\`~/.claude/commands/refactor.md\` 파일을 생성하세요:
-
-\`\`\`markdown
-지정된 코드를 다음 원칙으로 리팩토링하세요:
-
-**리팩토링 원칙:**
-
-1. **단일 책임 원칙**
-   - 함수는 하나의 일만 해야 합니다
-   - 50줄 이상이면 분리를 고려하세요
-
-2. **DRY (Don't Repeat Yourself)**
-   - 중복 코드를 유틸리티 함수로 추출하세요
-   - 공통 패턴을 훅/클래스로 추상화하세요
-
-3. **명확한 명명**
-   - 약어 대신 명확한 이름 사용 (usrNm → userName)
-   - 동사로 시작하는 함수명 (getUser, createOrder)
-
-4. **복잡도 감소**
-   - 중첩된 if문을 얼리 리턴으로 변경
-   - 복잡한 조건을 설명적 변수로 추출
-
-**중요: 기능 변경 없이 코드만 개선하세요.**
-리팩토링 전/후에 테스트를 실행하여 동일하게 통과하는지 확인하세요.
-\`\`\`
-
-## 사용 방법
-\`\`\`bash
-claude /refactor src/utils.ts   # 특정 파일 리팩토링
-\`\`\``
-    },
-    {
-      id: 'cmd-deploy', name: '/deploy', category: 'commands',
-      desc: 'GitHub Pages, Vercel, AWS 등 다양한 플랫폼으로 배포 워크플로우를 자동화합니다.',
-      tags: ['배포', 'CI/CD', 'DevOps'], stars: 4.7, installs: 14100, icon: '🚀', color: 'blue',
-      prompt: `# /deploy 명령어
-
-## 설치 방법
-\`~/.claude/commands/deploy.md\` 파일을 생성하세요:
-
-\`\`\`markdown
-배포 전 다음 체크리스트를 확인하고 배포를 진행하세요:
-
-**배포 전 검사:**
-- [ ] 모든 테스트 통과 확인 (npm test)
-- [ ] 빌드 성공 확인 (npm run build)
-- [ ] 환경 변수 설정 확인
-- [ ] CHANGELOG.md 업데이트
-- [ ] 버전 태그 생성 (git tag v1.x.x)
-
-**배포 플랫폼별 명령어:**
-
-GitHub Pages:
-git push origin main  # GitHub Actions 자동 배포
-
-Vercel:
-vercel --prod
-
-AWS S3:
-aws s3 sync dist/ s3://bucket-name --delete
-
-**배포 후 검증:**
-- [ ] 프로덕션 URL 접속 확인
-- [ ] 핵심 기능 동작 확인
-- [ ] 에러 모니터링 확인 (Sentry)
-\`\`\`
-
-## 사용 방법
-\`\`\`bash
-claude /deploy vercel    # Vercel 배포
-claude /deploy gh-pages  # GitHub Pages 배포
-\`\`\``
-    }
-  ],
-
-  plugins: [
-    {
-      id: 'plugin-vercel', name: 'Vercel 플러그인', category: 'plugins',
-      desc: 'Vercel 배포, 환경 변수, 도메인 설정을 Claude Code에서 직접 관리합니다. vercel deploy, env pull 등을 지원합니다.',
-      tags: ['Vercel', '배포', '호스팅'], stars: 4.9, installs: 28000, icon: '▲', color: 'gold',
-      prompt: `# Vercel 플러그인
-
-## 설치 방법
-\`\`\`bash
-# Vercel CLI 설치
-npm i -g vercel
-
-# Claude Code Vercel 플러그인 설치
-claude plugin install vercel
-\`\`\`
-
-## 주요 기능 및 사용 방법
-
-### 배포
-\`\`\`bash
-# 프리뷰 배포
-vercel
-
-# 프로덕션 배포
-vercel --prod
-\`\`\`
-
-### 환경 변수 관리
-\`\`\`bash
-# 환경 변수 가져오기
-vercel env pull .env.local
-
-# 환경 변수 추가
-vercel env add NEXT_PUBLIC_API_URL
-\`\`\`
-
-### Claude Code 통합 활용
-\`\`\`
-"Vercel 플러그인으로 현재 브랜치를 프리뷰 배포하고
-배포 URL을 알려주세요."
-
-"프로덕션 환경 변수 목록을 보여주세요."
-
-"최근 배포 로그에서 오류를 찾아주세요."
-\`\`\`
-
-## Vercel 프로젝트 설정 (vercel.ts)
-\`\`\`typescript
-import { type VercelConfig } from '@vercel/config';
-
-export const config: VercelConfig = {
-  framework: 'nextjs',
-  buildCommand: 'npm run build',
-  outputDirectory: '.next',
-};
-\`\`\``
-    },
-    {
-      id: 'plugin-sentry', name: 'Sentry 플러그인', category: 'plugins',
-      desc: 'Sentry 에러 추적과 성능 모니터링을 AI로 분석합니다. 에러 패턴 인식과 자동 수정 제안을 제공합니다.',
-      tags: ['Sentry', '모니터링', '에러'], stars: 4.7, installs: 17500, icon: '🚨', color: 'purple',
-      prompt: `# Sentry 플러그인
-
-## 설치 방법
-\`\`\`bash
-npm install @sentry/nextjs  # Next.js
-npm install @sentry/node    # Node.js
-npm install @sentry/react   # React
-\`\`\`
-
-## 기본 설정
-\`\`\`typescript
-import * as Sentry from "@sentry/nextjs";
-
-Sentry.init({
-  dsn: process.env.SENTRY_DSN,
-  environment: process.env.NODE_ENV,
-  tracesSampleRate: 1.0,  // 프로덕션에서는 0.1로 낮추세요
-
-  // 성능 모니터링
-  integrations: [
-    Sentry.browserTracingIntegration(),
-    Sentry.replayIntegration(),
-  ],
-});
-\`\`\`
-
-## 에러 캡처
-\`\`\`typescript
-try {
-  await processOrder(orderId);
-} catch (error) {
-  Sentry.withScope((scope) => {
-    scope.setTag('feature', 'checkout');
-    scope.setUser({ id: userId });
-    scope.setExtra('orderId', orderId);
-    Sentry.captureException(error);
-  });
-  throw error;
-}
-\`\`\`
-
-## Claude Code 통합 활용
-\`\`\`
-"Sentry 플러그인으로 최근 24시간 에러를 분석하고
-가장 많이 발생한 에러 TOP 5와 수정 방법을 제안해주세요."
-\`\`\``
-    },
-    {
-      id: 'plugin-stripe', name: 'Stripe 플러그인', category: 'plugins',
-      desc: 'Stripe 결제 시스템 통합과 웹훅 처리를 가이드합니다. 구독, 일회성 결제, 환불 플로우를 자동화합니다.',
-      tags: ['Stripe', '결제', '웹훅'], stars: 4.8, installs: 22300, icon: '💳', color: 'blue',
-      prompt: `# Stripe 플러그인
-
-## 설치
-\`\`\`bash
-npm install stripe @stripe/stripe-js
-\`\`\`
-
-## 서버 사이드 설정
-\`\`\`typescript
-import Stripe from 'stripe';
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2024-12-18',
-  typescript: true,
-});
-
-// 결제 세션 생성
-export async function createCheckoutSession(priceId: string, userId: string) {
-  const session = await stripe.checkout.sessions.create({
-    mode: 'subscription',
-    payment_method_types: ['card'],
-    line_items: [{ price: priceId, quantity: 1 }],
-    success_url: \`\${process.env.APP_URL}/success?session={CHECKOUT_SESSION_ID}\`,
-    cancel_url: \`\${process.env.APP_URL}/pricing\`,
-    metadata: { userId },
-  });
-  return session;
-}
-\`\`\`
-
-## 웹훅 처리
-\`\`\`typescript
-export async function POST(request: Request) {
-  const body = await request.text();
-  const sig = request.headers.get('stripe-signature')!;
-
-  const event = stripe.webhooks.constructEvent(
-    body, sig, process.env.STRIPE_WEBHOOK_SECRET!
-  );
-
-  switch (event.type) {
-    case 'checkout.session.completed':
-      await handlePaymentSuccess(event.data.object);
-      break;
-    case 'customer.subscription.deleted':
-      await handleSubscriptionCanceled(event.data.object);
-      break;
-  }
-  return Response.json({ received: true });
-}
-\`\`\`
-
-## 활용 예시
-\`\`\`
-"Stripe 플러그인으로 월간/연간 구독 플랜을 구현해주세요."
-\`\`\``
-    },
-    {
-      id: 'plugin-supabase', name: 'Supabase 플러그인', category: 'plugins',
-      desc: 'Supabase 데이터베이스, 인증, 실시간 구독을 Claude Code로 관리합니다. RLS 정책과 Edge Functions를 지원합니다.',
-      tags: ['Supabase', 'PostgreSQL', '인증'], stars: 4.8, installs: 19600, icon: '⚡', color: 'emerald',
-      prompt: `# Supabase 플러그인
-
-## 설치
-\`\`\`bash
-npm install @supabase/supabase-js
-\`\`\`
-
-## 클라이언트 설정
-\`\`\`typescript
-import { createClient } from '@supabase/supabase-js';
-
-export const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
-\`\`\`
-
-## 인증
-\`\`\`typescript
-// 소셜 로그인
-const { data, error } = await supabase.auth.signInWithOAuth({
-  provider: 'github',
-  options: { redirectTo: window.location.origin + '/auth/callback' }
-});
-
-// 현재 사용자
-const { data: { user } } = await supabase.auth.getUser();
-\`\`\`
-
-## 데이터베이스 쿼리
-\`\`\`typescript
-// 조회 (RLS 자동 적용)
-const { data } = await supabase
-  .from('posts')
-  .select('id, title, user:users(name)')
-  .eq('published', true)
-  .order('created_at', { ascending: false })
-  .limit(10);
-
-// 실시간 구독
-const channel = supabase
-  .channel('posts')
-  .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'posts' },
-    (payload) => console.log('새 게시글:', payload.new))
-  .subscribe();
-\`\`\`
-
-## RLS 정책 예시
-\`\`\`sql
--- 본인의 데이터만 수정 가능
-CREATE POLICY "Users can update own posts" ON posts
-  FOR UPDATE USING (auth.uid() = user_id);
-\`\`\`
-
-## 활용 예시
-\`\`\`
-"Supabase 플러그인으로 [기능]을 구현해주세요."
-\`\`\``
-    },
-    {
-      id: 'plugin-linear', name: 'Linear 플러그인', category: 'plugins',
-      desc: 'Linear 이슈, 프로젝트, 사이클을 Claude Code에서 직접 관리합니다. 이슈 생성, 할당, 상태 업데이트를 자동화합니다.',
-      tags: ['Linear', '이슈', '프로젝트관리'], stars: 4.6, installs: 11200, icon: '📊', color: 'purple',
-      prompt: `# Linear 플러그인
-
-## 설치 방법
-\`\`\`bash
-# Linear MCP 서버 설치
-claude plugin install linear
-\`\`\`
-
-## API 키 설정
-1. Linear → Settings → API → Personal API keys
-2. API 키 생성 후 환경 변수 설정:
-\`\`\`bash
-export LINEAR_API_KEY="lin_api_..."
-\`\`\`
-
-## 사용 가능한 기능
-- 이슈 생성/조회/업데이트
-- 이슈 상태 변경 (Todo → In Progress → Done)
-- 이슈 할당
-- 코멘트 추가
-- 프로젝트/사이클 조회
-
-## Claude Code 통합 활용
-
-### 개발 작업 추적
-\`\`\`
-"현재 구현한 기능에 대해 Linear 이슈를 생성하고
-Done 상태로 변경해주세요."
-
-"이번 스프린트에서 내가 담당한 이슈 목록을 보여주세요."
-\`\`\`
-
-### 자동화 워크플로우
-\`\`\`
-"git commit 메시지에서 이슈 번호(ENG-123)를 감지하여
-해당 Linear 이슈 상태를 자동으로 업데이트해주세요."
-\`\`\`
-
-### 버그 리포팅
-\`\`\`
-"이 에러를 분석하고 Linear에 버그 이슈를 생성해주세요.
-우선순위: High, 팀: Engineering"
-\`\`\``
-    }
-  ],
+    { id: 'generate-tests', name: 'Generate Tests', nameEn: 'generate-tests', category: 'commands', desc: 'Generate a complete test file for a specified source file or component. Use when the user explicitly asks to write, create, or generate tests for a sp...', tags: ['테스트'], stars: 4.9, installs: 8450 },
+    { id: 'ultra-think', name: 'Ultra Think', nameEn: 'ultra-think', category: 'commands', desc: 'Multi-framework structured analysis: surfaces hidden assumptions, generates competing solutions, stress-tests each with adversarial reasoning, and del...', tags: ['utilities'], stars: 4.9, installs: 6820 },
+    { id: 'create-architecture-documentation', name: 'Create Architecture Documentation', nameEn: 'create-architecture-documentation', category: 'commands', desc: 'Generate comprehensive architecture documentation with diagrams, ADRs, and interactive visualization', tags: ['문서화'], stars: 4.9, installs: 4689 },
+    { id: 'code-review', name: 'Code Review', nameEn: 'code-review', category: 'commands', desc: 'Comprehensive code quality review with security, performance, and architecture analysis', tags: ['utilities'], stars: 4.9, installs: 4109 },
+    { id: 'refactor-code', name: 'Refactor Code', nameEn: 'refactor-code', category: 'commands', desc: 'Refactor Code — Claude Code용 명령어 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['utilities'], stars: 4.9, installs: 3881 },
+    { id: 'commit', name: 'Commit', nameEn: 'commit', category: 'commands', desc: 'Create well-formatted commits with conventional commit format and emoji', tags: ['git-workflow'], stars: 4.9, installs: 3222 },
+    { id: 'update-docs', name: 'Update Docs', nameEn: 'update-docs', category: 'commands', desc: 'Systematically update project documentation with implementation status, API changes, and synchronized content', tags: ['문서화'], stars: 4.9, installs: 3005 },
+    { id: 'architecture-review', name: 'Architecture Review', nameEn: 'architecture-review', category: 'commands', desc: 'Comprehensive architecture review with design patterns analysis and improvement recommendations', tags: ['team'], stars: 4.9, installs: 2463 },
+    { id: 'todo', name: 'Todo', nameEn: 'todo', category: 'commands', desc: 'Manage project todos in todos.md file', tags: ['project-management'], stars: 4.9, installs: 2007 },
+    { id: 'create-prd', name: 'Create Prd', nameEn: 'create-prd', category: 'commands', desc: 'Create Product Requirements Document (PRD) for new features', tags: ['project-management'], stars: 4.9, installs: 1871 },
+    { id: 'explain-code', name: 'Explain Code', nameEn: 'explain-code', category: 'commands', desc: 'Explain Code — Claude Code용 명령어 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['utilities'], stars: 4.9, installs: 1757 },
+    { id: 'workflow-orchestrator', name: 'Workflow Orchestrator', nameEn: 'workflow-orchestrator', category: 'commands', desc: 'Orchestrate complex automation workflows with task dependencies, scheduling, and cross-platform execution', tags: ['자동화', '워크플로우'], stars: 4.9, installs: 1669 },
+    { id: 'add-changelog', name: 'Add Changelog', nameEn: 'add-changelog', category: 'commands', desc: 'Generate and maintain project changelog with Keep a Changelog format', tags: ['deployment'], stars: 4.9, installs: 1461 },
+    { id: 'feature', name: 'Feature', nameEn: 'feature', category: 'commands', desc: 'Create a new Git Flow feature branch from develop with proper naming and tracking', tags: ['git'], stars: 4.9, installs: 1395 },
+    { id: 'finish', name: 'Finish', nameEn: 'finish', category: 'commands', desc: 'Complete and merge current Git Flow branch (feature/release/hotfix) with proper cleanup and tagging', tags: ['git'], stars: 4.9, installs: 1376 },
+    { id: 'generate-api-documentation', name: 'Generate Api Documentation', nameEn: 'generate-api-documentation', category: 'commands', desc: 'Auto-generate API reference documentation with multiple output formats and automated deployment', tags: ['문서화', 'API'], stars: 4.9, installs: 1280 },
+    { id: 'release', name: 'Release', nameEn: 'release', category: 'commands', desc: 'Create a new Git Flow release branch from develop with version bumping and changelog generation', tags: ['git'], stars: 4.9, installs: 1251 },
+    { id: 'flow-status', name: 'Flow Status', nameEn: 'flow-status', category: 'commands', desc: 'Display comprehensive Git Flow status including branch type, sync status, changes, and merge targets', tags: ['git'], stars: 4.9, installs: 1244 },
+    { id: 'hotfix', name: 'Hotfix', nameEn: 'hotfix', category: 'commands', desc: 'Create a new Git Flow hotfix branch from main for emergency production fixes', tags: ['git'], stars: 4.9, installs: 1230 },
+    { id: 'all-tools', name: 'All Tools', nameEn: 'all-tools', category: 'commands', desc: 'All Tools — Claude Code용 명령어 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['utilities'], stars: 4.9, installs: 1015 },
+    { id: 'init-project', name: 'Init Project', nameEn: 'init-project', category: 'commands', desc: 'Initialize new project with essential structure, configuration, and development environment setup', tags: ['project-management'], stars: 4.8, installs: 998 },
+    { id: 'supabase-schema-sync', name: 'Supabase Schema Sync', nameEn: 'supabase-schema-sync', category: 'commands', desc: 'Synchronize database schema with Supabase using MCP integration', tags: ['데이터베이스'], stars: 4.8, installs: 985 },
+    { id: 'docs-maintenance', name: 'Docs Maintenance', nameEn: 'docs-maintenance', category: 'commands', desc: 'Docs Maintenance 자동화 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['문서화'], stars: 4.8, installs: 924 },
+    { id: 'containerize-application', name: 'Containerize Application', nameEn: 'containerize-application', category: 'commands', desc: 'Containerize application with optimized Docker configuration, security, and multi-stage builds', tags: ['deployment'], stars: 4.8, installs: 856 },
+    { id: 'security-audit', name: 'Security Audit', nameEn: 'security-audit', category: 'commands', desc: 'Perform comprehensive security assessment and vulnerability analysis', tags: ['보안'], stars: 4.8, installs: 816 },
+    { id: 'supabase-data-explorer', name: 'Supabase Data Explorer', nameEn: 'supabase-data-explorer', category: 'commands', desc: 'Explore and analyze Supabase database data with intelligent querying and visualization', tags: ['데이터베이스'], stars: 4.8, installs: 797 },
+    { id: 'design-database-schema', name: 'Design Database Schema', nameEn: 'design-database-schema', category: 'commands', desc: 'Design optimized database schemas with proper relationships, constraints, and performance considerations', tags: ['setup', '데이터베이스'], stars: 4.8, installs: 770 },
+    { id: 'supabase-performance-optimizer', name: 'Supabase Performance Optimizer', nameEn: 'supabase-performance-optimizer', category: 'commands', desc: 'Optimize Supabase database performance with intelligent analysis and recommendations', tags: ['데이터베이스', '성능'], stars: 4.8, installs: 768 },
+    { id: 'start', name: 'Start', nameEn: 'start', category: 'commands', desc: 'Start — Claude Code용 명령어 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['orchestration'], stars: 4.8, installs: 759 },
+    { id: 'supabase-migration-assistant', name: 'Supabase Migration Assistant', nameEn: 'supabase-migration-assistant', category: 'commands', desc: 'Generate and manage Supabase database migrations with automated testing and validation', tags: ['데이터베이스'], stars: 4.8, installs: 714 },
+    { id: 'nextjs-component-generator', name: 'Nextjs Component Generator', nameEn: 'nextjs-component-generator', category: 'commands', desc: 'Generate optimized React components for Next.js with TypeScript and best practices', tags: ['nextjs-vercel', 'Next.js'], stars: 4.8, installs: 706 },
+    { id: 'create-feature', name: 'Create Feature', nameEn: 'create-feature', category: 'commands', desc: 'Scaffold new feature with boilerplate code, tests, and documentation', tags: ['project-management'], stars: 4.8, installs: 705 },
+    { id: 'supabase-security-audit', name: 'Supabase Security Audit', nameEn: 'supabase-security-audit', category: 'commands', desc: 'Conduct comprehensive Supabase security audit with RLS analysis and vulnerability assessment', tags: ['데이터베이스', '보안'], stars: 4.8, installs: 704 },
+    { id: 'supabase-type-generator', name: 'Supabase Type Generator', nameEn: 'supabase-type-generator', category: 'commands', desc: 'Generate TypeScript types from Supabase schema with automatic synchronization and validation', tags: ['데이터베이스'], stars: 4.8, installs: 694 },
+    { id: 'create-pr', name: 'Create Pr', nameEn: 'create-pr', category: 'commands', desc: 'Create Pr — Claude Code용 명령어 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['git-workflow'], stars: 4.8, installs: 686 },
+    { id: 'supabase-backup-manager', name: 'Supabase Backup Manager', nameEn: 'supabase-backup-manager', category: 'commands', desc: 'Manage Supabase database backups with automated scheduling and recovery procedures', tags: ['데이터베이스'], stars: 4.8, installs: 649 },
+    { id: 'create-onboarding-guide', name: 'Create Onboarding Guide', nameEn: 'create-onboarding-guide', category: 'commands', desc: 'Create comprehensive developer onboarding guide with environment setup, workflows, and interactive tutorials', tags: ['문서화'], stars: 4.8, installs: 648 },
+    { id: 'supabase-realtime-monitor', name: 'Supabase Realtime Monitor', nameEn: 'supabase-realtime-monitor', category: 'commands', desc: 'Monitor and optimize Supabase realtime connections with performance analysis and debugging', tags: ['데이터베이스'], stars: 4.8, installs: 582 },
+    { id: 'doc-api', name: 'Doc Api', nameEn: 'doc-api', category: 'commands', desc: 'Generate comprehensive API documentation from code with interactive examples and testing capabilities', tags: ['문서화', 'API'], stars: 4.8, installs: 538 },
+    { id: 'optimize-database-performance', name: 'Optimize Database Performance', nameEn: 'optimize-database-performance', category: 'commands', desc: 'Optimize database queries, indexing, and performance for improved response times and scalability', tags: ['performance', '데이터베이스'], stars: 4.8, installs: 533 },
+    { id: 'setup-docker-containers', name: 'Setup Docker Containers', nameEn: 'setup-docker-containers', category: 'commands', desc: 'Setup Docker containerization with multi-stage builds and development workflows', tags: ['setup', 'Docker'], stars: 4.8, installs: 532 },
+    { id: 'debug-error', name: 'Debug Error', nameEn: 'debug-error', category: 'commands', desc: 'Debug Error — Claude Code용 명령어 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['utilities'], stars: 4.7, installs: 495 },
+    { id: 'generate-test-cases', name: 'Generate Test Cases', nameEn: 'generate-test-cases', category: 'commands', desc: 'Generate comprehensive test cases with automatic analysis and coverage optimization', tags: ['테스트'], stars: 4.7, installs: 469 },
+    { id: 'nextjs-performance-audit', name: 'Nextjs Performance Audit', nameEn: 'nextjs-performance-audit', category: 'commands', desc: 'Comprehensive Next.js performance audit with actionable optimization recommendations', tags: ['nextjs-vercel', 'Next.js', '성능'], stars: 4.7, installs: 454 },
+    { id: 'setup-development-environment', name: 'Setup Development Environment', nameEn: 'setup-development-environment', category: 'commands', desc: 'Setup comprehensive development environment with tools, configurations, and workflows', tags: ['setup'], stars: 4.7, installs: 452 },
+    { id: 'resume', name: 'Resume', nameEn: 'resume', category: 'commands', desc: 'Resume — Claude Code용 명령어 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['orchestration'], stars: 4.7, installs: 447 },
+    { id: 'prime', name: 'Prime', nameEn: 'prime', category: 'commands', desc: 'Prime — Claude Code용 명령어 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['utilities'], stars: 4.7, installs: 444 },
+    { id: 'directory-deep-dive', name: 'Directory Deep Dive', nameEn: 'directory-deep-dive', category: 'commands', desc: 'Directory Deep Dive — Claude Code용 명령어 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['utilities'], stars: 4.7, installs: 441 },
+    { id: 'nextjs-bundle-analyzer', name: 'Nextjs Bundle Analyzer', nameEn: 'nextjs-bundle-analyzer', category: 'commands', desc: 'Analyze and optimize Next.js bundle size with detailed recommendations', tags: ['nextjs-vercel', 'Next.js'], stars: 4.7, installs: 392 },
+    { id: 'performance-audit', name: 'Performance Audit', nameEn: 'performance-audit', category: 'commands', desc: 'Comprehensive performance audit with metrics, bottleneck identification, and optimization recommendations', tags: ['performance', '성능'], stars: 4.7, installs: 380 },
+    { id: 'design-rest-api', name: 'Design Rest Api', nameEn: 'design-rest-api', category: 'commands', desc: 'Design RESTful API architecture with comprehensive endpoints, authentication, and documentation', tags: ['setup'], stars: 4.7, installs: 378 },
+    { id: 'implement-caching-strategy', name: 'Implement Caching Strategy', nameEn: 'implement-caching-strategy', category: 'commands', desc: 'Design and implement comprehensive caching solutions for improved performance and scalability', tags: ['performance'], stars: 4.7, installs: 366 },
+    { id: 'test-coverage', name: 'Test Coverage', nameEn: 'test-coverage', category: 'commands', desc: 'Analyze and improve test coverage with comprehensive reporting and gap identification', tags: ['테스트'], stars: 4.7, installs: 358 },
+    { id: 'dependency-audit', name: 'Dependency Audit', nameEn: 'dependency-audit', category: 'commands', desc: 'Audit dependencies for security vulnerabilities, license compliance, and update recommendations', tags: ['보안'], stars: 4.7, installs: 343 },
+    { id: 'nextjs-api-tester', name: 'Nextjs Api Tester', nameEn: 'nextjs-api-tester', category: 'commands', desc: 'Test and validate Next.js API routes with comprehensive test scenarios', tags: ['nextjs-vercel', 'Next.js', 'API'], stars: 4.7, installs: 336 },
+    { id: 'commit', name: 'Commit', nameEn: 'commit', category: 'commands', desc: 'Commit — Claude Code용 명령어 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['orchestration'], stars: 4.7, installs: 325 },
+    { id: 'vercel-deploy-optimize', name: 'Vercel Deploy Optimize', nameEn: 'vercel-deploy-optimize', category: 'commands', desc: 'Optimize and deploy Next.js application to Vercel with performance monitoring', tags: ['nextjs-vercel'], stars: 4.7, installs: 320 },
+    { id: 'pr-review', name: 'Pr Review', nameEn: 'pr-review', category: 'commands', desc: 'Pr Review — Claude Code용 명령어 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['git-workflow'], stars: 4.7, installs: 318 },
+    { id: 'create-pull-request', name: 'Create Pull Request', nameEn: 'create-pull-request', category: 'commands', desc: 'Create Pull Request — Claude Code용 명령어 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['git-workflow'], stars: 4.7, installs: 299 },
+    { id: 'optimize-memory-usage', name: 'Optimize Memory Usage', nameEn: 'optimize-memory-usage', category: 'commands', desc: 'Comprehensive memory usage optimization with leak detection, garbage collection tuning, and memory profiling', tags: ['performance'], stars: 4.7, installs: 297 },
+    { id: 'project-health-check', name: 'Project Health Check', nameEn: 'project-health-check', category: 'commands', desc: 'Analyze overall project health and generate comprehensive metrics report', tags: ['project-management'], stars: 4.7, installs: 297 },
+    { id: 'optimize-api-performance', name: 'Optimize Api Performance', nameEn: 'optimize-api-performance', category: 'commands', desc: 'Comprehensive API performance optimization with response time reduction, throughput improvement, and scalability enhancements', tags: ['performance', 'API'], stars: 4.7, installs: 296 },
+    { id: 'setup-linting', name: 'Setup Linting', nameEn: 'setup-linting', category: 'commands', desc: 'Configure comprehensive code linting and quality analysis tools with automated enforcement', tags: ['setup'], stars: 4.7, installs: 296 },
+    { id: 'write-tests', name: 'Write Tests', nameEn: 'write-tests', category: 'commands', desc: 'Write comprehensive unit and integration tests with proper mocking and coverage', tags: ['테스트'], stars: 4.7, installs: 296 },
+    { id: 'session-learning-capture', name: 'Session Learning Capture', nameEn: 'session-learning-capture', category: 'commands', desc: 'Capture and document session learnings with automatic knowledge integration and memory updates', tags: ['team'], stars: 4.7, installs: 292 },
+    { id: 'web-design-reviewer', name: 'Web Design Reviewer', nameEn: 'web-design-reviewer', category: 'commands', desc: 'This skill enables visual inspection of websites running locally or remotely to identify and fix design issues. Triggers on requests like "review webs...', tags: ['design'], stars: 4.7, installs: 291 },
+    { id: 'ci-pipeline', name: 'Ci Pipeline', nameEn: 'ci-pipeline', category: 'commands', desc: 'Manage and automate CI/CD pipeline configuration with GitHub Actions, multi-environment support, and deployment strategies', tags: ['자동화'], stars: 4.7, installs: 289 },
+    { id: 'secrets-scanner', name: 'Secrets Scanner', nameEn: 'secrets-scanner', category: 'commands', desc: 'Scan codebase for exposed secrets, credentials, and sensitive information', tags: ['보안'], stars: 4.7, installs: 286 },
+    { id: 'optimize-build', name: 'Optimize Build', nameEn: 'optimize-build', category: 'commands', desc: 'Optimize Build — Claude Code용 명령어 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['performance'], stars: 4.7, installs: 285 },
+    { id: 'architecture-scenario-explorer', name: 'Architecture Scenario Explorer', nameEn: 'architecture-scenario-explorer', category: 'commands', desc: 'Architecture Scenario Explorer — Claude Code용 명령어 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['utilities'], stars: 4.7, installs: 279 },
+    { id: 'vercel-env-sync', name: 'Vercel Env Sync', nameEn: 'vercel-env-sync', category: 'commands', desc: 'Synchronize environment variables between local development and Vercel deployments', tags: ['nextjs-vercel'], stars: 4.7, installs: 267 },
+    { id: 'optimize', name: 'Optimize', nameEn: 'optimize', category: 'commands', desc: 'Optimize — Claude Code용 명령어 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['orchestration'], stars: 4.7, installs: 266 },
+    { id: 'penetration-test', name: 'Penetration Test', nameEn: 'penetration-test', category: 'commands', desc: 'Perform penetration testing and vulnerability assessment on application', tags: ['보안'], stars: 4.7, installs: 266 },
+    { id: 'nextjs-middleware-creator', name: 'Nextjs Middleware Creator', nameEn: 'nextjs-middleware-creator', category: 'commands', desc: 'Create optimized Next.js middleware with authentication, rate limiting, and routing logic', tags: ['nextjs-vercel', 'Next.js'], stars: 4.7, installs: 262 },
+    { id: 'memory-spring-cleaning', name: 'Memory Spring Cleaning', nameEn: 'memory-spring-cleaning', category: 'commands', desc: 'Clean and organize project memory files with implementation synchronization and pattern updates', tags: ['team'], stars: 4.7, installs: 262 },
+    { id: 'vercel-edge-function', name: 'Vercel Edge Function', nameEn: 'vercel-edge-function', category: 'commands', desc: 'Generate optimized Vercel Edge Functions with geolocation, authentication, and data transformation', tags: ['nextjs-vercel'], stars: 4.7, installs: 261 },
+    { id: 'e2e-setup', name: 'E2e Setup', nameEn: 'e2e-setup', category: 'commands', desc: 'Configure comprehensive end-to-end testing suite with framework selection and CI integration', tags: ['테스트'], stars: 4.7, installs: 261 },
+    { id: 'security-hardening', name: 'Security Hardening', nameEn: 'security-hardening', category: 'commands', desc: 'Harden application security configuration with comprehensive security controls', tags: ['보안'], stars: 4.7, installs: 258 },
+    { id: 'create-prp', name: 'Create Prp', nameEn: 'create-prp', category: 'commands', desc: 'Create comprehensive Product Requirement Prompt (PRP) with research and validation', tags: ['project-management'], stars: 4.7, installs: 256 },
+    { id: 'optimize-bundle-size', name: 'Optimize Bundle Size', nameEn: 'optimize-bundle-size', category: 'commands', desc: 'Reduce and optimize bundle sizes through analysis, configuration, and code splitting strategies', tags: ['performance'], stars: 4.7, installs: 249 },
+    { id: 'troubleshooting-guide', name: 'Troubleshooting Guide', nameEn: 'troubleshooting-guide', category: 'commands', desc: 'Generate systematic troubleshooting documentation with diagnostic procedures, common issues, and automated solutions', tags: ['문서화'], stars: 4.7, installs: 246 },
+    { id: 'update-dependencies', name: 'Update Dependencies', nameEn: 'update-dependencies', category: 'commands', desc: 'Update and modernize project dependencies with comprehensive testing and compatibility checks', tags: ['setup'], stars: 4.7, installs: 243 },
+    { id: 'cleanup-cache', name: 'Cleanup Cache', nameEn: 'cleanup-cache', category: 'commands', desc: 'Clean system caches (npm, Homebrew, Yarn, browsers, Python/ML) to free disk space', tags: ['utilities'], stars: 4.7, installs: 237 },
+    { id: 'create-worktrees', name: 'Create Worktrees', nameEn: 'create-worktrees', category: 'commands', desc: 'Create Worktrees — Claude Code용 명령어 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['git-workflow'], stars: 4.7, installs: 235 },
+    { id: 'add-authentication-system', name: 'Add Authentication System', nameEn: 'add-authentication-system', category: 'commands', desc: 'Implement secure user authentication system with chosen method and security best practices', tags: ['보안'], stars: 4.7, installs: 234 },
+    { id: 'ci-setup', name: 'Ci Setup', nameEn: 'ci-setup', category: 'commands', desc: 'Setup comprehensive CI/CD pipeline with automated testing, building, and deployment', tags: ['deployment'], stars: 4.7, installs: 233 },
+    { id: 'prepare-release', name: 'Prepare Release', nameEn: 'prepare-release', category: 'commands', desc: 'Prepare and validate release packages with comprehensive testing, documentation, and automation', tags: ['deployment'], stars: 4.7, installs: 231 },
+    { id: 'report', name: 'Report', nameEn: 'report', category: 'commands', desc: 'Report — Claude Code용 명령어 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['orchestration'], stars: 4.7, installs: 227 },
+    { id: 'setup-formatting', name: 'Setup Formatting', nameEn: 'setup-formatting', category: 'commands', desc: 'Configure comprehensive code formatting tools with consistent style enforcement', tags: ['setup'], stars: 4.7, installs: 226 },
+    { id: 'fix-github-issue', name: 'Fix Github Issue', nameEn: 'fix-github-issue', category: 'commands', desc: 'Fix Github Issue — Claude Code용 명령어 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['git-workflow'], stars: 4.7, installs: 220 },
+    { id: 'test-automation-orchestrator', name: 'Test Automation Orchestrator', nameEn: 'test-automation-orchestrator', category: 'commands', desc: 'Orchestrate comprehensive test automation with intelligent execution and optimization', tags: ['테스트', '자동화'], stars: 4.7, installs: 219 },
+    { id: 'interactive-documentation', name: 'Interactive Documentation', nameEn: 'interactive-documentation', category: 'commands', desc: 'Interactive Documentation 자동화 에이전트입니다. 개발 과정에서 자동으로 활성화되어 코드 품질과 생산성을 향상시킵니다.', tags: ['문서화'], stars: 4.7, installs: 215 },
+    { id: 'add-performance-monitoring', name: 'Add Performance Monitoring', nameEn: 'add-performance-monitoring', category: 'commands', desc: 'Setup comprehensive application performance monitoring with metrics, alerting, and observability', tags: ['performance', '성능'], stars: 4.7, installs: 215 },
+    { id: 'act', name: 'Act', nameEn: 'act', category: 'commands', desc: 'Execute GitHub Actions locally using act', tags: ['자동화'], stars: 4.7, installs: 214 },
+    { id: 'log', name: 'Log', nameEn: 'log', category: 'commands', desc: 'Log — Claude Code용 명령어 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['orchestration'], stars: 4.7, installs: 211 },
+    { id: 'milestone-tracker', name: 'Milestone Tracker', nameEn: 'milestone-tracker', category: 'commands', desc: 'Track and analyze project milestone progress with predictive analytics', tags: ['project-management'], stars: 4.7, installs: 211 },
+    { id: 'setup-kubernetes-deployment', name: 'Setup Kubernetes Deployment', nameEn: 'setup-kubernetes-deployment', category: 'commands', desc: 'Configure comprehensive Kubernetes deployment with manifests, security, scaling, and production best practices', tags: ['deployment'], stars: 4.7, installs: 210 },
+    { id: 'test-quality-analyzer', name: 'Test Quality Analyzer', nameEn: 'test-quality-analyzer', category: 'commands', desc: 'Analyze test suite quality with comprehensive metrics and improvement recommendations', tags: ['테스트'], stars: 4.7, installs: 207 },
+    { id: 'nextjs-scaffold', name: 'Nextjs Scaffold', nameEn: 'nextjs-scaffold', category: 'commands', desc: 'Create a new Next.js application with best practices and optimal configuration', tags: ['nextjs-vercel', 'Next.js'], stars: 4.7, installs: 205 },
+    { id: 'setup-ci-cd-pipeline', name: 'Setup Ci Cd Pipeline', nameEn: 'setup-ci-cd-pipeline', category: 'commands', desc: 'Setup comprehensive CI/CD pipeline with automated testing, deployment, and monitoring', tags: ['setup'], stars: 4.7, installs: 204 }
+  ]
 
   hooks: [
-    {
-      id: 'hook-format', name: '파일 저장 포맷터', category: 'hooks',
-      desc: '파일 편집 후 Prettier로 자동 포맷팅합니다. PostToolUse 훅으로 코드 스타일을 일관되게 유지합니다.',
-      tags: ['포맷', 'Prettier', '자동화'], stars: 4.8, installs: 25600, icon: '✨', color: 'gold',
-      prompt: `# 파일 저장 포맷터 훅
+    { id: 'simple-notifications', name: 'Simple Notifications', nameEn: 'simple-notifications', category: 'hooks', desc: 'Claude Code 훅: Send simple desktop notifications when Claude Code operations complete. Works on macOS and Linux systems.', tags: ['자동화'], stars: 4.9, installs: 6415 },
+    { id: 'smart-commit', name: 'Smart Commit', nameEn: 'smart-commit', category: 'hooks', desc: 'Claude Code 훅: Intelligent git commit creation with automatic message generation and validation. Creates meaningful commits based on fi...', tags: ['git-workflow'], stars: 4.9, installs: 2662 },
+    { id: 'lint-on-save', name: 'Lint On Save', nameEn: 'lint-on-save', category: 'hooks', desc: 'Claude Code 훅: Automatically run linting tools after file modifications. Supports ESLint for JavaScript/TypeScript, Pylint for Python, ...', tags: ['development-tools'], stars: 4.9, installs: 2556 },
+    { id: 'smart-formatting', name: 'Smart Formatting', nameEn: 'smart-formatting', category: 'hooks', desc: 'Claude Code 훅: Smart code formatting based on file type. Automatically formats code using Prettier, Black, gofmt, rustfmt, and other la...', tags: ['development-tools'], stars: 4.9, installs: 2273 },
+    { id: 'update-search-year', name: 'Update Search Year', nameEn: 'update-search-year', category: 'hooks', desc: 'Claude Code 훅: Automatically adds current year to WebSearch queries when no year is specified. This hook intercepts WebSearch tool usag...', tags: ['pre-tool'], stars: 4.9, installs: 1827 },
+    { id: 'dependency-checker', name: 'Dependency Checker', nameEn: 'dependency-checker', category: 'hooks', desc: 'Claude Code 훅: Advanced dependency analysis and security checking. Monitors for outdated packages, security vulnerabilities, and licens...', tags: ['자동화'], stars: 4.9, installs: 1601 },
+    { id: 'nextjs-code-quality-enforcer', name: 'Nextjs Code Quality Enforcer', nameEn: 'nextjs-code-quality-enforcer', category: 'hooks', desc: 'Claude Code 훅: Enforce Next.js best practices, proper file structure, component patterns, and TypeScript usage with automated code revi...', tags: ['development-tools', 'Next.js'], stars: 4.9, installs: 1523 },
+    { id: 'security-scanner', name: 'Security Scanner', nameEn: 'security-scanner', category: 'hooks', desc: 'Claude Code 훅: Scan code for security vulnerabilities and secrets after modifications. Uses multiple security tools to detect potential...', tags: ['보안'], stars: 4.9, installs: 1328 },
+    { id: 'change-tracker', name: 'Change Tracker', nameEn: 'change-tracker', category: 'hooks', desc: 'Claude Code 훅: Track file changes in a simple log. Records which files were modified and when for easy tracking of Claude Code activity...', tags: ['development-tools'], stars: 4.9, installs: 1272 },
+    { id: 'format-python-files', name: 'Format Python Files', nameEn: 'format-python-files', category: 'hooks', desc: 'Claude Code 훅: Automatically format Python files after any Edit operation using black formatter. This hook runs \'black\' on any .py file...', tags: ['post-tool', 'Python'], stars: 4.9, installs: 1130 },
+    { id: 'run-tests-after-changes', name: 'Run Tests After Changes', nameEn: 'run-tests-after-changes', category: 'hooks', desc: 'Claude Code 훅: Automatically run quick tests after code modifications to ensure nothing breaks. This hook executes \'npm run test:quick\'...', tags: ['post-tool'], stars: 4.9, installs: 1042 },
+    { id: 'auto-git-add', name: 'Auto Git Add', nameEn: 'auto-git-add', category: 'hooks', desc: 'Claude Code 훅: Automatically stage modified files with git add after editing. Helps maintain a clean git workflow by staging changes as...', tags: ['git-workflow', 'Git'], stars: 4.8, installs: 893 },
+    { id: 'agents-md-loader', name: 'Agents Md Loader', nameEn: 'agents-md-loader', category: 'hooks', desc: 'Claude Code 훅: Automatically loads AGENTS.md configuration file content at session start to ensure Claude Code follows project-specific...', tags: ['자동화'], stars: 4.8, installs: 880 },
+    { id: 'file-backup', name: 'File Backup', nameEn: 'file-backup', category: 'hooks', desc: 'Claude Code 훅: Automatically backup files before editing. Creates timestamped backups in a .backups directory when files are modified.', tags: ['development-tools'], stars: 4.8, installs: 813 },
+    { id: 'dangerous-command-blocker', name: 'Dangerous Command Blocker', nameEn: 'dangerous-command-blocker', category: 'hooks', desc: 'Claude Code 훅: Advanced protection against dangerous shell commands with multi-level security. Blocks catastrophic operations (rm -rf /...', tags: ['보안'], stars: 4.8, installs: 794 },
+    { id: 'telegram-notifications', name: 'Telegram Notifications', nameEn: 'telegram-notifications', category: 'hooks', desc: 'Claude Code 훅: Send Telegram notifications when Claude Code finishes working. Requires TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID environm...', tags: ['자동화'], stars: 4.8, installs: 757 },
+    { id: 'command-logger', name: 'Command Logger', nameEn: 'command-logger', category: 'hooks', desc: 'Claude Code 훅: Log all Claude Code commands to a file for audit and debugging purposes. Simple logging that records tool usage with tim...', tags: ['development-tools'], stars: 4.8, installs: 710 },
+    { id: 'test-runner', name: 'Test Runner', nameEn: 'test-runner', category: 'hooks', desc: 'Claude Code 훅: Automatically run relevant tests after code changes. Detects test files and runs appropriate test commands based on file...', tags: ['테스트'], stars: 4.8, installs: 677 },
+    { id: 'performance-monitor', name: 'Performance Monitor', nameEn: 'performance-monitor', category: 'hooks', desc: 'Claude Code 훅: Monitor system performance during Claude Code operations. Tracks CPU, memory usage, and execution time for performance o...', tags: ['performance', '성능'], stars: 4.8, installs: 655 },
+    { id: 'file-protection', name: 'File Protection', nameEn: 'file-protection', category: 'hooks', desc: 'Claude Code 훅: Protect critical files from accidental modification. Prevents editing of important system files, configuration files, an...', tags: ['보안'], stars: 4.8, installs: 573 },
+    { id: 'format-javascript-files', name: 'Format Javascript Files', nameEn: 'format-javascript-files', category: 'hooks', desc: 'Claude Code 훅: Automatically format JavaScript/TypeScript files after any Edit operation using prettier. This hook runs \'npx prettier -...', tags: ['post-tool', 'JavaScript'], stars: 4.8, installs: 522 },
+    { id: 'secret-scanner', name: 'Secret Scanner', nameEn: 'secret-scanner', category: 'hooks', desc: 'Claude Code 훅: Automatically detects hardcoded secrets before git commits. Scans for API keys from 30+ providers (Anthropic: sk-ant-......', tags: ['보안'], stars: 4.7, installs: 495 },
+    { id: 'conventional-commits', name: 'Conventional Commits', nameEn: 'conventional-commits', category: 'hooks', desc: 'Claude Code 훅: Enforce conventional commit message format for all git commits. Validates commit messages follow the pattern: type(scope...', tags: ['git'], stars: 4.7, installs: 452 },
+    { id: 'backup-before-edit', name: 'Backup Before Edit', nameEn: 'backup-before-edit', category: 'hooks', desc: 'Claude Code 훅: Create automatic backup of files before any Edit operation for safety. This hook creates a timestamped backup copy (file...', tags: ['pre-tool'], stars: 4.7, installs: 447 },
+    { id: 'git-add-changes', name: 'Git Add Changes', nameEn: 'git-add-changes', category: 'hooks', desc: 'Claude Code 훅: Automatically stage changes in git after file modifications for easier commit workflow. This hook runs \'git add\' on any ...', tags: ['post-tool', 'Git'], stars: 4.7, installs: 400 },
+    { id: 'telegram-detailed-notifications', name: 'Telegram Detailed Notifications', nameEn: 'telegram-detailed-notifications', category: 'hooks', desc: 'Claude Code 훅: Send detailed Telegram notifications with session information when Claude Code finishes. Includes working directory, ses...', tags: ['자동화'], stars: 4.7, installs: 394 },
+    { id: 'vercel-auto-deploy', name: 'Vercel Auto Deploy', nameEn: 'vercel-auto-deploy', category: 'hooks', desc: 'Claude Code 훅: Automatically trigger Vercel deployments when code changes are committed, with environment-specific deployment strategie...', tags: ['자동화'], stars: 4.7, installs: 324 },
+    { id: 'prevent-direct-push', name: 'Prevent Direct Push', nameEn: 'prevent-direct-push', category: 'hooks', desc: 'Claude Code 훅: Prevent direct pushes to protected branches (main, develop). Blocks git push commands targeting main or develop branches...', tags: ['git'], stars: 4.7, installs: 319 },
+    { id: 'deployment-health-monitor', name: 'Deployment Health Monitor', nameEn: 'deployment-health-monitor', category: 'hooks', desc: 'Claude Code 훅: Monitor deployment status, error rates, and performance metrics, sending notifications for failed deployments or perform...', tags: ['자동화'], stars: 4.7, installs: 305 },
+    { id: 'validate-branch-name', name: 'Validate Branch Name', nameEn: 'validate-branch-name', category: 'hooks', desc: 'Claude Code 훅: Validate Git Flow branch naming conventions before checkout. Ensures branches follow the pattern: feature/*, release/v*....', tags: ['git'], stars: 4.7, installs: 295 },
+    { id: 'build-on-change', name: 'Build On Change', nameEn: 'build-on-change', category: 'hooks', desc: 'Claude Code 훅: Automatically trigger build processes when source files change. Detects common build tools and runs appropriate build co...', tags: ['자동화'], stars: 4.7, installs: 279 },
+    { id: 'performance-budget-guard', name: 'Performance Budget Guard', nameEn: 'performance-budget-guard', category: 'hooks', desc: 'Claude Code 훅: Monitor bundle size and Core Web Vitals metrics during development, blocking deployments that exceed performance budgets...', tags: ['performance', '성능'], stars: 4.7, installs: 264 },
+    { id: 'vercel-environment-sync', name: 'Vercel Environment Sync', nameEn: 'vercel-environment-sync', category: 'hooks', desc: 'Claude Code 훅: Synchronize environment variables between local development and Vercel deployments, ensuring consistency across all envi...', tags: ['자동화'], stars: 4.7, installs: 241 },
+    { id: 'discord-detailed-notifications', name: 'Discord Detailed Notifications', nameEn: 'discord-detailed-notifications', category: 'hooks', desc: 'Claude Code 훅: Send detailed Discord notifications with session information when Claude Code finishes. Includes working directory, sess...', tags: ['자동화'], stars: 4.6, installs: 188 },
+    { id: 'worktree-ghostty', name: 'Worktree Ghostty', nameEn: 'worktree-ghostty', category: 'hooks', desc: 'Claude Code 훅: Worktree Ghostty Layout. Opens a 3-panel Ghostty layout when creating worktrees: Claude Code (left) | lazygit (top-right...', tags: ['development-tools'], stars: 4.6, installs: 187 },
+    { id: 'telegram-error-notifications', name: 'Telegram Error Notifications', nameEn: 'telegram-error-notifications', category: 'hooks', desc: 'Claude Code 훅: Send Telegram notifications when Claude Code encounters long-running operations or when tools take significant time. Hel...', tags: ['자동화'], stars: 4.6, installs: 175 },
+    { id: 'slack-notifications', name: 'Slack Notifications', nameEn: 'slack-notifications', category: 'hooks', desc: 'Claude Code 훅: Send Slack notifications when Claude Code finishes working. Requires SLACK_WEBHOOK_URL environment variable. Get webhook...', tags: ['자동화'], stars: 4.6, installs: 157 },
+    { id: 'notify-before-bash', name: 'Notify Before Bash', nameEn: 'notify-before-bash', category: 'hooks', desc: 'Claude Code 훅: Show notification before any Bash command execution for security awareness. This hook displays a simple echo message \'🔔 ...', tags: ['pre-tool'], stars: 4.6, installs: 135 },
+    { id: 'discord-notifications', name: 'Discord Notifications', nameEn: 'discord-notifications', category: 'hooks', desc: 'Claude Code 훅: Send Discord notifications when Claude Code finishes working. Requires DISCORD_WEBHOOK_URL environment variable. Get web...', tags: ['자동화'], stars: 4.6, installs: 131 },
+    { id: 'slack-detailed-notifications', name: 'Slack Detailed Notifications', nameEn: 'slack-detailed-notifications', category: 'hooks', desc: 'Claude Code 훅: Send detailed Slack notifications with session information when Claude Code finishes. Includes working directory, sessio...', tags: ['자동화'], stars: 4.6, installs: 120 },
+    { id: 'discord-error-notifications', name: 'Discord Error Notifications', nameEn: 'discord-error-notifications', category: 'hooks', desc: 'Claude Code 훅: Send Discord notifications when Claude Code encounters long-running operations or when tools take significant time. Help...', tags: ['자동화'], stars: 4.6, installs: 109 },
+    { id: 'langsmith-tracing', name: 'Langsmith Tracing', nameEn: 'langsmith-tracing', category: 'hooks', desc: 'Claude Code 훅: Automatically send Claude Code conversation traces to LangSmith for monitoring and analysis. Prerequisites: jq (brew ins...', tags: ['monitoring'], stars: 4.6, installs: 103 },
+    { id: 'slack-error-notifications', name: 'Slack Error Notifications', nameEn: 'slack-error-notifications', category: 'hooks', desc: 'Claude Code 훅: Send Slack notifications when Claude Code encounters long-running operations or when tools take significant time. Helps ...', tags: ['자동화'], stars: 4.5, installs: 95 },
+    { id: 'desktop-notification-on-stop', name: 'Desktop Notification On Stop', nameEn: 'desktop-notification-on-stop', category: 'hooks', desc: 'Claude Code 훅: Sends a native desktop notification when Claude Code finishes responding. Uses the Stop hook event so you get a single n...', tags: ['monitoring'], stars: 4.5, installs: 80 },
+    { id: 'scope-guard', name: 'Scope Guard', nameEn: 'scope-guard', category: 'hooks', desc: 'Claude Code 훅: Scope guard that detects files modified outside the declared scope of a specification. When a .spec.md file contains a \'...', tags: ['quality-gates'], stars: 4.5, installs: 72 },
+    { id: 'debug-window', name: 'Debug Window', nameEn: 'debug-window', category: 'hooks', desc: 'Claude Code 훅: Auto Debug Log Viewer. Opens a live-tailing debug log window when Claude Code starts with --debug or -d flag. The window...', tags: ['development-tools'], stars: 4.5, installs: 70 },
+    { id: 'plan-gate', name: 'Plan Gate', nameEn: 'plan-gate', category: 'hooks', desc: 'Claude Code 훅: Planning gate that warns when editing production code without an approved specification. Checks for recent .spec.md file...', tags: ['quality-gates'], stars: 4.5, installs: 65 },
+    { id: 'console-log-cleaner', name: 'Console Log Cleaner', nameEn: 'console-log-cleaner', category: 'hooks', desc: 'Claude Code 훅: Warns about console.log statements when editing files on production branches (main/master). Helps prevent debug code fro...', tags: ['pre-tool'], stars: 4.5, installs: 56 },
+    { id: 'telegram-pr-webhook', name: 'Telegram Pr Webhook', nameEn: 'telegram-pr-webhook', category: 'hooks', desc: 'Claude Code 훅: Send Telegram notification when a new PR is created via gh pr create. Includes PR URL and Vercel preview URL. Requires T...', tags: ['자동화'], stars: 4.5, installs: 51 },
+    { id: 'tdd-gate', name: 'Tdd Gate', nameEn: 'tdd-gate', category: 'hooks', desc: 'Claude Code 훅: Test-Driven Development enforcement hook. Blocks editing production code files (.cs, .py, .ts, .go, .rs, .rb, .php, .jav...', tags: ['quality-gates'], stars: 4.4, installs: 49 },
+    { id: 'change-logger', name: 'Change Logger', nameEn: 'change-logger', category: 'hooks', desc: 'Claude Code 훅: Log every file mutation to CSV for demo prep. Records timestamp, tool, file path, action, and details for Edit, MultiEdi...', tags: ['자동화'], stars: 4.4, installs: 45 },
+    { id: 'env-file-protection', name: 'Env File Protection', nameEn: 'env-file-protection', category: 'hooks', desc: 'Claude Code 훅: Prevent writing to .env files using the if condition for lightweight filtering. Blocks any Write tool call targeting .en...', tags: ['보안'], stars: 4.4, installs: 8 },
+    { id: 'force-push-blocker', name: 'Force Push Blocker', nameEn: 'force-push-blocker', category: 'hooks', desc: 'Claude Code 훅: Block git force push commands using the if condition for efficient filtering. Prevents accidental force pushes that can ...', tags: ['보안'], stars: 4.4, installs: 3 },
+    { id: 'edit-audit-log', name: 'Edit Audit Log', nameEn: 'edit-audit-log', category: 'hooks', desc: 'Claude Code 훅: Log all file edits to a project-local audit file with timestamps. Records every Edit tool usage to .claude/edit-log.txt ...', tags: ['development-tools'], stars: 4.4, installs: 0 }
+  ]
 
-## 설치 방법
+  mcps: [
+    { id: 'context7', name: 'Context7', nameEn: 'context7', category: 'mcps', desc: 'Context7 MCP 서버입니다. Context7 MCP pulls up-to-date, version-specific documentation and code examples straight from the so...', tags: ['devtools'], stars: 4.9, installs: 11528 },
+    { id: 'memory-integration', name: 'Memory Integration', nameEn: 'memory-integration', category: 'mcps', desc: 'Memory Integration MCP 서버입니다. Persistent memory and context management for Claude Code sessions. Store and recall information acro...', tags: ['integration'], stars: 4.9, installs: 5894 },
+    { id: 'playwright-mcp-server', name: 'Playwright Mcp Server', nameEn: 'playwright-mcp-server', category: 'mcps', desc: 'Playwright Mcp Server MCP 서버입니다. A Model Context Protocol server that provides browser automation capabilities using Playwright. This...', tags: ['browser_automation', 'MCP'], stars: 4.9, installs: 4629 },
+    { id: 'web-fetch', name: 'Web Fetch', nameEn: 'web-fetch', category: 'mcps', desc: 'Web Fetch MCP 서버입니다. Web content fetching and data extraction capabilities. Access external APIs, scrape web content, and...', tags: ['web'], stars: 4.9, installs: 3418 },
+    { id: 'supabase', name: 'Supabase', nameEn: 'supabase', category: 'mcps', desc: 'Supabase MCP 서버입니다. Connect your Claude Code to Supabase using MCP', tags: ['데이터베이스'], stars: 4.9, installs: 3254 },
+    { id: 'postgresql-integration', name: 'Postgresql Integration', nameEn: 'postgresql-integration', category: 'mcps', desc: 'Postgresql Integration MCP 서버입니다. Connect to PostgreSQL databases for advanced data operations, complex queries, and enterprise databa...', tags: ['데이터베이스'], stars: 4.9, installs: 3166 },
+    { id: 'chrome-devtools', name: 'Chrome Devtools', nameEn: 'chrome-devtools', category: 'mcps', desc: 'Chrome Devtools MCP 서버입니다. A Model Context Protocol server for interacting with Chrome DevTools, enabling browser automation, d...', tags: ['devtools'], stars: 4.9, installs: 2991 },
+    { id: 'github-integration', name: 'Github Integration', nameEn: 'github-integration', category: 'mcps', desc: 'Github Integration MCP 서버입니다. Direct GitHub API integration for repository management, issue tracking, pull requests, and collabor...', tags: ['integration'], stars: 4.9, installs: 2808 },
+    { id: 'filesystem-access', name: 'Filesystem Access', nameEn: 'filesystem-access', category: 'mcps', desc: 'Filesystem Access MCP 서버입니다. Secure filesystem access for Claude Code with configurable directory permissions and file operations...', tags: ['filesystem'], stars: 4.9, installs: 2146 },
+    { id: 'browser-use-mcp-server', name: 'Browser Use Mcp Server', nameEn: 'browser-use-mcp-server', category: 'mcps', desc: 'Browser Use Mcp Server MCP 서버입니다. An MCP server that enables AI agents to control web browsers using browser-use.', tags: ['browser_automation'], stars: 4.9, installs: 1707 },
+    { id: 'playwright-mcp', name: 'Playwright Mcp', nameEn: 'playwright-mcp', category: 'mcps', desc: 'Playwright Mcp MCP 서버입니다. A Model Context Protocol (MCP) server that provides browser automation capabilities using Playwright...', tags: ['browser_automation', 'MCP'], stars: 4.9, installs: 1281 },
+    { id: 'mysql-integration', name: 'Mysql Integration', nameEn: 'mysql-integration', category: 'mcps', desc: 'Mysql Integration MCP 서버입니다. Connect to MySQL databases for direct data access, queries, and database management within Claude Co...', tags: ['데이터베이스'], stars: 4.9, installs: 1112 },
+    { id: 'deepgraph-nextjs', name: 'Deepgraph Nextjs', nameEn: 'deepgraph-nextjs', category: 'mcps', desc: 'Deepgraph Nextjs MCP 서버입니다. Deep code analysis and visualization for Next.js projects. Understand component relationships, depen...', tags: ['deepgraph', 'Next.js'], stars: 4.9, installs: 1102 },
+    { id: 'figma-dev-mode', name: 'Figma Dev Mode', nameEn: 'figma-dev-mode', category: 'mcps', desc: 'Figma Dev Mode MCP 서버입니다. The Dev Mode MCP server brings Figma directly into your workflow by providing important design infor...', tags: ['devtools'], stars: 4.9, installs: 1046 },
+    { id: 'markitdown', name: 'Markitdown', nameEn: 'markitdown', category: 'mcps', desc: 'Markitdown MCP 서버입니다. Convert various file formats (PDF, Word, Excel, images, audio) to Markdown.', tags: ['devtools'], stars: 4.8, installs: 937 },
+    { id: 'deepgraph-react', name: 'Deepgraph React', nameEn: 'deepgraph-react', category: 'mcps', desc: 'Deepgraph React MCP 서버입니다. Analyze React component hierarchies, state flows, and dependencies. Visualize your React application...', tags: ['deepgraph', 'React'], stars: 4.8, installs: 862 },
+    { id: 'ios-simulator-mcp', name: 'Ios Simulator Mcp', nameEn: 'ios-simulator-mcp', category: 'mcps', desc: 'Ios Simulator Mcp MCP 서버입니다. Control iOS Simulator directly from Claude Code. Launch apps, take screenshots, manage device states...', tags: ['devtools'], stars: 4.8, installs: 747 },
+    { id: 'serena', name: 'Serena', nameEn: 'serena', category: 'mcps', desc: 'Serena MCP 서버입니다. Semantic code retrieval & editing tools for coding agents.', tags: ['devtools'], stars: 4.8, installs: 737 },
+    { id: 'deepgraph-typescript', name: 'Deepgraph Typescript', nameEn: 'deepgraph-typescript', category: 'mcps', desc: 'Deepgraph Typescript MCP 서버입니다. Comprehensive TypeScript code analysis with type mapping, interface relationships, and module depend...', tags: ['deepgraph', 'TypeScript'], stars: 4.8, installs: 703 },
+    { id: 'browsermcp', name: 'Browsermcp', nameEn: 'browsermcp', category: 'mcps', desc: 'Browsermcp MCP 서버입니다. With Browser MCP, you can use MCP to automate your browser so that AI applications can navigate the ...', tags: ['browser_automation'], stars: 4.8, installs: 644 },
+    { id: 'mcp-server-playwright', name: 'Mcp Server Playwright', nameEn: 'mcp-server-playwright', category: 'mcps', desc: 'Mcp Server Playwright MCP 서버입니다. A Model Context Protocol server that provides browser automation capabilities using Playwright', tags: ['browser_automation', 'MCP'], stars: 4.8, installs: 609 },
+    { id: 'notion', name: 'Notion', nameEn: 'notion', category: 'mcps', desc: 'Notion MCP 서버입니다. Official MCP server for Notion API', tags: ['생산성'], stars: 4.7, installs: 492 },
+    { id: 'deepgraph-vue', name: 'Deepgraph Vue', nameEn: 'deepgraph-vue', category: 'mcps', desc: 'Deepgraph Vue MCP 서버입니다. Analyze Vue.js applications including component composition, reactive data flow, and template-script...', tags: ['deepgraph'], stars: 4.7, installs: 417 },
+    { id: 'facebook-ads-mcp-server', name: 'Facebook Ads Mcp Server', nameEn: 'facebook-ads-mcp-server', category: 'mcps', desc: 'Facebook Ads Mcp Server MCP 서버입니다. This project provides an MCP server acting as an interface to the Meta Ads, enabling programmatic ac...', tags: ['marketing'], stars: 4.7, installs: 412 },
+    { id: 'huggingface', name: 'Huggingface', nameEn: 'huggingface', category: 'mcps', desc: 'Huggingface MCP 서버입니다. Access Hugging Face models, datasets, Spaces, papers, collections via MCP.', tags: ['devtools'], stars: 4.7, installs: 389 },
+    { id: 'firecrawl', name: 'Firecrawl', nameEn: 'firecrawl', category: 'mcps', desc: 'Firecrawl MCP 서버입니다. A Model Context Protocol (MCP) server implementation that integrates with Firecrawl for web scraping...', tags: ['devtools'], stars: 4.7, installs: 347 },
+    { id: 'google-ads-mcp-server', name: 'Google Ads Mcp Server', nameEn: 'google-ads-mcp-server', category: 'mcps', desc: 'Google Ads Mcp Server MCP 서버입니다. A FastMCP-powered Model Context Protocol server for Google Ads API integration with automatic OAuth ...', tags: ['marketing'], stars: 4.7, installs: 340 },
+    { id: 'stripe', name: 'Stripe', nameEn: 'stripe', category: 'mcps', desc: 'Stripe MCP 서버입니다. Let your AI agents interact with the Stripe API by using our MCP server.', tags: ['devtools'], stars: 4.7, installs: 331 },
+    { id: 'postgresql-documentation', name: 'Postgresql Documentation', nameEn: 'postgresql-documentation', category: 'mcps', desc: 'Postgresql Documentation MCP 서버입니다. PostgreSQL documentation and skills for writing better Postgres code', tags: ['데이터베이스', '문서화'], stars: 4.7, installs: 323 },
+    { id: 'mcp-server-browserbase', name: 'Mcp Server Browserbase', nameEn: 'mcp-server-browserbase', category: 'mcps', desc: 'Mcp Server Browserbase MCP 서버입니다. This server provides cloud browser automation capabilities using Browserbase and Stagehand. It enabl...', tags: ['browser_automation', 'MCP'], stars: 4.7, installs: 312 },
+    { id: 'postman', name: 'Postman', nameEn: 'postman', category: 'mcps', desc: 'Postman MCP 서버입니다. Postman\'s MCP server connects AI agents, assistants, and chatbots directly to your APIs on Postman. ...', tags: ['devtools'], stars: 4.7, installs: 310 },
+    { id: 'mongodb', name: 'Mongodb', nameEn: 'mongodb', category: 'mcps', desc: 'Mongodb MCP 서버입니다. A Model Context Protocol server to connect to MongoDB databases and MongoDB Atlas Clusters.', tags: ['devtools'], stars: 4.7, installs: 302 },
+    { id: 'terraform', name: 'Terraform', nameEn: 'terraform', category: 'mcps', desc: 'Terraform MCP 서버입니다. The Terraform MCP Server is a Model Context Protocol (MCP) server that provides seamless integration...', tags: ['devtools'], stars: 4.7, installs: 295 },
+    { id: 'grafana', name: 'Grafana', nameEn: 'grafana', category: 'mcps', desc: 'Grafana MCP 서버입니다. A Model Context Protocol server for interacting with Grafana dashboards and monitoring. Supports bot...', tags: ['devtools'], stars: 4.7, installs: 274 },
+    { id: 'neon', name: 'Neon', nameEn: 'neon', category: 'mcps', desc: 'Neon MCP 서버입니다. MCP server for interacting with Neon Management API and databases', tags: ['데이터베이스'], stars: 4.7, installs: 256 },
+    { id: 'sentry', name: 'Sentry', nameEn: 'sentry', category: 'mcps', desc: 'Sentry MCP 서버입니다. This service implements the Model Context Protocol (MCP) for interacting with Sentry, focused on hum...', tags: ['devtools'], stars: 4.7, installs: 247 },
+    { id: 'elevenlabs', name: 'Elevenlabs', nameEn: 'elevenlabs', category: 'mcps', desc: 'Elevenlabs MCP 서버입니다. Official ElevenLabs MCP for text-to-speech, voice cloning, audio processing, and transcription. Gene...', tags: ['audio'], stars: 4.7, installs: 239 },
+    { id: 'imagesorcery', name: 'Imagesorcery', nameEn: 'imagesorcery', category: 'mcps', desc: 'Imagesorcery MCP 서버입니다. An MCP server providing tools for image processing operations', tags: ['devtools'], stars: 4.7, installs: 211 },
+    { id: 'elasticsearch', name: 'Elasticsearch', nameEn: 'elasticsearch', category: 'mcps', desc: 'Elasticsearch MCP 서버입니다. MCP server for connecting to Elasticsearch data and indices. Supports search queries, mappings, ES|Q...', tags: ['devtools'], stars: 4.6, installs: 176 },
+    { id: 'mcp-server-trello', name: 'Mcp Server Trello', nameEn: 'mcp-server-trello', category: 'mcps', desc: 'Mcp Server Trello — Claude Code용 MCP 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['devtools', 'MCP'], stars: 4.6, installs: 160 },
+    { id: 'mcp-server-atlassian-bitbucket', name: 'Mcp Server Atlassian Bitbucket', nameEn: 'mcp-server-atlassian-bitbucket', category: 'mcps', desc: 'Mcp Server Atlassian Bitbucket MCP 서버입니다. A Node.js/TypeScript Model Context Protocol (MCP) server for Atlassian Bitbucket Cloud. Enables AI s...', tags: ['devtools', 'MCP'], stars: 4.6, installs: 158 },
+    { id: 'web-search-prime', name: 'Web Search Prime', nameEn: 'web-search-prime', category: 'mcps', desc: 'Web Search Prime MCP 서버입니다. Web Search MCP Server - Z.AI search capability implementation based on the Model Context Protocol (M...', tags: ['web'], stars: 4.6, installs: 151 },
+    { id: 'web-reader', name: 'Web Reader', nameEn: 'web-reader', category: 'mcps', desc: 'Web Reader MCP 서버입니다. Web Reader MCP Server - Z.AI implementation based on the Model Context Protocol (MCP). Provides Clau...', tags: ['web'], stars: 4.6, installs: 146 },
+    { id: 'mcp-server-nia', name: 'Mcp Server Nia', nameEn: 'mcp-server-nia', category: 'mcps', desc: 'Mcp Server Nia — Claude Code용 MCP 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['deepresearch', 'MCP'], stars: 4.6, installs: 144 },
+    { id: 'webflow', name: 'Webflow', nameEn: 'webflow', category: 'mcps', desc: 'Webflow MCP 서버입니다. Enable AI agents to interact with Webflow APIs.', tags: ['devtools'], stars: 4.6, installs: 137 },
+    { id: 'just-mcp', name: 'Just Mcp', nameEn: 'just-mcp', category: 'mcps', desc: 'Just Mcp MCP 서버입니다. Execute Just commands and task runners seamlessly from Claude Code. Manage project tasks, run build ...', tags: ['devtools', 'MCP'], stars: 4.6, installs: 135 },
+    { id: 'leetcode', name: 'Leetcode', nameEn: 'leetcode', category: 'mcps', desc: 'Leetcode MCP 서버입니다. A Model Context Protocol (MCP) server for LeetCode that enables AI assistants to access LeetCode pro...', tags: ['devtools'], stars: 4.6, installs: 135 },
+    { id: 'railway', name: 'Railway', nameEn: 'railway', category: 'mcps', desc: 'Railway MCP 서버입니다. Railway MCP server provides seamless integration with Railway\'s deployment platform, enabling Claude...', tags: ['devtools'], stars: 4.6, installs: 134 },
+    { id: 'microsoft-clarity', name: 'Microsoft Clarity', nameEn: 'microsoft-clarity', category: 'mcps', desc: 'Microsoft Clarity — Claude Code용 MCP 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['devtools'], stars: 4.6, installs: 125 },
+    { id: 'circleci', name: 'Circleci', nameEn: 'circleci', category: 'mcps', desc: 'Circleci MCP 서버입니다. Integrate CircleCI build and deployment pipeline management with your Claude Code workflow. Monitor ...', tags: ['devtools'], stars: 4.6, installs: 122 },
+    { id: 'microsoft-dev-box', name: 'Microsoft Dev Box', nameEn: 'microsoft-dev-box', category: 'mcps', desc: 'Microsoft Dev Box MCP 서버입니다. This server enables natural language interactions for developer-focused operations like managing Dev...', tags: ['devtools'], stars: 4.6, installs: 119 },
+    { id: 'firefly-mcp', name: 'Firefly Mcp', nameEn: 'firefly-mcp', category: 'mcps', desc: 'Firefly Mcp MCP 서버입니다. Connect to Firefly AI services for advanced AI-powered development assistance, code analysis, and in...', tags: ['devtools', 'MCP'], stars: 4.6, installs: 115 },
+    { id: 'azure-kubernetes-service', name: 'Azure Kubernetes Service', nameEn: 'azure-kubernetes-service', category: 'mcps', desc: 'Azure Kubernetes Service MCP 서버입니다. The AKS-MCP is a Model Context Protocol (MCP) server that enables AI assistants to interact with Azu...', tags: ['devtools'], stars: 4.6, installs: 103 },
+    { id: 'monday', name: 'Monday', nameEn: 'monday', category: 'mcps', desc: 'Monday MCP 서버입니다. Enable AI agents to operate reliably within real workflows. This MCP is monday.com\'s open framework ...', tags: ['생산성'], stars: 4.6, installs: 103 },
+    { id: 'box', name: 'Box', nameEn: 'box', category: 'mcps', desc: 'Box MCP 서버입니다. The Box MCP Server is a Python project that integrates with the Box API to perform various operation...', tags: ['devtools'], stars: 4.6, installs: 100 },
+    { id: 'pulumi', name: 'Pulumi', nameEn: 'pulumi', category: 'mcps', desc: 'Pulumi MCP 서버입니다. The Pulumi Model Context Protocol (MCP) server enables advanced Infrastructure as Code development c...', tags: ['devtools'], stars: 4.5, installs: 97 },
+    { id: 'testsprite', name: 'Testsprite', nameEn: 'testsprite', category: 'mcps', desc: 'Testsprite MCP 서버입니다. TestSprite’s MCP reads your intent, tests your code, and tells you what to fix.', tags: ['devtools'], stars: 4.5, installs: 94 },
+    { id: 'codacy', name: 'Codacy', nameEn: 'codacy', category: 'mcps', desc: 'Codacy MCP 서버입니다. MCP Server for the Codacy API, enabling access to repositories, files, quality, coverage, security a...', tags: ['devtools'], stars: 4.5, installs: 91 },
+    { id: 'launchdarkly', name: 'Launchdarkly', nameEn: 'launchdarkly', category: 'mcps', desc: 'Launchdarkly MCP 서버입니다. Official LaunchDarkly MCP Server for feature flag management and experimentation. Enables AI agents ...', tags: ['devtools'], stars: 4.5, installs: 86 },
+    { id: 'logfire', name: 'Logfire', nameEn: 'logfire', category: 'mcps', desc: 'Logfire MCP 서버입니다. Provides access to OpenTelemetry traces and metrics through Logfire.', tags: ['devtools'], stars: 4.5, installs: 84 },
+    { id: 'jfrog', name: 'Jfrog', nameEn: 'jfrog', category: 'mcps', desc: 'Jfrog MCP 서버입니다. JFrog MCP Server: providing your agents with direct access to JFrog Platform services.', tags: ['devtools'], stars: 4.5, installs: 71 },
+    { id: 'zai-mcp-server', name: 'Zai Mcp Server', nameEn: 'zai-mcp-server', category: 'mcps', desc: 'Zai Mcp Server MCP 서버입니다. Vision MCP Server - Z.AI capability implementation based on the Model Context Protocol (MCP), provid...', tags: ['devtools', 'MCP'], stars: 4.5, installs: 68 },
+    { id: 'dynatrace', name: 'Dynatrace', nameEn: 'dynatrace', category: 'mcps', desc: 'Dynatrace MCP 서버입니다. Manage and interact with the Dynatrace Platform for real-time observability and monitoring.', tags: ['devtools'], stars: 4.5, installs: 66 },
+    { id: 'zread', name: 'Zread', nameEn: 'zread', category: 'mcps', desc: 'Zread MCP 서버입니다. Zread MCP Server - Z.AI implementation based on the Model Context Protocol (MCP). Powered by zread.a...', tags: ['web'], stars: 4.5, installs: 64 },
+    { id: 'brightdata', name: 'Brightdata', nameEn: 'brightdata', category: 'mcps', desc: 'Brightdata MCP 서버입니다. Bright Data MCP server providing 60+ tools for web search, scraping, structured data extraction, and...', tags: ['web-data'], stars: 4.5, installs: 58 },
+    { id: 'footballbin-predictions', name: 'Footballbin Predictions', nameEn: 'footballbin-predictions', category: 'mcps', desc: 'Footballbin Predictions MCP 서버입니다. AI-powered football match predictions for Premier League and Champions League. Returns half-time sco...', tags: ['integration'], stars: 4.4, installs: 25 },
+    { id: 'devplan-mcp', name: 'Devplan Mcp', nameEn: 'devplan-mcp', category: 'mcps', desc: 'Devplan Mcp — Claude Code용 MCP 컴포넌트입니다. 개발 워크플로우를 자동화하고 생산성을 향상시킵니다.', tags: ['devtools', 'MCP'], stars: 4.4, installs: 19 },
+    { id: 'browseract', name: 'Browseract', nameEn: 'browseract', category: 'mcps', desc: 'Browseract MCP 서버입니다. BrowserAct cloud browser automation for structured data extraction from Amazon, YouTube, Google Maps...', tags: ['web-data'], stars: 4.4, installs: 0 },
+    { id: 'tinyfish', name: 'Tinyfish', nameEn: 'tinyfish', category: 'mcps', desc: 'Tinyfish MCP 서버입니다. TinyFish Web Agent - Web browsing and data extraction via MCP with real-time progress streaming, asy...', tags: ['web'], stars: 4.4, installs: 0 }
+  ]
 
-### ~/.claude/settings.json에 추가
-\`\`\`json
-{
-  "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Write|Edit",
-        "command": "npx prettier --write \\"$CLAUDE_FILE_PATH\\"",
-        "description": "편집된 파일 자동 포맷팅"
-      }
-    ]
-  }
-}
-\`\`\`
-
-## Prettier 설정 (.prettierrc)
-\`\`\`json
-{
-  "semi": true,
-  "singleQuote": true,
-  "tabWidth": 2,
-  "trailingComma": "es5",
-  "printWidth": 100,
-  "bracketSpacing": true,
-  "arrowParens": "avoid",
-  "endOfLine": "lf"
-}
-\`\`\`
-
-## .prettierignore
-\`\`\`
-node_modules
-dist
-build
-.next
-coverage
-\`\`\`
-
-## 효과
-- 팀 전체 코드 스타일 자동 통일
-- 코드 리뷰에서 스타일 이슈 제거
-- PR 변경 사항에 포맷팅 잡음 제거
-
-## 주의사항
-Prettier 설치 필요: \`npm install -D prettier\``
-    },
-    {
-      id: 'hook-lint', name: 'ESLint 훅', category: 'hooks',
-      desc: '코드 편집 후 ESLint를 자동 실행하고 오류를 수정합니다. 코드 품질을 편집 시점에 즉시 유지합니다.',
-      tags: ['ESLint', 'Lint', '품질'], stars: 4.7, installs: 22100, icon: '🔍', color: 'blue',
-      prompt: `# ESLint 훅
-
-## 설치 방법
-
-### ~/.claude/settings.json에 추가
-\`\`\`json
-{
-  "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Write|Edit",
-        "command": "npx eslint --fix \\"$CLAUDE_FILE_PATH\\" --max-warnings 0",
-        "description": "ESLint 자동 수정 실행"
-      }
-    ]
-  }
-}
-\`\`\`
-
-## ESLint 설정 (eslint.config.js)
-\`\`\`javascript
-import js from '@eslint/js';
-import typescript from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
-
-export default [
-  js.configs.recommended,
-  {
-    files: ['**/*.ts', '**/*.tsx'],
-    plugins: { '@typescript-eslint': typescript },
-    parser: tsParser,
-    rules: {
-      '@typescript-eslint/no-unused-vars': 'error',
-      '@typescript-eslint/no-explicit-any': 'warn',
-      'no-console': ['warn', { allow: ['warn', 'error'] }],
-      'prefer-const': 'error',
-    }
-  }
-];
-\`\`\`
-
-## 효과
-- 코드 작성 즉시 린트 오류 수정
-- 일관된 코드 품질 유지
-- console.log 실수 방지`
-    },
-    {
-      id: 'hook-typecheck', name: 'TypeScript 타입 체크 훅', category: 'hooks',
-      desc: '파일 편집 후 TypeScript 컴파일러를 실행하여 타입 오류를 즉시 감지합니다.',
-      tags: ['TypeScript', '타입', '검증'], stars: 4.8, installs: 19800, icon: '📘', color: 'blue',
-      prompt: `# TypeScript 타입 체크 훅
-
-## 설치 방법
-
-### ~/.claude/settings.json에 추가
-\`\`\`json
-{
-  "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Write|Edit",
-        "command": "npx tsc --noEmit --pretty false 2>&1 | head -50",
-        "description": "TypeScript 타입 검사 실행"
-      }
-    ]
-  }
-}
-\`\`\`
-
-## tsconfig.json 권장 설정
-\`\`\`json
-{
-  "compilerOptions": {
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true
-  }
-}
-\`\`\`
-
-## 세션 종료 시 전체 타입 체크
-\`\`\`json
-{
-  "hooks": {
-    "Stop": [
-      {
-        "command": "npx tsc --noEmit",
-        "description": "세션 종료 전 전체 타입 검사"
-      }
-    ]
-  }
-}
-\`\`\`
-
-## 효과
-- 런타임 에러 방지
-- 리팩토링 안전성 보장
-- IDE 없이도 타입 오류 즉시 감지`
-    },
-    {
-      id: 'hook-security-reminder', name: '보안 알림 훅', category: 'hooks',
-      desc: '보안 민감한 파일 편집 시 자동으로 보안 체크리스트를 표시합니다. 시크릿, 인증, API 키를 감지합니다.',
-      tags: ['보안', '알림', '체크리스트'], stars: 4.6, installs: 14300, icon: '🔐', color: 'orange',
-      prompt: `# 보안 알림 훅
-
-## 설치 방법
-
-### ~/.claude/settings.json에 추가
-\`\`\`json
-{
-  "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Write|Edit",
-        "command": "node -e \\"const fs=require('fs');const f=process.env.CLAUDE_FILE_PATH;if(!f)process.exit(0);const c=fs.readFileSync(f,'utf8');const patterns=[/password\\s*=/i,/api_key\\s*=/i,/secret\\s*=/i,/token\\s*=/i];const found=patterns.some(p=>p.test(c));if(found)console.warn('⚠️ 보안 경고: 민감한 값이 하드코딩되어 있을 수 있습니다. 환경 변수를 사용하세요.')\\"",
-        "description": "하드코딩된 시크릿 감지"
-      }
-    ]
-  }
-}
-\`\`\`
-
-## 추가 보안 검사 스크립트
-\`\`\`bash
-#!/bin/bash
-# scripts/security-check.sh
-
-FILE=$1
-if grep -qE '(password|api_key|secret|token)\\s*=\\s*["\\''][^"\\'']+["\\'']' "$FILE"; then
-  echo "⚠️  보안 경고: 하드코딩된 민감한 값 발견"
-  echo "📋 체크리스트:"
-  echo "  [ ] 환경 변수로 이동"
-  echo "  [ ] .env.example 업데이트"
-  echo "  [ ] .gitignore에 .env 추가 확인"
-  exit 1
-fi
-\`\`\`
-
-## 효과
-- 실수로 API 키 커밋 방지
-- 보안 의식 향상
-- 보안 체크리스트 자동 표시`
-    },
-    {
-      id: 'hook-build-verify', name: '빌드 검증 훅', category: 'hooks',
-      desc: '세션 종료 시 프로덕션 빌드를 자동 실행하여 빌드 성공을 검증합니다.',
-      tags: ['빌드', '검증', '배포'], stars: 4.5, installs: 11700, icon: '🏗️', color: 'emerald',
-      prompt: `# 빌드 검증 훅
-
-## 설치 방법
-
-### ~/.claude/settings.json에 추가
-\`\`\`json
-{
-  "hooks": {
-    "Stop": [
-      {
-        "command": "npm run build",
-        "description": "세션 종료 시 빌드 검증"
-      }
-    ]
-  }
-}
-\`\`\`
-
-## 프레임워크별 빌드 명령어
-\`\`\`json
-{
-  "hooks": {
-    "Stop": [
-      {
-        "command": "npm run build 2>&1 | tail -20",
-        "description": "프로덕션 빌드 검증 (마지막 20줄 출력)"
-      }
-    ]
-  }
-}
-\`\`\`
-
-## 테스트 + 빌드 조합
-\`\`\`json
-{
-  "hooks": {
-    "Stop": [
-      {
-        "command": "npm run test:ci && npm run build",
-        "description": "테스트 통과 후 빌드 검증"
-      }
-    ]
-  }
-}
-\`\`\`
-
-## 효과
-- "내 컴퓨터에서는 됨" 문제 방지
-- 배포 전 빌드 실패 조기 발견
-- CI/CD 파이프라인 실패 감소
-
-## 주의사항
-빌드 시간이 긴 경우 세션 종료가 느려질 수 있습니다.
-\`timeout 60 npm run build\`로 타임아웃 설정을 추천합니다.`
-    },
-    {
-      id: 'hook-file-size', name: '파일 크기 제한 훅', category: 'hooks',
-      desc: '800줄 이상의 파일 작성을 차단하고 모듈 분리를 강제합니다. 코드베이스 유지보수성을 자동으로 관리합니다.',
-      tags: ['파일크기', '모듈화', '제한'], stars: 4.4, installs: 9200, icon: '📏', color: 'purple',
-      prompt: `# 파일 크기 제한 훅
-
-## 설치 방법
-
-### ~/.claude/settings.json에 추가
-\`\`\`json
-{
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Write",
-        "command": "node -e \\"let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{const i=JSON.parse(d);const c=i.tool_input?.content||'';const lines=c.split('\\\\n').length;if(lines>800){console.error('[훅] 차단: 파일이 800줄을 초과합니다 ('+lines+'줄)');console.error('[훅] 더 작은 모듈로 분리하세요');process.exit(2)}process.stdout.write(d)})\\"",
-        "description": "800줄 초과 파일 작성 차단"
-      }
-    ]
-  }
-}
-\`\`\`
-
-## 파일 크기 가이드라인
-| 파일 크기 | 상태 | 권장 조치 |
-|-----------|------|-----------|
-| < 200줄 | 적절함 | 유지 |
-| 200-400줄 | 보통 | 모니터링 |
-| 400-800줄 | 큰 편 | 분리 고려 |
-| 800줄 이상 | 너무 큼 | 즉시 분리 |
-
-## 모듈 분리 전략
-\`\`\`
-src/
-├── features/
-│   ├── auth/
-│   │   ├── auth.service.ts     # 핵심 로직
-│   │   ├── auth.controller.ts  # HTTP 처리
-│   │   ├── auth.types.ts       # 타입 정의
-│   │   └── auth.utils.ts       # 유틸리티
-\`\`\`
-
-## 효과
-- 단일 책임 원칙 강제
-- 코드 리뷰 용이성 향상
-- 테스트 작성 단순화
-- Git blame 정확도 향상`
-    }
+  plugins: [
+    { id: 'ai-ml-toolkit', name: 'Ai Ml Toolkit', nameEn: 'ai-ml-toolkit', category: 'plugins', desc: 'AI and Machine Learning development suite with data engineering and model deployment tools', tags: ['플러그인', 'AI', '머신러닝'], stars: 4.4, installs: 0 },
+    { id: 'devops-automation', name: 'Devops Automation', nameEn: 'devops-automation', category: 'plugins', desc: 'DevOps automation suite with CI/CD, infrastructure management, and deployment orchestration', tags: ['플러그인', 'DevOps', 'CI/CD', '자동화'], stars: 4.4, installs: 0 },
+    { id: 'documentation-generator', name: 'Documentation Generator', nameEn: 'documentation-generator', category: 'plugins', desc: 'Automated documentation generation with API docs, technical writing, and content management', tags: ['플러그인', '문서화'], stars: 4.4, installs: 0 },
+    { id: 'git-workflow', name: 'Git Workflow', nameEn: 'git-workflow', category: 'plugins', desc: 'Git workflow automation: feature, release, and hotfix commands with git specialists', tags: ['플러그인', 'Git', '워크플로우', '자동화'], stars: 4.4, installs: 0 },
+    { id: 'nextjs-vercel-pro', name: 'Nextjs Vercel Pro', nameEn: 'nextjs-vercel-pro', category: 'plugins', desc: 'Complete Next.js and Vercel development toolkit with deployment automation and performance optimization', tags: ['플러그인', 'Next.js', 'React', '성능'], stars: 4.4, installs: 0 },
+    { id: 'performance-optimizer', name: '성능 최적화기', nameEn: 'performance-optimizer', category: 'plugins', desc: 'Performance optimization suite with profiling, bundle analysis, and speed improvement tools', tags: ['플러그인', '성능'], stars: 4.4, installs: 0 },
+    { id: 'project-management-suite', name: 'Project Management Suite', nameEn: 'project-management-suite', category: 'plugins', desc: 'Project management toolkit with sprint planning, task automation, and team collaboration tools', tags: ['플러그인'], stars: 4.4, installs: 0 },
+    { id: 'security-pro', name: 'Security Pro', nameEn: 'security-pro', category: 'plugins', desc: 'Enterprise security toolkit with auditing, penetration testing, and compliance automation', tags: ['플러그인', '보안'], stars: 4.4, installs: 0 },
+    { id: 'supabase-toolkit', name: 'Supabase Toolkit', nameEn: 'supabase-toolkit', category: 'plugins', desc: 'Complete Supabase workflow with specialized commands, data engineering agents, and MCP integrations', tags: ['플러그인', '데이터베이스'], stars: 4.4, installs: 0 },
+    { id: 'testing-suite', name: 'Testing Suite', nameEn: 'testing-suite', category: 'plugins', desc: 'Comprehensive testing toolkit with E2E, unit, integration, and visual testing automation', tags: ['플러그인', '테스트', '자동화'], stars: 4.4, installs: 0 }
   ]
 };
