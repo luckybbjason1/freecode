@@ -4,16 +4,16 @@
    =================================================== */
 :root {
 
-  /* ── 배경 (Near-Void Dark) ───────────────────────── */
-  --bg-base:        #09090e;
-  --bg-surface:     #0d0e15;
-  --bg-elevated:    #12141c;
-  --bg-card:        #181a24;
+  /* ── 배경 (Deep Indigo Dark) ────────────────────── */
+  --bg-base:        #0c0e17;
+  --bg-surface:     #11141f;
+  --bg-elevated:    #181c2b;
+  --bg-card:        #1e2336;
 
   /* ── 글래스 효과 ──────────────────────────────────── */
-  --glass-bg:       rgba(255,255,255,0.035);
-  --glass-bg-hover: rgba(255,255,255,0.065);
-  --glass-border:   rgba(255,255,255,0.08);
+  --glass-bg:       rgba(255,255,255,0.05);
+  --glass-bg-hover: rgba(255,255,255,0.09);
+  --glass-border:   rgba(255,255,255,0.10);
   --glass-border-bright: rgba(255,255,255,0.16);
   --glass-blur:     blur(24px);
   --border-glass:   1px solid rgba(255,255,255,0.08);
@@ -57,10 +57,10 @@
   --blue-dim:       rgba(96,165,250,0.11);
 
   /* ── 텍스트 ──────────────────────────────────────── */
-  --text-primary:   #edeaff;
-  --text-secondary: #9290b0;
-  --text-muted:     #6e6e90;
-  --text-disabled:  #3a3a52;
+  --text-primary:   #eeeaff;
+  --text-secondary: #9d9cc0;
+  --text-muted:     #787898;
+  --text-disabled:  #42425e;
 
   /* ── 타이포그래피 ────────────────────────────────── */
   --font-display:   'Noto Serif KR', 'Apple SD Gothic Neo', 'Batang', serif;

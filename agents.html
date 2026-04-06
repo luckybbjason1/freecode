@@ -161,6 +161,7 @@
 try { AOS.init({ duration: 600, easing: 'ease-out-expo', once: true, offset: 60 }); } catch(e) {}
 document.addEventListener('DOMContentLoaded', function() {
   renderListingPage('agents');
+  try { AOS.refreshHard(); } catch(e) {}
   var rc = document.getElementById('result-count'), grid = document.getElementById('cards-grid');
   if (rc && grid) new MutationObserver(function() { rc.textContent = grid.querySelectorAll('.card').length; }).observe(grid, { childList: true });
 });

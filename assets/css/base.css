@@ -133,3 +133,14 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   0%, 100% { opacity: 1; transform: scale(1); }
   50%       { opacity: 0.45; transform: scale(0.75); }
 }
+
+/* ── AOS 동적 카드 수정 ─────────────────────────────
+   AOS가 동적으로 추가된 [data-aos] 카드를 감지하지 못하면
+   opacity:0 상태에서 멈추는 문제를 방지
+   ───────────────────────────────────────────────── */
+.card[data-aos],
+.cat-card[data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: fadeUp 0.45s var(--ease-out-expo) both;
+}
