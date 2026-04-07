@@ -375,23 +375,8 @@ var CCTracker = {
         return;
       }
 
-      var self = this;
-      fetch('https://ipapi.co/json/', { mode: 'no-cors' })
-        .then(function(res) { return res.json(); })
-        .then(function(data) {
-          try {
-            var geo = {
-              ts:           Date.now(),
-              country_name: data.country_name || '',
-              country_code: data.country_code || '',
-              city:         data.city || '',
-              region:       data.region || ''
-            };
-            localStorage.setItem(TRACK_GEO_KEY, JSON.stringify(geo));
-            self._applyGeoToLastSession(geo);
-          } catch (_) {}
-        })
-        .catch(function() {});
+      // 地理位置功能已禁用 (避免 CORS 错误)
+      // 如需启用，需要使用支持 CORS 的地理位置服务
     } catch (_) {}
   },
 
