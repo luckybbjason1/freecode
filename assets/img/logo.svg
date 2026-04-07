@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" width="300" height="100">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100" width="320" height="100">
   <defs>
-    <linearGradient id="o-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="c-grad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#FFD700"/>
       <stop offset="50%" style="stop-color:#FF9F1C"/>
       <stop offset="100%" style="stop-color:#FF6B35"/>
     </linearGradient>
-    <linearGradient id="num-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="k-grad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#40E0FF"/>
       <stop offset="50%" style="stop-color:#7B6FFF"/>
       <stop offset="100%" style="stop-color:#00DDA3"/>
@@ -20,28 +20,28 @@
   </defs>
 
   <!-- Background pill -->
-  <rect x="0" y="5" width="300" height="90" rx="18" fill="#0c0c1e"/>
-  <rect x="1" y="6" width="298" height="88" rx="17" fill="none" stroke="rgba(255,215,0,0.35)" stroke-width="1.5"/>
+  <rect x="0" y="5" width="320" height="90" rx="18" fill="#0c0c1e"/>
+  <rect x="1" y="6" width="318" height="88" rx="17" fill="none" stroke="rgba(255,215,0,0.35)" stroke-width="1.5"/>
 
-  <!-- oppa text (gold) -->
-  <text x="12" y="64"
+  <!-- CK text -->
+  <text x="20" y="64"
         font-family="'Arial Black', 'Arial', sans-serif"
-        font-size="54" font-weight="900"
-        fill="url(#o-grad)"
+        font-size="48" font-weight="900"
+        fill="url(#c-grad)"
         filter="url(#glow)"
-        letter-spacing="-2">oppa</text>
+        letter-spacing="-2">CK</text>
 
-  <!-- 19 text (cyan-purple) -->
-  <text x="170" y="64"
+  <!-- Korea text -->
+  <text x="110" y="64"
         font-family="'Arial Black', 'Arial', sans-serif"
-        font-size="54" font-weight="900"
-        fill="url(#num-grad)"
+        font-size="36" font-weight="900"
+        fill="url(#k-grad)"
         filter="url(#shadow)"
-        letter-spacing="-2">19</text>
+        letter-spacing="-1">Korea</text>
 
   <!-- .com badge -->
-  <rect x="244" y="14" width="48" height="20" rx="10" fill="rgba(0,221,163,0.18)" stroke="rgba(0,221,163,0.5)" stroke-width="1"/>
-  <text x="268" y="28"
+  <rect x="260" y="14" width="50" height="20" rx="10" fill="rgba(0,221,163,0.18)" stroke="rgba(0,221,163,0.5)" stroke-width="1"/>
+  <text x="285" y="28"
         font-family="Arial, sans-serif"
         font-size="11" font-weight="700"
         fill="#00DDA3" text-anchor="middle">.com</text>
