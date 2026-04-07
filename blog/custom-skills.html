@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GQHEYDXTHG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GQHEYDXTHG');
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5138416840385352" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code 커스텀 스킬 만들기: 나만의 AI 자동화 가이드 | oppa19</title>
+  <meta name="description" content="Claude Code 커스텀 스킬 제작 완전 가이드. SKILL.md 구조, 트리거 키워드 최적화, 고급 패턴 4가지와 실전 예제 3가지로 나만의 AI 자동화를 만드세요.">
+  <meta name="keywords" content="Claude Code 스킬, 커스텀 스킬, SKILL.md, 스킬 제작, AI 자동화, 스킬 트리거, 스킬 만들기">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="oppa19">
+  <link rel="canonical" href="https://freecode.oppa19.com/blog/custom-skills.html">
+  <link rel="alternate" hreflang="ko" href="https://freecode.oppa19.com/blog/custom-skills.html">
+  <link rel="alternate" hreflang="x-default" href="https://freecode.oppa19.com/blog/custom-skills.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="나만의 Claude Code 스킬 만들기: 커스텀 스킬 제작 완전 가이드">
+  <meta property="og:description" content="Claude Code 커스텀 스킬 제작 완전 가이드. SKILL.md 구조부터 실전 예제 3가지까지.">
+  <meta property="og:image" content="https://freecode.oppa19.com/assets/img/og-image.svg">
+  <meta property="og:url" content="https://freecode.oppa19.com/blog/custom-skills.html">
+  <meta property="og:site_name" content="oppa19">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="나만의 Claude Code 스킬 만들기: 커스텀 스킬 제작 완전 가이드">
+  <meta name="twitter:description" content="SKILL.md 구조부터 팀 스킬 공유까지. Claude Code 커스텀 스킬 제작 완전 가이드.">
+  <meta name="twitter:image" content="https://freecode.oppa19.com/assets/img/og-image.svg">
+  <script type="application/ld+json">
+  [
+    {"@context":"https://schema.org","@type":"Article","headline":"나만의 Claude Code 스킬 만들기: 커스텀 스킬 제작 완전 가이드","description":"Claude Code 커스텀 스킬 제작 완전 가이드. SKILL.md 구조, 트리거, 고급 패턴 4가지와 실전 예제 3가지.","image":"https://freecode.oppa19.com/assets/img/og-image.svg","datePublished":"2026-04-07","dateModified":"2026-04-07","inLanguage":"ko-KR","author":{"@type":"Organization","name":"oppa19","url":"https://freecode.oppa19.com"},"publisher":{"@type":"Organization","name":"oppa19","logo":{"@type":"ImageObject","url":"https://freecode.oppa19.com/assets/img/logo.svg"}},"url":"https://freecode.oppa19.com/blog/custom-skills.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://freecode.oppa19.com/blog/custom-skills.html"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://freecode.oppa19.com/"},{"@type":"ListItem","position":2,"name":"블로그","item":"https://freecode.oppa19.com/blog.html"},{"@type":"ListItem","position":3,"name":"커스텀 스킬 만들기","item":"https://freecode.oppa19.com/blog/custom-skills.html"}]}
+  ]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <style>
+    .article-hero { padding: 8rem 0 4rem; text-align: center; background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(124,106,245,0.08) 0%, transparent 70%); }
+    .article-body { max-width: 760px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .article-body h2 { font-size: var(--text-xl); font-weight: 700; color: var(--text-primary); margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .article-body h3 { font-size: var(--text-lg); font-weight: 700; color: var(--text-primary); margin: 2rem 0 0.75rem; }
+    .article-body p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { color: var(--text-secondary); padding-left: 1.5rem; margin-bottom: 1.25rem; line-height: 1.8; }
+    .article-body li { margin-bottom: 0.5rem; }
+    .article-body li::marker { color: var(--violet); }
+    .article-body code { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-xs); padding: 0.15rem 0.4rem; font-family: var(--font-mono); font-size: 0.875em; color: var(--cyan); }
+    .article-body pre { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; overflow-x: auto; }
+    .article-body pre code { background: none; border: none; padding: 0; color: var(--text-primary); font-size: 0.9em; }
+    .article-body blockquote { border-left: 3px solid var(--violet); background: var(--violet-dim); padding: 1rem 1.25rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+    .article-body blockquote p { color: var(--text-primary); margin: 0; }
+    .article-body .callout { background: var(--cyan-dim); border: 1px solid rgba(13,240,255,0.18); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; }
+    .article-body .callout p { color: var(--text-primary); margin: 0; }
+    .article-breadcrumb { font-size: var(--text-xs); color: var(--text-muted); margin-bottom: 1.5rem; }
+    .article-breadcrumb a { color: var(--violet-light); }
+    .compare-table { width:100%; border-collapse:collapse; margin: 1.5rem 0; }
+    .compare-table th { background: var(--bg-elevated); color: var(--text-primary); padding: .75rem 1rem; text-align:left; font-size: var(--text-sm); border: 1px solid rgba(255,255,255,0.07); }
+    .compare-table td { padding: .65rem 1rem; color: var(--text-secondary); font-size: var(--text-sm); border: 1px solid rgba(255,255,255,0.05); }
+    .compare-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .tip-box { background: var(--gold-dim); border: 1px solid rgba(245,200,66,0.2); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; }
+    .tip-box p { color: var(--gold-light); margin: 0; font-weight: 500; }
+    .related-links { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1rem; margin:2rem 0; }
+    .related-link { background:var(--glass-bg); border:var(--border-glass); border-radius:var(--radius-md); padding:1rem; text-align:center; transition:border-color .2s; }
+    .related-link:hover { border-color:var(--violet); }
+    .related-link span { display:block; font-size:1.5rem; margin-bottom:.4rem; }
+    .related-link a { color:var(--text-primary); font-weight:600; font-size:var(--text-sm); }
+  </style>
+</head>
+<body>
+<nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
+  <a href="../index.html" class="nav__logo"><img src="../assets/img/logo.svg" alt="oppa19" class="nav__logo-img"></a>
+  <ul class="nav__links">
+    <li><a href="../skills.html">스킬</a></li>
+    <li><a href="../agents.html">에이전트</a></li>
+    <li><a href="../commands.html">명령어</a></li>
+    <li><a href="../mcps.html">MCP</a></li>
+    <li><a href="../blog.html" class="active">블로그</a></li>
+  </ul>
+  <div class="nav__actions"><a href="https://claude.ai" target="_blank" rel="noopener" class="nav__github"><span>Claude 시작</span></a></div>
+  <button class="nav__hamburger" id="nav-hamburger" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<nav class="nav__mobile" id="nav-mobile">
+  <a href="../skills.html">스킬</a><a href="../agents.html">에이전트</a><a href="../commands.html">명령어</a><a href="../mcps.html">MCP</a><a href="../blog.html">블로그</a>
+</nav>
+
+<div id="ad-header-banner" class="ad-slot ad-slot--header" aria-label="광고"></div>
+
+<header class="article-hero">
+  <div class="container">
+    <nav class="article-breadcrumb" aria-label="현재 위치">
+      <a href="../index.html">홈</a> › <a href="../blog.html">블로그</a> › 커스텀 스킬 가이드
+    </nav>
+    <h1 style="font-size:var(--text-3xl);font-weight:700;margin-bottom:1rem;line-height:1.2;">나만의 Claude Code 스킬 만들기: 커스텀 스킬 제작 완전 가이드</h1>
+    <p style="color:var(--text-secondary);max-width:620px;margin:0 auto 1.5rem;">SKILL.md 구조 이해부터 고급 패턴 4가지, 실전 예제 3가지까지. 팀 맞춤 AI 자동화를 직접 만드는 방법을 알아봅니다.</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:1rem;font-size:var(--text-xs);color:var(--text-muted);">
+      <span>oppa19</span><span>·</span><span>2026년 4월</span><span>·</span><span>16분 읽기</span><span>·</span><span class="badge badge--violet">심화</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body" itemscope itemtype="https://schema.org/Article">
+
+  <h2>스킬이란? — 재사용 가능한 AI 명령 템플릿</h2>
+
+  <p>Claude Code를 사용하다 보면 비슷한 종류의 작업을 반복적으로 요청하게 됩니다. 예를 들어 React 컴포넌트를 만들 때마다 같은 패턴을 설명해야 한다거나, 데이터베이스 쿼리를 최적화할 때마다 같은 기준을 설명해야 하는 경우입니다.</p>
+
+  <p><strong>스킬(Skill)</strong>은 이런 반복적인 AI 지시사항을 재사용 가능한 템플릿으로 만든 것입니다. 스킬을 한 번 만들어두면 <code>/스킬명</code> 또는 특정 키워드를 입력할 때 자동으로 해당 전문 지식이 적용됩니다.</p>
+
+  <p>스킬은 단순한 프롬프트 저장소가 아닙니다. 특정 도메인의 깊은 전문 지식, 체크리스트, 단계별 워크플로우, 판단 기준을 모두 담을 수 있습니다. 마치 숙련된 시니어 개발자의 지식을 파일 하나에 담아두는 것과 같습니다.</p>
+
+  <div class="callout">
+    <p>스킬과 커스텀 명령어의 차이: 슬래시 명령어(<code>.claude/commands/</code>)는 단순한 프롬프트 단축키입니다. 스킬은 더 깊은 도메인 지식과 구조화된 워크플로우를 담는 전문 지식 파일입니다.</p>
+  </div>
+
+  <h2>스킬 파일 구조 이해하기 — SKILL.md, frontmatter, 마크다운 본문</h2>
+
+  <p>스킬은 <code>SKILL.md</code> 파일로 작성합니다. 파일 상단의 YAML frontmatter와 마크다운 본문으로 구성됩니다.</p>
+
+  <pre><code>---
+name: "스킬 이름"
+description: "스킬에 대한 간략한 설명"
+triggers:
+  - "트리거 키워드1"
+  - "트리거 키워드2"
+version: "1.0.0"
+author: "작성자"
+---
+
+# 스킬 제목
+
+## 개요
+이 스킬이 무엇을 하는지 설명합니다.
+
+## 언제 사용하나?
+이 스킬이 트리거되는 상황을 설명합니다.
+
+## 워크플로우
+
+### 1단계: 분석
+...
+
+### 2단계: 실행
+...
+
+## 체크리스트
+- [ ] 항목 1
+- [ ] 항목 2
+
+## 예제
+구체적인 사용 예제를 작성합니다.</code></pre>
+
+  <p>스킬 파일은 <code>~/.claude/skills/</code> 폴더(전역) 또는 프로젝트의 <code>.claude/skills/</code> 폴더(프로젝트 전용)에 저장합니다.</p>
+
+  <h2>첫 번째 스킬 만들기 — 5분 만에 간단한 스킬 완성</h2>
+
+  <p>가장 간단한 스킬부터 시작해봅시다. React 컴포넌트를 일관된 패턴으로 생성하는 스킬입니다.</p>
+
+  <pre><code>---
+name: "react-component"
+description: "React 컴포넌트를 팀 표준에 맞게 생성합니다"
+triggers:
+  - "React 컴포넌트 만들기"
+  - "컴포넌트 생성"
+  - "new component"
+version: "1.0.0"
+author: "팀명"
+---
+
+# React 컴포넌트 생성 스킬
+
+## 표준 컴포넌트 구조
+
+모든 React 컴포넌트는 다음 구조를 따릅니다:
+
+1. **타입 정의**: Props 인터페이스를 먼저 선언
+2. **컴포넌트 함수**: 화살표 함수, export default
+3. **스타일**: CSS Modules 또는 Tailwind
+4. **테스트 파일**: 컴포넌트와 같은 폴더에 .test.tsx
+
+## 코드 템플릿
+
+```tsx
+import { FC } from 'react';
+import styles from './ComponentName.module.css';
+
+interface ComponentNameProps {
+  // props 정의
+}
+
+const ComponentName: FC<ComponentNameProps> = ({ }) => {
+  return (
+    <div className={styles.container}>
+      {/* 컴포넌트 내용 */}
+    </div>
+  );
+};
+
+export default ComponentName;
+```
+
+## 체크리스트
+- [ ] Props 인터페이스 정의
+- [ ] 기본값 설정 (defaultProps 또는 default parameters)
+- [ ] 접근성 속성 추가 (aria-label 등)
+- [ ] 테스트 파일 생성
+- [ ] Storybook 스토리 추가 (UI 컴포넌트인 경우)
+
+요청된 컴포넌트를 위 표준에 맞게 생성하세요.</code></pre>
+
+  <p>이 파일을 <code>~/.claude/skills/react-component/SKILL.md</code>로 저장하면 "React 컴포넌트 만들기" 같은 요청 시 자동으로 이 스킬의 지식이 적용됩니다.</p>
+
+  <h2>트리거 키워드 최적화하기 — 언제 스킬이 발동하나?</h2>
+
+  <p>트리거 키워드는 스킬이 언제 자동으로 로드될지 결정합니다. 좋은 트리거 키워드는 다음 조건을 만족합니다:</p>
+
+  <ul>
+    <li><strong>구체적</strong>: "코드" 같은 너무 일반적인 단어는 피합니다</li>
+    <li><strong>다양한 표현 포함</strong>: 같은 의미의 한국어와 영어를 모두 포함합니다</li>
+    <li><strong>실제 사용 패턴 반영</strong>: 개발자가 실제로 말하는 방식으로 작성합니다</li>
+    <li><strong>오버랩 최소화</strong>: 다른 스킬과 트리거가 겹치면 충돌이 발생합니다</li>
+  </ul>
+
+  <pre><code># 나쁜 예
+triggers:
+  - "코드"
+  - "작성"
+
+# 좋은 예
+triggers:
+  - "데이터베이스 쿼리 최적화"
+  - "DB 쿼리 느림"
+  - "SQL 성능"
+  - "N+1 쿼리"
+  - "인덱스 추가"</code></pre>
+
+  <h2>고급 스킬 패턴 4가지 — 체크리스트, 단계별 워크플로우, 조건분기, 서브에이전트 호출</h2>
+
+  <h3>패턴 1: 체크리스트 패턴</h3>
+  <p>작업 완료 기준을 명확하게 정의할 때 사용합니다. Claude가 각 항목을 순서대로 확인하게 됩니다.</p>
+
+  <pre><code>## 보안 리뷰 체크리스트
+
+작업 완료 전 다음 항목을 반드시 확인하세요:
+
+### 인증/인가
+- [ ] 모든 API 엔드포인트에 인증 미들웨어 적용
+- [ ] 권한 체크가 서버 측에서 이루어지는가?
+- [ ] JWT 토큰 만료 시간이 적절한가?
+
+### 입력 검증
+- [ ] 모든 사용자 입력이 검증되는가?
+- [ ] SQL 파라미터화 쿼리 사용 여부
+- [ ] XSS 방지를 위한 출력 이스케이핑
+
+### 시크릿 관리
+- [ ] 환경 변수 사용 여부 확인
+- [ ] .env 파일이 .gitignore에 포함됐는가?</code></pre>
+
+  <h3>패턴 2: 단계별 워크플로우 패턴</h3>
+  <p>복잡한 작업을 순서 있는 단계로 나눌 때 사용합니다.</p>
+
+  <pre><code>## 새 API 엔드포인트 추가 워크플로우
+
+### 1단계: 설계
+- 요청/응답 스키마 정의
+- 인증 요구사항 확인
+- 에러 케이스 목록화
+
+### 2단계: 구현
+- 라우트 파일 생성
+- 컨트롤러 구현
+- 서비스 레이어 작성
+- 데이터베이스 쿼리 작성
+
+### 3단계: 검증
+- 단위 테스트 작성
+- 통합 테스트 작성
+- API 문서 업데이트
+
+각 단계를 완료할 때마다 진행 상황을 보고해주세요.</code></pre>
+
+  <h3>패턴 3: 조건 분기 패턴</h3>
+  <p>상황에 따라 다른 행동을 해야 할 때 사용합니다.</p>
+
+  <pre><code>## 상황별 처리 가이드
+
+### 레거시 코드인 경우 (5년 이상 된 코드)
+- 리팩토링보다 동작 보존 우선
+- 대규모 변경 대신 점진적 개선 제안
+- 기존 패턴을 최대한 유지
+
+### 그린필드 프로젝트인 경우 (신규 프로젝트)
+- 최신 베스트 프랙티스 적극 적용
+- 타입 안전성 최우선
+- 테스트 커버리지 80% 이상 목표</code></pre>
+
+  <h3>패턴 4: 서브에이전트 호출 패턴</h3>
+  <p>복잡한 작업을 병렬 에이전트로 분산 처리합니다.</p>
+
+  <pre><code>## 병렬 분석 워크플로우
+
+이 작업은 다음 3개 에이전트를 병렬로 실행하세요:
+
+**에이전트 1: 보안 분석**
+- 인증/인가 로직 검토
+- 취약점 스캔
+- 결과를 security-report.md에 저장
+
+**에이전트 2: 성능 분석**
+- 데이터베이스 쿼리 최적화 기회 식별
+- 캐싱 전략 제안
+- 결과를 performance-report.md에 저장
+
+**에이전트 3: 코드 품질 분석**
+- 코딩 표준 준수 여부
+- 중복 코드 식별
+- 결과를 quality-report.md에 저장
+
+모든 에이전트 완료 후 세 보고서를 종합한 final-report.md를 생성하세요.</code></pre>
+
+  <h2>스킬 실전 예제 3가지</h2>
+
+  <h3>실전 예제 1: 데이터베이스 스키마 설계 스킬</h3>
+
+  <pre><code>---
+name: "db-schema-design"
+description: "데이터베이스 스키마를 설계하고 최적화합니다"
+triggers:
+  - "데이터베이스 설계"
+  - "스키마 설계"
+  - "테이블 만들기"
+  - "DB 구조"
+version: "1.0.0"
+---
+
+# 데이터베이스 스키마 설계 스킬
+
+## 설계 원칙
+
+1. **정규화 우선**: 3NF까지 정규화 후 성능을 위해 역정규화 검토
+2. **인덱스 전략**: 자주 조회되는 컬럼, 외래키, 복합 인덱스 계획
+3. **명명 규칙**: snake_case, 복수형 테이블명, 단수형 컬럼명
+4. **감사 컬럼**: created_at, updated_at, deleted_at 포함
+
+## 필수 포함 요소
+
+모든 테이블에:
+- `id` BIGINT PRIMARY KEY AUTO_INCREMENT
+- `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+- `updated_at` TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+
+소프트 삭제가 필요한 경우:
+- `deleted_at` TIMESTAMP NULL DEFAULT NULL
+- `is_deleted` BOOLEAN DEFAULT FALSE
+
+## 인덱스 가이드라인
+
+- 외래키는 반드시 인덱스 추가
+- 자주 필터링하는 컬럼에 인덱스
+- 복합 인덱스: 선택도 높은 컬럼을 앞에
+
+## 작업 순서
+
+1. 엔티티 식별 및 관계 정의
+2. ERD 다이어그램 (텍스트 형태)
+3. CREATE TABLE SQL 문 생성
+4. 인덱스 생성 SQL
+5. 초기 데이터 시드 SQL (필요시)
+
+요청된 요구사항을 분석하고 위 원칙에 따라 스키마를 설계해주세요.</code></pre>
+
+  <h3>실전 예제 2: 성능 최적화 스킬</h3>
+
+  <pre><code>---
+name: "performance-audit"
+description: "코드 성능 이슈를 분석하고 최적화 방법을 제시합니다"
+triggers:
+  - "성능 최적화"
+  - "느린 코드"
+  - "성능 문제"
+  - "bottleneck"
+  - "최적화"
+version: "1.0.0"
+---
+
+# 성능 감사 스킬
+
+## 분석 우선순위
+
+### 레벨 1: 즉각적 수정 (반드시 수정)
+- N+1 쿼리 문제
+- 적절하지 않은 인덱스 누락
+- 불필요한 전체 테이블 스캔
+- 동기 I/O 블로킹
+
+### 레벨 2: 권장 수정 (가능하면 수정)
+- 중복 API 호출
+- 불필요한 데이터 로딩 (over-fetching)
+- 캐시 가능한 데이터의 반복 계산
+- 메모이제이션 미적용 pure function
+
+### 레벨 3: 검토 사항 (경우에 따라 수정)
+- 번들 사이즈 최적화
+- 레이지 로딩 기회
+- 불필요한 리렌더링 (React)
+
+## 보고 형식
+
+각 이슈를 다음 형식으로 보고:
+- **위치**: 파일명 + 라인 번호
+- **문제**: 구체적인 설명
+- **영향**: 예상 성능 영향
+- **해결**: 구체적인 코드 수정 방법
+- **우선순위**: 레벨 1/2/3
+
+분석 후 가장 임팩트가 큰 3가지 개선 사항을 최우선으로 제시해주세요.</code></pre>
+
+  <h3>실전 예제 3: 코드 리뷰 스킬</h3>
+
+  <pre><code>---
+name: "code-review"
+description: "시니어 개발자 관점에서 코드 리뷰를 수행합니다"
+triggers:
+  - "코드 리뷰"
+  - "review"
+  - "코드 검토"
+  - "PR 리뷰"
+version: "2.0.0"
+---
+
+# 코드 리뷰 스킬
+
+## 리뷰 관점
+
+당신은 10년 경력의 시니어 개발자입니다. 다음 관점으로 리뷰하세요:
+
+### 정확성
+- 비즈니스 로직이 요구사항을 충족하는가?
+- 엣지 케이스가 처리되었는가?
+- 에러 처리가 적절한가?
+
+### 설계
+- 단일 책임 원칙을 따르는가?
+- 의존성 방향이 올바른가?
+- 추상화 수준이 일관적인가?
+
+### 가독성
+- 변수명이 의도를 명확히 드러내는가?
+- 복잡한 로직에 주석이 있는가?
+- 함수가 한 가지 일만 하는가?
+
+### 보안
+- 사용자 입력이 검증되는가?
+- 민감한 데이터가 로그에 노출되지 않는가?
+- 적절한 인증/인가가 있는가?
+
+## 피드백 형식
+
+각 피드백에 다음 레벨을 표시:
+- 🔴 **CRITICAL**: 반드시 수정해야 병합 가능
+- 🟡 **SUGGESTION**: 개선을 권장하지만 선택사항
+- 🟢 **PRAISE**: 좋은 점 칭찬
+
+긍정적인 피드백도 잊지 마세요. 잘 작성된 코드는 칭찬받아야 합니다.</code></pre>
+
+  <h2>팀과 스킬 공유하기</h2>
+
+  <p>팀에서 스킬을 공유하는 방법은 간단합니다. 스킬 파일을 Git 저장소에 포함시키면 됩니다.</p>
+
+  <pre><code># 팀 스킬 저장소 구조
+team-claude-skills/
+├── README.md
+├── skills/
+│   ├── react-component/
+│   │   └── SKILL.md
+│   ├── db-schema-design/
+│   │   └── SKILL.md
+│   └── code-review/
+│       └── SKILL.md
+└── install.sh  # 팀원들이 실행하는 설치 스크립트</code></pre>
+
+  <pre><code>#!/bin/bash
+# install.sh
+SKILLS_DIR="$HOME/.claude/skills"
+mkdir -p "$SKILLS_DIR"
+cp -r skills/* "$SKILLS_DIR/"
+echo "팀 스킬 설치 완료!"</code></pre>
+
+  <h2>스킬 마켓플레이스에 기여하기</h2>
+
+  <p>좋은 스킬을 만들었다면 커뮤니티와 공유하세요. oppa19의 스킬 라이브러리에 기여하거나, GitHub에 공개 저장소를 만들어 다른 개발자들이 활용할 수 있게 할 수 있습니다.</p>
+
+  <p>좋은 오픈소스 스킬의 조건:</p>
+  <ul>
+    <li>명확한 트리거 키워드</li>
+    <li>구체적인 사용 예제</li>
+    <li>예상 결과물 설명</li>
+    <li>버전 관리 (변경 내역 포함)</li>
+    <li>한국어 또는 영어로 작성된 문서</li>
+  </ul>
+
+  <blockquote>
+    <p>스킬을 만드는 것은 팀의 암묵적 지식을 코드로 문서화하는 과정입니다. 베테랑 개발자의 판단 기준과 경험을 새로운 팀원도 즉시 활용할 수 있게 해줍니다.</p>
+  </blockquote>
+
+  <h2>관련 리소스</h2>
+  <div class="related-links">
+    <div class="related-link"><span>⚡</span><a href="../skills.html">스킬 라이브러리</a></div>
+    <div class="related-link"><span>🤖</span><a href="../agents.html">에이전트 가이드</a></div>
+    <div class="related-link"><span>⌨️</span><a href="../commands.html">명령어 모음</a></div>
+  </div>
+
+</article>
+
+<div id="ad-before-footer" class="ad-slot ad-slot--before-footer" aria-label="광고"></div>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__bottom" style="border-top:var(--border-glass);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <a href="../index.html" class="gradient-text" style="font-weight:700;">oppa19</a>
+      <a href="../blog.html" style="color:var(--text-muted);font-size:var(--text-xs);">← 블로그 목록으로</a>
+      <span style="color:var(--text-muted);font-size:var(--text-xs);">© 2026 oppa19</span>
+    </div>
+  </div>
+</footer>
+
+<div id="ad-sticky-bottom" class="ad-slot ad-slot--sticky" aria-label="광고"></div>
+<output id="toast" class="toast" aria-live="polite"></output>
+<script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/ads.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function(){ try{initNav();}catch(e){} renderAds(); CCTracker.recordSession(); });</script>
+</body>
+</html>

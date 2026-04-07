@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GQHEYDXTHG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GQHEYDXTHG');
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5138416840385352" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code 생산성 10배 높이는 꿀팁 15가지 | oppa19</title>
+  <meta name="description" content="Claude Code 고수들만 아는 꿀팁 15가지. CLAUDE.md 작성법, Plan 모드, MCP 조합, 훅 체인까지. 생산성을 10배 높이는 실전 비법을 모두 공개합니다.">
+  <meta name="keywords" content="Claude Code 꿀팁, Claude Code 팁, AI 코딩 생산성, CLAUDE.md, Plan 모드, 에이전트 활용, Claude Code 고수">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="oppa19">
+  <link rel="canonical" href="https://freecode.oppa19.com/blog/productivity-tips.html">
+  <link rel="alternate" hreflang="ko" href="https://freecode.oppa19.com/blog/productivity-tips.html">
+  <link rel="alternate" hreflang="x-default" href="https://freecode.oppa19.com/blog/productivity-tips.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="Claude Code 생산성 10배 높이는 꿀팁 15가지: 고수들만 아는 비법">
+  <meta property="og:description" content="Claude Code 꿀팁 15가지 완전 공개. CLAUDE.md 작성법부터 MCP 조합, 훅 체인까지 고수만 아는 비법 모음.">
+  <meta property="og:image" content="https://freecode.oppa19.com/assets/img/og-image.svg">
+  <meta property="og:url" content="https://freecode.oppa19.com/blog/productivity-tips.html">
+  <meta property="og:site_name" content="oppa19">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Claude Code 생산성 10배 높이는 꿀팁 15가지">
+  <meta name="twitter:description" content="Claude Code 고수들만 아는 꿀팁 15가지. 지금 당장 적용할 수 있는 실전 비법 모음.">
+  <meta name="twitter:image" content="https://freecode.oppa19.com/assets/img/og-image.svg">
+  <script type="application/ld+json">
+  [
+    {"@context":"https://schema.org","@type":"Article","headline":"Claude Code 생산성 10배 높이는 꿀팁 15가지: 고수들만 아는 비법","description":"Claude Code 꿀팁 15가지. CLAUDE.md 작성법부터 MCP 조합, 훅 체인까지.","image":"https://freecode.oppa19.com/assets/img/og-image.svg","datePublished":"2026-04-07","dateModified":"2026-04-07","inLanguage":"ko-KR","author":{"@type":"Organization","name":"oppa19","url":"https://freecode.oppa19.com"},"publisher":{"@type":"Organization","name":"oppa19","logo":{"@type":"ImageObject","url":"https://freecode.oppa19.com/assets/img/logo.svg"}},"url":"https://freecode.oppa19.com/blog/productivity-tips.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://freecode.oppa19.com/blog/productivity-tips.html"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://freecode.oppa19.com/"},{"@type":"ListItem","position":2,"name":"블로그","item":"https://freecode.oppa19.com/blog.html"},{"@type":"ListItem","position":3,"name":"Claude Code 생산성 꿀팁 15가지","item":"https://freecode.oppa19.com/blog/productivity-tips.html"}]}
+  ]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <style>
+    .article-hero { padding: 8rem 0 4rem; text-align: center; background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(124,106,245,0.08) 0%, transparent 70%); }
+    .article-body { max-width: 760px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .article-body h2 { font-size: var(--text-xl); font-weight: 700; color: var(--text-primary); margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .article-body h3 { font-size: var(--text-lg); font-weight: 700; color: var(--text-primary); margin: 2rem 0 0.75rem; }
+    .article-body p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { color: var(--text-secondary); padding-left: 1.5rem; margin-bottom: 1.25rem; line-height: 1.8; }
+    .article-body li { margin-bottom: 0.5rem; }
+    .article-body li::marker { color: var(--violet); }
+    .article-body code { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-xs); padding: 0.15rem 0.4rem; font-family: var(--font-mono); font-size: 0.875em; color: var(--cyan); }
+    .article-body pre { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; overflow-x: auto; }
+    .article-body pre code { background: none; border: none; padding: 0; color: var(--text-primary); font-size: 0.9em; }
+    .article-body blockquote { border-left: 3px solid var(--violet); background: var(--violet-dim); padding: 1rem 1.25rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+    .article-body blockquote p { color: var(--text-primary); margin: 0; }
+    .article-body .callout { background: var(--cyan-dim); border: 1px solid rgba(13,240,255,0.18); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; }
+    .article-body .callout p { color: var(--text-primary); margin: 0; }
+    .article-breadcrumb { font-size: var(--text-xs); color: var(--text-muted); margin-bottom: 1.5rem; }
+    .article-breadcrumb a { color: var(--violet-light); }
+    .compare-table { width:100%; border-collapse:collapse; margin: 1.5rem 0; }
+    .compare-table th { background: var(--bg-elevated); color: var(--text-primary); padding: .75rem 1rem; text-align:left; font-size: var(--text-sm); border: 1px solid rgba(255,255,255,0.07); }
+    .compare-table td { padding: .65rem 1rem; color: var(--text-secondary); font-size: var(--text-sm); border: 1px solid rgba(255,255,255,0.05); }
+    .compare-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .tip-box { background: var(--gold-dim); border: 1px solid rgba(245,200,66,0.2); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; }
+    .tip-box p { color: var(--gold-light); margin: 0; font-weight: 500; }
+    .related-links { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1rem; margin:2rem 0; }
+    .related-link { background:var(--glass-bg); border:var(--border-glass); border-radius:var(--radius-md); padding:1rem; text-align:center; transition:border-color .2s; }
+    .related-link:hover { border-color:var(--violet); }
+    .related-link span { display:block; font-size:1.5rem; margin-bottom:.4rem; }
+    .related-link a { color:var(--text-primary); font-weight:600; font-size:var(--text-sm); }
+    .tip-number { display:inline-flex; align-items:center; justify-content:center; width:2rem; height:2rem; background:var(--violet); color:white; border-radius:50%; font-weight:700; font-size:var(--text-sm); margin-right:0.5rem; flex-shrink:0; }
+    .tip-item { display:flex; align-items:flex-start; gap:0.75rem; margin-bottom:1.5rem; padding:1.25rem; background:var(--glass-bg); border:var(--border-glass); border-radius:var(--radius-md); }
+    .tip-item-content { flex:1; }
+    .tip-item-content strong { color:var(--text-primary); display:block; margin-bottom:0.4rem; }
+    .tip-item-content p { color:var(--text-secondary); margin:0; font-size:var(--text-sm); line-height:1.7; }
+  </style>
+</head>
+<body>
+<nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
+  <a href="../index.html" class="nav__logo"><img src="../assets/img/logo.svg" alt="oppa19" class="nav__logo-img"></a>
+  <ul class="nav__links">
+    <li><a href="../skills.html">스킬</a></li>
+    <li><a href="../agents.html">에이전트</a></li>
+    <li><a href="../commands.html">명령어</a></li>
+    <li><a href="../mcps.html">MCP</a></li>
+    <li><a href="../blog.html" class="active">블로그</a></li>
+  </ul>
+  <div class="nav__actions"><a href="https://claude.ai" target="_blank" rel="noopener" class="nav__github"><span>Claude 시작</span></a></div>
+  <button class="nav__hamburger" id="nav-hamburger" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<nav class="nav__mobile" id="nav-mobile">
+  <a href="../skills.html">스킬</a><a href="../agents.html">에이전트</a><a href="../commands.html">명령어</a><a href="../mcps.html">MCP</a><a href="../blog.html">블로그</a>
+</nav>
+
+<div id="ad-header-banner" class="ad-slot ad-slot--header" aria-label="광고"></div>
+
+<header class="article-hero">
+  <div class="container">
+    <nav class="article-breadcrumb" aria-label="현재 위치">
+      <a href="../index.html">홈</a> › <a href="../blog.html">블로그</a> › 생산성 꿀팁
+    </nav>
+    <h1 style="font-size:var(--text-3xl);font-weight:700;margin-bottom:1rem;line-height:1.2;">Claude Code 생산성 10배 높이는 꿀팁 15가지: 고수들만 아는 비법</h1>
+    <p style="color:var(--text-secondary);max-width:620px;margin:0 auto 1.5rem;">기본기부터 고급 테크닉까지. Claude Code를 진짜 잘 쓰는 사람들이 절대 알려주지 않는 비법 15가지를 모두 공개합니다.</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:1rem;font-size:var(--text-xs);color:var(--text-muted);">
+      <span>oppa19</span><span>·</span><span>2026년 4월</span><span>·</span><span>18분 읽기</span><span>·</span><span class="badge badge--gold">인기</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body" itemscope itemtype="https://schema.org/Article">
+
+  <h2>Claude Code를 200% 활용하려면</h2>
+
+  <p>Claude Code를 처음 설치하고 "코드 써줘"라고 입력하면 분명 잘 동작합니다. 하지만 1년 후에도 똑같은 방식으로 사용하고 있다면, 도구의 10%도 활용하지 못하고 있는 겁니다.</p>
+
+  <p>진짜 고수들은 Claude Code를 단순한 "AI 코딩 도우미"로 보지 않습니다. 그들에게 Claude Code는 프로젝트 전체를 이해하고, 팀의 규칙을 따르고, 자동으로 품질을 검사하는 <strong>개인 개발 파트너</strong>입니다. 그 차이를 만드는 것이 바로 이 15가지 꿀팁입니다.</p>
+
+  <h2>꿀팁 1-5: 기본기 완성</h2>
+
+  <div class="tip-item">
+    <span class="tip-number">1</span>
+    <div class="tip-item-content">
+      <strong>CLAUDE.md를 프로젝트의 헌법으로 만들어라</strong>
+      <p>프로젝트 루트에 CLAUDE.md 파일을 만들면 Claude Code가 모든 세션에서 자동으로 읽습니다. 단순히 "TypeScript 쓰세요"가 아니라, 아키텍처 결정 이유, 금지된 패턴, 팀 컨벤션, 자주 쓰는 명령어까지 모두 담으세요. 새 대화를 시작할 때마다 컨텍스트를 설명하는 시간이 0이 됩니다.</p>
+    </div>
+  </div>
+
+  <pre><code># CLAUDE.md 좋은 예시
+
+## 프로젝트 개요
+이 프로젝트는 B2B SaaS 플랫폼입니다. 주요 기능: ...
+
+## 기술 스택
+- Frontend: Next.js 15, TypeScript, Tailwind CSS
+- Backend: FastAPI (Python), PostgreSQL
+- 배포: Vercel (frontend), AWS ECS (backend)
+
+## 절대 하지 말아야 할 것
+- any 타입 사용 금지 (unknown 사용)
+- console.log 커밋 금지 (logger 모듈 사용)
+- 직접 DB 접근 금지 (반드시 서비스 레이어 통해서)
+
+## 자주 쓰는 명령어
+- 개발 서버: pnpm dev
+- 테스트: pnpm test
+- 빌드: pnpm build</code></pre>
+
+  <div class="tip-item">
+    <span class="tip-number">2</span>
+    <div class="tip-item-content">
+      <strong>컨텍스트를 파일로 제공하라</strong>
+      <p>긴 코드를 채팅창에 붙여넣지 마세요. 대신 "src/auth/jwt.ts 파일을 보고 토큰 갱신 로직을 개선해줘"처럼 파일 경로로 참조하세요. Claude Code가 직접 파일을 읽어 전체 컨텍스트를 파악합니다. 더 정확한 답변을 얻을 수 있습니다.</p>
+    </div>
+  </div>
+
+  <div class="tip-item">
+    <span class="tip-number">3</span>
+    <div class="tip-item-content">
+      <strong>구체적인 결과물을 요청하라</strong>
+      <p>"좋은 코드 써줘"가 아니라 "Jest를 사용하는 TypeScript 단위 테스트 파일을 생성해줘. 성공 케이스 3개, 실패 케이스 2개, 경계값 케이스 1개 포함"처럼 요청하세요. 모호한 요청일수록 Claude는 가정을 많이 해야 하고, 결과물의 품질이 낮아집니다.</p>
+    </div>
+  </div>
+
+  <div class="tip-item">
+    <span class="tip-number">4</span>
+    <div class="tip-item-content">
+      <strong>단계별로 확인하며 진행하라</strong>
+      <p>복잡한 작업은 한 번에 완성하려 하지 마세요. "먼저 데이터베이스 스키마만 설계해줘, 코드는 아직 쓰지 마"처럼 단계를 나누세요. 각 단계를 확인하고 수정한 후 다음으로 넘어가면 최종 결과물의 품질이 훨씬 높아집니다.</p>
+    </div>
+  </div>
+
+  <div class="tip-item">
+    <span class="tip-number">5</span>
+    <div class="tip-item-content">
+      <strong>/compact 명령어를 전략적으로 사용하라</strong>
+      <p>긴 대화가 이어지면 컨텍스트 창이 가득 차서 초기 대화 내용을 잊어버립니다. <code>/compact</code>를 실행하면 대화 내용을 요약해 컨텍스트를 절약합니다. 긴 작업 세션에서 주기적으로 실행하면 품질을 유지할 수 있습니다.</p>
+    </div>
+  </div>
+
+  <h2>꿀팁 6-10: 워크플로우 최적화</h2>
+
+  <div class="tip-item">
+    <span class="tip-number">6</span>
+    <div class="tip-item-content">
+      <strong>Plan 모드를 적극 활용하라</strong>
+      <p>큰 작업을 시작하기 전에 <code>Shift+Tab</code>으로 Plan 모드를 활성화하세요. Claude가 코드를 직접 수정하지 않고 먼저 계획을 세웁니다. 계획을 검토하고 방향을 잡은 후 실행하면 잘못된 방향으로 많은 파일을 수정하는 실수를 막을 수 있습니다.</p>
+    </div>
+  </div>
+
+  <div class="tip-item">
+    <span class="tip-number">7</span>
+    <div class="tip-item-content">
+      <strong>에이전트를 병렬로 실행하라</strong>
+      <p>독립적인 작업은 여러 Claude Code 터미널을 열어 병렬로 처리하세요. 예를 들어 백엔드 API 작성과 프론트엔드 컴포넌트 작성은 동시에 진행할 수 있습니다. 단, 같은 파일을 동시에 수정하면 충돌이 발생하니 작업 범위를 명확히 구분하세요.</p>
+    </div>
+  </div>
+
+  <div class="tip-item">
+    <span class="tip-number">8</span>
+    <div class="tip-item-content">
+      <strong>커스텀 슬래시 명령어로 반복 작업을 표준화하라</strong>
+      <p>팀에서 자주 하는 작업 상위 10가지를 파악하고 커스텀 명령어로 만드세요. 코드 리뷰, PR 준비, API 문서화, 테스트 생성 등이 좋은 후보입니다. 명령어 하나로 매번 같은 품질의 결과를 얻을 수 있습니다.</p>
+    </div>
+  </div>
+
+  <div class="tip-item">
+    <span class="tip-number">9</span>
+    <div class="tip-item-content">
+      <strong>에러 메시지를 그대로 복사해 붙여넣어라</strong>
+      <p>버그를 설명하려고 복잡하게 설명하지 마세요. 터미널 에러 메시지, 스택 트레이스, 브라우저 콘솔 출력을 그대로 복사해 "이 에러가 왜 나는지 설명하고 수정해줘"라고 하면 됩니다. Claude Code는 에러 메시지에서 정확히 무엇이 잘못됐는지 파악합니다.</p>
+    </div>
+  </div>
+
+  <div class="tip-item">
+    <span class="tip-number">10</span>
+    <div class="tip-item-content">
+      <strong>결과를 검토하고 피드백하는 습관을 만들어라</strong>
+      <p>Claude가 코드를 작성하면 무조건 수락하지 마세요. "이 부분은 좋은데, 에러 처리가 빠진 것 같아. 네트워크 타임아웃 케이스도 추가해줘"처럼 구체적인 피드백을 주세요. 반복적인 피드백이 결과물 품질을 크게 높입니다.</p>
+    </div>
+  </div>
+
+  <h2>꿀팁 11-15: 고급 테크닉</h2>
+
+  <div class="tip-item">
+    <span class="tip-number">11</span>
+    <div class="tip-item-content">
+      <strong>MCP와 Claude Code를 조합하라</strong>
+      <p>MCP(Model Context Protocol)를 연동하면 Claude Code가 데이터베이스, GitHub, Jira, Slack 등 외부 서비스에 직접 접근할 수 있습니다. "이슈 #123의 요구사항을 확인하고 구현 코드를 작성해줘"처럼 실제 도구와 연동한 자동화가 가능해집니다.</p>
+    </div>
+  </div>
+
+  <div class="tip-item">
+    <span class="tip-number">12</span>
+    <div class="tip-item-content">
+      <strong>훅 체인으로 품질 게이트를 만들어라</strong>
+      <p>PostToolUse 훅을 체인으로 연결하세요. 파일 저장 → 포맷팅 → 린트 → 타입 검사 순서로 자동 실행되게 설정하면, Claude가 작성한 코드가 항상 일정 품질을 유지합니다. 사람이 수동으로 확인해야 할 항목이 대폭 줄어듭니다.</p>
+    </div>
+  </div>
+
+  <pre><code>// 훅 체인 예시 (settings.json)
+{
+  "hooks": {
+    "PostToolUse": [
+      { "matcher": "Write|Edit", "command": "pnpm prettier --write \"$FILE_PATH\" 2>/dev/null || true" },
+      { "matcher": "Write|Edit", "command": "pnpm eslint --fix \"$FILE_PATH\" 2>/dev/null || true" },
+      { "matcher": "Write|Edit", "command": "if [[ \"$FILE_PATH\" == *.ts ]]; then pnpm tsc --noEmit 2>&1 | head -10; fi" }
+    ]
+  }
+}</code></pre>
+
+  <div class="tip-item">
+    <span class="tip-number">13</span>
+    <div class="tip-item-content">
+      <strong>메모리를 활용해 반복 설명을 없애라</strong>
+      <p>Claude Code는 CLAUDE.md 외에도 대화 중 "이걸 기억해줘"라고 하면 중요한 정보를 메모리에 저장할 수 있습니다. 프로젝트의 특이한 요구사항, 이미 결정된 아키텍처 결정, 피해야 할 패턴 등을 저장해두면 매번 다시 설명하지 않아도 됩니다.</p>
+    </div>
+  </div>
+
+  <div class="tip-item">
+    <span class="tip-number">14</span>
+    <div class="tip-item-content">
+      <strong>테스트 주도로 구현 방향을 잡아라</strong>
+      <p>"이 함수의 테스트 코드를 먼저 작성하고, 그 테스트를 통과하는 구현을 만들어줘"라고 요청해보세요. TDD 방식으로 작업하면 Claude가 기능의 요구사항을 더 명확히 이해하고, 테스트 가능한 깔끔한 코드를 작성합니다.</p>
+    </div>
+  </div>
+
+  <div class="tip-item">
+    <span class="tip-number">15</span>
+    <div class="tip-item-content">
+      <strong>작업 완료 후 항상 코드 리뷰를 요청하라</strong>
+      <p>Claude가 방금 작성한 코드를 Claude에게 다시 리뷰시키는 것이 어색하게 느껴질 수 있지만 매우 효과적입니다. "방금 작성한 코드에 문제점이 있다면 스스로 찾아봐"라고 하면 놓친 에러 처리, 잠재적 버그, 개선 가능한 부분을 자주 발견합니다.</p>
+    </div>
+  </div>
+
+  <h2>자주 하는 실수 5가지</h2>
+
+  <p>꿀팁만큼 중요한 것이 함정을 피하는 것입니다. Claude Code 사용자들이 자주 빠지는 실수들을 알아봅니다.</p>
+
+  <ol>
+    <li><strong>너무 큰 작업을 한 번에 맡기기</strong>: "전체 인증 시스템 만들어줘"보다 단계별로 나누세요. 한 번에 너무 많은 것을 요청하면 중간에 방향을 잃거나 불완전한 결과물을 냅니다.</li>
+    <li><strong>결과물을 검토 없이 사용하기</strong>: Claude Code는 틀릴 수 있습니다. 특히 비즈니스 로직이 복잡한 부분은 반드시 검토하세요.</li>
+    <li><strong>CLAUDE.md를 업데이트하지 않기</strong>: 프로젝트가 발전하면 CLAUDE.md도 함께 업데이트해야 합니다. 오래된 정보는 혼란을 줍니다.</li>
+    <li><strong>컨텍스트 창 낭비</strong>: 관련 없는 긴 파일을 전체 로드하지 마세요. 필요한 부분만 참조하거나 /compact를 활용하세요.</li>
+    <li><strong>훅 설정 후 방치</strong>: 훅이 실제로 실행되는지, 올바른 결과를 내는지 주기적으로 확인하세요. 환경이 변하면 훅도 업데이트가 필요합니다.</li>
+  </ol>
+
+  <div class="tip-box">
+    <p>가장 중요한 팁: Claude Code는 도구입니다. 도구를 잘 쓰는 것도 중요하지만, 도구에 지나치게 의존하지 마세요. Claude Code의 결과물을 이해하고 판단하는 능력을 키우는 것이 장기적으로 더 중요합니다.</p>
+  </div>
+
+  <h2>Claude Code 달인이 되는 학습 로드맵</h2>
+
+  <p>Claude Code 실력은 단기간에 완성되지 않습니다. 다음 로드맵을 참고해 단계별로 실력을 키워가세요.</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr><th>단계</th><th>기간</th><th>목표</th><th>핵심 학습</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>입문</td><td>1-2주</td><td>기본 사용 익히기</td><td>기본 명령어, 파일 편집, 터미널 작업</td></tr>
+      <tr><td>초급</td><td>1개월</td><td>CLAUDE.md 최적화</td><td>프로젝트 컨텍스트 설정, 구체적 요청법</td></tr>
+      <tr><td>중급</td><td>3개월</td><td>워크플로우 자동화</td><td>훅 설정, 커스텀 명령어, Plan 모드</td></tr>
+      <tr><td>고급</td><td>6개월</td><td>팀 표준화</td><td>스킬 제작, MCP 연동, 에이전트 병렬화</td></tr>
+      <tr><td>달인</td><td>1년 이상</td><td>AI 기반 개발 문화</td><td>전체 개발 파이프라인 AI 통합</td></tr>
+    </tbody>
+  </table>
+
+  <blockquote>
+    <p>달인과 초보의 차이는 도구의 기능을 아는 것이 아닙니다. 언제, 어떻게, 왜 그 기능을 써야 하는지 아는 것입니다. 오늘 배운 15가지 팁을 하나씩 실전에 적용해보세요.</p>
+  </blockquote>
+
+  <h2>관련 리소스</h2>
+  <div class="related-links">
+    <div class="related-link"><span>⚡</span><a href="../skills.html">스킬 라이브러리</a></div>
+    <div class="related-link"><span>🤖</span><a href="../agents.html">에이전트 가이드</a></div>
+    <div class="related-link"><span>🪝</span><a href="../skills.html">훅 라이브러리</a></div>
+    <div class="related-link"><span>⌨️</span><a href="../commands.html">명령어 모음</a></div>
+  </div>
+
+</article>
+
+<div id="ad-before-footer" class="ad-slot ad-slot--before-footer" aria-label="광고"></div>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__bottom" style="border-top:var(--border-glass);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <a href="../index.html" class="gradient-text" style="font-weight:700;">oppa19</a>
+      <a href="../blog.html" style="color:var(--text-muted);font-size:var(--text-xs);">← 블로그 목록으로</a>
+      <span style="color:var(--text-muted);font-size:var(--text-xs);">© 2026 oppa19</span>
+    </div>
+  </div>
+</footer>
+
+<div id="ad-sticky-bottom" class="ad-slot ad-slot--sticky" aria-label="광고"></div>
+<output id="toast" class="toast" aria-live="polite"></output>
+<script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/ads.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function(){ try{initNav();}catch(e){} renderAds(); CCTracker.recordSession(); });</script>
+</body>
+</html>

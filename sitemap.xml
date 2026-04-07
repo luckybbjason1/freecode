@@ -91,4 +91,52 @@
     <xhtml:link rel="alternate" hreflang="ko" href="https://freecode.oppa19.com/blog/mcp-guide.html"/>
   </url>
 
+  <url>
+    <loc>https://freecode.oppa19.com/blog/claude-vs-copilot.html</loc>
+    <lastmod>2026-04-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://freecode.oppa19.com/blog/claude-vs-copilot.html"/>
+  </url>
+
+  <url>
+    <loc>https://freecode.oppa19.com/blog/hooks-guide.html</loc>
+    <lastmod>2026-04-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://freecode.oppa19.com/blog/hooks-guide.html"/>
+  </url>
+
+  <url>
+    <loc>https://freecode.oppa19.com/blog/slash-commands-guide.html</loc>
+    <lastmod>2026-04-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://freecode.oppa19.com/blog/slash-commands-guide.html"/>
+  </url>
+
+  <url>
+    <loc>https://freecode.oppa19.com/blog/automation-guide.html</loc>
+    <lastmod>2026-04-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://freecode.oppa19.com/blog/automation-guide.html"/>
+  </url>
+
+  <url>
+    <loc>https://freecode.oppa19.com/blog/custom-skills.html</loc>
+    <lastmod>2026-04-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://freecode.oppa19.com/blog/custom-skills.html"/>
+  </url>
+
+  <url>
+    <loc>https://freecode.oppa19.com/blog/productivity-tips.html</loc>
+    <lastmod>2026-04-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://freecode.oppa19.com/blog/productivity-tips.html"/>
+  </url>
+
 </urlset>

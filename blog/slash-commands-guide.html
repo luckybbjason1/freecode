@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GQHEYDXTHG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GQHEYDXTHG');
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5138416840385352" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code 슬래시 명령어 완전 정복: /commit·/review | oppa19</title>
+  <meta name="description" content="Claude Code 슬래시 명령어 완전 가이드. /commit, /review, /debug 등 기본 명령어부터 커스텀 명령어 제작까지. 개발 속도를 3배 높이는 실전 활용법.">
+  <meta name="keywords" content="Claude Code 슬래시 명령어, /commit, /review, 커스텀 명령어, Claude Code commands, 명령어 목록">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="oppa19">
+  <link rel="canonical" href="https://freecode.oppa19.com/blog/slash-commands-guide.html">
+  <link rel="alternate" hreflang="ko" href="https://freecode.oppa19.com/blog/slash-commands-guide.html">
+  <link rel="alternate" hreflang="x-default" href="https://freecode.oppa19.com/blog/slash-commands-guide.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="Claude Code 슬래시 명령어 완전 정복: 개발 속도 3배 높이기">
+  <meta property="og:description" content="Claude Code 슬래시 명령어 완전 가이드. 기본 명령어부터 커스텀 명령어 제작까지 모두 정복합니다.">
+  <meta property="og:image" content="https://freecode.oppa19.com/assets/img/og-image.svg">
+  <meta property="og:url" content="https://freecode.oppa19.com/blog/slash-commands-guide.html">
+  <meta property="og:site_name" content="oppa19">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Claude Code 슬래시 명령어 완전 정복: /commit·/review·/debug">
+  <meta name="twitter:description" content="Claude Code 슬래시 명령어로 개발 속도를 3배 높이는 방법을 알아보세요.">
+  <meta name="twitter:image" content="https://freecode.oppa19.com/assets/img/og-image.svg">
+  <script type="application/ld+json">
+  [
+    {"@context":"https://schema.org","@type":"Article","headline":"Claude Code 슬래시 명령어 완전 정복: 개발 속도 3배 빠르게 만드는 방법","description":"Claude Code 슬래시 명령어 완전 가이드. 기본 명령어부터 커스텀 명령어 제작까지.","image":"https://freecode.oppa19.com/assets/img/og-image.svg","datePublished":"2026-04-07","dateModified":"2026-04-07","inLanguage":"ko-KR","author":{"@type":"Organization","name":"oppa19","url":"https://freecode.oppa19.com"},"publisher":{"@type":"Organization","name":"oppa19","logo":{"@type":"ImageObject","url":"https://freecode.oppa19.com/assets/img/logo.svg"}},"url":"https://freecode.oppa19.com/blog/slash-commands-guide.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://freecode.oppa19.com/blog/slash-commands-guide.html"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://freecode.oppa19.com/"},{"@type":"ListItem","position":2,"name":"블로그","item":"https://freecode.oppa19.com/blog.html"},{"@type":"ListItem","position":3,"name":"슬래시 명령어 완전 정복","item":"https://freecode.oppa19.com/blog/slash-commands-guide.html"}]}
+  ]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <style>
+    .article-hero { padding: 8rem 0 4rem; text-align: center; background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(124,106,245,0.08) 0%, transparent 70%); }
+    .article-body { max-width: 760px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .article-body h2 { font-size: var(--text-xl); font-weight: 700; color: var(--text-primary); margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .article-body h3 { font-size: var(--text-lg); font-weight: 700; color: var(--text-primary); margin: 2rem 0 0.75rem; }
+    .article-body p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { color: var(--text-secondary); padding-left: 1.5rem; margin-bottom: 1.25rem; line-height: 1.8; }
+    .article-body li { margin-bottom: 0.5rem; }
+    .article-body li::marker { color: var(--violet); }
+    .article-body code { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-xs); padding: 0.15rem 0.4rem; font-family: var(--font-mono); font-size: 0.875em; color: var(--cyan); }
+    .article-body pre { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; overflow-x: auto; }
+    .article-body pre code { background: none; border: none; padding: 0; color: var(--text-primary); font-size: 0.9em; }
+    .article-body blockquote { border-left: 3px solid var(--violet); background: var(--violet-dim); padding: 1rem 1.25rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+    .article-body blockquote p { color: var(--text-primary); margin: 0; }
+    .article-body .callout { background: var(--cyan-dim); border: 1px solid rgba(13,240,255,0.18); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; }
+    .article-body .callout p { color: var(--text-primary); margin: 0; }
+    .article-breadcrumb { font-size: var(--text-xs); color: var(--text-muted); margin-bottom: 1.5rem; }
+    .article-breadcrumb a { color: var(--violet-light); }
+    .compare-table { width:100%; border-collapse:collapse; margin: 1.5rem 0; }
+    .compare-table th { background: var(--bg-elevated); color: var(--text-primary); padding: .75rem 1rem; text-align:left; font-size: var(--text-sm); border: 1px solid rgba(255,255,255,0.07); }
+    .compare-table td { padding: .65rem 1rem; color: var(--text-secondary); font-size: var(--text-sm); border: 1px solid rgba(255,255,255,0.05); }
+    .compare-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .tip-box { background: var(--gold-dim); border: 1px solid rgba(245,200,66,0.2); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; }
+    .tip-box p { color: var(--gold-light); margin: 0; font-weight: 500; }
+    .related-links { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1rem; margin:2rem 0; }
+    .related-link { background:var(--glass-bg); border:var(--border-glass); border-radius:var(--radius-md); padding:1rem; text-align:center; transition:border-color .2s; }
+    .related-link:hover { border-color:var(--violet); }
+    .related-link span { display:block; font-size:1.5rem; margin-bottom:.4rem; }
+    .related-link a { color:var(--text-primary); font-weight:600; font-size:var(--text-sm); }
+  </style>
+</head>
+<body>
+<nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
+  <a href="../index.html" class="nav__logo"><img src="../assets/img/logo.svg" alt="oppa19" class="nav__logo-img"></a>
+  <ul class="nav__links">
+    <li><a href="../skills.html">스킬</a></li>
+    <li><a href="../agents.html">에이전트</a></li>
+    <li><a href="../commands.html">명령어</a></li>
+    <li><a href="../mcps.html">MCP</a></li>
+    <li><a href="../blog.html" class="active">블로그</a></li>
+  </ul>
+  <div class="nav__actions"><a href="https://claude.ai" target="_blank" rel="noopener" class="nav__github"><span>Claude 시작</span></a></div>
+  <button class="nav__hamburger" id="nav-hamburger" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<nav class="nav__mobile" id="nav-mobile">
+  <a href="../skills.html">스킬</a><a href="../agents.html">에이전트</a><a href="../commands.html">명령어</a><a href="../mcps.html">MCP</a><a href="../blog.html">블로그</a>
+</nav>
+
+<div id="ad-header-banner" class="ad-slot ad-slot--header" aria-label="광고"></div>
+
+<header class="article-hero">
+  <div class="container">
+    <nav class="article-breadcrumb" aria-label="현재 위치">
+      <a href="../index.html">홈</a> › <a href="../blog.html">블로그</a> › 슬래시 명령어 가이드
+    </nav>
+    <h1 style="font-size:var(--text-3xl);font-weight:700;margin-bottom:1rem;line-height:1.2;">Claude Code 슬래시 명령어 완전 정복: 개발 속도 3배 빠르게 만드는 방법</h1>
+    <p style="color:var(--text-secondary);max-width:620px;margin:0 auto 1.5rem;">기본 내장 명령어부터 팀 맞춤 커스텀 명령어 제작까지. 슬래시 명령어 하나로 반복 작업을 단 한 줄로 끝내는 방법을 알아봅니다.</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:1rem;font-size:var(--text-xs);color:var(--text-muted);">
+      <span>oppa19</span><span>·</span><span>2026년 4월</span><span>·</span><span>13분 읽기</span><span>·</span><span class="badge badge--emerald">필수</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body" itemscope itemtype="https://schema.org/Article">
+
+  <h2>슬래시 명령어란? — 단축키처럼 사용하는 AI 자동화</h2>
+
+  <p>Claude Code를 처음 쓰면 자연스럽게 "AI한테 말하듯이" 지시를 내립니다. "이 코드 리뷰해줘", "커밋 메시지 만들어줘" 같은 식으로요. 그런데 같은 작업을 매일 반복한다면 어떨까요? 매번 긴 문장으로 설명하는 건 비효율적입니다.</p>
+
+  <p>슬래시 명령어(<code>/명령어</code>)는 이 문제를 해결합니다. 자주 사용하는 복잡한 프롬프트를 <code>/commit</code>, <code>/review</code>처럼 짧은 명령어 하나로 압축합니다. 키보드 단축키와 같은 개념이지만 AI 프롬프트에 적용한 것입니다.</p>
+
+  <div class="callout">
+    <p>슬래시 명령어는 Claude Code 내에서 <code>/</code>를 입력하면 자동 완성 목록이 표시됩니다. 기본 내장 명령어와 사용자가 직접 만든 커스텀 명령어가 모두 나타납니다.</p>
+  </div>
+
+  <h2>기본 명령어 10개 — /help, /clear, /compact, /cost, /model 등</h2>
+
+  <p>Claude Code에는 처음부터 내장된 시스템 명령어들이 있습니다. 이 명령어들은 Claude Code 자체의 동작을 제어합니다.</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr><th>명령어</th><th>기능</th><th>사용 예</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>/help</code></td><td>사용 가능한 명령어 목록 표시</td><td><code>/help</code></td></tr>
+      <tr><td><code>/clear</code></td><td>대화 기록 초기화</td><td><code>/clear</code></td></tr>
+      <tr><td><code>/compact</code></td><td>대화 내용 압축 (컨텍스트 절약)</td><td><code>/compact</code></td></tr>
+      <tr><td><code>/cost</code></td><td>현재 세션 비용 확인</td><td><code>/cost</code></td></tr>
+      <tr><td><code>/model</code></td><td>사용할 AI 모델 변경</td><td><code>/model claude-opus-4-5</code></td></tr>
+      <tr><td><code>/status</code></td><td>현재 상태 및 설정 확인</td><td><code>/status</code></td></tr>
+      <tr><td><code>/vim</code></td><td>Vim 키바인딩 모드 전환</td><td><code>/vim</code></td></tr>
+      <tr><td><code>/bug</code></td><td>버그 리포트 전송</td><td><code>/bug 오작동 설명</code></td></tr>
+      <tr><td><code>/doctor</code></td><td>설치 상태 진단</td><td><code>/doctor</code></td></tr>
+      <tr><td><code>/logout</code></td><td>로그아웃</td><td><code>/logout</code></td></tr>
+    </tbody>
+  </table>
+
+  <h2>개발 워크플로우 명령어 — /commit, /review, /pr, /fix</h2>
+
+  <p>내장 명령어 외에도, Claude Code는 개발 워크플로우와 관련된 유용한 스킬 명령어들을 지원합니다. 이 명령어들은 설치된 스킬에 따라 달라질 수 있습니다.</p>
+
+  <h3>/commit — 스마트 커밋 메시지 생성</h3>
+  <p><code>/commit</code>을 실행하면 현재 스테이징된 변경 사항을 분석하고 의미 있는 커밋 메시지를 자동으로 생성합니다. 단순히 "파일 변경"이 아니라 실제 변경의 의도와 영향을 반영한 메시지를 만들어냅니다.</p>
+  <pre><code># 스테이징 후 실행
+git add .
+/commit
+
+# 결과 예시:
+# feat: 사용자 인증에 JWT 토큰 갱신 로직 추가
+#
+# - 액세스 토큰 만료 시 자동 갱신 구현
+# - 리프레시 토큰 검증 강화
+# - 관련 테스트 케이스 추가</code></pre>
+
+  <h3>/review — AI 코드 리뷰</h3>
+  <p><code>/review</code>는 현재 변경 사항에 대한 코드 리뷰를 수행합니다. 버그, 보안 취약점, 코드 품질 문제를 분석합니다.</p>
+  <pre><code>/review
+
+# 또는 특정 파일 지정
+/review src/auth/jwt.ts</code></pre>
+
+  <h2>커스텀 명령어 만들기 — .claude/commands/ 폴더 구조</h2>
+
+  <p>커스텀 명령어의 진짜 가치는 팀의 반복 작업을 표준화할 수 있다는 것입니다. 프로젝트 루트의 <code>.claude/commands/</code> 폴더에 마크다운 파일을 만들면 자동으로 슬래시 명령어가 됩니다.</p>
+
+  <pre><code>프로젝트/
+├── .claude/
+│   └── commands/
+│       ├── review.md        → /review 명령어
+│       ├── deploy-check.md  → /deploy-check 명령어
+│       ├── api-docs.md      → /api-docs 명령어
+│       └── security-scan.md → /security-scan 명령어
+└── src/</code></pre>
+
+  <p>파일 이름이 명령어 이름이 됩니다. <code>review.md</code>는 <code>/review</code>로 실행됩니다. 전역으로 사용하려면 <code>~/.claude/commands/</code>에 저장합니다.</p>
+
+  <h2>명령어 인자 활용법 — $ARGUMENTS 변수 사용</h2>
+
+  <p>커스텀 명령어에서 <code>$ARGUMENTS</code> 변수를 사용하면 실행 시 인자를 받을 수 있습니다. 이를 통해 유연한 명령어를 만들 수 있습니다.</p>
+
+  <pre><code># .claude/commands/test-feature.md
+주어진 기능에 대한 테스트 코드를 작성합니다.
+
+## 대상 기능
+$ARGUMENTS
+
+## 요구사항
+- 단위 테스트와 통합 테스트 모두 작성
+- 경계값 케이스 포함
+- 에러 케이스 커버
+- 테스트 커버리지 80% 이상 달성</code></pre>
+
+  <p>실행: <code>/test-feature 사용자 로그인 API</code></p>
+
+  <h2>강력한 커스텀 명령어 5가지 예제</h2>
+
+  <h3>예제 1: PR 준비 자동화 (/pr-ready)</h3>
+  <pre><code># .claude/commands/pr-ready.md
+PR 제출 전 최종 점검을 수행합니다.
+
+다음 단계를 순서대로 실행해주세요:
+
+1. git diff HEAD~1..HEAD로 변경 사항 확인
+2. 변경된 모든 파일에 대해 코드 품질 검토
+3. 보안 취약점 스캔 (하드코딩된 시크릿, SQL 인젝션 등)
+4. 테스트 커버리지 확인
+5. PR 제목과 설명 초안 작성 (한국어)
+
+결과를 단계별로 보고하고, 수정이 필요한 사항이 있으면 명확히 알려주세요.</code></pre>
+
+  <h3>예제 2: 문서 자동 생성 (/doc-gen)</h3>
+  <pre><code># .claude/commands/doc-gen.md
+대상 파일이나 모듈에 대한 문서를 생성합니다.
+
+## 대상
+$ARGUMENTS
+
+## 생성할 문서
+- 함수/클래스별 JSDoc 주석 추가
+- README.md의 API 섹션 업데이트
+- 사용 예제 코드 추가
+
+한국어와 영어를 함께 작성해주세요.</code></pre>
+
+  <h3>예제 3: 성능 분석 (/perf-check)</h3>
+  <pre><code># .claude/commands/perf-check.md
+현재 코드베이스의 성능 이슈를 분석합니다.
+
+다음 항목을 검토해주세요:
+1. N+1 쿼리 문제
+2. 불필요한 재렌더링 (React 컴포넌트)
+3. 메모리 누수 가능성
+4. 비효율적인 반복문이나 중첩 루프
+5. 불필요한 API 호출
+
+각 이슈에 대해 위치, 원인, 개선 방법을 설명해주세요.</code></pre>
+
+  <h3>예제 4: 의존성 업데이트 가이드 (/dep-update)</h3>
+  <pre><code># .claude/commands/dep-update.md
+package.json의 의존성 업데이트 작업을 도와줍니다.
+
+1. npm outdated 또는 pnpm outdated 실행
+2. 각 패키지의 변경 사항 분석
+3. Breaking change가 있는 패키지 식별
+4. 안전하게 업데이트할 수 있는 패키지 목록 작성
+5. 단계별 업데이트 계획 제시
+
+주요 버전 업그레이드는 별도로 처리하고, 마이너/패치 업데이트를 먼저 진행하세요.</code></pre>
+
+  <h3>예제 5: 코드 리뷰 체크리스트 (/review-checklist)</h3>
+  <pre><code># .claude/commands/review-checklist.md
+현재 변경 사항에 대해 다음 체크리스트를 기준으로 코드 리뷰를 수행합니다.
+
+## 보안 체크리스트
+- [ ] 하드코딩된 시크릿이 없는가?
+- [ ] 사용자 입력이 검증되는가?
+- [ ] SQL 인젝션 위험이 없는가?
+- [ ] XSS 취약점이 없는가?
+
+## 코드 품질 체크리스트
+- [ ] 함수가 50줄 이하인가?
+- [ ] 중복 코드가 없는가?
+- [ ] 에러 처리가 적절한가?
+- [ ] 의미 있는 변수명을 사용하는가?
+
+## 테스트 체크리스트
+- [ ] 새 기능에 테스트가 있는가?
+- [ ] 엣지 케이스가 커버되는가?
+
+각 항목을 점검하고 문제가 있으면 구체적인 개선 방법을 제시해주세요.</code></pre>
+
+  <div class="tip-box">
+    <p>팁: 명령어 파일에 YAML frontmatter로 메타데이터를 추가할 수 있습니다. <code>description</code> 필드를 추가하면 /help에서 설명이 표시됩니다.</p>
+  </div>
+
+  <h2>팀에서 명령어 공유하기 — .claude/commands/ 버전관리</h2>
+
+  <p><code>.claude/commands/</code> 폴더를 Git 저장소에 커밋하면 팀 전체가 같은 명령어를 공유할 수 있습니다. 이것이 커스텀 명령어의 가장 강력한 활용 방법입니다.</p>
+
+  <p>모든 팀원이 같은 코드 리뷰 기준, 같은 PR 준비 과정, 같은 문서 작성 형식을 자동으로 따르게 됩니다. 신입 팀원도 <code>/review-checklist</code> 한 번으로 팀의 코드 리뷰 기준을 즉시 적용할 수 있습니다.</p>
+
+  <pre><code># .gitignore에 추가하지 말 것 (팀 공유용)
+# .claude/commands/ 는 반드시 버전 관리에 포함
+
+# .gitignore에 추가할 것 (개인 설정)
+.claude/settings.local.json</code></pre>
+
+  <blockquote>
+    <p>슬래시 명령어는 팀의 베스트 프랙티스를 코드로 문서화하는 방법입니다. "항상 이렇게 해야 한다"는 규칙을 명령어로 만들면 자연스럽게 팀 문화가 됩니다.</p>
+  </blockquote>
+
+  <h2>관련 리소스</h2>
+  <div class="related-links">
+    <div class="related-link"><span>⌨️</span><a href="../commands.html">전체 명령어 목록</a></div>
+    <div class="related-link"><span>⚡</span><a href="../skills.html">스킬 라이브러리</a></div>
+    <div class="related-link"><span>🤖</span><a href="../agents.html">에이전트 가이드</a></div>
+  </div>
+
+</article>
+
+<div id="ad-before-footer" class="ad-slot ad-slot--before-footer" aria-label="광고"></div>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__bottom" style="border-top:var(--border-glass);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <a href="../index.html" class="gradient-text" style="font-weight:700;">oppa19</a>
+      <a href="../blog.html" style="color:var(--text-muted);font-size:var(--text-xs);">← 블로그 목록으로</a>
+      <span style="color:var(--text-muted);font-size:var(--text-xs);">© 2026 oppa19</span>
+    </div>
+  </div>
+</footer>
+
+<div id="ad-sticky-bottom" class="ad-slot ad-slot--sticky" aria-label="광고"></div>
+<output id="toast" class="toast" aria-live="polite"></output>
+<script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/ads.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function(){ try{initNav();}catch(e){} renderAds(); CCTracker.recordSession(); });</script>
+</body>
+</html>
