@@ -5,8 +5,8 @@
 
 const SITE_DATA = {
   meta: {
-    siteName: 'oppa19',
-    tagline: 'oppa19 — 1000개+ 에이전트, 명령어, 스킬 & MCP 통합',
+    siteName: 'Claude Korea',
+    tagline: 'Claude Korea — 1000개+ 에이전트, 명령어, 스킬 & MCP 통합',
     description: 'Claude Code 컴포넌트 마켓플레이스 — 에이전트, 명령어, 스킬, 설정, 훅, MCP를 한국어로'
   },
 

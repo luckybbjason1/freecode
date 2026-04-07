@@ -1,0 +1,42 @@
+[
+ {
+  "RuleID": "generic-api-key",
+  "Description": "Detected a Generic API Key, potentially exposing access to various services and sensitive operations.",
+  "StartLine": 6,
+  "EndLine": 6,
+  "StartColumn": 6,
+  "EndColumn": 42,
+  "Match": "PARTNERS_KEY     = 'ccko_partners_v1'",
+  "Secret": "ccko_partners_v1",
+  "File": "assets/js/partners.js",
+  "SymlinkFile": "",
+  "Commit": "",
+  "Entropy": 3.625,
+  "Author": "",
+  "Email": "",
+  "Date": "",
+  "Message": "",
+  "Tags": [],
+  "Fingerprint": "assets/js/partners.js:generic-api-key:6"
+ },
+ {
+  "RuleID": "generic-api-key",
+  "Description": "Detected a Generic API Key, potentially exposing access to various services and sensitive operations.",
+  "StartLine": 7,
+  "EndLine": 7,
+  "StartColumn": 6,
+  "EndColumn": 46,
+  "Match": "PARTNER_APPS_KEY = 'ccko_partner_apps_v1'",
+  "Secret": "ccko_partner_apps_v1",
+  "File": "assets/js/partners.js",
+  "SymlinkFile": "",
+  "Commit": "",
+  "Entropy": 3.5464394,
+  "Author": "",
+  "Email": "",
+  "Date": "",
+  "Message": "",
+  "Tags": [],
+  "Fingerprint": "assets/js/partners.js:generic-api-key:7"
+ }
+]

@@ -13,11 +13,11 @@
   <meta charset="UTF-8">
   <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Claude Code 훅 완전 가이드: PreToolUse·PostToolUse | oppa19</title>
+  <title>Claude Code 훅 완전 가이드: PreToolUse·PostToolUse | Claude Korea</title>
   <meta name="description" content="Claude Code 훅(Hook) 완전 가이드. PreToolUse, PostToolUse, Stop 훅 설정법과 실전 예제 10가지로 워크플로우를 완전 자동화하세요.">
   <meta name="keywords" content="Claude Code 훅, PreToolUse, PostToolUse, 훅 설정, 워크플로우 자동화, settings.json, Claude Code Hook">
   <meta name="robots" content="index, follow">
-  <meta name="author" content="oppa19">
+  <meta name="author" content="Claude Korea">
   <link rel="canonical" href="https://claudekorea.com/blog/hooks-guide.html">
   <link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/hooks-guide.html">
   <link rel="alternate" hreflang="x-default" href="https://claudekorea.com/blog/hooks-guide.html">
@@ -27,14 +27,14 @@
   <meta property="og:description" content="Claude Code 훅 시스템 완전 정복. 실전 예제 10가지로 개발 워크플로우를 완전 자동화하는 방법을 배웁니다.">
   <meta property="og:image" content="https://claudekorea.com/assets/img/og-image.svg">
   <meta property="og:url" content="https://claudekorea.com/blog/hooks-guide.html">
-  <meta property="og:site_name" content="oppa19">
+  <meta property="og:site_name" content="Claude Korea">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Claude Code 훅 완전 가이드: PreToolUse·PostToolUse 활용법">
   <meta name="twitter:description" content="Claude Code 훅 시스템 완전 정복. 실전 예제 10가지로 워크플로우를 자동화하세요.">
   <meta name="twitter:image" content="https://claudekorea.com/assets/img/og-image.svg">
   <script type="application/ld+json">
   [
-    {"@context":"https://schema.org","@type":"Article","headline":"Claude Code 훅 완전 가이드: PreToolUse·PostToolUse 활용법","description":"Claude Code 훅 시스템 완전 정복. PreToolUse, PostToolUse, Stop 훅 설정법과 실전 예제 10가지.","image":"https://claudekorea.com/assets/img/og-image.svg","datePublished":"2026-04-07","dateModified":"2026-04-07","inLanguage":"ko-KR","author":{"@type":"Organization","name":"oppa19","url":"https://claudekorea.com"},"publisher":{"@type":"Organization","name":"oppa19","logo":{"@type":"ImageObject","url":"https://claudekorea.com/assets/img/logo.svg"}},"url":"https://claudekorea.com/blog/hooks-guide.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://claudekorea.com/blog/hooks-guide.html"}},
+    {"@context":"https://schema.org","@type":"Article","headline":"Claude Code 훅 완전 가이드: PreToolUse·PostToolUse 활용법","description":"Claude Code 훅 시스템 완전 정복. PreToolUse, PostToolUse, Stop 훅 설정법과 실전 예제 10가지.","image":"https://claudekorea.com/assets/img/og-image.svg","datePublished":"2026-04-07","dateModified":"2026-04-07","inLanguage":"ko-KR","author":{"@type":"Organization","name":"Claude Korea","url":"https://claudekorea.com"},"publisher":{"@type":"Organization","name":"Claude Korea","logo":{"@type":"ImageObject","url":"https://claudekorea.com/assets/img/logo.svg"}},"url":"https://claudekorea.com/blog/hooks-guide.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://claudekorea.com/blog/hooks-guide.html"}},
     {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://claudekorea.com/"},{"@type":"ListItem","position":2,"name":"블로그","item":"https://claudekorea.com/blog.html"},{"@type":"ListItem","position":3,"name":"Claude Code 훅 완전 가이드","item":"https://claudekorea.com/blog/hooks-guide.html"}]}
   ]
   </script>
@@ -78,7 +78,7 @@
 </head>
 <body>
 <nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
-  <a href="../index.html" class="nav__logo"><img src="../assets/img/logo.svg" alt="oppa19" class="nav__logo-img"></a>
+  <a href="../index.html" class="nav__logo"><img src="../assets/img/logo.svg" alt="Claude Korea" class="nav__logo-img"></a>
   <ul class="nav__links">
     <li><a href="../skills.html">스킬</a></li>
     <li><a href="../agents.html">에이전트</a></li>
@@ -103,7 +103,7 @@
     <h1 style="font-size:var(--text-3xl);font-weight:700;margin-bottom:1rem;line-height:1.2;">Claude Code 훅(Hook) 완전 가이드: 워크플로우 자동화의 비밀 무기</h1>
     <p style="color:var(--text-secondary);max-width:620px;margin:0 auto 1.5rem;">PreToolUse, PostToolUse, Stop 훅의 모든 것. 실전 예제 10가지로 개발 워크플로우를 완전 자동화하는 방법을 배웁니다.</p>
     <div style="display:flex;align-items:center;justify-content:center;gap:1rem;font-size:var(--text-xs);color:var(--text-muted);">
-      <span>oppa19</span><span>·</span><span>2026년 4월</span><span>·</span><span>15분 읽기</span><span>·</span><span class="badge badge--purple">심화</span>
+      <span>Claude Korea</span><span>·</span><span>2026년 4월</span><span>·</span><span>15분 읽기</span><span>·</span><span class="badge badge--purple">심화</span>
     </div>
   </div>
 </header>
@@ -375,9 +375,9 @@
 <footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer__bottom" style="border-top:var(--border-glass);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
-      <a href="../index.html" class="gradient-text" style="font-weight:700;">oppa19</a>
+      <a href="../index.html" class="gradient-text" style="font-weight:700;">Claude Korea</a>
       <a href="../blog.html" style="color:var(--text-muted);font-size:var(--text-xs);">← 블로그 목록으로</a>
-      <span style="color:var(--text-muted);font-size:var(--text-xs);">© 2026 oppa19</span>
+      <span style="color:var(--text-muted);font-size:var(--text-xs);">© 2026 Claude Korea</span>
     </div>
   </div>
 </footer>

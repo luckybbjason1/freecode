@@ -13,11 +13,11 @@
   <meta charset="UTF-8">
   <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Claude Code 커스텀 스킬 만들기: 나만의 AI 자동화 가이드 | oppa19</title>
+  <title>Claude Code 커스텀 스킬 만들기: 나만의 AI 자동화 가이드 | Claude Korea</title>
   <meta name="description" content="Claude Code 커스텀 스킬 제작 완전 가이드. SKILL.md 구조, 트리거 키워드 최적화, 고급 패턴 4가지와 실전 예제 3가지로 나만의 AI 자동화를 만드세요.">
   <meta name="keywords" content="Claude Code 스킬, 커스텀 스킬, SKILL.md, 스킬 제작, AI 자동화, 스킬 트리거, 스킬 만들기">
   <meta name="robots" content="index, follow">
-  <meta name="author" content="oppa19">
+  <meta name="author" content="Claude Korea">
   <link rel="canonical" href="https://claudekorea.com/blog/custom-skills.html">
   <link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/custom-skills.html">
   <link rel="alternate" hreflang="x-default" href="https://claudekorea.com/blog/custom-skills.html">
@@ -27,14 +27,14 @@
   <meta property="og:description" content="Claude Code 커스텀 스킬 제작 완전 가이드. SKILL.md 구조부터 실전 예제 3가지까지.">
   <meta property="og:image" content="https://claudekorea.com/assets/img/og-image.svg">
   <meta property="og:url" content="https://claudekorea.com/blog/custom-skills.html">
-  <meta property="og:site_name" content="oppa19">
+  <meta property="og:site_name" content="Claude Korea">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="나만의 Claude Code 스킬 만들기: 커스텀 스킬 제작 완전 가이드">
   <meta name="twitter:description" content="SKILL.md 구조부터 팀 스킬 공유까지. Claude Code 커스텀 스킬 제작 완전 가이드.">
   <meta name="twitter:image" content="https://claudekorea.com/assets/img/og-image.svg">
   <script type="application/ld+json">
   [
-    {"@context":"https://schema.org","@type":"Article","headline":"나만의 Claude Code 스킬 만들기: 커스텀 스킬 제작 완전 가이드","description":"Claude Code 커스텀 스킬 제작 완전 가이드. SKILL.md 구조, 트리거, 고급 패턴 4가지와 실전 예제 3가지.","image":"https://claudekorea.com/assets/img/og-image.svg","datePublished":"2026-04-07","dateModified":"2026-04-07","inLanguage":"ko-KR","author":{"@type":"Organization","name":"oppa19","url":"https://claudekorea.com"},"publisher":{"@type":"Organization","name":"oppa19","logo":{"@type":"ImageObject","url":"https://claudekorea.com/assets/img/logo.svg"}},"url":"https://claudekorea.com/blog/custom-skills.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://claudekorea.com/blog/custom-skills.html"}},
+    {"@context":"https://schema.org","@type":"Article","headline":"나만의 Claude Code 스킬 만들기: 커스텀 스킬 제작 완전 가이드","description":"Claude Code 커스텀 스킬 제작 완전 가이드. SKILL.md 구조, 트리거, 고급 패턴 4가지와 실전 예제 3가지.","image":"https://claudekorea.com/assets/img/og-image.svg","datePublished":"2026-04-07","dateModified":"2026-04-07","inLanguage":"ko-KR","author":{"@type":"Organization","name":"Claude Korea","url":"https://claudekorea.com"},"publisher":{"@type":"Organization","name":"Claude Korea","logo":{"@type":"ImageObject","url":"https://claudekorea.com/assets/img/logo.svg"}},"url":"https://claudekorea.com/blog/custom-skills.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://claudekorea.com/blog/custom-skills.html"}},
     {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://claudekorea.com/"},{"@type":"ListItem","position":2,"name":"블로그","item":"https://claudekorea.com/blog.html"},{"@type":"ListItem","position":3,"name":"커스텀 스킬 만들기","item":"https://claudekorea.com/blog/custom-skills.html"}]}
   ]
   </script>
@@ -78,7 +78,7 @@
 </head>
 <body>
 <nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
-  <a href="../index.html" class="nav__logo"><img src="../assets/img/logo.svg" alt="oppa19" class="nav__logo-img"></a>
+  <a href="../index.html" class="nav__logo"><img src="../assets/img/logo.svg" alt="Claude Korea" class="nav__logo-img"></a>
   <ul class="nav__links">
     <li><a href="../skills.html">스킬</a></li>
     <li><a href="../agents.html">에이전트</a></li>
@@ -103,7 +103,7 @@
     <h1 style="font-size:var(--text-3xl);font-weight:700;margin-bottom:1rem;line-height:1.2;">나만의 Claude Code 스킬 만들기: 커스텀 스킬 제작 완전 가이드</h1>
     <p style="color:var(--text-secondary);max-width:620px;margin:0 auto 1.5rem;">SKILL.md 구조 이해부터 고급 패턴 4가지, 실전 예제 3가지까지. 팀 맞춤 AI 자동화를 직접 만드는 방법을 알아봅니다.</p>
     <div style="display:flex;align-items:center;justify-content:center;gap:1rem;font-size:var(--text-xs);color:var(--text-muted);">
-      <span>oppa19</span><span>·</span><span>2026년 4월</span><span>·</span><span>16분 읽기</span><span>·</span><span class="badge badge--violet">심화</span>
+      <span>Claude Korea</span><span>·</span><span>2026년 4월</span><span>·</span><span>16분 읽기</span><span>·</span><span class="badge badge--violet">심화</span>
     </div>
   </div>
 </header>
@@ -498,7 +498,7 @@ echo "팀 스킬 설치 완료!"</code></pre>
 
   <h2>스킬 마켓플레이스에 기여하기</h2>
 
-  <p>좋은 스킬을 만들었다면 커뮤니티와 공유하세요. oppa19의 스킬 라이브러리에 기여하거나, GitHub에 공개 저장소를 만들어 다른 개발자들이 활용할 수 있게 할 수 있습니다.</p>
+  <p>좋은 스킬을 만들었다면 커뮤니티와 공유하세요. Claude Korea의 스킬 라이브러리에 기여하거나, GitHub에 공개 저장소를 만들어 다른 개발자들이 활용할 수 있게 할 수 있습니다.</p>
 
   <p>좋은 오픈소스 스킬의 조건:</p>
   <ul>
@@ -527,9 +527,9 @@ echo "팀 스킬 설치 완료!"</code></pre>
 <footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer__bottom" style="border-top:var(--border-glass);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
-      <a href="../index.html" class="gradient-text" style="font-weight:700;">oppa19</a>
+      <a href="../index.html" class="gradient-text" style="font-weight:700;">Claude Korea</a>
       <a href="../blog.html" style="color:var(--text-muted);font-size:var(--text-xs);">← 블로그 목록으로</a>
-      <span style="color:var(--text-muted);font-size:var(--text-xs);">© 2026 oppa19</span>
+      <span style="color:var(--text-muted);font-size:var(--text-xs);">© 2026 Claude Korea</span>
     </div>
   </div>
 </footer>

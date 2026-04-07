@@ -1,0 +1,137 @@
+[
+    {
+        "check_type": "terraform_plan",
+        "results": {
+            "failed_checks": []
+        },
+        "summary": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "parsing_errors": 2,
+            "resource_count": 0,
+            "checkov_version": "3.2.513"
+        }
+    },
+    {
+        "check_type": "secrets",
+        "results": {
+            "failed_checks": [
+                {
+                    "check_id": "CKV_SECRET_6",
+                    "bc_check_id": "BC_GIT_6",
+                    "check_name": "Base64 High Entropy String",
+                    "check_result": {
+                        "result": "FAILED"
+                    },
+                    "code_block": [
+                        [
+                            10,
+                            "  \"Secret\": \"ccko**********\",\n"
+                        ]
+                    ],
+                    "file_path": "/gitleaks-report.json",
+                    "file_abs_path": "/media/boos/D2/\u7f51\u7ad9/claude-code-korea/gitleaks-report.json",
+                    "repo_file_path": "/gitleaks-report.json",
+                    "file_line_range": [
+                        10,
+                        11
+                    ],
+                    "resource": "01472f4b3fd1dc02f6fa5d0b03b9ae0a6bc141e5",
+                    "evaluations": null,
+                    "check_class": "",
+                    "fixed_definition": null,
+                    "entity_tags": null,
+                    "caller_file_path": null,
+                    "caller_file_line_range": null,
+                    "resource_address": null,
+                    "severity": null,
+                    "bc_category": null,
+                    "benchmarks": null,
+                    "description": null,
+                    "short_description": null,
+                    "vulnerability_details": null,
+                    "connected_node": null,
+                    "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/secrets-policies/secrets-policy-index/git-secrets-6",
+                    "details": [],
+                    "check_len": null,
+                    "definition_context_file_path": null,
+                    "validation_status": "Unavailable",
+                    "added_commit_hash": "",
+                    "removed_commit_hash": "",
+                    "added_by": "",
+                    "removed_date": "",
+                    "added_date": ""
+                },
+                {
+                    "check_id": "CKV_SECRET_6",
+                    "bc_check_id": "BC_GIT_6",
+                    "check_name": "Base64 High Entropy String",
+                    "check_result": {
+                        "result": "FAILED"
+                    },
+                    "code_block": [
+                        [
+                            30,
+                            "  \"Secret\": \"ccko_**********\",\n"
+                        ]
+                    ],
+                    "file_path": "/gitleaks-report.json",
+                    "file_abs_path": "/media/boos/D2/\u7f51\u7ad9/claude-code-korea/gitleaks-report.json",
+                    "repo_file_path": "/gitleaks-report.json",
+                    "file_line_range": [
+                        30,
+                        31
+                    ],
+                    "resource": "79cb391e641dc1f9862cf012a3565e51d11724a0",
+                    "evaluations": null,
+                    "check_class": "",
+                    "fixed_definition": null,
+                    "entity_tags": null,
+                    "caller_file_path": null,
+                    "caller_file_line_range": null,
+                    "resource_address": null,
+                    "severity": null,
+                    "bc_category": null,
+                    "benchmarks": null,
+                    "description": null,
+                    "short_description": null,
+                    "vulnerability_details": null,
+                    "connected_node": null,
+                    "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/secrets-policies/secrets-policy-index/git-secrets-6",
+                    "details": [],
+                    "check_len": null,
+                    "definition_context_file_path": null,
+                    "validation_status": "Unavailable",
+                    "added_commit_hash": "",
+                    "removed_commit_hash": "",
+                    "added_by": "",
+                    "removed_date": "",
+                    "added_date": ""
+                }
+            ]
+        },
+        "summary": {
+            "passed": 0,
+            "failed": 2,
+            "skipped": 0,
+            "parsing_errors": 0,
+            "resource_count": 2,
+            "checkov_version": "3.2.513"
+        }
+    },
+    {
+        "check_type": "github_actions",
+        "results": {
+            "failed_checks": []
+        },
+        "summary": {
+            "passed": 24,
+            "failed": 0,
+            "skipped": 0,
+            "parsing_errors": 0,
+            "resource_count": 0,
+            "checkov_version": "3.2.513"
+        }
+    }
+]
