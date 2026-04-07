@@ -376,7 +376,7 @@ var CCTracker = {
       }
 
       var self = this;
-      fetch('https://ipapi.co/json/')
+      fetch('https://ipapi.co/json/', { mode: 'no-cors' })
         .then(function(res) { return res.json(); })
         .then(function(data) {
           try {
