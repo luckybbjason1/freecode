@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GQHEYDXTHG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GQHEYDXTHG');
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5138416840385352" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code VS Code 설치 및 설정 완전 가이드 2026 | Claude Korea</title>
+  <meta name="description" content="Claude Code VS Code 확장을 설치하고 최적의 개발 환경을 설정하는 단계별 가이드. 키보드 단축키, 테마 설정, 워크스페이스 연동까지 완전 정복.">
+  <meta name="keywords" content="Claude Code VS Code, 설치, 설정, 확장 프로그램, IDE, 개발 환경, 키보드 단축키">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Claude Korea">
+  <link rel="canonical" href="https://claudekorea.com/blog/claude-code-vscode-setup.html">
+  <link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/claude-code-vscode-setup.html">
+  <link rel="alternate" hreflang="x-default" href="https://claudekorea.com/blog/claude-code-vscode-setup.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="Claude Code VS Code 설치 및 설정 완전 가이드 2026">
+  <meta property="og:description" content="Claude Code VS Code 확장 설치부터 최적 설정까지. 키보드 단축키, 워크스페이스 연동, 트러블슈팅 완전 가이드.">
+  <meta property="og:image" content="https://claudekorea.com/assets/img/og-image.svg">
+  <meta property="og:url" content="https://claudekorea.com/blog/claude-code-vscode-setup.html">
+  <meta property="og:site_name" content="Claude Korea">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Claude Code VS Code 설치 및 설정 완전 가이드 2026">
+  <meta name="twitter:description" content="Claude Code VS Code 확장 설치부터 키보드 단축키, 워크스페이스 연동까지 완전 정복.">
+  <meta name="twitter:image" content="https://claudekorea.com/assets/img/og-image.svg">
+  <script type="application/ld+json">
+  [
+    {"@context":"https://schema.org","@type":"Article","headline":"Claude Code VS Code 설치 및 설정 완전 가이드 2026","description":"Claude Code VS Code 확장을 설치하고 최적의 개발 환경을 설정하는 단계별 가이드. 키보드 단축키, 테마 설정, 워크스페이스 연동까지 완전 정복.","image":"https://claudekorea.com/assets/img/og-image.svg","datePublished":"2026-04-13","dateModified":"2026-04-13","inLanguage":"ko-KR","author":{"@type":"Organization","name":"Claude Korea","url":"https://claudekorea.com"},"publisher":{"@type":"Organization","name":"Claude Korea","logo":{"@type":"ImageObject","url":"https://claudekorea.com/assets/img/logo.svg"}},"url":"https://claudekorea.com/blog/claude-code-vscode-setup.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://claudekorea.com/blog/claude-code-vscode-setup.html"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://claudekorea.com/"},{"@type":"ListItem","position":2,"name":"블로그","item":"https://claudekorea.com/blog.html"},{"@type":"ListItem","position":3,"name":"VS Code 설정 가이드","item":"https://claudekorea.com/blog/claude-code-vscode-setup.html"}]}
+  ]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <style>
+    .article-hero { padding: 8rem 0 4rem; text-align: center; background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(124,106,245,0.08) 0%, transparent 70%); }
+    .article-body { max-width: 760px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .article-body h2 { font-size: var(--text-xl); font-weight: 700; color: var(--text-primary); margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .article-body h3 { font-size: var(--text-lg); font-weight: 700; color: var(--text-primary); margin: 2rem 0 0.75rem; }
+    .article-body p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { color: var(--text-secondary); padding-left: 1.5rem; margin-bottom: 1.25rem; line-height: 1.8; }
+    .article-body li { margin-bottom: 0.5rem; }
+    .article-body li::marker { color: var(--violet); }
+    .article-body code { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-xs); padding: 0.15rem 0.4rem; font-family: var(--font-mono); font-size: 0.875em; color: var(--cyan); }
+    .article-body pre { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; overflow-x: auto; }
+    .article-body pre code { background: none; border: none; padding: 0; color: var(--text-primary); font-size: 0.9em; }
+    .article-body blockquote { border-left: 3px solid var(--violet); background: var(--violet-dim); padding: 1rem 1.25rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+    .article-body blockquote p { color: var(--text-primary); margin: 0; }
+    .article-body .callout { background: var(--cyan-dim); border: 1px solid rgba(13,240,255,0.18); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; }
+    .article-body .callout p { color: var(--text-primary); margin: 0; }
+    .article-breadcrumb { font-size: var(--text-xs); color: var(--text-muted); margin-bottom: 1.5rem; }
+    .article-breadcrumb a { color: var(--violet-light); }
+    .compare-table { width:100%; border-collapse:collapse; margin: 1.5rem 0; }
+    .compare-table th { background: var(--bg-elevated); color: var(--text-primary); padding: .75rem 1rem; text-align:left; font-size: var(--text-sm); border: 1px solid rgba(255,255,255,0.07); }
+    .compare-table td { padding: .65rem 1rem; color: var(--text-secondary); font-size: var(--text-sm); border: 1px solid rgba(255,255,255,0.05); }
+    .compare-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .tip-box { background: var(--gold-dim); border: 1px solid rgba(245,200,66,0.2); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; }
+    .tip-box p { color: var(--gold-light); margin: 0; font-weight: 500; }
+    .related-links { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1rem; margin:2rem 0; }
+    .related-link { background:var(--glass-bg); border:var(--border-glass); border-radius:var(--radius-md); padding:1rem; text-align:center; transition:border-color .2s; }
+    .related-link:hover { border-color:var(--violet); }
+    .related-link span { display:block; font-size:1.5rem; margin-bottom:.4rem; }
+    .related-link a { color:var(--text-primary); font-weight:600; font-size:var(--text-sm); }
+    .article-body img { max-width: 100%; height: auto; border-radius: var(--radius-md); border: var(--border-glass); margin: 1.5rem 0; }
+  </style>
+</head>
+<body>
+<nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
+  <a href="../index.html" class="nav__logo"><img src="../assets/img/logo.svg" alt="Claude Korea" class="nav__logo-img"></a>
+  <ul class="nav__links">
+    <li><a href="../skills.html">스킬</a></li>
+    <li><a href="../agents.html">에이전트</a></li>
+    <li><a href="../commands.html">명령어</a></li>
+    <li><a href="../mcps.html">MCP</a></li>
+    <li><a href="../blog.html" class="active">블로그</a></li>
+  </ul>
+  <div class="nav__actions"><a href="https://claude.ai" target="_blank" rel="noopener" class="nav__github"><span>Claude 시작</span></a></div>
+  <button class="nav__hamburger" id="nav-hamburger" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<nav class="nav__mobile" id="nav-mobile">
+  <a href="../skills.html">스킬</a><a href="../agents.html">에이전트</a><a href="../commands.html">명령어</a><a href="../mcps.html">MCP</a><a href="../blog.html">블로그</a>
+</nav>
+
+<div id="ad-header-banner" class="ad-slot ad-slot--header" aria-label="광고"></div>
+
+<header class="article-hero">
+  <div class="container">
+    <nav class="article-breadcrumb" aria-label="현재 위치">
+      <a href="../index.html">홈</a> > <a href="../blog.html">블로그</a> > VS Code 설정 가이드
+    </nav>
+    <h1 style="font-size:var(--text-3xl);font-weight:700;margin-bottom:1rem;line-height:1.2;">Claude Code VS Code 설치 및 설정 완전 가이드 2026</h1>
+    <p style="color:var(--text-secondary);max-width:620px;margin:0 auto 1.5rem;">VS Code에서 Claude Code를 최대한 활용하기 위한 설치, 설정, 키보드 단축키, 워크스페이스 연동 방법을 단계별로 안내합니다.</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:1rem;font-size:var(--text-xs);color:var(--text-muted);">
+      <span>Claude Korea</span><span>·</span><span>2026년 4월</span><span>·</span><span>10분 읽기</span><span>·</span><span class="badge badge--emerald">필수</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body" itemscope itemtype="https://schema.org/Article">
+
+  <p>VS Code는 전 세계 개발자들이 가장 많이 사용하는 코드 에디터이며, Claude Code와의 통합을 통해 AI 기반 개발의 핵심 허브로 진화하고 있습니다. 이 가이드에서는 Claude Code VS Code 확장을 설치하고 최적의 개발 환경을 구성하는 방법을 처음부터 끝까지 단계별로 안내합니다. 키보드 단축키 설정, 테마 커스터마이징, CLAUDE.md 파일 구성, MCP 서버 연결, 그리고 자주 발생하는 문제의 해결 방법까지 모두 다루고 있으므로, 이 글 하나만으로 VS Code에서 Claude Code를 완벽하게 활용할 수 있게 될 것입니다.</p>
+
+  <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=760&q=80" alt="노트북에서 코드를 작성하는 개발자의 작업 환경" loading="lazy">
+
+  <h2>사전 요구 사항 확인</h2>
+
+  <p>Claude Code VS Code 확장을 설치하기 전에 다음 사전 요구 사항을 확인해야 합니다. 하나라도 누락되면 설치 과정에서 문제가 발생할 수 있으므로 꼼꼼하게 체크하세요.</p>
+
+  <h3>Node.js 및 npm</h3>
+
+  <p>Claude Code는 Node.js 런타임에서 실행됩니다. Node.js 18.0 이상이 설치되어 있어야 하며, npm 9.0 이상이 함께 필요합니다. 터미널에서 다음 명령어로 현재 설치된 버전을 확인할 수 있습니다.</p>
+
+  <pre><code># Node.js 버전 확인
+node --version
+# 출력 예시: v20.12.2
+
+# npm 버전 확인
+npm --version
+# 출력 예시: 10.5.0</code></pre>
+
+  <p>Node.js가 설치되어 있지 않거나 버전이 낮은 경우, 공식 웹사이트(nodejs.org)에서 LTS 버전을 다운로드하거나 nvm(Node Version Manager)을 사용하여 설치하는 것을 권장합니다.</p>
+
+  <pre><code># nvm으로 Node.js 설치 (macOS/Linux)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+nvm install --lts
+nvm use --lts
+
+# Windows에서는 nvm-windows 사용
+# https://github.com/coreybutler/nvm-windows</code></pre>
+
+  <h3>VS Code 버전</h3>
+
+  <p>Claude Code 확장은 VS Code 1.85 이상에서 지원됩니다. VS Code 메뉴에서 <code>Help > About</code>을 클릭하여 현재 버전을 확인하세요. 최신 버전으로 업데이트하는 것을 강력히 권장합니다. VS Code Insiders 버전도 지원되며, 실제로 최신 기능을 먼저 체험하고 싶다면 Insiders 버전이 더 적합할 수 있습니다.</p>
+
+  <h3>Anthropic API 키 또는 Claude 구독</h3>
+
+  <p>Claude Code를 사용하려면 다음 중 하나가 필요합니다.</p>
+
+  <ul>
+    <li><strong>Claude Pro/Team/Enterprise 구독:</strong> claude.ai에서 구독 중이라면 별도의 API 키 없이 OAuth 로그인으로 바로 사용할 수 있습니다.</li>
+    <li><strong>Anthropic API 키:</strong> API를 직접 사용하는 경우 console.anthropic.com에서 API 키를 발급받아야 합니다.</li>
+  </ul>
+
+  <h2>Step 1: Claude Code CLI 설치</h2>
+
+  <p>VS Code 확장을 설치하기 전에 먼저 Claude Code CLI를 전역으로 설치합니다. CLI는 VS Code 확장의 기반이 되는 핵심 엔진이며, 터미널에서 독립적으로도 사용할 수 있습니다.</p>
+
+  <pre><code># Claude Code CLI 전역 설치
+npm install -g @anthropic-ai/claude-code
+
+# 설치 확인
+claude --version
+# 출력 예시: claude-code v2.1.0
+
+# 첫 실행 및 인증
+claude
+# 브라우저가 열리며 Anthropic 계정으로 로그인</code></pre>
+
+  <p>설치 중 권한 문제가 발생하면 다음을 시도하세요.</p>
+
+  <pre><code># macOS/Linux에서 권한 문제 해결
+sudo npm install -g @anthropic-ai/claude-code
+
+# 또는 npm 전역 디렉토리 권한 변경 (권장)
+mkdir -p ~/.npm-global
+npm config set prefix '~/.npm-global'
+export PATH=~/.npm-global/bin:$PATH
+npm install -g @anthropic-ai/claude-code</code></pre>
+
+  <div class="tip-box">
+    <p>팁: <code>~/.npm-global</code> 경로를 영구적으로 사용하려면 <code>~/.bashrc</code> 또는 <code>~/.zshrc</code> 파일에 <code>export PATH=~/.npm-global/bin:$PATH</code>를 추가하세요.</p>
+  </div>
+
+  <h2>Step 2: VS Code 확장 설치</h2>
+
+  <p>Claude Code CLI가 정상적으로 설치되었다면, 이제 VS Code 확장을 설치할 차례입니다.</p>
+
+  <h3>방법 1: VS Code 마켓플레이스에서 설치</h3>
+
+  <ol>
+    <li>VS Code를 엽니다.</li>
+    <li>사이드바에서 확장(Extensions) 아이콘을 클릭하거나 <code>Ctrl+Shift+X</code> (macOS: <code>Cmd+Shift+X</code>)를 누릅니다.</li>
+    <li>검색창에 <code>Claude Code</code>를 입력합니다.</li>
+    <li>Anthropic이 배포한 공식 확장을 찾아 <strong>Install</strong> 버튼을 클릭합니다.</li>
+    <li>설치가 완료되면 VS Code를 재시작합니다.</li>
+  </ol>
+
+  <h3>방법 2: 명령줄에서 설치</h3>
+
+  <pre><code># VS Code 명령줄에서 확장 설치
+code --install-extension anthropic.claude-code
+
+# 설치 확인
+code --list-extensions | grep claude</code></pre>
+
+  <h3>방법 3: CLI에서 자동 설치</h3>
+
+  <pre><code># Claude Code CLI가 자동으로 VS Code 확장을 설치
+claude ide install vscode
+
+# VS Code Insiders에 설치하는 경우
+claude ide install vscode-insiders</code></pre>
+
+  <p>설치가 완료되면 VS Code 하단 상태바에 Claude Code 아이콘이 나타납니다. 이 아이콘을 클릭하면 Claude Code 패널이 열리며, 사이드바에서도 Claude 아이콘을 통해 접근할 수 있습니다.</p>
+
+  <img src="https://images.unsplash.com/photo-1516116216624-8e28b63a2894?w=760&q=80" alt="소프트웨어 개발 프로세스를 나타내는 코드 에디터 화면" loading="lazy">
+
+  <h2>Step 3: 인증 설정</h2>
+
+  <p>확장 설치 후 처음 Claude Code를 실행하면 인증이 필요합니다. 두 가지 인증 방법을 지원합니다.</p>
+
+  <h3>OAuth 로그인 (권장)</h3>
+
+  <p>Claude Pro, Team, Enterprise 구독자는 OAuth 로그인을 사용하는 것이 가장 간편합니다.</p>
+
+  <ol>
+    <li>VS Code에서 Claude Code 패널을 엽니다 (<code>Ctrl+Shift+P</code> > <code>Claude: Open Panel</code>).</li>
+    <li>"Sign in with Anthropic" 버튼을 클릭합니다.</li>
+    <li>브라우저가 열리면 Anthropic 계정으로 로그인합니다.</li>
+    <li>인증이 완료되면 VS Code로 자동 리다이렉트됩니다.</li>
+  </ol>
+
+  <h3>API 키 직접 입력</h3>
+
+  <p>API 키를 직접 사용하는 경우 환경변수를 설정합니다.</p>
+
+  <pre><code># 환경변수로 API 키 설정
+export ANTHROPIC_API_KEY=sk-ant-xxxxxxxxxxxxx
+
+# 또는 VS Code settings.json에서 설정
+{
+  "claude-code.apiKey": "${env:ANTHROPIC_API_KEY}"
+}</code></pre>
+
+  <div class="callout">
+    <p>보안 주의: API 키를 VS Code 설정 파일에 직접 하드코딩하지 마세요. 항상 환경변수를 통해 참조하거나, OAuth 로그인을 사용하는 것이 안전합니다.</p>
+  </div>
+
+  <h2>Step 4: 키보드 단축키 설정</h2>
+
+  <p>Claude Code를 효율적으로 사용하기 위해 키보드 단축키를 설정하는 것이 매우 중요합니다. 다음은 기본 제공되는 단축키와 추천 커스텀 단축키입니다.</p>
+
+  <h3>기본 키보드 단축키</h3>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>기능</th>
+        <th>Windows/Linux</th>
+        <th>macOS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Claude 패널 열기/닫기</td>
+        <td><code>Ctrl+Shift+A</code></td>
+        <td><code>Cmd+Shift+A</code></td>
+      </tr>
+      <tr>
+        <td>인라인 코드 제안 요청</td>
+        <td><code>Ctrl+I</code></td>
+        <td><code>Cmd+I</code></td>
+      </tr>
+      <tr>
+        <td>선택 영역 설명 요청</td>
+        <td><code>Ctrl+Shift+E</code></td>
+        <td><code>Cmd+Shift+E</code></td>
+      </tr>
+      <tr>
+        <td>현재 파일 리뷰</td>
+        <td><code>Ctrl+Shift+R</code></td>
+        <td><code>Cmd+Shift+R</code></td>
+      </tr>
+      <tr>
+        <td>터미널에서 Claude 시작</td>
+        <td><code>Ctrl+`</code> 후 <code>claude</code></td>
+        <td><code>Cmd+`</code> 후 <code>claude</code></td>
+      </tr>
+      <tr>
+        <td>제안 수락</td>
+        <td><code>Tab</code></td>
+        <td><code>Tab</code></td>
+      </tr>
+      <tr>
+        <td>제안 거부</td>
+        <td><code>Esc</code></td>
+        <td><code>Esc</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>커스텀 단축키 추가</h3>
+
+  <p>VS Code의 <code>keybindings.json</code> 파일에서 Claude Code 전용 단축키를 추가할 수 있습니다. <code>Ctrl+Shift+P</code>를 누르고 <code>Preferences: Open Keyboard Shortcuts (JSON)</code>을 선택하세요.</p>
+
+  <pre><code>[
+  {
+    "key": "ctrl+shift+g",
+    "command": "claude-code.generateTests",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+f",
+    "command": "claude-code.fixError",
+    "when": "editorTextFocus && editorHasErrors"
+  },
+  {
+    "key": "ctrl+shift+d",
+    "command": "claude-code.addDocstring",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+o",
+    "command": "claude-code.optimizeCode",
+    "when": "editorTextFocus && editorHasSelection"
+  }
+]</code></pre>
+
+  <div class="tip-box">
+    <p>팁: 자주 사용하는 기능에는 반드시 단축키를 지정하세요. 특히 "선택 영역 설명"과 "인라인 코드 제안"은 코딩 중 가장 많이 사용하는 기능이므로 손이 편한 키 조합으로 설정하는 것이 좋습니다.</p>
+  </div>
+
+  <h2>Step 5: 워크스페이스 설정</h2>
+
+  <p>프로젝트별로 Claude Code의 동작을 세밀하게 제어하려면 워크스페이스 설정을 구성해야 합니다. VS Code의 <code>.vscode/settings.json</code> 파일에 Claude Code 관련 설정을 추가합니다.</p>
+
+  <pre><code>{
+  // Claude Code 기본 설정
+  "claude-code.model": "opus-4",
+  "claude-code.contextWindow": "1m",
+
+  // 자동 컨텍스트 포함 설정
+  "claude-code.autoContext": {
+    "includeOpenFiles": true,
+    "includeGitDiff": true,
+    "includeTerminalOutput": true,
+    "maxFiles": 50
+  },
+
+  // 코드 제안 설정
+  "claude-code.suggestions": {
+    "enabled": true,
+    "triggerDelay": 500,
+    "maxSuggestions": 3,
+    "languages": ["typescript", "python", "javascript", "rust", "go"]
+  },
+
+  // 자동 저장 시 포맷팅
+  "claude-code.formatOnSave": true,
+
+  // 터미널 통합
+  "claude-code.terminal": {
+    "autoActivate": true,
+    "shell": "default"
+  }
+}</code></pre>
+
+  <h3>멀티루트 워크스페이스 설정</h3>
+
+  <p>여러 프로젝트 폴더를 하나의 VS Code 워크스페이스에서 관리하는 경우, 각 폴더별로 별도의 Claude Code 설정을 적용할 수 있습니다. <code>.code-workspace</code> 파일에서 폴더별 설정을 지정합니다.</p>
+
+  <pre><code>{
+  "folders": [
+    {
+      "path": "./frontend",
+      "name": "Frontend"
+    },
+    {
+      "path": "./backend",
+      "name": "Backend"
+    }
+  ],
+  "settings": {
+    "claude-code.model": "opus-4"
+  }
+}</code></pre>
+
+  <h2>Step 6: CLAUDE.md 파일 설정</h2>
+
+  <p><code>CLAUDE.md</code> 파일은 Claude Code에게 프로젝트에 대한 핵심 정보를 전달하는 설정 파일입니다. 프로젝트 루트에 이 파일을 생성하면, Claude는 모든 대화에서 이 파일의 내용을 우선적으로 참조합니다. 잘 작성된 CLAUDE.md는 Claude의 응답 품질을 극적으로 향상시킵니다.</p>
+
+  <pre><code># CLAUDE.md
+
+## 프로젝트 개요
+이 프로젝트는 React 18 + TypeScript 기반의 SaaS 대시보드입니다.
+Vite를 번들러로 사용하며, TanStack Query로 서버 상태를 관리합니다.
+
+## 기술 스택
+- **프론트엔드:** React 18, TypeScript 5.4, Tailwind CSS 4.0
+- **상태 관리:** Zustand (클라이언트), TanStack Query (서버)
+- **테스트:** Vitest, Testing Library, Playwright (E2E)
+- **빌드:** Vite 6, pnpm
+
+## 코딩 규칙
+- 함수형 컴포넌트만 사용 (클래스 컴포넌트 금지)
+- 컴포넌트 파일은 PascalCase, 유틸리티는 camelCase
+- 모든 컴포넌트에 TypeScript 인터페이스 정의 필수
+- CSS는 Tailwind 유틸리티 클래스 사용 (인라인 스타일 금지)
+- API 호출은 반드시 TanStack Query의 useQuery/useMutation 사용
+
+## 프로젝트 구조
+src/
+├── components/    # 재사용 가능한 UI 컴포넌트
+├── features/      # 기능별 모듈 (컴포넌트, 훅, API)
+├── hooks/         # 공통 커스텀 훅
+├── lib/           # 유틸리티 함수 및 설정
+├── pages/         # 라우트 페이지 컴포넌트
+└── types/         # 전역 TypeScript 타입 정의
+
+## 자주 사용하는 명령어
+- `pnpm dev` - 개발 서버 시작
+- `pnpm build` - 프로덕션 빌드
+- `pnpm test` - 유닛 테스트 실행
+- `pnpm test:e2e` - E2E 테스트 실행
+- `pnpm lint` - 린트 검사</code></pre>
+
+  <p>CLAUDE.md에 대한 더 자세한 작성 팁은 <a href="getting-started.html">시작하기 가이드</a>에서 확인할 수 있습니다.</p>
+
+  <h2>Step 7: MCP 서버 연결</h2>
+
+  <p>VS Code에서 <a href="../mcps.html">MCP 서버</a>를 연결하면 Claude Code가 데이터베이스, 외부 API, 클라우드 서비스 등에 직접 접근할 수 있게 됩니다. 프로젝트 루트에 <code>.mcp.json</code> 파일을 생성하여 MCP 서버를 설정합니다.</p>
+
+  <pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/mcp-filesystem", "--root", "."]
+    },
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/mcp-postgres"],
+      "env": {
+        "DATABASE_URL": "${DATABASE_URL}"
+      }
+    }
+  }
+}</code></pre>
+
+  <p>VS Code에서 MCP 서버의 상태를 확인하려면 Claude Code 패널 하단의 "MCP Servers" 섹션을 확인하세요. 연결된 서버는 녹색 점으로, 연결 실패한 서버는 빨간색 점으로 표시됩니다. MCP 서버 설정에 대한 심층 가이드는 <a href="mcp-guide.html">MCP 완전 가이드</a>를 참고하세요.</p>
+
+  <h2>테마 및 외관 설정</h2>
+
+  <p>Claude Code VS Code 확장은 에디터의 테마에 맞추어 자동으로 색상을 조정합니다. 하지만 Claude Code 패널의 외관을 별도로 커스터마이징할 수도 있습니다.</p>
+
+  <h3>Claude Code 테마 옵션</h3>
+
+  <pre><code>{
+  // Claude Code 패널 테마 설정
+  "claude-code.theme": {
+    "mode": "auto",           // "auto" | "dark" | "light"
+    "accentColor": "#7C6AF5", // 강조 색상 (기본: 바이올렛)
+    "fontSize": 14,           // 채팅 폰트 크기
+    "fontFamily": "Pretendard, sans-serif",
+    "codeFont": "JetBrains Mono, monospace",
+    "codeFontSize": 13
+  },
+
+  // 코드 블록 구문 강조 테마
+  "claude-code.syntaxTheme": "one-dark-pro",
+
+  // Diff 뷰 색상
+  "claude-code.diffColors": {
+    "added": "rgba(0, 200, 83, 0.15)",
+    "removed": "rgba(255, 82, 82, 0.15)"
+  }
+}</code></pre>
+
+  <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=760&q=80" alt="개발 대시보드와 데이터 시각화 화면" loading="lazy">
+
+  <h2>실전 활용 워크플로우</h2>
+
+  <p>VS Code에서 Claude Code를 설치하고 설정했다면, 이제 실제 개발 워크플로우에서 어떻게 활용하는지 살펴보겠습니다.</p>
+
+  <h3>코드 작성 중 실시간 지원</h3>
+
+  <p>코드를 작성하는 동안 Claude는 실시간으로 컨텍스트를 분석하고 지능적인 코드 완성을 제공합니다. 단순한 자동완성을 넘어 현재 작성 중인 함수의 의도를 파악하고, 프로젝트의 코딩 규칙에 맞는 완성된 구현을 제안합니다.</p>
+
+  <pre><code>// 함수 시그니처만 작성하면 Claude가 전체 구현을 제안합니다
+async function fetchUserOrders(userId: string): Promise&lt;Order[]&gt; {
+  // Claude의 제안 (Tab으로 수락):
+  const { data, error } = await supabase
+    .from('orders')
+    .select('*, order_items(*)')
+    .eq('user_id', userId)
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    throw new DatabaseError('주문 조회 실패', { cause: error });
+  }
+
+  return data.map(transformOrderResponse);
+}</code></pre>
+
+  <h3>에러 즉시 해결</h3>
+
+  <p>VS Code에서 에러가 발생하면 Claude Code가 해당 에러를 감지하고 자동으로 수정 제안을 제공합니다. 에러가 표시된 줄에서 <code>Ctrl+Shift+F</code> (macOS: <code>Cmd+Shift+F</code>)를 누르면 Claude가 에러 원인을 분석하고 수정 코드를 제안합니다.</p>
+
+  <h3>코드 리뷰 및 리팩토링</h3>
+
+  <p>파일 전체 또는 선택한 코드 영역에 대해 즉시 코드 리뷰를 요청할 수 있습니다. Claude는 보안 취약점, 성능 이슈, 코드 스타일 문제, 잠재적 버그 등을 종합적으로 분석하여 구체적인 개선 사항을 제안합니다.</p>
+
+  <pre><code>// 코드를 선택한 후 Ctrl+Shift+R로 리뷰 요청
+// Claude의 리뷰 결과 예시:
+
+// 1. [보안] SQL 인젝션 위험: 사용자 입력을 직접 쿼리에 포함하고 있습니다.
+//    파라미터화된 쿼리를 사용하세요.
+// 2. [성능] N+1 쿼리 문제: 루프 내에서 DB 쿼리를 실행하고 있습니다.
+//    JOIN이나 배치 조회로 변경하세요.
+// 3. [타입] userId가 any 타입입니다. string으로 명시적 타입을 지정하세요.</code></pre>
+
+  <h2>트러블슈팅: 자주 발생하는 문제와 해결 방법</h2>
+
+  <p>Claude Code VS Code 확장을 사용하면서 발생할 수 있는 일반적인 문제와 해결 방법을 정리했습니다.</p>
+
+  <h3>문제 1: 확장이 로드되지 않음</h3>
+
+  <p>Claude Code 확장을 설치했지만 사이드바에 아이콘이 표시되지 않거나 패널이 열리지 않는 경우입니다.</p>
+
+  <pre><code># 해결 방법 1: VS Code 캐시 초기화
+# VS Code 완전 종료 후:
+rm -rf ~/.vscode/extensions/.cache
+code
+
+# 해결 방법 2: 확장 재설치
+code --uninstall-extension anthropic.claude-code
+code --install-extension anthropic.claude-code
+
+# 해결 방법 3: Claude Code CLI 버전 확인
+claude --version
+# 오래된 버전이면 업데이트
+npm update -g @anthropic-ai/claude-code</code></pre>
+
+  <h3>문제 2: 인증 실패</h3>
+
+  <p>OAuth 로그인이 완료되었지만 VS Code에서 인증이 인식되지 않는 경우입니다.</p>
+
+  <pre><code># 해결 방법 1: 인증 상태 초기화
+claude auth logout
+claude auth login
+
+# 해결 방법 2: VS Code에서 인증 정보 초기화
+# Ctrl+Shift+P > "Claude: Reset Authentication"
+
+# 해결 방법 3: 방화벽/프록시 확인
+# 회사 네트워크에서는 프록시 설정이 필요할 수 있습니다
+export HTTPS_PROXY=http://proxy.company.com:8080</code></pre>
+
+  <h3>문제 3: 코드 제안이 느리거나 나타나지 않음</h3>
+
+  <p>인라인 코드 제안이 너무 느리거나 아예 나타나지 않는 경우입니다.</p>
+
+  <pre><code>{
+  // VS Code settings.json에서 제안 속도 조정
+  "claude-code.suggestions": {
+    "triggerDelay": 300,      // 기본 500ms에서 줄이기
+    "debounceTime": 200,      // 입력 디바운스 시간
+    "maxTokens": 500,         // 제안 최대 길이 제한
+    "enabled": true
+  },
+
+  // 다른 자동완성 확장과 충돌하는 경우
+  "editor.inlineSuggest.enabled": true,
+  "editor.suggest.showInlineDetails": true
+}</code></pre>
+
+  <h3>문제 4: MCP 서버 연결 실패</h3>
+
+  <p>MCP 서버가 연결되지 않거나 빨간색 상태로 표시되는 경우입니다.</p>
+
+  <pre><code># MCP 서버 상태 확인
+claude mcp status
+
+# 특정 MCP 서버 로그 확인
+claude mcp logs postgres
+
+# 환경변수 확인
+echo $DATABASE_URL
+
+# MCP 서버 수동 재시작
+claude mcp restart postgres</code></pre>
+
+  <h3>문제 5: 높은 메모리 사용량</h3>
+
+  <p>대규모 프로젝트에서 Claude Code가 과도한 메모리를 사용하는 경우입니다.</p>
+
+  <pre><code>{
+  // 메모리 사용량 최적화 설정
+  "claude-code.performance": {
+    "maxContextFiles": 30,     // 동시 분석 파일 수 제한
+    "indexingMode": "lazy",    // 필요할 때만 인덱싱
+    "cacheSize": "256mb"       // 캐시 크기 제한
+  },
+
+  // 불필요한 파일 제외
+  "claude-code.exclude": [
+    "node_modules/**",
+    "dist/**",
+    ".git/**",
+    "*.min.js",
+    "package-lock.json"
+  ]
+}</code></pre>
+
+  <h2>추천 VS Code 확장 조합</h2>
+
+  <p>Claude Code와 함께 사용하면 개발 생산성을 더욱 높일 수 있는 VS Code 확장들을 소개합니다.</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>확장</th>
+        <th>용도</th>
+        <th>Claude Code 시너지</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Error Lens</td>
+        <td>에러를 인라인으로 표시</td>
+        <td>Claude가 표시된 에러를 즉시 감지하여 수정 제안</td>
+      </tr>
+      <tr>
+        <td>GitLens</td>
+        <td>Git 히스토리 시각화</td>
+        <td>코드 변경 히스토리를 Claude 컨텍스트에 포함</td>
+      </tr>
+      <tr>
+        <td>Todo Tree</td>
+        <td>TODO 주석 관리</td>
+        <td>Claude에게 TODO 항목 구현 요청 가능</td>
+      </tr>
+      <tr>
+        <td>Prettier</td>
+        <td>코드 포맷팅</td>
+        <td>Claude 생성 코드에 자동 포맷팅 적용</td>
+      </tr>
+      <tr>
+        <td>ESLint</td>
+        <td>코드 린팅</td>
+        <td>린트 규칙을 Claude가 참조하여 규칙 준수 코드 생성</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>고급 설정: 프로젝트별 최적화</h2>
+
+  <p>프로젝트의 특성에 따라 Claude Code의 동작을 최적화하는 고급 설정을 소개합니다.</p>
+
+  <h3>프론트엔드 프로젝트</h3>
+
+  <pre><code>{
+  "claude-code.context": {
+    "priorityFiles": [
+      "tsconfig.json",
+      "tailwind.config.ts",
+      "vite.config.ts",
+      "CLAUDE.md"
+    ],
+    "componentPatterns": ["src/components/**/*.tsx"],
+    "stylePatterns": ["src/**/*.css"]
+  }
+}</code></pre>
+
+  <h3>백엔드 프로젝트</h3>
+
+  <pre><code>{
+  "claude-code.context": {
+    "priorityFiles": [
+      "package.json",
+      "prisma/schema.prisma",
+      "src/routes/**/*.ts",
+      "CLAUDE.md"
+    ],
+    "apiPatterns": ["src/routes/**/*.ts", "src/controllers/**/*.ts"],
+    "schemaPatterns": ["prisma/**/*.prisma", "src/types/**/*.ts"]
+  }
+}</code></pre>
+
+  <blockquote>
+    <p>VS Code에서 Claude Code를 올바르게 설정하면, AI 없이 코딩하던 때로 돌아갈 수 없을 정도로 생산성이 향상됩니다. 처음 설정에 15분을 투자하면, 앞으로의 모든 코딩 시간에서 그 효과를 체감할 수 있습니다.</p>
+  </blockquote>
+
+  <h2>마무리: 다음 단계</h2>
+
+  <p>이 가이드를 따라 VS Code에서 Claude Code를 성공적으로 설치하고 설정했다면, 이제 본격적으로 AI 기반 개발을 시작할 준비가 완료되었습니다. 다음 단계로 추천하는 리소스를 안내합니다.</p>
+
+  <ul>
+    <li><a href="getting-started.html">Claude Code 시작하기 가이드</a>를 통해 기본 사용법을 익히세요.</li>
+    <li><a href="../commands.html">명령어 레퍼런스</a>에서 사용 가능한 모든 슬래시 명령어를 확인하세요.</li>
+    <li><a href="mcp-guide.html">MCP 완전 가이드</a>를 읽고 외부 도구 통합 방법을 배워보세요.</li>
+    <li><a href="../mcps.html">MCP 서버 목록</a>에서 프로젝트에 필요한 MCP 서버를 찾아보세요.</li>
+  </ul>
+
+  <p>Claude Code는 지속적으로 업데이트되고 있으며, VS Code 확장 역시 정기적으로 새로운 기능이 추가됩니다. VS Code의 확장 자동 업데이트 기능을 활성화해 두면 항상 최신 기능을 사용할 수 있습니다. 설정이나 사용 중 궁금한 점이 있다면 Claude Korea 블로그에서 관련 가이드를 찾아보시거나, 커뮤니티에 질문을 남겨 주세요.</p>
+
+  <h2>관련 리소스</h2>
+  <div class="related-links">
+    <div class="related-link">
+      <span>🚀</span>
+      <a href="getting-started.html">시작하기 가이드</a>
+    </div>
+    <div class="related-link">
+      <span>📋</span>
+      <a href="../commands.html">명령어 목록</a>
+    </div>
+    <div class="related-link">
+      <span>🔌</span>
+      <a href="../mcps.html">MCP 서버</a>
+    </div>
+    <div class="related-link">
+      <span>⚡</span>
+      <a href="hooks-guide.html">훅 가이드</a>
+    </div>
+    <div class="related-link">
+      <span>🛠</span>
+      <a href="../skills.html">스킬 목록</a>
+    </div>
+    <div class="related-link">
+      <span>🆕</span>
+      <a href="claude-code-2026-features.html">2026 신기능</a>
+    </div>
+  </div>
+</article>
+
+<div id="ad-before-footer" class="ad-slot ad-slot--before-footer" aria-label="광고"></div>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__bottom" style="border-top:var(--border-glass);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <a href="../index.html" class="gradient-text" style="font-weight:700;">Claude Korea</a>
+      <a href="../blog.html" style="color:var(--text-muted);font-size:var(--text-xs);">← 블로그 목록으로</a>
+      <span style="color:var(--text-muted);font-size:var(--text-xs);">© 2026 Claude Korea</span>
+    </div>
+  </div>
+</footer>
+
+<div id="ad-sticky-bottom" class="ad-slot ad-slot--sticky" aria-label="광고"></div>
+<output id="toast" class="toast" aria-live="polite"></output>
+<script src="../assets/js/tracker.js?v=2"></script>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/ads.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function(){ try{initNav();}catch(e){} renderAds(); CCTracker.recordSession(); });</script>
+</body>
+</html>

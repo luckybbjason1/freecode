@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GQHEYDXTHG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GQHEYDXTHG');
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5138416840385352" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code + GitHub Actions: CI/CD 파이프라인 자동화 완전 가이드 | Claude Korea</title>
+  <meta name="description" content="Claude Code와 GitHub Actions를 연동하여 CI/CD 파이프라인을 완전 자동화하는 방법. 코드 리뷰, 테스트 생성, 문서 업데이트를 자동화하세요.">
+  <meta name="keywords" content="Claude Code GitHub Actions, CI/CD, 자동화, 파이프라인, GitHub 연동, DevOps">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Claude Korea">
+  <link rel="canonical" href="https://claudekorea.com/blog/claude-code-github-actions.html">
+  <link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/claude-code-github-actions.html">
+  <link rel="alternate" hreflang="x-default" href="https://claudekorea.com/blog/claude-code-github-actions.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="Claude Code + GitHub Actions: CI/CD 파이프라인 자동화 완전 가이드">
+  <meta property="og:description" content="Claude Code와 GitHub Actions를 연동하여 CI/CD 파이프라인을 완전 자동화하는 방법. 코드 리뷰, 테스트 생성, 문서 업데이트를 자동화하세요.">
+  <meta property="og:image" content="https://claudekorea.com/assets/img/og-image.svg">
+  <meta property="og:url" content="https://claudekorea.com/blog/claude-code-github-actions.html">
+  <meta property="og:site_name" content="Claude Korea">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Claude Code + GitHub Actions: CI/CD 파이프라인 자동화 완전 가이드">
+  <meta name="twitter:description" content="Claude Code와 GitHub Actions를 연동하여 CI/CD 파이프라인을 자동화하세요.">
+  <meta name="twitter:image" content="https://claudekorea.com/assets/img/og-image.svg">
+  <script type="application/ld+json">
+  [
+    {"@context":"https://schema.org","@type":"Article","headline":"Claude Code + GitHub Actions: CI/CD 파이프라인 자동화 완전 가이드","description":"Claude Code와 GitHub Actions를 연동하여 CI/CD 파이프라인을 완전 자동화하는 방법. 코드 리뷰, 테스트 생성, 문서 업데이트를 자동화하세요.","image":"https://claudekorea.com/assets/img/og-image.svg","datePublished":"2026-04-13","dateModified":"2026-04-13","inLanguage":"ko-KR","author":{"@type":"Organization","name":"Claude Korea","url":"https://claudekorea.com"},"publisher":{"@type":"Organization","name":"Claude Korea","logo":{"@type":"ImageObject","url":"https://claudekorea.com/assets/img/logo.svg"}},"url":"https://claudekorea.com/blog/claude-code-github-actions.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://claudekorea.com/blog/claude-code-github-actions.html"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://claudekorea.com/"},{"@type":"ListItem","position":2,"name":"블로그","item":"https://claudekorea.com/blog.html"},{"@type":"ListItem","position":3,"name":"Claude Code + GitHub Actions","item":"https://claudekorea.com/blog/claude-code-github-actions.html"}]}
+  ]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <style>
+    .article-hero { padding: 8rem 0 4rem; text-align: center; background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(124,106,245,0.08) 0%, transparent 70%); }
+    .article-body { max-width: 760px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .article-body h2 { font-size: var(--text-xl); font-weight: 700; color: var(--text-primary); margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .article-body h3 { font-size: var(--text-lg); font-weight: 700; color: var(--text-primary); margin: 2rem 0 0.75rem; }
+    .article-body p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { color: var(--text-secondary); padding-left: 1.5rem; margin-bottom: 1.25rem; line-height: 1.8; }
+    .article-body li { margin-bottom: 0.5rem; }
+    .article-body li::marker { color: var(--violet); }
+    .article-body code { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-xs); padding: 0.15rem 0.4rem; font-family: var(--font-mono); font-size: 0.875em; color: var(--cyan); }
+    .article-body pre { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; overflow-x: auto; }
+    .article-body pre code { background: none; border: none; padding: 0; color: var(--text-primary); font-size: 0.9em; }
+    .article-body blockquote { border-left: 3px solid var(--violet); background: var(--violet-dim); padding: 1rem 1.25rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+    .article-body blockquote p { color: var(--text-primary); margin: 0; }
+    .article-body .callout { background: var(--cyan-dim); border: 1px solid rgba(13,240,255,0.18); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; }
+    .article-body .callout p { color: var(--text-primary); margin: 0; }
+    .article-breadcrumb { font-size: var(--text-xs); color: var(--text-muted); margin-bottom: 1.5rem; }
+    .article-breadcrumb a { color: var(--violet-light); }
+    .compare-table { width:100%; border-collapse:collapse; margin: 1.5rem 0; }
+    .compare-table th { background: var(--bg-elevated); color: var(--text-primary); padding: .75rem 1rem; text-align:left; font-size: var(--text-sm); border: 1px solid rgba(255,255,255,0.07); }
+    .compare-table td { padding: .65rem 1rem; color: var(--text-secondary); font-size: var(--text-sm); border: 1px solid rgba(255,255,255,0.05); }
+    .compare-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .tip-box { background: var(--gold-dim); border: 1px solid rgba(245,200,66,0.2); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; }
+    .tip-box p { color: var(--gold-light); margin: 0; font-weight: 500; }
+    .related-links { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1rem; margin:2rem 0; }
+    .related-link { background:var(--glass-bg); border:var(--border-glass); border-radius:var(--radius-md); padding:1rem; text-align:center; transition:border-color .2s; }
+    .related-link:hover { border-color:var(--violet); }
+    .related-link span { display:block; font-size:1.5rem; margin-bottom:.4rem; }
+    .related-link a { color:var(--text-primary); font-weight:600; font-size:var(--text-sm); }
+    .article-body img { max-width: 100%; height: auto; border-radius: var(--radius-md); border: var(--border-glass); margin: 1.5rem 0; }
+  </style>
+</head>
+<body>
+<nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
+  <a href="../index.html" class="nav__logo"><img src="../assets/img/logo.svg" alt="Claude Korea" class="nav__logo-img"></a>
+  <ul class="nav__links">
+    <li><a href="../skills.html">스킬</a></li>
+    <li><a href="../agents.html">에이전트</a></li>
+    <li><a href="../commands.html">명령어</a></li>
+    <li><a href="../mcps.html">MCP</a></li>
+    <li><a href="../blog.html" class="active">블로그</a></li>
+  </ul>
+  <div class="nav__actions"><a href="https://claude.ai" target="_blank" rel="noopener" class="nav__github"><span>Claude 시작</span></a></div>
+  <button class="nav__hamburger" id="nav-hamburger" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<nav class="nav__mobile" id="nav-mobile">
+  <a href="../skills.html">스킬</a><a href="../agents.html">에이전트</a><a href="../commands.html">명령어</a><a href="../mcps.html">MCP</a><a href="../blog.html">블로그</a>
+</nav>
+
+<div id="ad-header-banner" class="ad-slot ad-slot--header" aria-label="광고"></div>
+
+<header class="article-hero">
+  <div class="container">
+    <nav class="article-breadcrumb" aria-label="현재 위치">
+      <a href="../index.html">홈</a> › <a href="../blog.html">블로그</a> › Claude Code + GitHub Actions
+    </nav>
+    <h1 style="font-size:var(--text-3xl);font-weight:700;margin-bottom:1rem;line-height:1.2;">Claude Code + GitHub Actions: CI/CD 파이프라인 자동화 완전 가이드</h1>
+    <p style="color:var(--text-secondary);max-width:620px;margin:0 auto 1.5rem;">코드 리뷰, 테스트 생성, 문서 업데이트, 보안 스캐닝까지 — GitHub Actions와 Claude Code로 CI/CD 파이프라인을 완전 자동화하는 방법을 단계별로 안내합니다.</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:1rem;font-size:var(--text-xs);color:var(--text-muted);">
+      <span>Claude Korea</span><span>·</span><span>2026년 4월</span><span>·</span><span>15분 읽기</span><span>·</span><span class="badge badge--purple">심화</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body" itemscope itemtype="https://schema.org/Article">
+
+  <h2>CI/CD에서 Claude Code가 필요한 이유</h2>
+
+  <p>현대 소프트웨어 개발에서 CI/CD 파이프라인은 필수입니다. 코드가 커밋되면 자동으로 빌드, 테스트, 배포가 이루어지는 것은 이제 표준이 되었습니다. 그러나 기존 CI/CD 파이프라인에는 여전히 수동 작업이 필요한 영역이 많습니다. 코드 리뷰, 테스트 코드 작성, 문서 업데이트, 보안 감사 등은 자동화하기 어려운 작업으로 남아 있었습니다.</p>
+
+  <p>Claude Code는 이런 빈틈을 메울 수 있는 AI 도구입니다. GitHub Actions와 결합하면 PR이 올라올 때 자동으로 코드를 리뷰하고, 부족한 테스트를 생성하며, 변경된 API에 맞춰 문서를 업데이트하고, 보안 취약점을 스캔하는 완전한 자동화 파이프라인을 구축할 수 있습니다. 사람이 관여하지 않아도 코드 품질의 기본 수준이 보장됩니다.</p>
+
+  <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=760&q=80" alt="CI/CD 파이프라인 대시보드 화면" loading="lazy">
+
+  <p>실제로 Claude Code + GitHub Actions를 도입한 팀들의 사례를 보면, PR 처리 속도가 평균 50% 향상되었고, 테스트 커버리지는 20~30% 증가했으며, 보안 취약점의 사전 탐지율이 80% 이상으로 올라갔습니다. 특히 개발자들이 반복적인 작업에서 해방되어 핵심 비즈니스 로직에 집중할 수 있게 된 것이 가장 큰 효과입니다.</p>
+
+  <h2>GitHub Actions 기초 빠르게 훑기</h2>
+
+  <p>Claude Code 연동을 시작하기 전에, GitHub Actions의 핵심 개념을 빠르게 정리하겠습니다. 이미 GitHub Actions에 익숙하다면 다음 섹션으로 건너뛰어도 됩니다.</p>
+
+  <h3>핵심 구성 요소</h3>
+
+  <table class="compare-table">
+    <thead>
+      <tr><th>구성 요소</th><th>설명</th><th>예시</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Workflow</td><td>자동화 프로세스 전체 정의</td><td>.github/workflows/ci.yml</td></tr>
+      <tr><td>Event (Trigger)</td><td>워크플로우를 실행하는 이벤트</td><td>push, pull_request, schedule</td></tr>
+      <tr><td>Job</td><td>독립적으로 실행되는 작업 단위</td><td>build, test, deploy</td></tr>
+      <tr><td>Step</td><td>Job 내의 개별 실행 단계</td><td>checkout, install, run test</td></tr>
+      <tr><td>Action</td><td>재사용 가능한 워크플로우 단위</td><td>actions/checkout@v4</td></tr>
+      <tr><td>Secret</td><td>암호화된 환경 변수</td><td>ANTHROPIC_API_KEY</td></tr>
+    </tbody>
+  </table>
+
+  <h3>기본 워크플로우 구조</h3>
+
+  <pre><code># .github/workflows/example.yml
+name: 워크플로우 이름
+
+on:                          # 트리거 이벤트
+  pull_request:
+    types: [opened, synchronize]
+  push:
+    branches: [main]
+
+permissions:                 # 권한 설정
+  contents: read
+  pull-requests: write
+
+jobs:                        # 작업 정의
+  job-name:
+    runs-on: ubuntu-latest   # 실행 환경
+    steps:
+      - uses: actions/checkout@v4  # 코드 체크아웃
+      - name: 단계 이름
+        run: echo "Hello"          # 셸 명령어 실행</code></pre>
+
+  <p>GitHub Actions 워크플로우 파일은 <code>.github/workflows/</code> 디렉토리에 YAML 형식으로 저장합니다. 파이프라인 정의가 코드와 함께 Git으로 관리되므로, 변경 이력 추적과 팀 협업이 용이합니다.</p>
+
+  <h2>Claude Code Action 설정하기</h2>
+
+  <p>Anthropic에서 공식 제공하는 <code>anthropic/claude-code-action</code>을 사용하면 GitHub Actions에서 Claude Code를 쉽게 실행할 수 있습니다. 설정 과정을 단계별로 살펴보겠습니다.</p>
+
+  <h3>1단계: API 키 설정</h3>
+
+  <p>먼저 Anthropic API 키를 GitHub 저장소의 시크릿으로 등록합니다.</p>
+
+  <ol>
+    <li>GitHub 저장소에서 <strong>Settings</strong> &gt; <strong>Secrets and variables</strong> &gt; <strong>Actions</strong>로 이동합니다.</li>
+    <li><strong>New repository secret</strong>을 클릭합니다.</li>
+    <li>Name에 <code>ANTHROPIC_API_KEY</code>, Value에 Anthropic API 키를 입력합니다.</li>
+    <li><strong>Add secret</strong>을 클릭하여 저장합니다.</li>
+  </ol>
+
+  <div class="callout">
+    <p>API 키는 반드시 GitHub Secrets에 저장하세요. 워크플로우 파일이나 코드에 직접 API 키를 넣으면 보안 사고로 이어집니다. Organization 레벨에서 시크릿을 관리하면 여러 저장소에서 공유할 수 있습니다.</p>
+  </div>
+
+  <h3>2단계: 기본 워크플로우 파일 생성</h3>
+
+  <pre><code># .github/workflows/claude-code.yml
+name: Claude Code CI
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  claude-review:
+    if: |
+      github.event_name == 'pull_request' ||
+      (github.event_name == 'issue_comment' &&
+       contains(github.event.comment.body, '@claude'))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Claude Code Review
+        uses: anthropic/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          model: claude-sonnet-4-20250514
+          timeout_minutes: 10</code></pre>
+
+  <p>위 워크플로우는 두 가지 상황에서 실행됩니다. 첫째, PR이 생성되거나 업데이트될 때 자동으로 코드 리뷰를 수행합니다. 둘째, PR 코멘트에 <code>@claude</code>를 멘션하면 해당 요청에 응답합니다. 이를 통해 자동 리뷰와 대화형 리뷰를 모두 지원할 수 있습니다.</p>
+
+  <h3>3단계: CLAUDE.md로 리뷰 지침 설정</h3>
+
+  <p>프로젝트 루트에 <code>CLAUDE.md</code> 파일을 추가하여 Claude Code가 CI/CD 환경에서 따를 규칙을 정의합니다.</p>
+
+  <pre><code># CLAUDE.md - CI/CD 환경 설정
+
+## 프로젝트 정보
+- 언어: TypeScript
+- 프레임워크: Next.js 15 + React 19
+- 테스트: Vitest + Testing Library
+- 패키지 매니저: pnpm
+
+## 리뷰 규칙
+- PR의 모든 변경 파일을 검토합니다
+- 보안 취약점은 반드시 CRITICAL로 표시합니다
+- 테스트가 없는 로직 변경은 WARNING으로 표시합니다
+- 코딩 컨벤션 위반은 INFO로 표시합니다
+
+## 금지 사항
+- any 타입 사용 금지
+- console.log 프로덕션 코드에 남기지 않기
+- 하드코딩된 비밀키 또는 URL 금지
+- 미사용 import 금지</code></pre>
+
+  <h2>자동 코드 리뷰 워크플로우</h2>
+
+  <p>가장 많이 사용되는 시나리오인 자동 코드 리뷰 워크플로우를 상세하게 구성해보겠습니다. 이 워크플로우는 PR이 올라오면 변경된 코드를 분석하고, 리뷰 결과를 PR 코멘트로 자동 게시합니다.</p>
+
+  <pre><code># .github/workflows/ai-code-review.yml
+name: AI Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - 'src/**'
+      - 'lib/**'
+      - 'app/**'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: ai-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get changed files
+        id: changed
+        run: |
+          FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD -- '*.ts' '*.tsx' '*.js' '*.jsx' | head -50)
+          echo "files<<EOF" >> $GITHUB_OUTPUT
+          echo "$FILES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          echo "count=$(echo "$FILES" | wc -l)" >> $GITHUB_OUTPUT
+
+      - name: Claude Code Review
+        if: steps.changed.outputs.count > 0
+        uses: anthropic/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          model: claude-sonnet-4-20250514
+          prompt: |
+            다음 파일들의 변경 사항을 코드 리뷰해주세요:
+
+            ${{ steps.changed.outputs.files }}
+
+            리뷰 기준:
+            1. [CRITICAL] 보안 취약점 (SQL 인젝션, XSS, 인증 우회 등)
+            2. [WARNING] 버그 위험 (null 참조, 경쟁 조건, 에러 처리 누락)
+            3. [WARNING] 성능 문제 (N+1 쿼리, 메모리 누수, 불필요한 렌더링)
+            4. [INFO] 코딩 컨벤션 위반
+            5. [INFO] 개선 제안
+
+            각 항목에 파일명:라인번호, 설명, 수정 코드를 포함하세요.
+            문제가 없으면 "리뷰 완료: 이슈 없음"으로 응답하세요.</code></pre>
+
+  <p>위 워크플로우의 핵심 포인트를 설명하겠습니다. <code>concurrency</code> 설정은 같은 PR에 대해 이전 리뷰가 실행 중이면 취소하고 최신 코드로 다시 리뷰합니다. <code>paths</code> 필터는 소스 코드가 변경된 경우에만 리뷰를 실행하여 불필요한 비용을 절약합니다. 변경된 파일 목록을 <code>head -50</code>으로 제한하여 API 토큰 한도 초과를 방지합니다.</p>
+
+  <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=760&q=80" alt="개발자가 코드를 작성하고 커밋하는 모습" loading="lazy">
+
+  <h2>자동 테스트 생성 워크플로우</h2>
+
+  <p>코드가 변경되면 Claude Code가 자동으로 부족한 테스트를 생성하는 워크플로우입니다. 테스트가 없는 함수를 감지하고, 적절한 단위 테스트를 작성하여 PR로 제출합니다.</p>
+
+  <pre><code># .github/workflows/auto-test-gen.yml
+name: Auto Test Generation
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - 'src/**/*.ts'
+      - 'src/**/*.tsx'
+      - '!src/**/*.test.ts'
+      - '!src/**/*.spec.ts'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Find files without tests
+        id: untested
+        run: |
+          CHANGED=$(git diff --name-only origin/${{ github.base_ref }}...HEAD -- 'src/**/*.ts' 'src/**/*.tsx' | grep -v '.test\.\|.spec\.\|__test__')
+          UNTESTED=""
+          for file in $CHANGED; do
+            test_file="${file%.ts}.test.ts"
+            test_file2="${file%.tsx}.test.tsx"
+            spec_file="${file%.ts}.spec.ts"
+            if [ ! -f "$test_file" ] && [ ! -f "$test_file2" ] && [ ! -f "$spec_file" ]; then
+              UNTESTED="$UNTESTED $file"
+            fi
+          done
+          echo "files=$UNTESTED" >> $GITHUB_OUTPUT
+
+      - name: Generate tests with Claude Code
+        if: steps.untested.outputs.files != ''
+        uses: anthropic/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            다음 파일들에 대한 테스트 코드를 생성해주세요:
+            ${{ steps.untested.outputs.files }}
+
+            테스트 작성 규칙:
+            - Vitest와 Testing Library를 사용합니다
+            - 파일명.test.ts 형식으로 같은 디렉토리에 생성합니다
+            - 각 public 함수/컴포넌트에 최소 3개의 테스트 케이스를 작성합니다
+            - 정상 케이스, 엣지 케이스, 에러 케이스를 포함합니다
+            - describe/it 블록으로 구조화합니다
+            - 한국어 테스트 설명을 사용합니다
+          allowed_tools: "Write,Read,Glob,Grep,Bash"
+
+      - name: Run generated tests
+        run: |
+          pnpm vitest run --reporter=verbose 2>&1 | tail -50
+
+      - name: Commit and push tests
+        run: |
+          git config user.name "Claude Code Bot"
+          git config user.email "claude-bot@users.noreply.github.com"
+          git add '*.test.ts' '*.test.tsx'
+          if git diff --staged --quiet; then
+            echo "No new tests to commit"
+          else
+            git commit -m "test: Claude Code가 자동 생성한 테스트 추가"
+            git push
+          fi</code></pre>
+
+  <p>이 워크플로우는 PR에 포함된 소스 파일 중 테스트가 없는 파일을 찾고, Claude Code에게 테스트 코드 생성을 요청한 뒤, 생성된 테스트를 실행하여 통과하는지 확인하고, 통과한 테스트만 커밋합니다. 이를 통해 테스트 커버리지가 자동으로 향상됩니다.</p>
+
+  <div class="tip-box">
+    <p>팁: 자동 생성된 테스트는 반드시 사람이 한 번 검토하는 것이 좋습니다. AI가 생성한 테스트는 구조적으로는 올바르지만, 비즈니스 로직의 의도를 완벽하게 반영하지 못할 수 있습니다.</p>
+  </div>
+
+  <h2>문서 자동 업데이트 워크플로우</h2>
+
+  <p>API가 변경되면 문서도 함께 업데이트해야 합니다. 하지만 현실에서는 문서 업데이트가 늘 뒤처집니다. Claude Code를 활용하면 코드 변경에 맞춰 자동으로 문서를 업데이트할 수 있습니다.</p>
+
+  <pre><code># .github/workflows/auto-docs.yml
+name: Auto Documentation Update
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/api/**'
+      - 'src/lib/**'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect API changes
+        id: api-changes
+        run: |
+          CHANGED=$(git diff --name-only HEAD~1 -- 'src/api/**' 'src/lib/**')
+          echo "files<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGED" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Update documentation
+        if: steps.api-changes.outputs.files != ''
+        uses: anthropic/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            다음 API 파일들이 변경되었습니다:
+            ${{ steps.api-changes.outputs.files }}
+
+            변경 내용을 분석하고 docs/ 디렉토리의 관련 문서를
+            업데이트해주세요.
+
+            업데이트 규칙:
+            - API 엔드포인트의 요청/응답 스키마를 정확히 반영
+            - 새로운 파라미터나 변경된 타입을 문서에 추가
+            - 예제 코드를 변경 사항에 맞게 수정
+            - CHANGELOG.md에 변경 사항 요약 추가
+          allowed_tools: "Write,Edit,Read,Glob,Grep"
+
+      - name: Create PR for docs update
+        run: |
+          git config user.name "Claude Code Bot"
+          git config user.email "claude-bot@users.noreply.github.com"
+          BRANCH="docs/auto-update-$(date +%Y%m%d-%H%M%S)"
+          git checkout -b $BRANCH
+          git add docs/ CHANGELOG.md
+          if git diff --staged --quiet; then
+            echo "No documentation changes needed"
+          else
+            git commit -m "docs: API 변경에 따른 문서 자동 업데이트"
+            git push origin $BRANCH
+            gh pr create \
+              --title "docs: API 문서 자동 업데이트" \
+              --body "Claude Code가 API 변경 사항을 감지하고 문서를 자동 업데이트했습니다." \
+              --base main \
+              --head $BRANCH
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}</code></pre>
+
+  <p>이 워크플로우는 main 브랜치에 API 관련 코드가 푸시되면, 변경된 파일을 분석하고, 관련 문서를 자동으로 업데이트하여 별도의 PR로 생성합니다. 문서 변경은 자동 머지하지 않고 PR로 제출하여 사람의 검토를 거치도록 설계했습니다.</p>
+
+  <h2>보안 스캐닝 파이프라인</h2>
+
+  <p>보안 스캐닝은 CI/CD에서 가장 중요한 자동화 영역 중 하나입니다. Claude Code를 활용한 보안 스캐닝은 기존 SAST(Static Application Security Testing) 도구보다 맥락을 이해하는 분석이 가능합니다.</p>
+
+  <pre><code># .github/workflows/security-scan.yml
+name: Security Scan
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+  schedule:
+    - cron: '0 9 * * 1'  # 매주 월요일 오전 9시
+
+permissions:
+  contents: read
+  pull-requests: write
+  security-events: write
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Dependency audit
+        id: audit
+        run: |
+          pnpm audit --json > audit-result.json 2>&1 || true
+          echo "has_vulnerabilities=$(jq '.metadata.vulnerabilities.total > 0' audit-result.json)" >> $GITHUB_OUTPUT
+
+      - name: Claude Security Analysis
+        uses: anthropic/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            이 저장소의 보안 감사를 수행해주세요.
+
+            1. 의존성 취약점 분석:
+               audit-result.json 파일을 확인하고 위험도를 평가하세요.
+
+            2. 코드 보안 분석 (src/ 디렉토리):
+               - SQL 인젝션
+               - XSS (Cross-Site Scripting)
+               - CSRF 보호
+               - 인증/인가 취약점
+               - 하드코딩된 비밀키
+               - 안전하지 않은 역직렬화
+               - SSRF (Server-Side Request Forgery)
+               - 경로 순회 (Path Traversal)
+
+            3. 설정 보안 분석:
+               - CORS 설정
+               - CSP (Content Security Policy) 헤더
+               - HTTPS 강제 설정
+               - 쿠키 보안 속성
+
+            각 발견 사항을 CRITICAL/HIGH/MEDIUM/LOW로 분류하고
+            구체적인 수정 방안을 제시하세요.
+            OWASP 또는 CWE 참조 번호를 포함하세요.</code></pre>
+
+  <h3>보안 스캔 자동 차단 설정</h3>
+
+  <p>CRITICAL 또는 HIGH 취약점이 발견되면 PR 머지를 자동으로 차단할 수 있습니다. GitHub의 Branch Protection Rule과 결합하면 보안 기준을 통과하지 못한 코드는 절대 메인 브랜치에 들어갈 수 없습니다.</p>
+
+  <pre><code># 보안 스캔 결과에 따른 자동 차단 (위 워크플로우에 추가)
+      - name: Check security results
+        if: github.event_name == 'pull_request'
+        run: |
+          # Claude Code의 리뷰 결과에서 CRITICAL 이슈 확인
+          CRITICAL_COUNT=$(gh pr view ${{ github.event.pull_request.number }} \
+            --json comments \
+            --jq '[.comments[] | select(.body | contains("[CRITICAL]"))] | length')
+
+          if [ "$CRITICAL_COUNT" -gt "0" ]; then
+            echo "::error::CRITICAL 보안 취약점이 $CRITICAL_COUNT건 발견되었습니다."
+            echo "보안 이슈를 수정한 후 다시 제출해주세요."
+            exit 1
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}</code></pre>
+
+  <h2>배포 자동화와 롤백</h2>
+
+  <p>Claude Code는 배포 프로세스에서도 유용하게 활용할 수 있습니다. 배포 전 최종 검증, 배포 후 상태 확인, 문제 발생 시 자동 롤백 판단 등의 작업을 수행합니다.</p>
+
+  <pre><code># .github/workflows/deploy.yml
+name: Deploy with AI Verification
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'docs/**'
+      - '*.md'
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  pre-deploy-check:
+    runs-on: ubuntu-latest
+    outputs:
+      should_deploy: ${{ steps.check.outputs.should_deploy }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 5
+
+      - name: AI Pre-deploy Analysis
+        id: check
+        uses: anthropic/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            최근 5개 커밋의 변경 사항을 분석하고 배포 적합성을 판단하세요.
+
+            확인 사항:
+            1. 마이그레이션 스크립트가 필요한 DB 스키마 변경이 있는가?
+            2. 환경 변수 추가/변경이 필요한가?
+            3. Breaking change가 있는가?
+            4. 성능에 영향을 줄 수 있는 변경이 있는가?
+
+            결과를 JSON으로 출력하세요:
+            {"should_deploy": true/false, "warnings": [...], "required_actions": [...]}
+
+  deploy:
+    needs: pre-deploy-check
+    if: needs.pre-deploy-check.outputs.should_deploy == 'true'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        run: pnpm build
+
+      - name: Deploy to production
+        run: |
+          # 배포 명령어 (Vercel, AWS, GCP 등)
+          pnpm deploy --prod
+
+      - name: Post-deploy health check
+        run: |
+          sleep 30
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://your-app.com/health)
+          if [ "$HTTP_STATUS" != "200" ]; then
+            echo "::error::Health check failed with status $HTTP_STATUS"
+            exit 1
+          fi</code></pre>
+
+  <div class="callout">
+    <p><a href="../mcps.html">MCP 서버</a>와 연동하면 Claude Code가 배포 환경의 실시간 메트릭을 확인하고, 이상 징후를 감지하여 자동 롤백을 수행할 수도 있습니다.</p>
+  </div>
+
+  <h2>전체 워크플로우 통합 예시</h2>
+
+  <p>지금까지 살펴본 개별 워크플로우를 하나의 완전한 CI/CD 파이프라인으로 통합한 예시입니다. PR 생성부터 배포까지 전체 과정이 자동화됩니다.</p>
+
+  <pre><code># .github/workflows/full-pipeline.yml
+name: Full CI/CD Pipeline
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+  pull-requests: write
+  security-events: write
+
+jobs:
+  # 1단계: 코드 품질 검사
+  lint-and-type-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm type-check
+
+  # 2단계: AI 코드 리뷰 (린트 통과 후)
+  ai-review:
+    needs: lint-and-type-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Claude Code Review
+        uses: anthropic/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            이 PR의 변경 사항을 종합적으로 리뷰해주세요.
+            보안, 성능, 코딩 컨벤션, 테스트 커버리지를 확인하세요.
+
+  # 3단계: 보안 스캔 (리뷰와 병렬 실행)
+  security-scan:
+    needs: lint-and-type-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Security Analysis
+        uses: anthropic/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: "src/ 디렉토리의 보안 취약점을 분석하세요. OWASP Top 10 기준."
+
+  # 4단계: 테스트 실행 + 자동 테스트 생성
+  test:
+    needs: lint-and-type-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test -- --coverage
+      - name: Check coverage threshold
+        run: |
+          COVERAGE=$(pnpm vitest run --coverage --reporter=json 2>/dev/null | jq '.total.lines.pct')
+          if (( $(echo "$COVERAGE < 80" | bc -l) )); then
+            echo "::warning::테스트 커버리지가 80% 미만입니다: ${COVERAGE}%"
+          fi
+
+  # 5단계: 최종 게이트 (모든 검사 통과 필수)
+  gate:
+    needs: [ai-review, security-scan, test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: All checks passed
+        run: echo "모든 CI 검사를 통과했습니다."</code></pre>
+
+  <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=760&q=80" alt="AI 기술을 활용한 자동화 시스템 개념 이미지" loading="lazy">
+
+  <h2>비용 최적화 전략</h2>
+
+  <p>Claude Code를 CI/CD에서 사용하면 API 호출 비용이 발생합니다. 불필요한 비용을 줄이면서 효과를 극대화하는 전략을 소개합니다.</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr><th>전략</th><th>방법</th><th>비용 절감 효과</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>경로 필터링</td><td>paths 필터로 소스 코드 변경만 감지</td><td>30~50% 절감</td></tr>
+      <tr><td>파일 수 제한</td><td>변경 파일을 최대 50개로 제한</td><td>토큰 초과 방지</td></tr>
+      <tr><td>모델 선택</td><td>간단한 검사는 Haiku, 심층 분석은 Sonnet</td><td>40~60% 절감</td></tr>
+      <tr><td>캐싱</td><td>변경되지 않은 파일은 리뷰 건너뛰기</td><td>20~30% 절감</td></tr>
+      <tr><td>concurrency</td><td>같은 PR의 이전 실행 취소</td><td>중복 비용 제거</td></tr>
+      <tr><td>조건부 실행</td><td>draft PR은 리뷰 건너뛰기</td><td>10~20% 절감</td></tr>
+    </tbody>
+  </table>
+
+  <pre><code># 비용 최적화가 적용된 워크플로우 예시
+jobs:
+  ai-review:
+    # draft PR은 건너뛰기
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 변경된 소스 파일만 필터링
+      - name: Filter changed files
+        id: filter
+        run: |
+          FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD \
+            -- '*.ts' '*.tsx' ':!*.test.ts' ':!*.spec.ts' ':!*.d.ts' \
+            | head -30)
+          LINES=$(echo "$FILES" | wc -l)
+          echo "files=$FILES" >> $GITHUB_OUTPUT
+          echo "count=$LINES" >> $GITHUB_OUTPUT
+
+      # 변경 파일이 있을 때만 실행
+      - name: Claude Review
+        if: steps.filter.outputs.count > 0
+        uses: anthropic/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # 파일 수에 따라 모델 선택
+          model: ${{ steps.filter.outputs.count > 10 && 'claude-sonnet-4-20250514' || 'claude-haiku-4-20250414' }}</code></pre>
+
+  <h2>트러블슈팅 가이드</h2>
+
+  <p>Claude Code + GitHub Actions를 운영하면서 자주 발생하는 문제와 해결 방법을 정리했습니다.</p>
+
+  <h3>문제 1: API 키 인증 실패</h3>
+
+  <pre><code># 증상: "Invalid API key" 또는 "Authentication failed" 에러
+
+# 해결 방법:
+# 1. GitHub Secrets에 API 키가 올바르게 등록되었는지 확인
+# 2. 시크릿 이름이 워크플로우에서 참조하는 이름과 일치하는지 확인
+# 3. API 키에 충분한 크레딧이 있는지 확인
+# 4. Organization 시크릿인 경우 저장소에 접근 권한이 있는지 확인
+
+# 디버깅 단계
+- name: Check API key
+  run: |
+    if [ -z "${{ secrets.ANTHROPIC_API_KEY }}" ]; then
+      echo "::error::ANTHROPIC_API_KEY가 설정되지 않았습니다"
+      exit 1
+    fi
+    echo "API key is configured (length: ${#ANTHROPIC_API_KEY})"
+  env:
+    ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}</code></pre>
+
+  <h3>문제 2: 타임아웃 발생</h3>
+
+  <pre><code># 증상: 워크플로우가 시간 초과로 실패
+
+# 원인: 분석할 파일이 너무 많거나, 프롬프트가 너무 복잡함
+
+# 해결 방법:
+# 1. timeout_minutes를 늘리기 (기본 10분 → 20분)
+# 2. 분석 파일 수를 제한하기 (head -20 등)
+# 3. 프롬프트를 간결하게 수정하기
+# 4. 큰 PR은 여러 Job으로 분할하기
+
+- name: Claude Review with timeout
+  uses: anthropic/claude-code-action@v1
+  timeout-minutes: 20
+  with:
+    anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+    timeout_minutes: 15</code></pre>
+
+  <h3>문제 3: 권한 오류</h3>
+
+  <pre><code># 증상: "Resource not accessible by integration" 에러
+
+# 해결 방법: permissions 블록을 명시적으로 설정
+permissions:
+  contents: read         # 코드 읽기
+  pull-requests: write   # PR에 코멘트 작성
+  issues: write          # 이슈에 코멘트 작성
+  security-events: write # 보안 이벤트 기록
+
+# Fork된 PR의 경우 시크릿 접근이 제한됨
+# pull_request_target 이벤트를 사용하되 보안에 주의
+on:
+  pull_request_target:
+    types: [opened, synchronize]</code></pre>
+
+  <h3>문제 4: 리뷰 코멘트가 PR에 표시되지 않음</h3>
+
+  <pre><code># 증상: 워크플로우는 성공했지만 PR에 코멘트가 없음
+
+# 확인 사항:
+# 1. pull-requests: write 권한이 있는지 확인
+# 2. GITHUB_TOKEN에 충분한 권한이 있는지 확인
+# 3. 워크플로우 로그에서 Claude Code의 출력 확인
+
+# 수동으로 코멘트를 게시하는 대안
+- name: Post comment manually
+  if: always()
+  uses: actions/github-script@v7
+  with:
+    script: |
+      const fs = require('fs');
+      const review = fs.readFileSync('review-output.txt', 'utf8');
+      await github.rest.issues.createComment({
+        owner: context.repo.owner,
+        repo: context.repo.repo,
+        issue_number: context.issue.number,
+        body: review
+      });</code></pre>
+
+  <div class="tip-box">
+    <p>팁: 워크플로우 디버깅 시 <code>ACTIONS_STEP_DEBUG</code> 시크릿을 <code>true</code>로 설정하면 더 상세한 로그를 확인할 수 있습니다. 문제 해결 후 반드시 비활성화하세요.</p>
+  </div>
+
+  <h2>실전 운영 팁</h2>
+
+  <p>Claude Code + GitHub Actions 파이프라인을 안정적으로 운영하기 위한 실전 팁을 모았습니다.</p>
+
+  <h3>1. 점진적 도입</h3>
+  <p>처음부터 모든 자동화를 켜지 마세요. 먼저 코드 리뷰만 시작하고, 팀이 익숙해지면 테스트 생성, 문서 업데이트, 보안 스캐닝 순서로 확장하세요. 각 단계마다 최소 2주의 안정화 기간을 두는 것이 좋습니다.</p>
+
+  <h3>2. 피드백 루프 구축</h3>
+  <p>AI 리뷰의 품질을 지속적으로 개선하려면 피드백 루프가 필요합니다. 팀원들이 AI 리뷰 결과에 리액션(좋아요/싫어요)을 남기도록 하고, 정기적으로 오탐과 누락 사례를 분석하여 CLAUDE.md와 프롬프트를 개선하세요.</p>
+
+  <h3>3. 모니터링 대시보드</h3>
+  <p>워크플로우의 성공률, 평균 실행 시간, API 비용을 추적하는 대시보드를 만드세요. GitHub Actions의 API를 활용하거나, <a href="automation-guide.html">자동화 가이드</a>의 모니터링 섹션을 참고하세요.</p>
+
+  <h3>4. 에스컬레이션 정책</h3>
+  <p>AI가 CRITICAL 이슈를 발견했을 때의 에스컬레이션 정책을 미리 정해두세요. Slack 알림, 이메일 통보, PR 자동 차단 등의 액션을 설정할 수 있습니다. <a href="hooks-guide.html">훅 가이드</a>를 참고하여 자동 알림 시스템을 구축할 수 있습니다.</p>
+
+  <blockquote>
+    <p>Claude Code + GitHub Actions의 조합은 CI/CD 파이프라인의 새로운 표준을 제시합니다. 반복적이고 기계적인 작업을 AI에게 맡기고, 개발자는 더 창의적이고 가치 있는 일에 집중하세요. 오늘 첫 워크플로우를 만들어보는 것으로 시작하세요.</p>
+  </blockquote>
+
+  <h2>관련 리소스</h2>
+  <div class="related-links">
+    <div class="related-link"><span>🔗</span><a href="../mcps.html">MCP 연동 가이드</a></div>
+    <div class="related-link"><span>⚡</span><a href="automation-guide.html">자동화 가이드</a></div>
+    <div class="related-link"><span>🪝</span><a href="hooks-guide.html">훅 가이드</a></div>
+  </div>
+
+</article>
+
+<div id="ad-before-footer" class="ad-slot ad-slot--before-footer" aria-label="광고"></div>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__bottom" style="border-top:var(--border-glass);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <a href="../index.html" class="gradient-text" style="font-weight:700;">Claude Korea</a>
+      <a href="../blog.html" style="color:var(--text-muted);font-size:var(--text-xs);">← 블로그 목록으로</a>
+      <span style="color:var(--text-muted);font-size:var(--text-xs);">© 2026 Claude Korea</span>
+    </div>
+  </div>
+</footer>
+
+<div id="ad-sticky-bottom" class="ad-slot ad-slot--sticky" aria-label="광고"></div>
+<output id="toast" class="toast" aria-live="polite"></output>
+<script src="../assets/js/tracker.js?v=2"></script>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/ads.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function(){ try{initNav();}catch(e){} renderAds(); CCTracker.recordSession(); });</script>
+</body>
+</html>

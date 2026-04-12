@@ -139,4 +139,84 @@
     <xhtml:link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/productivity-tips.html"/>
   </url>
 
+  <url>
+    <loc>https://claudekorea.com/blog/claude-code-2026-features.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/claude-code-2026-features.html"/>
+  </url>
+
+  <url>
+    <loc>https://claudekorea.com/blog/claude-code-vscode-setup.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/claude-code-vscode-setup.html"/>
+  </url>
+
+  <url>
+    <loc>https://claudekorea.com/blog/prompt-engineering-tips.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/prompt-engineering-tips.html"/>
+  </url>
+
+  <url>
+    <loc>https://claudekorea.com/blog/claude-md-guide.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/claude-md-guide.html"/>
+  </url>
+
+  <url>
+    <loc>https://claudekorea.com/blog/ai-code-review-2026.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/ai-code-review-2026.html"/>
+  </url>
+
+  <url>
+    <loc>https://claudekorea.com/blog/claude-code-github-actions.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/claude-code-github-actions.html"/>
+  </url>
+
+  <url>
+    <loc>https://claudekorea.com/blog/claude-code-testing-guide.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/claude-code-testing-guide.html"/>
+  </url>
+
+  <url>
+    <loc>https://claudekorea.com/blog/claude-code-security-audit.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/claude-code-security-audit.html"/>
+  </url>
+
+  <url>
+    <loc>https://claudekorea.com/blog/claude-code-team-setup.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/claude-code-team-setup.html"/>
+  </url>
+
+  <url>
+    <loc>https://claudekorea.com/blog/claude-code-pricing-2026.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/claude-code-pricing-2026.html"/>
+  </url>
+
 </urlset>

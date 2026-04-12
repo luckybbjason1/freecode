@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GQHEYDXTHG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GQHEYDXTHG');
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5138416840385352" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026년 Claude Code 신기능 총정리: 알아야 할 모든 업데이트 | Claude Korea</title>
+  <meta name="description" content="2026년 Claude Code의 핵심 신기능을 총정리합니다. Opus 4 모델, 1M 컨텍스트, Agent SDK, MCP 통합 등 개발자가 꼭 알아야 할 업데이트 완전 가이드.">
+  <meta name="keywords" content="Claude Code 2026, 신기능, Opus 4, Agent SDK, MCP, 1M 컨텍스트, Claude Code 업데이트">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Claude Korea">
+  <link rel="canonical" href="https://claudekorea.com/blog/claude-code-2026-features.html">
+  <link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/claude-code-2026-features.html">
+  <link rel="alternate" hreflang="x-default" href="https://claudekorea.com/blog/claude-code-2026-features.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="2026년 Claude Code 신기능 총정리: 알아야 할 모든 업데이트">
+  <meta property="og:description" content="2026년 Claude Code의 핵심 신기능을 총정리합니다. Opus 4, 1M 컨텍스트, Agent SDK 등 개발자 필수 업데이트 가이드.">
+  <meta property="og:image" content="https://claudekorea.com/assets/img/og-image.svg">
+  <meta property="og:url" content="https://claudekorea.com/blog/claude-code-2026-features.html">
+  <meta property="og:site_name" content="Claude Korea">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="2026년 Claude Code 신기능 총정리: 알아야 할 모든 업데이트">
+  <meta name="twitter:description" content="2026년 Claude Code 핵심 신기능 완전 정리. Opus 4, Agent SDK, MCP 통합 등 개발자 필수 업데이트.">
+  <meta name="twitter:image" content="https://claudekorea.com/assets/img/og-image.svg">
+  <script type="application/ld+json">
+  [
+    {"@context":"https://schema.org","@type":"Article","headline":"2026년 Claude Code 신기능 총정리: 알아야 할 모든 업데이트","description":"2026년 Claude Code의 핵심 신기능을 총정리합니다. Opus 4 모델, 1M 컨텍스트, Agent SDK, MCP 통합 등 개발자가 꼭 알아야 할 업데이트 완전 가이드.","image":"https://claudekorea.com/assets/img/og-image.svg","datePublished":"2026-04-13","dateModified":"2026-04-13","inLanguage":"ko-KR","author":{"@type":"Organization","name":"Claude Korea","url":"https://claudekorea.com"},"publisher":{"@type":"Organization","name":"Claude Korea","logo":{"@type":"ImageObject","url":"https://claudekorea.com/assets/img/logo.svg"}},"url":"https://claudekorea.com/blog/claude-code-2026-features.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://claudekorea.com/blog/claude-code-2026-features.html"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://claudekorea.com/"},{"@type":"ListItem","position":2,"name":"블로그","item":"https://claudekorea.com/blog.html"},{"@type":"ListItem","position":3,"name":"Claude Code 2026 신기능","item":"https://claudekorea.com/blog/claude-code-2026-features.html"}]}
+  ]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <style>
+    .article-hero { padding: 8rem 0 4rem; text-align: center; background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(124,106,245,0.08) 0%, transparent 70%); }
+    .article-body { max-width: 760px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .article-body h2 { font-size: var(--text-xl); font-weight: 700; color: var(--text-primary); margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .article-body h3 { font-size: var(--text-lg); font-weight: 700; color: var(--text-primary); margin: 2rem 0 0.75rem; }
+    .article-body p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { color: var(--text-secondary); padding-left: 1.5rem; margin-bottom: 1.25rem; line-height: 1.8; }
+    .article-body li { margin-bottom: 0.5rem; }
+    .article-body li::marker { color: var(--violet); }
+    .article-body code { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-xs); padding: 0.15rem 0.4rem; font-family: var(--font-mono); font-size: 0.875em; color: var(--cyan); }
+    .article-body pre { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; overflow-x: auto; }
+    .article-body pre code { background: none; border: none; padding: 0; color: var(--text-primary); font-size: 0.9em; }
+    .article-body blockquote { border-left: 3px solid var(--violet); background: var(--violet-dim); padding: 1rem 1.25rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+    .article-body blockquote p { color: var(--text-primary); margin: 0; }
+    .article-body .callout { background: var(--cyan-dim); border: 1px solid rgba(13,240,255,0.18); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; }
+    .article-body .callout p { color: var(--text-primary); margin: 0; }
+    .article-breadcrumb { font-size: var(--text-xs); color: var(--text-muted); margin-bottom: 1.5rem; }
+    .article-breadcrumb a { color: var(--violet-light); }
+    .compare-table { width:100%; border-collapse:collapse; margin: 1.5rem 0; }
+    .compare-table th { background: var(--bg-elevated); color: var(--text-primary); padding: .75rem 1rem; text-align:left; font-size: var(--text-sm); border: 1px solid rgba(255,255,255,0.07); }
+    .compare-table td { padding: .65rem 1rem; color: var(--text-secondary); font-size: var(--text-sm); border: 1px solid rgba(255,255,255,0.05); }
+    .compare-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .tip-box { background: var(--gold-dim); border: 1px solid rgba(245,200,66,0.2); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; }
+    .tip-box p { color: var(--gold-light); margin: 0; font-weight: 500; }
+    .related-links { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1rem; margin:2rem 0; }
+    .related-link { background:var(--glass-bg); border:var(--border-glass); border-radius:var(--radius-md); padding:1rem; text-align:center; transition:border-color .2s; }
+    .related-link:hover { border-color:var(--violet); }
+    .related-link span { display:block; font-size:1.5rem; margin-bottom:.4rem; }
+    .related-link a { color:var(--text-primary); font-weight:600; font-size:var(--text-sm); }
+    .article-body img { max-width: 100%; height: auto; border-radius: var(--radius-md); border: var(--border-glass); margin: 1.5rem 0; }
+  </style>
+</head>
+<body>
+<nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
+  <a href="../index.html" class="nav__logo"><img src="../assets/img/logo.svg" alt="Claude Korea" class="nav__logo-img"></a>
+  <ul class="nav__links">
+    <li><a href="../skills.html">스킬</a></li>
+    <li><a href="../agents.html">에이전트</a></li>
+    <li><a href="../commands.html">명령어</a></li>
+    <li><a href="../mcps.html">MCP</a></li>
+    <li><a href="../blog.html" class="active">블로그</a></li>
+  </ul>
+  <div class="nav__actions"><a href="https://claude.ai" target="_blank" rel="noopener" class="nav__github"><span>Claude 시작</span></a></div>
+  <button class="nav__hamburger" id="nav-hamburger" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<nav class="nav__mobile" id="nav-mobile">
+  <a href="../skills.html">스킬</a><a href="../agents.html">에이전트</a><a href="../commands.html">명령어</a><a href="../mcps.html">MCP</a><a href="../blog.html">블로그</a>
+</nav>
+
+<div id="ad-header-banner" class="ad-slot ad-slot--header" aria-label="광고"></div>
+
+<header class="article-hero">
+  <div class="container">
+    <nav class="article-breadcrumb" aria-label="현재 위치">
+      <a href="../index.html">홈</a> > <a href="../blog.html">블로그</a> > Claude Code 2026 신기능
+    </nav>
+    <h1 style="font-size:var(--text-3xl);font-weight:700;margin-bottom:1rem;line-height:1.2;">2026년 Claude Code 신기능 총정리: 알아야 할 모든 업데이트</h1>
+    <p style="color:var(--text-secondary);max-width:620px;margin:0 auto 1.5rem;">Opus 4 모델, 1M 컨텍스트 윈도우, Agent SDK, 향상된 MCP 지원 등 2026년 Claude Code의 모든 변화를 한 곳에서 확인하세요.</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:1rem;font-size:var(--text-xs);color:var(--text-muted);">
+      <span>Claude Korea</span><span>·</span><span>2026년 4월</span><span>·</span><span>12분 읽기</span><span>·</span><span class="badge badge--gold">인기</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body" itemscope itemtype="https://schema.org/Article">
+
+  <p>2026년은 Claude Code에 있어 가장 혁신적인 해라 할 수 있습니다. Anthropic은 올해 들어 Opus 4 모델 출시, 100만 토큰 컨텍스트 윈도우 확장, Agent SDK 공개, 그리고 MCP(Model Context Protocol) 통합 강화 등 개발자 경험을 근본적으로 바꾸는 대규모 업데이트를 연이어 발표했습니다. 이 글에서는 2026년 Claude Code에 추가된 모든 신기능을 체계적으로 정리하고, 각 기능이 실제 개발 워크플로우에 어떤 영향을 미치는지 구체적인 코드 예제와 함께 살펴봅니다.</p>
+
+  <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=760&q=80" alt="AI 기술 발전을 상징하는 미래적 디지털 인터페이스" loading="lazy">
+
+  <h2>Opus 4 모델: 코딩 성능의 새로운 기준</h2>
+
+  <p>2026년 Claude Code의 가장 큰 변화는 단연 Opus 4 모델의 도입입니다. 이전 세대인 Sonnet 3.5와 비교했을 때, Opus 4는 코딩 벤치마크에서 평균 40% 이상의 성능 향상을 보여줍니다. 특히 복잡한 멀티파일 리팩토링, 대규모 코드베이스 분석, 그리고 아키텍처 수준의 의사결정에서 눈에 띄는 차이를 만들어냅니다.</p>
+
+  <h3>Opus 4의 핵심 개선 사항</h3>
+
+  <p>Opus 4 모델은 다음과 같은 핵심 영역에서 크게 개선되었습니다.</p>
+
+  <ul>
+    <li><strong>코드 이해력 향상:</strong> 수만 줄 규모의 코드베이스를 한 번에 분석하고, 함수 간 의존성과 데이터 흐름을 정확하게 추적합니다. 이전 모델에서 놓치던 미묘한 타입 불일치나 잠재적 런타임 에러도 사전에 감지할 수 있게 되었습니다.</li>
+    <li><strong>장문 생성 품질:</strong> 1,000줄 이상의 코드를 생성할 때도 일관된 코딩 스타일과 네이밍 컨벤션을 유지합니다. 파일 앞부분에서 정의한 패턴을 파일 끝까지 정확하게 따르는 능력이 크게 향상되었습니다.</li>
+    <li><strong>멀티언어 지원:</strong> TypeScript, Python, Rust, Go, Java, Kotlin, Swift 등 주요 프로그래밍 언어에서 모두 최고 수준의 성능을 발휘합니다. 특히 Rust의 소유권 시스템이나 TypeScript의 복잡한 제네릭 타입 추론에서 이전 모델 대비 큰 폭의 개선이 있었습니다.</li>
+    <li><strong>추론 능력 강화:</strong> 복잡한 알고리즘 설계, 시스템 아키텍처 결정, 성능 최적화 방안 도출 등 고수준의 추론이 필요한 작업에서 전문 개발자 수준의 판단력을 보여줍니다.</li>
+  </ul>
+
+  <h3>Opus 4 모델 선택 방법</h3>
+
+  <p>Claude Code에서 Opus 4 모델을 사용하려면 세션 시작 시 모델을 지정하거나 설정 파일에서 기본 모델을 변경할 수 있습니다.</p>
+
+  <pre><code># 터미널에서 Opus 4 모델로 Claude Code 시작
+claude --model opus-4
+
+# 또는 환경변수로 기본 모델 설정
+export CLAUDE_MODEL=opus-4
+claude</code></pre>
+
+  <p>프로젝트별로 다른 모델을 사용하고 싶다면 <code>.claude/settings.json</code> 파일에서 설정할 수 있습니다.</p>
+
+  <pre><code>{
+  "model": "opus-4",
+  "contextWindow": "1m",
+  "preferences": {
+    "codeStyle": "concise",
+    "language": "ko"
+  }
+}</code></pre>
+
+  <div class="tip-box">
+    <p>팁: Opus 4는 복잡한 리팩토링이나 아키텍처 설계에 최적화되어 있습니다. 단순한 코드 수정이나 빠른 질의응답에는 Sonnet 모델이 더 비용 효율적일 수 있습니다.</p>
+  </div>
+
+  <h2>1M 컨텍스트 윈도우: 대규모 코드베이스 완전 정복</h2>
+
+  <p>2026년 Claude Code는 컨텍스트 윈도우를 100만 토큰으로 확장했습니다. 이는 일반적인 프로젝트에서 수천 개의 소스 파일을 한 번의 세션에서 분석할 수 있는 용량입니다. 이전의 200K 토큰 제한에서는 대규모 모노레포나 레거시 코드베이스를 다룰 때 컨텍스트 부족으로 인한 정보 손실이 불가피했지만, 이제 그 한계가 사실상 사라졌습니다.</p>
+
+  <h3>1M 컨텍스트의 실제 활용 시나리오</h3>
+
+  <p>100만 토큰 컨텍스트는 다음과 같은 상황에서 특히 빛을 발합니다.</p>
+
+  <ol>
+    <li><strong>전체 프로젝트 리팩토링:</strong> 수백 개의 파일에 걸친 API 변경이나 디자인 패턴 전환 작업을 한 번의 세션에서 완료할 수 있습니다. 예를 들어, REST API에서 GraphQL로의 마이그레이션이나 클래스 기반 컴포넌트에서 함수형 컴포넌트로의 전환 같은 대규모 작업이 가능합니다.</li>
+    <li><strong>레거시 코드 분석:</strong> 문서가 부족한 레거시 시스템의 전체 코드를 로드하여 아키텍처를 파악하고, 숨겨진 의존성을 발견하며, 리팩토링 계획을 수립할 수 있습니다.</li>
+    <li><strong>크로스 리포지토리 작업:</strong> 마이크로서비스 아키텍처에서 여러 서비스의 코드를 동시에 분석하여 일관된 API 인터페이스를 유지하거나, 서비스 간 데이터 흐름을 추적할 수 있습니다.</li>
+    <li><strong>테스트 커버리지 확장:</strong> 전체 프로젝트의 코드를 한 번에 파악하여 테스트가 부족한 영역을 식별하고, 엣지 케이스를 포함한 포괄적인 테스트 스위트를 생성할 수 있습니다.</li>
+  </ol>
+
+  <pre><code># 대규모 프로젝트에서 1M 컨텍스트 활용 예시
+claude "이 프로젝트의 전체 아키텍처를 분석하고,
+  모든 API 엔드포인트의 인터페이스를 TypeScript 타입으로 정의해줘.
+  src/ 디렉토리 전체를 분석해야 해."
+
+# 결과: 수백 개 파일을 분석하여 완전한 타입 정의 생성</code></pre>
+
+  <div class="callout">
+    <p>참고: 1M 컨텍스트를 최대한 활용하려면 <code>CLAUDE.md</code> 파일에 프로젝트 구조와 핵심 규칙을 명시해 두는 것이 좋습니다. Claude Code는 이 파일을 우선적으로 참조하여 프로젝트의 맥락을 빠르게 파악합니다.</p>
+  </div>
+
+  <h2>Agent SDK: 자율 에이전트 개발의 새 시대</h2>
+
+  <p>2026년 가장 주목할 만한 신기능 중 하나는 <a href="../agents.html">Agent SDK</a>의 공식 출시입니다. Agent SDK를 사용하면 Claude Code의 능력을 프로그래밍 방식으로 활용하는 자율 에이전트를 구축할 수 있습니다. 이는 단순히 프롬프트를 보내고 응답을 받는 수준을 넘어, 도구 사용, 파일 시스템 접근, 외부 API 호출 등을 자율적으로 수행하는 지능형 에이전트를 만들 수 있음을 의미합니다.</p>
+
+  <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=760&q=80" alt="코드 개발 환경에서 작업하는 모니터 화면" loading="lazy">
+
+  <h3>Agent SDK 기본 구조</h3>
+
+  <p>Agent SDK는 TypeScript와 Python 모두를 지원하며, 직관적인 API를 통해 에이전트를 정의하고 실행할 수 있습니다.</p>
+
+  <pre><code>import { Agent, Tool, Context } from '@anthropic-ai/agent-sdk';
+
+// 코드 리뷰 에이전트 정의
+const codeReviewAgent = new Agent({
+  name: 'code-reviewer',
+  model: 'opus-4',
+  systemPrompt: `당신은 시니어 개발자로서 코드 리뷰를 수행합니다.
+    보안 취약점, 성능 이슈, 코드 스타일을 종합적으로 검토하세요.`,
+  tools: [
+    Tool.readFile,
+    Tool.searchCode,
+    Tool.runCommand,
+  ],
+  maxTurns: 20,
+});
+
+// 에이전트 실행
+const result = await codeReviewAgent.run({
+  prompt: 'src/ 디렉토리의 최근 변경사항을 리뷰해주세요.',
+  context: new Context({ workdir: '/path/to/project' }),
+});
+
+console.log(result.summary);
+console.log(result.findings);</code></pre>
+
+  <h3>멀티 에이전트 오케스트레이션</h3>
+
+  <p>Agent SDK의 진정한 강점은 여러 에이전트를 조합하여 복잡한 워크플로우를 구성할 수 있다는 점입니다. 예를 들어, 코드 작성 에이전트, 테스트 생성 에이전트, 코드 리뷰 에이전트를 순차적으로 실행하는 파이프라인을 구축할 수 있습니다.</p>
+
+  <pre><code>import { Pipeline, Agent } from '@anthropic-ai/agent-sdk';
+
+const devPipeline = new Pipeline({
+  agents: [
+    { agent: codeWriterAgent, output: 'code' },
+    { agent: testWriterAgent, input: 'code', output: 'tests' },
+    { agent: codeReviewAgent, input: ['code', 'tests'], output: 'review' },
+  ],
+  onFailure: 'retry-with-feedback',
+  maxRetries: 3,
+});
+
+const result = await devPipeline.execute({
+  task: '사용자 인증 모듈에 OAuth 2.0 소셜 로그인 기능을 추가해주세요.',
+});</code></pre>
+
+  <p>에이전트에 대한 더 자세한 내용은 <a href="../agents.html">에이전트 가이드</a> 페이지에서 확인할 수 있습니다.</p>
+
+  <h2>향상된 MCP(Model Context Protocol) 지원</h2>
+
+  <p>2026년 Claude Code는 <a href="../mcps.html">MCP(Model Context Protocol)</a> 지원을 대폭 강화했습니다. MCP는 Claude Code가 외부 도구, 데이터베이스, API, 클라우드 서비스 등과 표준화된 방식으로 통신할 수 있게 해주는 프로토콜입니다. 이번 업데이트에서는 MCP 서버 연결의 안정성, 성능, 그리고 개발자 경험이 전반적으로 크게 개선되었습니다.</p>
+
+  <h3>MCP 서버 자동 탐색 및 연결</h3>
+
+  <p>이전에는 MCP 서버를 수동으로 설정해야 했지만, 이제 Claude Code는 프로젝트에서 사용 중인 도구와 서비스를 자동으로 탐색하고 관련 MCP 서버를 추천합니다. <code>.mcp.json</code> 파일을 통해 프로젝트별 MCP 서버를 선언적으로 관리할 수 있습니다.</p>
+
+  <pre><code>{
+  "mcpServers": {
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/mcp-postgres"],
+      "env": {
+        "DATABASE_URL": "${DATABASE_URL}"
+      }
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/mcp-github"],
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+      }
+    },
+    "slack": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/mcp-slack"]
+    }
+  }
+}</code></pre>
+
+  <p>MCP 서버의 설정과 활용에 대한 심층 가이드는 <a href="mcp-guide.html">MCP 완전 가이드</a> 블로그 포스트를 참고하세요.</p>
+
+  <div class="tip-box">
+    <p>팁: MCP 서버는 프로젝트 루트의 <code>.mcp.json</code> 파일뿐만 아니라 <code>~/.claude/settings.json</code>에서 전역으로도 설정할 수 있습니다. 자주 사용하는 도구는 전역 설정에 추가하면 편리합니다.</p>
+  </div>
+
+  <h2>VS Code 및 JetBrains IDE 통합</h2>
+
+  <p>Claude Code의 IDE 통합이 2026년에 크게 발전했습니다. VS Code 확장과 JetBrains 플러그인 모두 네이티브 수준의 통합을 제공하며, IDE를 벗어나지 않고도 Claude Code의 모든 기능을 활용할 수 있게 되었습니다.</p>
+
+  <h3>VS Code 확장 주요 기능</h3>
+
+  <ul>
+    <li><strong>인라인 코드 제안:</strong> 코드 작성 중 실시간으로 Claude의 제안을 받을 수 있습니다. GitHub Copilot과 유사하지만, Opus 4의 강력한 추론 능력 덕분에 더 정확하고 맥락에 맞는 제안을 제공합니다.</li>
+    <li><strong>사이드바 채팅:</strong> VS Code 사이드바에서 직접 Claude와 대화할 수 있으며, 현재 열린 파일, 선택한 코드, 워크스페이스 전체를 컨텍스트로 자동 포함합니다.</li>
+    <li><strong>터미널 통합:</strong> VS Code 내장 터미널에서 Claude Code CLI를 실행하면, IDE의 파일 탐색기와 에디터가 자동으로 동기화됩니다.</li>
+    <li><strong>Diff 뷰 지원:</strong> Claude가 제안하는 코드 변경사항을 VS Code의 네이티브 Diff 뷰어로 확인하고, 변경 사항별로 수락 또는 거부할 수 있습니다.</li>
+  </ul>
+
+  <p>VS Code 환경에서의 자세한 설치 및 설정 방법은 <a href="claude-code-vscode-setup.html">VS Code 설정 완전 가이드</a>에서 확인하세요.</p>
+
+  <h3>JetBrains 플러그인</h3>
+
+  <p>IntelliJ IDEA, WebStorm, PyCharm 등 JetBrains 제품군을 위한 공식 플러그인도 출시되었습니다. 프로젝트 인덱싱 정보를 활용하여 더 정밀한 코드 분석과 제안을 제공하며, JetBrains의 리팩토링 도구와 원활하게 통합됩니다.</p>
+
+  <h2>Web App: claude.ai/code</h2>
+
+  <p>설치 없이 브라우저에서 바로 Claude Code를 사용할 수 있는 웹 앱이 <code>claude.ai/code</code>에서 제공됩니다. 이 웹 앱은 로컬 파일 시스템 접근이 필요 없는 작업에 최적화되어 있으며, 코드 리뷰, 알고리즘 설계, 기술 문서 작성 등에 활용할 수 있습니다.</p>
+
+  <p>웹 앱의 주요 특징은 다음과 같습니다.</p>
+
+  <ul>
+    <li><strong>브라우저 기반 코드 에디터:</strong> Monaco 에디터 기반의 코드 편집기가 내장되어 있어, 코드를 직접 작성하고 Claude의 도움을 받을 수 있습니다.</li>
+    <li><strong>프로젝트 가져오기:</strong> GitHub 리포지토리를 URL로 연결하여 전체 코드를 컨텍스트에 로드할 수 있습니다.</li>
+    <li><strong>공유 및 협업:</strong> 세션을 팀원과 공유하여 실시간 협업이 가능합니다.</li>
+    <li><strong>세션 영속성:</strong> 브라우저를 닫아도 세션 상태가 유지되며, 언제든지 이어서 작업할 수 있습니다.</li>
+  </ul>
+
+  <h2>개선된 훅(Hooks) 시스템</h2>
+
+  <p>2026년 Claude Code의 <a href="../hooks.html">훅 시스템</a>이 대폭 강화되었습니다. 훅을 사용하면 Claude의 작업 전후에 커스텀 스크립트를 자동으로 실행할 수 있습니다. 이번 업데이트에서 새롭게 추가된 훅 타입과 향상된 기능을 살펴보겠습니다.</p>
+
+  <h3>새로운 훅 타입</h3>
+
+  <pre><code>{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "command": "npm run lint:check -- $CLAUDE_FILE_PATH",
+        "description": "파일 수정 전 린트 검사"
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "command": "npm run format -- $CLAUDE_FILE_PATH",
+        "description": "파일 수정 후 자동 포맷팅"
+      }
+    ],
+    "Stop": [
+      {
+        "command": "npm run test:affected",
+        "description": "Claude 작업 완료 후 영향받은 테스트 실행"
+      }
+    ],
+    "PreCommit": [
+      {
+        "command": "npm run typecheck && npm run lint",
+        "description": "커밋 전 타입 체크 및 린트 실행"
+      }
+    ]
+  }
+}</code></pre>
+
+  <p>훅 시스템의 더 자세한 활용법은 <a href="hooks-guide.html">훅 완전 가이드</a>에서 확인하세요.</p>
+
+  <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?w=760&q=80" alt="첨단 기술 서버 인프라와 데이터 센터" loading="lazy">
+
+  <h2>백그라운드 에이전트: 비동기 작업의 혁신</h2>
+
+  <p>백그라운드 에이전트는 2026년에 새롭게 도입된 기능으로, 시간이 오래 걸리는 작업을 백그라운드에서 자율적으로 실행할 수 있게 해줍니다. 개발자가 다른 작업을 하는 동안 Claude가 독립적으로 복잡한 태스크를 수행하고, 완료되면 결과를 알려줍니다.</p>
+
+  <h3>백그라운드 에이전트 활용 예시</h3>
+
+  <pre><code># 백그라운드에서 대규모 리팩토링 실행
+claude --background "src/ 디렉토리의 모든 클래스 컴포넌트를
+  함수형 컴포넌트로 변환하고,
+  각 변환마다 테스트가 통과하는지 확인해줘."
+
+# 백그라운드 작업 상태 확인
+claude --status
+
+# 결과:
+# [1] 리팩토링 진행중 (42/67 파일 완료) - 예상 완료 시간: 15분
+# [2] 테스트 스위트 생성 완료 - 결과 대기중</code></pre>
+
+  <p>백그라운드 에이전트는 다음과 같은 작업에 특히 유용합니다.</p>
+
+  <ul>
+    <li><strong>대규모 코드 마이그레이션:</strong> 프레임워크 버전 업그레이드나 라이브러리 교체 등 수백 개 파일에 영향을 미치는 작업을 자동으로 처리합니다.</li>
+    <li><strong>포괄적인 테스트 생성:</strong> 전체 프로젝트를 분석하여 누락된 테스트를 자동으로 생성합니다.</li>
+    <li><strong>문서 자동 생성:</strong> 코드 변경사항을 기반으로 API 문서, 변경 로그, 릴리스 노트 등을 자동으로 작성합니다.</li>
+    <li><strong>코드 품질 감사:</strong> 전체 코드베이스에 대한 보안 감사, 성능 분석, 코드 스타일 검사를 백그라운드에서 수행합니다.</li>
+  </ul>
+
+  <h2>워크트리 격리(Worktree Isolation)</h2>
+
+  <p>워크트리 격리는 백그라운드 에이전트와 함께 도입된 기능으로, Claude의 작업을 독립적인 Git 워크트리에서 수행하여 현재 작업 디렉토리에 영향을 주지 않도록 합니다. 이를 통해 개발자는 현재 브랜치에서 계속 작업하면서, Claude가 별도의 워크트리에서 리팩토링이나 기능 개발을 동시에 진행할 수 있습니다.</p>
+
+  <pre><code># 워크트리 격리 모드로 작업 시작
+claude --worktree "feature/oauth-integration" \
+  "OAuth 2.0 소셜 로그인을 구현해줘.
+   Google, GitHub, Kakao 로그인을 지원해야 해."
+
+# Claude가 별도 워크트리에서 작업 수행
+# 현재 브랜치는 영향 받지 않음
+
+# 작업 완료 후 결과 확인 및 머지
+claude --worktree-status
+git merge feature/oauth-integration</code></pre>
+
+  <p>워크트리 격리의 가장 큰 장점은 안전성입니다. Claude의 작업이 현재 진행 중인 개발에 전혀 영향을 미치지 않으므로, 실험적인 리팩토링이나 대규모 변경 작업을 부담 없이 시도할 수 있습니다. 작업 결과가 만족스럽지 않으면 해당 워크트리를 삭제하기만 하면 됩니다.</p>
+
+  <h2>2025년 대비 2026년 기능 비교표</h2>
+
+  <p>다음 표는 2025년과 2026년 Claude Code의 주요 기능을 비교한 것입니다.</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>기능</th>
+        <th>2025년 (이전)</th>
+        <th>2026년 (현재)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>기본 모델</td>
+        <td>Sonnet 3.5 / Opus 3</td>
+        <td>Opus 4 (1M 컨텍스트)</td>
+      </tr>
+      <tr>
+        <td>컨텍스트 윈도우</td>
+        <td>200K 토큰</td>
+        <td>1,000K (100만) 토큰</td>
+      </tr>
+      <tr>
+        <td>에이전트 SDK</td>
+        <td>미지원</td>
+        <td>TypeScript/Python SDK 공식 출시</td>
+      </tr>
+      <tr>
+        <td>MCP 지원</td>
+        <td>기본 MCP 서버 연결</td>
+        <td>자동 탐색, 선언적 관리, 풍부한 에코시스템</td>
+      </tr>
+      <tr>
+        <td>IDE 통합</td>
+        <td>VS Code 확장 (베타)</td>
+        <td>VS Code 정식 + JetBrains 플러그인</td>
+      </tr>
+      <tr>
+        <td>웹 앱</td>
+        <td>미지원</td>
+        <td>claude.ai/code 정식 출시</td>
+      </tr>
+      <tr>
+        <td>훅 시스템</td>
+        <td>PreToolUse, PostToolUse</td>
+        <td>+ PreCommit, PostCommit, OnError, Stop 등</td>
+      </tr>
+      <tr>
+        <td>백그라운드 에이전트</td>
+        <td>미지원</td>
+        <td>비동기 백그라운드 작업 실행</td>
+      </tr>
+      <tr>
+        <td>워크트리 격리</td>
+        <td>미지원</td>
+        <td>독립 Git 워크트리에서 안전하게 작업</td>
+      </tr>
+      <tr>
+        <td>스킬 시스템</td>
+        <td>기본 슬래시 명령어</td>
+        <td>커스텀 스킬 정의 및 공유 지원</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>스킬 시스템의 진화</h2>
+
+  <p>2026년 Claude Code의 <a href="../skills.html">스킬 시스템</a>은 단순한 슬래시 명령어를 넘어 완전한 확장 프레임워크로 발전했습니다. 개발자는 자신만의 커스텀 스킬을 정의하고, 팀과 공유하며, 커뮤니티에서 다른 개발자의 스킬을 가져와 사용할 수 있습니다.</p>
+
+  <h3>커스텀 스킬 정의</h3>
+
+  <pre><code># .claude/skills/deploy.md
+---
+name: deploy
+description: 프로덕션 배포를 자동화합니다
+triggers:
+  - /deploy
+  - "배포해줘"
+---
+
+## 배포 프로세스
+1. 먼저 `npm run test`를 실행하여 모든 테스트가 통과하는지 확인합니다.
+2. `npm run build`로 프로덕션 빌드를 생성합니다.
+3. 빌드 결과물의 사이즈를 확인하고 이전 배포와 비교합니다.
+4. `npm run deploy:staging`으로 스테이징에 먼저 배포합니다.
+5. 스테이징 환경에서 스모크 테스트를 실행합니다.
+6. 문제가 없으면 `npm run deploy:production`으로 프로덕션에 배포합니다.</code></pre>
+
+  <p>커스텀 스킬에 대한 자세한 내용은 <a href="custom-skills.html">커스텀 스킬 가이드</a>를 참고하세요.</p>
+
+  <h2>명령어 시스템 강화</h2>
+
+  <p>Claude Code의 <a href="../commands.html">명령어 시스템</a>도 2026년에 큰 폭으로 개선되었습니다. 기존의 기본 슬래시 명령어에 더해, 컨텍스트 인식형 명령어, 조건부 실행, 명령어 체이닝 등의 고급 기능이 추가되었습니다.</p>
+
+  <pre><code># 명령어 체이닝 예시
+/review && /test && /commit -m "리뷰 및 테스트 완료 후 자동 커밋"
+
+# 조건부 명령어 실행
+/test --on-pass "/deploy staging" --on-fail "/notify team"
+
+# 컨텍스트 인식형 명령어
+/explain  # 현재 선택된 코드 또는 열린 파일을 자동 인식</code></pre>
+
+  <h2>성능 최적화와 안정성 개선</h2>
+
+  <p>2026년 Claude Code는 사용자가 눈으로 느낄 수 있는 수준의 성능 최적화가 이루어졌습니다. 첫 응답까지의 시간(Time to First Token)이 평균 30% 단축되었고, 대규모 파일 처리 시 메모리 사용량도 크게 줄었습니다.</p>
+
+  <ul>
+    <li><strong>스트리밍 응답 개선:</strong> 코드 생성 시 청크 단위로 실시간 스트리밍되어 대기 시간이 체감적으로 줄었습니다.</li>
+    <li><strong>캐싱 시스템:</strong> 이전에 분석한 파일과 컨텍스트를 지능적으로 캐싱하여 반복 작업의 속도가 크게 향상되었습니다.</li>
+    <li><strong>오류 복구:</strong> 네트워크 연결 끊김이나 API 에러 발생 시 자동으로 재시도하며, 세션 상태를 안전하게 보존합니다.</li>
+    <li><strong>멀티스레드 처리:</strong> 대규모 프로젝트 분석 시 여러 파일을 병렬로 처리하여 전체 분석 시간을 단축합니다.</li>
+  </ul>
+
+  <h2>시작하기: 업그레이드 방법</h2>
+
+  <p>이 모든 신기능을 사용하려면 Claude Code를 최신 버전으로 업그레이드하면 됩니다. 터미널에서 다음 명령어를 실행하세요.</p>
+
+  <pre><code># Claude Code 최신 버전으로 업그레이드
+npm install -g @anthropic-ai/claude-code@latest
+
+# 버전 확인
+claude --version
+
+# 새 기능 둘러보기
+claude --whats-new</code></pre>
+
+  <p>처음 Claude Code를 사용하는 분은 <a href="getting-started.html">시작하기 가이드</a>를 먼저 읽어보시는 것을 추천합니다. 기본 설치부터 첫 번째 프로젝트 설정까지 단계별로 안내합니다.</p>
+
+  <blockquote>
+    <p>2026년 Claude Code는 단순한 코딩 어시스턴트를 넘어, 팀의 핵심 개발 인프라로 자리잡고 있습니다. Opus 4 모델의 강력한 추론 능력, 1M 컨텍스트 윈도우의 방대한 분석 범위, Agent SDK의 유연한 확장성이 결합되어 개발자의 생산성을 전례 없는 수준으로 끌어올립니다.</p>
+  </blockquote>
+
+  <h2>마무리</h2>
+
+  <p>2026년 Claude Code의 업데이트는 AI 기반 개발 도구의 새로운 이정표를 세웠습니다. Opus 4 모델의 탁월한 코딩 성능, 100만 토큰 컨텍스트 윈도우의 한계 없는 분석 능력, Agent SDK를 통한 자율 에이전트 구축, 강화된 MCP 생태계, 그리고 IDE 네이티브 통합까지 -- 이 모든 기능이 하나의 도구에 통합되어 개발자의 일상을 근본적으로 바꾸고 있습니다.</p>
+
+  <p>아직 이 기능들을 사용해보지 않았다면, 오늘 바로 Claude Code를 업데이트하고 새로운 개발 경험을 시작해 보세요. 특히 Agent SDK와 백그라운드 에이전트는 팀의 개발 워크플로우를 자동화하는 데 큰 도움이 될 것입니다. 앞으로도 Claude Korea에서 Claude Code의 최신 소식과 활용 팁을 지속적으로 전달해 드리겠습니다.</p>
+
+  <h2>관련 리소스</h2>
+  <div class="related-links">
+    <div class="related-link">
+      <span>🛠</span>
+      <a href="../skills.html">스킬 목록</a>
+    </div>
+    <div class="related-link">
+      <span>🤖</span>
+      <a href="../agents.html">에이전트 가이드</a>
+    </div>
+    <div class="related-link">
+      <span>🔌</span>
+      <a href="../mcps.html">MCP 서버</a>
+    </div>
+    <div class="related-link">
+      <span>⚡</span>
+      <a href="hooks-guide.html">훅 완전 가이드</a>
+    </div>
+    <div class="related-link">
+      <span>📋</span>
+      <a href="../commands.html">명령어 목록</a>
+    </div>
+    <div class="related-link">
+      <span>💻</span>
+      <a href="claude-code-vscode-setup.html">VS Code 설정</a>
+    </div>
+  </div>
+</article>
+
+<div id="ad-before-footer" class="ad-slot ad-slot--before-footer" aria-label="광고"></div>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__bottom" style="border-top:var(--border-glass);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <a href="../index.html" class="gradient-text" style="font-weight:700;">Claude Korea</a>
+      <a href="../blog.html" style="color:var(--text-muted);font-size:var(--text-xs);">← 블로그 목록으로</a>
+      <span style="color:var(--text-muted);font-size:var(--text-xs);">© 2026 Claude Korea</span>
+    </div>
+  </div>
+</footer>
+
+<div id="ad-sticky-bottom" class="ad-slot ad-slot--sticky" aria-label="광고"></div>
+<output id="toast" class="toast" aria-live="polite"></output>
+<script src="../assets/js/tracker.js?v=2"></script>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/ads.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function(){ try{initNav();}catch(e){} renderAds(); CCTracker.recordSession(); });</script>
+</body>
+</html>

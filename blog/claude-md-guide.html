@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GQHEYDXTHG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GQHEYDXTHG');
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5138416840385352" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLAUDE.md 작성법 완전 가이드: 프로젝트 맞춤 AI 어시스턴트 만들기 | Claude Korea</title>
+  <meta name="description" content="CLAUDE.md 파일로 Claude Code를 프로젝트에 맞게 커스터마이징하는 방법. 구조, 문법, 실전 예제 5가지로 팀 전체의 개발 품질을 높이세요.">
+  <meta name="keywords" content="CLAUDE.md, Claude Code 설정, 프로젝트 컨텍스트, AI 커스터마이징, 코딩 가이드라인">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Claude Korea">
+  <link rel="canonical" href="https://claudekorea.com/blog/claude-md-guide.html">
+  <link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/claude-md-guide.html">
+  <link rel="alternate" hreflang="x-default" href="https://claudekorea.com/blog/claude-md-guide.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="CLAUDE.md 작성법 완전 가이드: 프로젝트 맞춤 AI 어시스턴트 만들기">
+  <meta property="og:description" content="CLAUDE.md 파일로 Claude Code를 프로젝트에 맞게 커스터마이징하는 방법. 구조, 문법, 실전 예제 5가지.">
+  <meta property="og:image" content="https://claudekorea.com/assets/img/og-image.svg">
+  <meta property="og:url" content="https://claudekorea.com/blog/claude-md-guide.html">
+  <meta property="og:site_name" content="Claude Korea">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CLAUDE.md 작성법 완전 가이드">
+  <meta name="twitter:description" content="CLAUDE.md 파일로 Claude Code를 프로젝트에 맞게 커스터마이징하는 방법. 실전 예제 5가지 포함.">
+  <meta name="twitter:image" content="https://claudekorea.com/assets/img/og-image.svg">
+  <script type="application/ld+json">
+  [
+    {"@context":"https://schema.org","@type":"Article","headline":"CLAUDE.md 작성법 완전 가이드: 프로젝트 맞춤 AI 어시스턴트 만들기","description":"CLAUDE.md 파일로 Claude Code를 프로젝트에 맞게 커스터마이징하는 방법. 구조, 문법, 실전 예제 5가지로 팀 전체의 개발 품질을 높이세요.","image":"https://claudekorea.com/assets/img/og-image.svg","datePublished":"2026-04-13","dateModified":"2026-04-13","inLanguage":"ko-KR","author":{"@type":"Organization","name":"Claude Korea","url":"https://claudekorea.com"},"publisher":{"@type":"Organization","name":"Claude Korea","logo":{"@type":"ImageObject","url":"https://claudekorea.com/assets/img/logo.svg"}},"url":"https://claudekorea.com/blog/claude-md-guide.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://claudekorea.com/blog/claude-md-guide.html"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://claudekorea.com/"},{"@type":"ListItem","position":2,"name":"블로그","item":"https://claudekorea.com/blog.html"},{"@type":"ListItem","position":3,"name":"CLAUDE.md 작성법 가이드","item":"https://claudekorea.com/blog/claude-md-guide.html"}]}
+  ]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <style>
+    .article-hero { padding: 8rem 0 4rem; text-align: center; background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(124,106,245,0.08) 0%, transparent 70%); }
+    .article-body { max-width: 760px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .article-body h2 { font-size: var(--text-xl); font-weight: 700; color: var(--text-primary); margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .article-body h3 { font-size: var(--text-lg); font-weight: 700; color: var(--text-primary); margin: 2rem 0 0.75rem; }
+    .article-body p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { color: var(--text-secondary); padding-left: 1.5rem; margin-bottom: 1.25rem; line-height: 1.8; }
+    .article-body li { margin-bottom: 0.5rem; }
+    .article-body li::marker { color: var(--violet); }
+    .article-body code { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-xs); padding: 0.15rem 0.4rem; font-family: var(--font-mono); font-size: 0.875em; color: var(--cyan); }
+    .article-body pre { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; overflow-x: auto; }
+    .article-body pre code { background: none; border: none; padding: 0; color: var(--text-primary); font-size: 0.9em; }
+    .article-body blockquote { border-left: 3px solid var(--violet); background: var(--violet-dim); padding: 1rem 1.25rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+    .article-body blockquote p { color: var(--text-primary); margin: 0; }
+    .article-body .callout { background: var(--cyan-dim); border: 1px solid rgba(13,240,255,0.18); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; }
+    .article-body .callout p { color: var(--text-primary); margin: 0; }
+    .article-breadcrumb { font-size: var(--text-xs); color: var(--text-muted); margin-bottom: 1.5rem; }
+    .article-breadcrumb a { color: var(--violet-light); }
+    .compare-table { width:100%; border-collapse:collapse; margin: 1.5rem 0; }
+    .compare-table th { background: var(--bg-elevated); color: var(--text-primary); padding: .75rem 1rem; text-align:left; font-size: var(--text-sm); border: 1px solid rgba(255,255,255,0.07); }
+    .compare-table td { padding: .65rem 1rem; color: var(--text-secondary); font-size: var(--text-sm); border: 1px solid rgba(255,255,255,0.05); }
+    .compare-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .tip-box { background: var(--gold-dim); border: 1px solid rgba(245,200,66,0.2); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; }
+    .tip-box p { color: var(--gold-light); margin: 0; font-weight: 500; }
+    .related-links { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1rem; margin:2rem 0; }
+    .related-link { background:var(--glass-bg); border:var(--border-glass); border-radius:var(--radius-md); padding:1rem; text-align:center; transition:border-color .2s; }
+    .related-link:hover { border-color:var(--violet); }
+    .related-link span { display:block; font-size:1.5rem; margin-bottom:.4rem; }
+    .related-link a { color:var(--text-primary); font-weight:600; font-size:var(--text-sm); }
+    .article-body img { max-width: 100%; height: auto; border-radius: var(--radius-md); border: var(--border-glass); margin: 1.5rem 0; }
+  </style>
+</head>
+<body>
+<nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
+  <a href="../index.html" class="nav__logo"><img src="../assets/img/logo.svg" alt="Claude Korea" class="nav__logo-img"></a>
+  <ul class="nav__links">
+    <li><a href="../skills.html">스킬</a></li>
+    <li><a href="../agents.html">에이전트</a></li>
+    <li><a href="../commands.html">명령어</a></li>
+    <li><a href="../mcps.html">MCP</a></li>
+    <li><a href="../blog.html" class="active">블로그</a></li>
+  </ul>
+  <div class="nav__actions"><a href="https://claude.ai" target="_blank" rel="noopener" class="nav__github"><span>Claude 시작</span></a></div>
+  <button class="nav__hamburger" id="nav-hamburger" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<nav class="nav__mobile" id="nav-mobile">
+  <a href="../skills.html">스킬</a><a href="../agents.html">에이전트</a><a href="../commands.html">명령어</a><a href="../mcps.html">MCP</a><a href="../blog.html">블로그</a>
+</nav>
+
+<div id="ad-header-banner" class="ad-slot ad-slot--header" aria-label="광고"></div>
+
+<header class="article-hero">
+  <div class="container">
+    <nav class="article-breadcrumb" aria-label="현재 위치">
+      <a href="../index.html">홈</a> > <a href="../blog.html">블로그</a> > CLAUDE.md 작성법 가이드
+    </nav>
+    <h1 style="font-size:var(--text-3xl);font-weight:700;margin-bottom:1rem;line-height:1.2;">CLAUDE.md 작성법 완전 가이드: 프로젝트 맞춤 AI 어시스턴트 만들기</h1>
+    <p style="color:var(--text-secondary);max-width:620px;margin:0 auto 1.5rem;">CLAUDE.md 하나로 Claude Code가 프로젝트의 모든 규칙을 이해하게 만드는 방법을 알려드립니다.</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:1rem;font-size:var(--text-xs);color:var(--text-muted);">
+      <span>Claude Korea</span><span>·</span><span>2026년 4월</span><span>·</span><span>12분 읽기</span><span>·</span><span class="badge badge--emerald">필수</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body" itemscope itemtype="https://schema.org/Article">
+
+  <h2>CLAUDE.md란 무엇인가</h2>
+
+  <p>CLAUDE.md는 Claude Code가 프로젝트에 진입할 때 자동으로 읽는 마크다운 파일입니다. 이 파일에 프로젝트의 기술 스택, 코딩 컨벤션, 아키텍처 규칙, 금지 패턴 등을 정의해두면, Claude Code가 매 세션마다 해당 정보를 기본 컨텍스트로 활용합니다. 마치 새로 합류한 시니어 개발자에게 건네는 온보딩 문서와 같은 역할을 합니다.</p>
+
+  <p>CLAUDE.md가 없는 상태에서는 매번 프롬프트에 프로젝트 정보를 반복 입력해야 합니다. "이 프로젝트는 Next.js + TypeScript이고, Prisma ORM을 사용하고, 컴포넌트는 함수형으로 작성하고..."라는 컨텍스트를 매 대화의 첫 번째 메시지에서 반복하는 것은 비효율적일 뿐만 아니라, 중요한 규칙을 빠뜨리기 쉽습니다.</p>
+
+  <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=760&q=80" alt="AI 어시스턴트를 프로젝트에 맞게 설정하는 개념 이미지" loading="lazy">
+
+  <p>CLAUDE.md를 작성하면 이 모든 문제가 해결됩니다. 한 번 잘 작성해두면 팀의 모든 개발자가 동일한 품질의 AI 지원을 받을 수 있고, 프로젝트의 일관성이 자동으로 유지됩니다. <a href="../skills.html">Claude Code 스킬</a>과 함께 사용하면 더욱 강력한 자동화가 가능합니다.</p>
+
+  <div class="callout">
+    <p>CLAUDE.md는 Claude Code 전용 파일입니다. .github/copilot-instructions.md, .cursor/rules 등 다른 AI 도구의 설정 파일과는 별도로 관리됩니다. 각 도구에 맞는 설정 파일을 따로 유지하는 것이 좋습니다.</p>
+  </div>
+
+  <h2>파일 위치와 계층 구조</h2>
+
+  <p>CLAUDE.md 파일은 프로젝트 내 여러 위치에 배치할 수 있으며, 각 위치에 따라 적용 범위가 달라집니다. Claude Code는 이 파일들을 계층적으로 읽어들여 합성합니다.</p>
+
+  <h3>프로젝트 루트 CLAUDE.md</h3>
+  <p>프로젝트의 최상위 디렉토리에 위치하는 CLAUDE.md는 프로젝트 전체에 적용되는 규칙을 정의합니다. 기술 스택, 공통 코딩 컨벤션, 아키텍처 원칙 등 모든 팀원과 모든 모듈에 공통으로 적용되는 내용을 여기에 작성합니다.</p>
+
+  <pre><code>my-project/
+├── CLAUDE.md              # 프로젝트 전체 규칙
+├── src/
+│   ├── CLAUDE.md          # src 디렉토리 특화 규칙
+│   ├── frontend/
+│   │   └── CLAUDE.md      # 프론트엔드 특화 규칙
+│   └── backend/
+│       └── CLAUDE.md      # 백엔드 특화 규칙
+├── package.json
+└── tsconfig.json</code></pre>
+
+  <h3>서브디렉토리 CLAUDE.md</h3>
+  <p>서브디렉토리의 CLAUDE.md는 해당 디렉토리와 하위 파일들에만 적용됩니다. 예를 들어 <code>src/frontend/CLAUDE.md</code>에는 React 관련 규칙만, <code>src/backend/CLAUDE.md</code>에는 Express.js 관련 규칙만 작성합니다. Claude Code가 해당 디렉토리의 파일을 작업할 때 자동으로 해당 CLAUDE.md를 참조합니다.</p>
+
+  <h3>계층 병합 규칙</h3>
+  <p>Claude Code는 작업 대상 파일의 경로를 기준으로 상위 디렉토리의 CLAUDE.md부터 순서대로 읽어 병합합니다. 하위 디렉토리의 규칙이 상위 규칙보다 우선합니다. 예를 들어 루트에서 "세미콜론 필수"라고 했지만 <code>src/frontend/CLAUDE.md</code>에서 "세미콜론 없음"이라고 했다면, 프론트엔드 코드에서는 세미콜론 없이 작성됩니다.</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>파일 위치</th>
+        <th>적용 범위</th>
+        <th>권장 내용</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>프로젝트 루트</td>
+        <td>전체 프로젝트</td>
+        <td>기술 스택, 공통 컨벤션, 아키텍처 원칙</td>
+      </tr>
+      <tr>
+        <td>src/</td>
+        <td>소스 코드 전체</td>
+        <td>코드 스타일, import 규칙, 테스트 가이드</td>
+      </tr>
+      <tr>
+        <td>src/frontend/</td>
+        <td>프론트엔드만</td>
+        <td>컴포넌트 패턴, 상태관리, 스타일링 규칙</td>
+      </tr>
+      <tr>
+        <td>src/backend/</td>
+        <td>백엔드만</td>
+        <td>API 패턴, DB 규칙, 인증/인가</td>
+      </tr>
+      <tr>
+        <td>packages/shared/</td>
+        <td>공유 패키지만</td>
+        <td>공유 유틸, 타입 정의 규칙</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="tip-box">
+    <p>팁: 모노레포 환경에서는 각 패키지마다 CLAUDE.md를 두는 것이 매우 효과적입니다. 패키지별로 다른 기술 스택과 컨벤션을 정확히 적용할 수 있습니다.</p>
+  </div>
+
+  <h2>CLAUDE.md의 구조와 문법</h2>
+
+  <p>CLAUDE.md는 일반 마크다운 파일입니다. 특별한 문법이 필요하지 않으며, 표준 마크다운 문법을 사용하여 구조적으로 작성하면 됩니다. Claude Code는 마크다운의 헤딩, 리스트, 코드 블록 등을 자연스럽게 이해합니다.</p>
+
+  <h3>권장 섹션 구조</h3>
+
+  <p>효과적인 CLAUDE.md는 다음과 같은 섹션으로 구성됩니다. 모든 섹션이 필수는 아니며, 프로젝트에 필요한 섹션만 선택하여 작성하면 됩니다.</p>
+
+  <pre><code># 프로젝트 개요
+프로젝트의 목적, 핵심 도메인, 대상 사용자를 간단히 설명합니다.
+
+## 기술 스택
+사용하는 프레임워크, 라이브러리, 도구를 나열합니다.
+
+## 프로젝트 구조
+주요 디렉토리와 파일의 역할을 설명합니다.
+
+## 코딩 컨벤션
+네이밍, 포맷팅, import 순서 등의 규칙을 정의합니다.
+
+## 금지 패턴
+절대 사용하면 안 되는 패턴과 그 이유를 명시합니다.
+
+## 테스트 가이드라인
+테스트 작성 규칙, 커버리지 목표, 테스트 도구를 정의합니다.
+
+## 커밋 컨벤션
+커밋 메시지 형식, 브랜치 전략을 정의합니다.
+
+## 참고 문서
+외부 문서, API 문서, 디자인 시스템 링크를 제공합니다.</code></pre>
+
+  <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=760&q=80" alt="개발자가 프로젝트 설정 파일을 작성하는 모습" loading="lazy">
+
+  <h3>효과적인 작성 원칙</h3>
+
+  <ul>
+    <li><strong>구체적으로 작성하라:</strong> "좋은 코드를 작성해"보다 "함수 길이는 30줄 이하, 매개변수는 3개 이하"가 훨씬 효과적입니다.</li>
+    <li><strong>예시를 포함하라:</strong> 규칙만 나열하지 말고, 올바른 예시와 잘못된 예시를 함께 제공하세요.</li>
+    <li><strong>이유를 설명하라:</strong> "any 타입 금지"보다 "any 타입 금지 - 런타임 에러 원인의 80%가 타입 안전성 부재에서 발생"이 더 효과적입니다.</li>
+    <li><strong>적정 길이를 유지하라:</strong> 너무 길면 핵심이 흐려집니다. 프로젝트 루트 CLAUDE.md는 200~500줄 이내를 권장합니다.</li>
+    <li><strong>정기적으로 업데이트하라:</strong> 프로젝트가 발전하면 CLAUDE.md도 함께 업데이트해야 합니다.</li>
+  </ul>
+
+  <h2>실전 예제 1: React 웹 애플리케이션</h2>
+
+  <p>가장 흔한 프론트엔드 프로젝트 유형인 React 애플리케이션을 위한 CLAUDE.md 예제입니다. Next.js App Router 기반의 SaaS 대시보드 프로젝트를 가정합니다.</p>
+
+  <pre><code># SaaS Dashboard - CLAUDE.md
+
+## 프로젝트 개요
+B2B SaaS 분석 대시보드. 기업 고객이 데이터 분석 결과를 실시간으로 모니터링하는 웹 애플리케이션.
+대상: 데이터 분석가, 마케팅 매니저 (비개발자 포함)
+
+## 기술 스택
+- Framework: Next.js 14 (App Router)
+- Language: TypeScript (strict mode)
+- Styling: Tailwind CSS + shadcn/ui
+- State: Zustand (글로벌), React Hook Form (폼)
+- Data Fetching: TanStack Query v5
+- Chart: Recharts
+- Auth: NextAuth.js v5
+- DB: Prisma + PostgreSQL (Supabase)
+- Testing: Vitest + Testing Library
+- Linting: ESLint (airbnb) + Prettier
+
+## 프로젝트 구조
+```
+src/
+├── app/                   # Next.js App Router 페이지
+│   ├── (auth)/            # 인증 필요 없는 페이지 그룹
+│   ├── (dashboard)/       # 인증 필요 페이지 그룹
+│   └── api/               # API Route Handlers
+├── components/
+│   ├── ui/                # shadcn/ui 기본 컴포넌트 (수정 금지)
+│   ├── common/            # 프로젝트 공통 컴포넌트
+│   └── features/          # 기능별 컴포넌트
+├── hooks/                 # 커스텀 훅
+├── lib/                   # 유틸리티, 헬퍼
+├── stores/                # Zustand 스토어
+├── types/                 # TypeScript 타입 정의
+└── services/              # API 호출 서비스
+```
+
+## 코딩 컨벤션
+- 컴포넌트: arrow function + named export
+  ```tsx
+  // 올바른 예시
+  export const UserCard = ({ user }: UserCardProps) => { ... };
+
+  // 잘못된 예시
+  export default function UserCard({ user }) { ... }
+  ```
+- 파일명: kebab-case (user-card.tsx, use-auth.ts)
+- 타입: PascalCase + Props 접미사 (UserCardProps)
+- 훅: use 접두사 (useAuth, useDashboard)
+- 상수: UPPER_SNAKE_CASE (MAX_RETRY_COUNT)
+
+## 금지 패턴
+- ❌ any 타입 (unknown + 타입 가드 사용)
+- ❌ console.log (logger 유틸 사용: lib/logger.ts)
+- ❌ 인라인 스타일 (Tailwind 클래스 사용)
+- ❌ default export (named export만)
+- ❌ useEffect로 데이터 페칭 (TanStack Query 사용)
+- ❌ components/ui/ 폴더 직접 수정 (shadcn/ui는 그대로 사용)
+
+## 테스트 가이드라인
+- 모든 새 컴포넌트에 최소 1개 테스트 필수
+- 테스트 파일: __tests__/{파일명}.test.tsx
+- 커버리지 목표: 80% 이상
+- 유저 인터랙션 테스트는 @testing-library/user-event 사용</code></pre>
+
+  <p>이 CLAUDE.md가 있으면 "대시보드에 차트 위젯 추가해줘"라는 간단한 프롬프트만으로도 Claude Code가 Recharts를 사용하고, Tailwind로 스타일링하며, named export 함수형 컴포넌트를 생성하고, TanStack Query로 데이터를 페칭하는 코드를 만들어냅니다.</p>
+
+  <h2>실전 예제 2: Python API 서버</h2>
+
+  <p>FastAPI 기반의 백엔드 API 서버를 위한 CLAUDE.md 예제입니다. 마이크로서비스 아키텍처의 하나의 서비스를 가정합니다.</p>
+
+  <pre><code># Order Service API - CLAUDE.md
+
+## 프로젝트 개요
+주문 관리 마이크로서비스. 주문 생성, 조회, 상태 관리, 결제 연동을 담당.
+다른 서비스(User, Product, Payment)와 gRPC/이벤트로 통신.
+
+## 기술 스택
+- Framework: FastAPI 0.110+
+- Language: Python 3.12 (type hint 필수)
+- ORM: SQLAlchemy 2.0 (async)
+- DB: PostgreSQL 16
+- Cache: Redis (aioredis)
+- Message Queue: RabbitMQ (aio-pika)
+- Testing: pytest + pytest-asyncio
+- Linting: ruff + mypy (strict)
+
+## 프로젝트 구조
+```
+src/
+├── api/
+│   ├── v1/                # API v1 라우터
+│   │   ├── orders.py
+│   │   └── health.py
+│   └── deps.py            # 의존성 주입
+├── core/
+│   ├── config.py          # 설정 (pydantic-settings)
+│   └── security.py        # 인증/인가
+├── models/                # SQLAlchemy 모델
+├── schemas/               # Pydantic 스키마
+├── services/              # 비즈니스 로직
+├── repositories/          # 데이터 액세스 레이어
+└── events/                # 이벤트 발행/구독
+```
+
+## 코딩 컨벤션
+- 모든 함수에 type hint 필수
+- docstring: Google 스타일
+- async 우선 (동기 함수는 특별한 이유가 있을 때만)
+- 서비스 계층 패턴: Router → Service → Repository
+- 에러는 커스텀 예외 클래스 사용 (core/exceptions.py)
+
+## 금지 패턴
+- ❌ ORM 모델을 API 응답으로 직접 반환 (Pydantic 스키마 사용)
+- ❌ 라우터에 비즈니스 로직 작성 (서비스 계층으로 분리)
+- ❌ 하드코딩된 설정값 (core/config.py의 Settings 사용)
+- ❌ sync DB 호출 (async session만 사용)
+- ❌ print 문 (structlog 사용)
+
+## API 응답 형식
+```json
+{
+  "success": true,
+  "data": { ... },
+  "meta": { "page": 1, "total": 100 }
+}
+```
+
+## 테스트
+- 단위 테스트: tests/unit/
+- 통합 테스트: tests/integration/
+- fixture: conftest.py에서 관리
+- DB 테스트: testcontainers로 실제 PostgreSQL 사용</code></pre>
+
+  <p>Python 백엔드 프로젝트에서는 계층 분리 규칙과 비동기 패턴이 특히 중요합니다. CLAUDE.md에 이를 명확히 정의하면 Claude Code가 라우터에 비즈니스 로직을 직접 작성하는 실수를 방지하고, 항상 서비스 계층 패턴을 따르는 코드를 생성합니다.</p>
+
+  <h2>실전 예제 3: 모노레포</h2>
+
+  <p>Turborepo를 사용하는 모노레포 프로젝트를 위한 CLAUDE.md 예제입니다. 루트와 각 패키지에 별도의 CLAUDE.md를 배치하는 전략을 보여줍니다.</p>
+
+  <h3>루트 CLAUDE.md</h3>
+  <pre><code># Acme Platform - CLAUDE.md (Root)
+
+## 프로젝트 개요
+Acme Platform 모노레포. 웹 앱, 모바일 BFF, 관리자 대시보드,
+공유 패키지를 하나의 리포지토리에서 관리.
+
+## 모노레포 구조
+- apps/web: 고객용 웹 앱 (Next.js)
+- apps/admin: 관리자 대시보드 (Next.js)
+- apps/mobile-bff: 모바일 Backend For Frontend (Express)
+- packages/ui: 공유 UI 컴포넌트 (React)
+- packages/utils: 공유 유틸리티
+- packages/types: 공유 타입 정의
+- packages/config: ESLint, TypeScript, Tailwind 공유 설정
+
+## 공통 규칙
+- 패키지 매니저: pnpm (npm, yarn 사용 금지)
+- 빌드: Turborepo (turbo run build)
+- packages/는 다른 packages/만 의존 가능 (apps/에 의존 금지)
+- 새 패키지 추가 시 packages/config의 공유 설정 상속
+
+## 커밋 컨벤션
+- Conventional Commits: feat(web): 로그인 페이지 추가
+- 스코프: web, admin, mobile-bff, ui, utils, types, config</code></pre>
+
+  <h3>apps/web/CLAUDE.md</h3>
+  <pre><code># Web App - CLAUDE.md
+
+## 기술 스택 (루트 공통 + 추가)
+- Next.js 14 App Router
+- @acme/ui 컴포넌트 사용 (packages/ui)
+- @acme/utils 유틸리티 사용 (packages/utils)
+
+## 특화 규칙
+- 페이지 컴포넌트는 서버 컴포넌트 우선
+- 클라이언트 컴포넌트에는 반드시 'use client' 명시
+- API 호출은 반드시 서버 컴포넌트 또는 Route Handler에서</code></pre>
+
+  <p>모노레포에서 CLAUDE.md의 계층 구조를 활용하면 각 앱과 패키지의 독립적인 규칙을 유지하면서도 전체 프로젝트의 일관성을 보장할 수 있습니다. Claude Code가 <code>apps/web</code>의 파일을 작업할 때는 루트와 <code>apps/web</code>의 CLAUDE.md가 모두 적용됩니다.</p>
+
+  <h2>실전 예제 4: 데이터 사이언스 프로젝트</h2>
+
+  <p>ML/데이터 사이언스 프로젝트는 일반 소프트웨어 프로젝트와 다른 특수한 요구사항이 있습니다. 데이터 파이프라인, 모델 학습, 실험 추적 등의 규칙을 CLAUDE.md에 정의합니다.</p>
+
+  <pre><code># Customer Churn Prediction - CLAUDE.md
+
+## 프로젝트 개요
+고객 이탈 예측 ML 파이프라인. 고객 행동 데이터를 분석하여
+이탈 가능성을 예측하고, 마케팅 팀에 인사이트 제공.
+
+## 기술 스택
+- Python 3.11
+- Data: pandas, polars (대용량 처리)
+- ML: scikit-learn, XGBoost, LightGBM
+- DL: PyTorch (필요시)
+- Experiment: MLflow
+- Pipeline: Prefect
+- Notebook: Jupyter Lab
+- Viz: matplotlib, seaborn, plotly
+
+## 프로젝트 구조
+```
+├── data/
+│   ├── raw/               # 원본 데이터 (수정 금지)
+│   ├── processed/         # 전처리된 데이터
+│   └── features/          # 피처 엔지니어링 결과
+├── notebooks/             # 탐색/실험용 노트북
+├── src/
+│   ├── data/              # 데이터 로딩/전처리
+│   ├── features/          # 피처 엔지니어링
+│   ├── models/            # 모델 학습/예측
+│   └── evaluation/        # 모델 평가
+├── configs/               # 하이퍼파라미터 설정 (YAML)
+└── tests/
+```
+
+## 코딩 컨벤션
+- 노트북: 탐색용만. 프로덕션 코드는 반드시 src/로 이동
+- 데이터 경로: 하드코딩 금지. configs/ YAML에서 관리
+- 랜덤 시드: 항상 42 사용 (재현성 보장)
+- 모든 실험은 MLflow에 로깅
+
+## 금지 패턴
+- ❌ data/raw/ 파일 직접 수정
+- ❌ 노트북에 모델 학습 코드 (src/models/로 이동)
+- ❌ pip install을 노트북 셀에서 실행
+- ❌ 절대 경로 사용 (pathlib.Path 기반 상대 경로)
+
+## 데이터 처리 규칙
+- 결측치: 명시적 처리 전략 기록 (drop, fill, interpolate)
+- 스케일링: StandardScaler 기본, 필요시 configs/에서 변경
+- 피처: 새 피처 추가 시 src/features/에 함수로 작성</code></pre>
+
+  <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=760&q=80" alt="데이터 분석 대시보드와 ML 파이프라인 시각화" loading="lazy">
+
+  <h2>실전 예제 5: 모바일 앱 (React Native)</h2>
+
+  <p>React Native 기반의 크로스 플랫폼 모바일 앱을 위한 CLAUDE.md 예제입니다. 모바일 특유의 제약사항과 패턴을 반영합니다.</p>
+
+  <pre><code># FitTrack Mobile - CLAUDE.md
+
+## 프로젝트 개요
+피트니스 트래킹 모바일 앱. 운동 기록, 식단 관리, 건강 통계를
+제공하는 크로스 플랫폼(iOS/Android) 애플리케이션.
+
+## 기술 스택
+- Framework: React Native 0.74 (Expo SDK 51)
+- Language: TypeScript (strict)
+- Navigation: React Navigation v6
+- State: Zustand + MMKV (로컬 저장)
+- API: TanStack Query + Axios
+- UI: React Native Paper + 커스텀 컴포넌트
+- Animation: Reanimated 3 + Gesture Handler
+- Testing: Jest + React Native Testing Library
+
+## 프로젝트 구조
+```
+src/
+├── screens/               # 화면 컴포넌트
+├── components/
+│   ├── common/            # 공통 컴포넌트
+│   └── features/          # 기능별 컴포넌트
+├── navigation/            # 네비게이션 설정
+├── hooks/                 # 커스텀 훅
+├── services/              # API 서비스
+├── stores/                # Zustand 스토어
+├── utils/                 # 유틸리티
+├── constants/             # 상수 (colors, spacing, fonts)
+└── types/                 # 타입 정의
+```
+
+## 코딩 컨벤션
+- 스크린: screens/{ScreenName}/index.tsx
+- 컴포넌트: 함수형 + memo() (불필요한 리렌더링 방지)
+- 스타일: StyleSheet.create() 사용 (인라인 스타일 금지)
+- 플랫폼별 코드: Platform.select() 또는 .ios.tsx/.android.tsx
+
+## 성능 규칙
+- FlatList: 50개 이상 아이템은 반드시 getItemLayout 구현
+- 이미지: expo-image 사용 (Image 컴포넌트 금지)
+- 리렌더링: React.memo + useCallback으로 최적화
+- 애니메이션: JS 스레드 아닌 UI 스레드에서 실행 (Reanimated)
+
+## 금지 패턴
+- ❌ ScrollView 안에 FlatList (VirtualizedList 경고)
+- ❌ 인라인 스타일 (StyleSheet.create 사용)
+- ❌ AsyncStorage (MMKV 사용 - 10배 빠름)
+- ❌ Animated API (Reanimated 3 사용)
+- ❌ 하드코딩된 색상/간격 (constants/theme.ts 사용)
+
+## 접근성
+- 모든 터치 영역: 최소 44x44dp
+- 모든 이미지에 accessibilityLabel 필수
+- 스크린 리더 지원: accessibilityRole, accessibilityHint 포함</code></pre>
+
+  <p>모바일 앱 프로젝트에서는 성능 최적화와 플랫폼 특화 규칙이 특히 중요합니다. CLAUDE.md에 이를 명확히 정의하면 Claude Code가 처음부터 성능을 고려한 코드를 생성하여, 나중에 성능 문제로 리팩토링하는 시간을 절약할 수 있습니다.</p>
+
+  <h2>팀 도입 가이드</h2>
+
+  <p>CLAUDE.md의 가장 큰 가치는 팀 전체가 일관된 AI 지원을 받을 수 있다는 점입니다. 하지만 팀에 성공적으로 도입하려면 몇 가지 전략이 필요합니다.</p>
+
+  <h3>1단계: 초기 버전 작성</h3>
+  <p>팀의 테크 리드나 시니어 개발자가 초기 CLAUDE.md를 작성합니다. 기존의 코딩 가이드, 위키 문서, PR 리뷰 패턴에서 핵심 규칙을 추출합니다. 처음부터 완벽할 필요는 없습니다. 핵심 5~10가지 규칙만 포함한 간결한 버전으로 시작하세요.</p>
+
+  <h3>2단계: 팀 리뷰와 합의</h3>
+  <p>CLAUDE.md를 PR로 올려 팀 전체가 리뷰합니다. 각 규칙에 대해 합의를 이루고, 이견이 있는 부분은 토론을 통해 결정합니다. CLAUDE.md는 단순한 AI 설정 파일이 아니라, 팀의 코딩 표준을 문서화하는 과정입니다.</p>
+
+  <h3>3단계: 점진적 확장</h3>
+  <p>AI가 반복적으로 잘못 생성하는 패턴을 발견할 때마다 CLAUDE.md에 해당 규칙을 추가합니다. 예를 들어 AI가 계속 <code>console.log</code>를 사용한다면, 금지 패턴에 명시적으로 추가합니다. 이렇게 실사용 경험을 바탕으로 점진적으로 발전시키는 것이 가장 효과적입니다.</p>
+
+  <h3>4단계: 정기 업데이트</h3>
+  <p>프로젝트의 기술 스택이나 아키텍처가 변경될 때마다 CLAUDE.md를 업데이트합니다. 스프린트 회고에서 "CLAUDE.md에 추가할 규칙"을 의제로 포함시키면 자연스럽게 최신 상태를 유지할 수 있습니다.</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>도입 단계</th>
+        <th>소요 시간</th>
+        <th>기대 효과</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>초기 버전 작성</td>
+        <td>1~2시간</td>
+        <td>기본 코딩 표준 자동 적용</td>
+      </tr>
+      <tr>
+        <td>팀 리뷰 및 합의</td>
+        <td>1 스프린트</td>
+        <td>팀 전체의 코딩 표준 합의</td>
+      </tr>
+      <tr>
+        <td>점진적 확장</td>
+        <td>2~4주</td>
+        <td>AI 결과물 품질 80% 이상 향상</td>
+      </tr>
+      <tr>
+        <td>정기 업데이트</td>
+        <td>스프린트당 30분</td>
+        <td>지속적인 품질 유지 및 개선</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>고급 팁: CLAUDE.md 최적화</h2>
+
+  <h3>조건부 규칙 활용</h3>
+  <p>특정 상황에서만 적용되는 규칙을 조건부로 작성할 수 있습니다.</p>
+
+  <pre><code>## 상황별 규칙
+
+### 새 API 엔드포인트 추가 시
+1. schemas/에 Request/Response 스키마 먼저 정의
+2. services/에 비즈니스 로직 작성
+3. api/v1/에 라우터 추가
+4. tests/에 통합 테스트 작성
+5. docs/api.md에 API 문서 업데이트
+
+### 버그 수정 시
+1. 먼저 버그를 재현하는 테스트 작성
+2. 테스트가 실패하는 것을 확인
+3. 버그 수정
+4. 테스트가 통과하는 것을 확인</code></pre>
+
+  <h3>커스텀 스킬과 연동</h3>
+  <p>CLAUDE.md에 정의된 규칙을 <a href="custom-skills.html">커스텀 스킬</a>과 연동하면 더욱 강력해집니다. 예를 들어 "새 컴포넌트 생성" 스킬이 CLAUDE.md의 컴포넌트 규칙을 자동으로 따르도록 설정할 수 있습니다.</p>
+
+  <h3>프롬프트 엔지니어링과의 시너지</h3>
+  <p>CLAUDE.md는 <a href="prompt-engineering-tips.html">프롬프트 엔지니어링</a>의 기반이 됩니다. CLAUDE.md에 기본 컨텍스트를 정의해두고, 개별 프롬프트에서는 해당 작업에 특화된 추가 지시만 하면 됩니다. 이렇게 하면 프롬프트가 간결해지면서도 결과물의 품질은 높아집니다.</p>
+
+  <div class="tip-box">
+    <p>팁: CLAUDE.md를 Git으로 버전 관리하세요. 규칙 변경 이력을 추적할 수 있고, 브랜치별로 다른 규칙을 실험해볼 수도 있습니다.</p>
+  </div>
+
+  <h2>자주 묻는 질문</h2>
+
+  <h3>Q: CLAUDE.md가 너무 길어지면 어떻게 하나요?</h3>
+  <p>프로젝트 루트의 CLAUDE.md가 500줄을 넘어가면, 서브디렉토리 CLAUDE.md로 분리하는 것을 고려하세요. 프론트엔드 규칙은 <code>src/frontend/CLAUDE.md</code>로, 백엔드 규칙은 <code>src/backend/CLAUDE.md</code>로 분리하면 각 파일이 더 간결하고 집중적인 내용을 담을 수 있습니다.</p>
+
+  <h3>Q: CLAUDE.md와 .editorconfig, .prettierrc의 차이는?</h3>
+  <p>.editorconfig와 .prettierrc는 포맷팅 도구가 읽는 설정 파일이고, CLAUDE.md는 Claude Code가 읽는 컨텍스트 문서입니다. 포맷팅 규칙은 기존 도구 설정 파일에 유지하고, CLAUDE.md에는 아키텍처 패턴, 비즈니스 로직 규칙, 금지 패턴 등 AI가 코드를 생성할 때 참고해야 할 고수준 규칙을 작성합니다.</p>
+
+  <h3>Q: 다른 팀원이 CLAUDE.md를 모른다면?</h3>
+  <p>CLAUDE.md는 Git 리포지토리에 포함되므로 Claude Code를 사용하지 않는 팀원에게도 코딩 가이드 문서로 활용될 수 있습니다. 실제로 많은 팀에서 CLAUDE.md를 AI 도구용 설정 파일인 동시에 팀의 공식 코딩 표준 문서로 사용하고 있습니다.</p>
+
+  <h3>Q: 여러 AI 도구를 함께 사용하는데, 설정을 통합할 수 있나요?</h3>
+  <p>각 AI 도구는 고유한 설정 파일 형식을 가지고 있어 직접적인 통합은 어렵습니다. 하지만 CLAUDE.md의 내용을 기반으로 다른 도구의 설정 파일(.cursorrules 등)을 생성하도록 Claude Code에 요청할 수 있습니다. 핵심 규칙을 CLAUDE.md에서 관리하고, 다른 도구 설정은 이를 기반으로 동기화하는 전략이 효과적입니다.</p>
+
+  <h2>관련 리소스</h2>
+  <div class="related-links">
+    <div class="related-link">
+      <span>🎯</span>
+      <a href="prompt-engineering-tips.html">프롬프트 엔지니어링 전략</a>
+    </div>
+    <div class="related-link">
+      <span>🛠️</span>
+      <a href="custom-skills.html">커스텀 스킬 만들기</a>
+    </div>
+    <div class="related-link">
+      <span>⚡</span>
+      <a href="../skills.html">Claude Code 스킬</a>
+    </div>
+    <div class="related-link">
+      <span>📚</span>
+      <a href="productivity-tips.html">생산성 꿀팁 15가지</a>
+    </div>
+  </div>
+</article>
+
+<div id="ad-before-footer" class="ad-slot ad-slot--before-footer" aria-label="광고"></div>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__bottom" style="border-top:var(--border-glass);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <a href="../index.html" class="gradient-text" style="font-weight:700;">Claude Korea</a>
+      <a href="../blog.html" style="color:var(--text-muted);font-size:var(--text-xs);">← 블로그 목록으로</a>
+      <span style="color:var(--text-muted);font-size:var(--text-xs);">© 2026 Claude Korea</span>
+    </div>
+  </div>
+</footer>
+
+<div id="ad-sticky-bottom" class="ad-slot ad-slot--sticky" aria-label="광고"></div>
+<output id="toast" class="toast" aria-live="polite"></output>
+<script src="../assets/js/tracker.js?v=2"></script>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/ads.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function(){ try{initNav();}catch(e){} renderAds(); CCTracker.recordSession(); });</script>
+</body>
+</html>
