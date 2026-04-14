@@ -31,19 +31,18 @@ function searchComponents(query, category) {
   }
 
   return pool
-    .filter(function(item) {
-      const nameHit  = item.name.toLowerCase().includes(q);
-      const descHit  = item.desc.toLowerCase().includes(q);
-      const tagHit   = (item.tags || []).some(function(t) { return t.toLowerCase().includes(q); });
-      return nameHit || descHit || tagHit;
-    })
-    .map(function(item) {
-      // 점수 계산 (이름 매치 > 태그 매치 > 설명 매치)
-      let score = item.installs;
-      if (item.name.toLowerCase().includes(q)) score += 100000;
-      if ((item.tags || []).some(function(t) { return t.toLowerCase().includes(q); })) score += 50000;
-      return { item: item, score: score };
-    })
+    .reduce(function(acc, item) {
+      var nameHit = item.name.toLowerCase().includes(q);
+      var descHit = item.desc.toLowerCase().includes(q);
+      var tagHit  = (item.tags || []).some(function(t) { return t.toLowerCase().includes(q); });
+      if (nameHit || descHit || tagHit) {
+        var score = item.installs;
+        if (nameHit) score += 100000;
+        if (tagHit)  score += 50000;
+        acc.push({ item: item, score: score });
+      }
+      return acc;
+    }, [])
     .sort(function(a, b) { return b.score - a.score; })
     .map(function(s) { return s.item; });
 }

@@ -6,7 +6,7 @@
 const ADMIN_SESSION_KEY = 'ccko_adm_sess';
 const SESSION_MS = 4 * 60 * 60 * 1000; // 4시간
 
-// SHA-256('yingjiE168') — Node.js로 사전 계산됨
+// SHA-256 해시 — 사전 계산됨
 const CREDS = {
   username: 'luckybbjason',
   pwdHash:  'e8aced1b8606debd1ecf71cb338da914899ec0a60ef6ad763629c8aa26d836cf'

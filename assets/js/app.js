@@ -127,7 +127,7 @@ function renderCatCard(cat) {
   a.appendChild(count);
 
   const desc = document.createElement('div');
-  desc.style.cssText = 'font-size:var(--text-xs);color:var(--text-muted);margin-top:0.3rem;';
+  desc.className = 'cat-card__desc';
   desc.textContent = cat.desc || '';
   a.appendChild(desc);
 
@@ -365,7 +365,7 @@ function renderListingPage(category) {
 
     if (items.length === 0) {
       const empty = document.createElement('div');
-      empty.style.cssText = 'grid-column:1/-1;text-align:center;padding:4rem 1rem;color:var(--text-muted);';
+      empty.className = 'listing-grid__empty';
       empty.textContent = '검색 결과가 없습니다.';
       grid.appendChild(empty);
       return;
@@ -564,18 +564,18 @@ function openDetailModal(item) {
   /* 프롬프트 섹션 — 설치 명령어보다 먼저 표시 */
   if (item.prompt) {
     var promptSection = document.createElement('div');
-    promptSection.style.cssText = 'background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.25);border-radius:var(--radius-md);overflow:hidden;margin-bottom:1.25rem;';
+    promptSection.className = 'detail-modal__prompt-section';
 
     var promptLabelRow = document.createElement('div');
-    promptLabelRow.style.cssText = 'display:flex;align-items:center;justify-content:space-between;background:rgba(212,175,55,0.08);padding:0.5rem 1rem;border-bottom:1px solid rgba(212,175,55,0.2);';
+    promptLabelRow.className = 'detail-modal__prompt-header';
 
     var promptLabelText = document.createElement('span');
-    promptLabelText.style.cssText = 'font-size:var(--text-xs);color:var(--gold);text-transform:uppercase;letter-spacing:0.05em;font-weight:600;';
+    promptLabelText.className = 'detail-modal__prompt-label';
     promptLabelText.textContent = '📝 사용 방법 & 프롬프트';
     promptLabelRow.appendChild(promptLabelText);
 
     var copyPromptBtn = document.createElement('button');
-    copyPromptBtn.style.cssText = 'background:rgba(212,175,55,0.18);border:1px solid rgba(212,175,55,0.4);border-radius:6px;color:var(--gold);font-size:0.75rem;padding:0.25rem 0.65rem;cursor:pointer;';
+    copyPromptBtn.className = 'detail-modal__prompt-copy';
     copyPromptBtn.textContent = '복사';
     copyPromptBtn.addEventListener('click', function() {
       copyToClipboard(item.prompt, item.name + ' 프롬프트');
@@ -586,7 +586,7 @@ function openDetailModal(item) {
     promptSection.appendChild(promptLabelRow);
 
     var promptPre = document.createElement('pre');
-    promptPre.style.cssText = 'padding:1rem;margin:0;font-family:"Courier New",monospace;font-size:0.82rem;color:var(--text-secondary);white-space:pre-wrap;word-break:break-word;line-height:1.6;max-height:360px;overflow-y:auto;';
+    promptPre.className = 'detail-modal__prompt-pre';
     var promptCode = document.createElement('code');
     promptCode.textContent = item.prompt;
     promptPre.appendChild(promptCode);

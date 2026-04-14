@@ -26,7 +26,14 @@ var CCTracker = {
       if (events.length > MAX_EVENTS) {
         events = events.slice(events.length - MAX_EVENTS);
       }
-      localStorage.setItem(TRACK_EVENTS_KEY, JSON.stringify(events));
+      try {
+        localStorage.setItem(TRACK_EVENTS_KEY, JSON.stringify(events));
+      } catch (e) {
+        if (e.name === 'QuotaExceededError') {
+          events = events.slice(events.length - Math.floor(MAX_EVENTS / 2));
+          try { localStorage.setItem(TRACK_EVENTS_KEY, JSON.stringify(events)); } catch (_) {}
+        }
+      }
     } catch (_) {}
   },
 
@@ -317,7 +324,14 @@ var CCTracker = {
       if (sessions.length > MAX_EVENTS) {
         sessions = sessions.slice(sessions.length - MAX_EVENTS);
       }
-      localStorage.setItem(TRACK_SESSION_KEY, JSON.stringify(sessions));
+      try {
+        localStorage.setItem(TRACK_SESSION_KEY, JSON.stringify(sessions));
+      } catch (e) {
+        if (e.name === 'QuotaExceededError') {
+          sessions = sessions.slice(sessions.length - Math.floor(MAX_EVENTS / 2));
+          try { localStorage.setItem(TRACK_SESSION_KEY, JSON.stringify(sessions)); } catch (_) {}
+        }
+      }
 
       // geo 데이터 비동기 패치 (마지막 세션에 보강)
       this._fetchGeo();

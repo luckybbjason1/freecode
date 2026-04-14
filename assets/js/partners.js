@@ -34,7 +34,8 @@ function loadPartners() {
 }
 
 function savePartners(arr) {
-  localStorage.setItem(PARTNERS_KEY, JSON.stringify(arr));
+  try { localStorage.setItem(PARTNERS_KEY, JSON.stringify(arr)); }
+  catch (e) { console.warn('savePartners failed:', e); }
 }
 
 function addPartner(data) {
@@ -79,7 +80,8 @@ function loadApplications() {
 }
 
 function saveApplications(arr) {
-  localStorage.setItem(PARTNER_APPS_KEY, JSON.stringify(arr));
+  try { localStorage.setItem(PARTNER_APPS_KEY, JSON.stringify(arr)); }
+  catch (e) { console.warn('saveApplications failed:', e); }
 }
 
 function submitPartnerApplication(data) {
@@ -133,11 +135,9 @@ function renderPartnerLinks() {
     a.rel = 'noopener noreferrer';
     a.className = 'partner-link-card';
     a.setAttribute('title', p.desc || p.name);
-    (function(partner) {
-      a.addEventListener('click', function() {
-        try { CCTracker.rec('partner', { id: partner.id, name: partner.name }); } catch (_) {}
-      });
-    })(p);
+    a.addEventListener('click', function() {
+      try { CCTracker.rec('partner', { id: p.id, name: p.name }); } catch (_) {}
+    });
 
     var icon = document.createElement('span');
     icon.className = 'partner-link-card__icon';
@@ -175,15 +175,22 @@ function handlePartnerApply(e) {
   if (!name) { setMsg('사이트명을 입력해주세요.', 'error'); return false; }
   if (!url)  { setMsg('URL을 입력해주세요.', 'error'); return false; }
 
-  try { new URL(url); } catch (_) {
+  try {
+    var parsed = new URL(url);
+    if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
+      setMsg('http 또는 https URL만 허용됩니다.', 'error');
+      return false;
+    }
+  } catch (_) {
     setMsg('올바른 URL을 입력해주세요. (예: https://example.com)', 'error');
     return false;
   }
 
-  // 중복 신청 방지
+  // 중복 신청 방지 (URL 정규화 후 비교)
   var apps = loadApplications();
+  var normalizedUrl = url.toLowerCase().replace(/\/+$/, '');
   for (var i = 0; i < apps.length; i++) {
-    if (apps[i].url === url) {
+    if (apps[i].url.toLowerCase().replace(/\/+$/, '') === normalizedUrl) {
       setMsg('이미 신청된 URL입니다.', 'error');
       return false;
     }

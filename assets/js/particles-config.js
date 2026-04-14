@@ -54,12 +54,14 @@ function initParticles(canvasId) {
 
   function drawConnections() {
     const maxDist = 100;
+    const maxDistSq = maxDist * maxDist;
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const dx = particles[i].x - particles[j].x;
         const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < maxDist) {
+        const distSq = dx * dx + dy * dy;
+        if (distSq < maxDistSq) {
+          const dist = Math.sqrt(distSq);
           const opacity = (1 - dist / maxDist) * 0.06;
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
@@ -118,9 +120,11 @@ function initParticles(canvasId) {
     cancelAnimationFrame(animFrameId);
   }
 
+  let resizeTimer;
   const resizeObserver = new ResizeObserver(function() {
     resize();
-    initParticleList(60);
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() { initParticleList(60); }, 200);
   });
   resizeObserver.observe(canvas.parentElement || canvas);
 

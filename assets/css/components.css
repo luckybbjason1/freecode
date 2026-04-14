@@ -593,3 +593,63 @@
   transition: all var(--duration-fast);
 }
 .ad-popup-close:hover { color: var(--text-primary); background: var(--violet-dim); }
+
+/* ---- Cat-card description ---- */
+.cat-card__desc {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+/* ---- Listing empty state ---- */
+.listing-grid__empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 1rem;
+  color: var(--text-muted);
+}
+
+/* ---- Detail modal prompt section ---- */
+.detail-modal__prompt-section {
+  background: rgba(212,175,55,0.06);
+  border: 1px solid rgba(212,175,55,0.25);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+.detail-modal__prompt-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(212,175,55,0.08);
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid rgba(212,175,55,0.2);
+}
+.detail-modal__prompt-label {
+  font-size: var(--text-xs);
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+.detail-modal__prompt-copy {
+  background: rgba(212,175,55,0.18);
+  border: 1px solid rgba(212,175,55,0.4);
+  border-radius: 6px;
+  color: var(--gold);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.65rem;
+  cursor: pointer;
+}
+.detail-modal__prompt-pre {
+  padding: 1rem;
+  margin: 0;
+  font-family: "Courier New", monospace;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.6;
+  max-height: 360px;
+  overflow-y: auto;
+}

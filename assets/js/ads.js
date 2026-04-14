@@ -31,7 +31,8 @@ function loadAds() {
 function saveAd(slotId, adData) {
   const ads = loadAds();
   ads[slotId] = { ...adData, updatedAt: Date.now() };
-  localStorage.setItem(ADS_KEY, JSON.stringify(ads));
+  try { localStorage.setItem(ADS_KEY, JSON.stringify(ads)); }
+  catch (e) { console.warn('saveAd failed:', e); }
 }
 
 function toggleAd(slotId, enabled) {
@@ -39,14 +40,16 @@ function toggleAd(slotId, enabled) {
   if (ads[slotId]) {
     ads[slotId].enabled = enabled;
     ads[slotId].updatedAt = Date.now();
-    localStorage.setItem(ADS_KEY, JSON.stringify(ads));
+    try { localStorage.setItem(ADS_KEY, JSON.stringify(ads)); }
+    catch (e) { console.warn('toggleAd failed:', e); }
   }
 }
 
 function deleteAd(slotId) {
   const ads = loadAds();
   delete ads[slotId];
-  localStorage.setItem(ADS_KEY, JSON.stringify(ads));
+  try { localStorage.setItem(ADS_KEY, JSON.stringify(ads)); }
+  catch (e) { console.warn('deleteAd failed:', e); }
 }
 
 function getAdSlots() {
@@ -71,7 +74,7 @@ function renderAds() {
       if (typeof DOMPurify !== 'undefined') {
         safeHtml = DOMPurify.sanitize(ad.html, {
           ADD_TAGS: ['iframe'],
-          ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling', 'target', 'rel']
+          ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling', 'target', 'rel', 'sandbox']
         });
       } else {
         // DOMPurify 미로드시 광고 숨김 (안전 우선)
@@ -125,7 +128,7 @@ function renderPopupAd(ads) {
     if (typeof DOMPurify !== 'undefined') {
       const safeHtml = DOMPurify.sanitize(ad.html, {
         ADD_TAGS: ['iframe'],
-        ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling', 'target']
+        ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling', 'target', 'sandbox']
       });
       const inner = document.createElement('div');
       inner.className = 'ad-popup-inner';
