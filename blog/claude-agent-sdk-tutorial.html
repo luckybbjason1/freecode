@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GQHEYDXTHG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GQHEYDXTHG');
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5138416840385352" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Agent SDK 실전 튜토리얼: 나만의 자율 에이전트를 처음부터 만드는 법 | Claude Korea</title>
+  <meta name="description" content="Claude Agent SDK로 자율 에이전트를 구축하는 완전한 실전 튜토리얼. 설치, 도구 정의, 시스템 프롬프트, 권한 관리, 배포까지 예제 코드와 함께 단계별로 설명합니다.">
+  <meta name="keywords" content="Claude Agent SDK, 자율 에이전트, Anthropic SDK, TypeScript SDK, Python SDK, AI 에이전트 개발, tool use">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Claude Korea">
+  <link rel="canonical" href="https://claudekorea.com/blog/claude-agent-sdk-tutorial.html">
+  <link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/claude-agent-sdk-tutorial.html">
+  <link rel="alternate" hreflang="x-default" href="https://claudekorea.com/blog/claude-agent-sdk-tutorial.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="Claude Agent SDK 실전 튜토리얼">
+  <meta property="og:description" content="Claude Agent SDK로 자율 에이전트를 단계별로 구축하는 실전 가이드. 설치부터 배포까지.">
+  <meta property="og:image" content="https://claudekorea.com/assets/img/og-image.svg">
+  <meta property="og:url" content="https://claudekorea.com/blog/claude-agent-sdk-tutorial.html">
+  <meta property="og:site_name" content="Claude Korea">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Claude Agent SDK 실전 튜토리얼">
+  <meta name="twitter:description" content="Claude Agent SDK로 자율 에이전트를 구축하는 단계별 실전 가이드.">
+  <meta name="twitter:image" content="https://claudekorea.com/assets/img/og-image.svg">
+  <script type="application/ld+json">
+  [
+    {"@context":"https://schema.org","@type":"Article","headline":"Claude Agent SDK 실전 튜토리얼","description":"Claude Agent SDK로 자율 에이전트를 구축하는 완전한 실전 튜토리얼.","image":"https://claudekorea.com/assets/img/og-image.svg","datePublished":"2026-04-18","dateModified":"2026-04-18","inLanguage":"ko-KR","author":{"@type":"Organization","name":"Claude Korea","url":"https://claudekorea.com"},"publisher":{"@type":"Organization","name":"Claude Korea","logo":{"@type":"ImageObject","url":"https://claudekorea.com/assets/img/logo.svg"}},"url":"https://claudekorea.com/blog/claude-agent-sdk-tutorial.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://claudekorea.com/blog/claude-agent-sdk-tutorial.html"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://claudekorea.com/"},{"@type":"ListItem","position":2,"name":"블로그","item":"https://claudekorea.com/blog.html"},{"@type":"ListItem","position":3,"name":"Claude Agent SDK 튜토리얼","item":"https://claudekorea.com/blog/claude-agent-sdk-tutorial.html"}]}
+  ]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <style>
+    .article-hero { padding: 8rem 0 4rem; text-align: center; background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(124,106,245,0.08) 0%, transparent 70%); }
+    .article-body { max-width: 760px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .article-body h2 { font-size: var(--text-xl); font-weight: 700; color: var(--text-primary); margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .article-body h3 { font-size: var(--text-lg); font-weight: 700; color: var(--text-primary); margin: 2rem 0 0.75rem; }
+    .article-body p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { color: var(--text-secondary); padding-left: 1.5rem; margin-bottom: 1.25rem; line-height: 1.8; }
+    .article-body li { margin-bottom: 0.5rem; }
+    .article-body li::marker { color: var(--violet); }
+    .article-body code { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-xs); padding: 0.15rem 0.4rem; font-family: var(--font-mono); font-size: 0.875em; color: var(--cyan); }
+    .article-body pre { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; overflow-x: auto; }
+    .article-body pre code { background: none; border: none; padding: 0; color: var(--text-primary); font-size: 0.9em; }
+    .article-body blockquote { border-left: 3px solid var(--violet); background: var(--violet-dim); padding: 1rem 1.25rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+    .article-body blockquote p { color: var(--text-primary); margin: 0; }
+    .article-body .callout { background: var(--cyan-dim); border: 1px solid rgba(13,240,255,0.18); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; }
+    .article-body .callout p { color: var(--text-primary); margin: 0; }
+    .article-breadcrumb { font-size: var(--text-xs); color: var(--text-muted); margin-bottom: 1.5rem; }
+    .article-breadcrumb a { color: var(--violet-light); }
+    .compare-table { width:100%; border-collapse:collapse; margin: 1.5rem 0; }
+    .compare-table th { background: var(--bg-elevated); color: var(--text-primary); padding: .75rem 1rem; text-align:left; font-size: var(--text-sm); border: 1px solid rgba(255,255,255,0.07); }
+    .compare-table td { padding: .65rem 1rem; color: var(--text-secondary); font-size: var(--text-sm); border: 1px solid rgba(255,255,255,0.05); }
+    .compare-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .tip-box { background: var(--gold-dim); border: 1px solid rgba(245,200,66,0.2); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; }
+    .tip-box p { color: var(--gold-light); margin: 0; font-weight: 500; }
+    .related-links { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1rem; margin:2rem 0; }
+    .related-link { background:var(--glass-bg); border:var(--border-glass); border-radius:var(--radius-md); padding:1rem; text-align:center; transition:border-color .2s; }
+    .related-link:hover { border-color:var(--violet); }
+    .related-link span { display:block; font-size:1.5rem; margin-bottom:.4rem; }
+    .related-link a { color:var(--text-primary); font-weight:600; font-size:var(--text-sm); }
+    .article-body img { max-width: 100%; height: auto; border-radius: var(--radius-md); border: var(--border-glass); margin: 1.5rem 0; }
+  </style>
+</head>
+<body>
+<nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
+  <a href="../index.html" class="nav__logo"><img src="../assets/img/logo.svg" alt="Claude Korea" class="nav__logo-img"></a>
+  <ul class="nav__links">
+    <li><a href="../skills.html">스킬</a></li>
+    <li><a href="../agents.html">에이전트</a></li>
+    <li><a href="../commands.html">명령어</a></li>
+    <li><a href="../mcps.html">MCP</a></li>
+    <li><a href="../blog.html" class="active">블로그</a></li>
+  </ul>
+  <div class="nav__actions"><a href="https://claude.ai" target="_blank" rel="noopener" class="nav__github"><span>Claude 시작</span></a></div>
+  <button class="nav__hamburger" id="nav-hamburger" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<nav class="nav__mobile" id="nav-mobile">
+  <a href="../skills.html">스킬</a><a href="../agents.html">에이전트</a><a href="../commands.html">명령어</a><a href="../mcps.html">MCP</a><a href="../blog.html">블로그</a>
+</nav>
+
+<div id="ad-header-banner" class="ad-slot ad-slot--header" aria-label="광고"></div>
+
+<header class="article-hero">
+  <div class="container">
+    <nav class="article-breadcrumb" aria-label="현재 위치">
+      <a href="../index.html">홈</a> &gt; <a href="../blog.html">블로그</a> &gt; Claude Agent SDK 튜토리얼
+    </nav>
+    <h1 style="font-size:var(--text-3xl);font-weight:700;margin-bottom:1rem;line-height:1.2;">Claude Agent SDK 실전 튜토리얼: 나만의 자율 에이전트를 처음부터 만드는 법</h1>
+    <p style="color:var(--text-secondary);max-width:620px;margin:0 auto 1.5rem;">설치, 도구 정의, 시스템 프롬프트, 권한 관리, 영속 상태, 배포까지. Claude Agent SDK로 현실에서 돌아가는 자율 에이전트를 구축하는 모든 과정을 예제와 함께 단계별로 살펴봅니다.</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:1rem;font-size:var(--text-xs);color:var(--text-muted);">
+      <span>Claude Korea</span><span>·</span><span>2026년 4월</span><span>·</span><span>16분 읽기</span><span>·</span><span class="badge badge--violet">심화</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body" itemscope itemtype="https://schema.org/Article">
+
+  <p>Claude Agent SDK는 2026년 Anthropic이 공개한 자율 에이전트 구축용 공식 개발 도구입니다. 단순한 API 래퍼가 아니라, Claude Code에서 수년간 검증된 도구 호출 루프, 권한 모델, 컨텍스트 관리 엔진을 그대로 라이브러리 형태로 노출한 것이 핵심 가치입니다. 이 글에서는 Agent SDK를 처음 접하는 개발자도 끝까지 따라올 수 있도록, 간단한 "Hello Agent"부터 실제 운영 환경에서 동작할 수 있는 고급 패턴까지 차근차근 살펴봅니다. TypeScript를 주 예시로 사용하지만, Python SDK를 쓰는 개발자도 동일한 개념이 적용됩니다.</p>
+
+  <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=760&q=80" alt="자동화 시스템을 상징하는 기어와 네트워크 다이어그램" loading="lazy">
+
+  <h2>1. Agent SDK란 무엇인가</h2>
+
+  <p>많은 개발자는 Anthropic이 제공하는 저수준 메시지 API와 Agent SDK의 차이를 혼동합니다. 저수준 API는 단일 요청-응답을 처리하는 원시 빌딩 블록이며, 루프, 도구 호출 처리, 에러 재시도, 컨텍스트 압축 같은 모든 오케스트레이션은 개발자가 직접 구현해야 합니다. 반면 Agent SDK는 이 모든 루프를 이미 내장하고 있습니다. 개발자는 "어떤 능력을 줄 것인가"만 선언하면, SDK가 실행 루프, 도구 라우팅, 예외 처리, 컨텍스트 재구성을 알아서 수행합니다.</p>
+
+  <p>결과적으로 Agent SDK를 사용하면 다음과 같은 작업을 훨씬 적은 코드로 구현할 수 있습니다.</p>
+
+  <ul>
+    <li><strong>반복형 에이전트:</strong> 목표를 주면 스스로 여러 단계를 거쳐 완수하는 에이전트.</li>
+    <li><strong>도구 사용:</strong> 파일 시스템, 셸, HTTP, 데이터베이스 같은 외부 자원 접근.</li>
+    <li><strong>상태 유지:</strong> 중단 가능한 장기 작업을 재개할 수 있는 영속 세션.</li>
+    <li><strong>안전장치:</strong> 명령 승인, 도구 범위 제한, 샌드박스 실행.</li>
+  </ul>
+
+  <h2>2. 설치와 인증</h2>
+
+  <p>먼저 SDK를 설치합니다. TypeScript 환경에서는 npm, Python에서는 pip을 사용하며, 두 패키지 모두 활성 버전이 동기적으로 관리됩니다.</p>
+
+  <pre><code># TypeScript / Node.js
+npm install @anthropic-ai/agent-sdk
+
+# Python
+pip install anthropic-agent-sdk</code></pre>
+
+  <p>API 키는 <code>ANTHROPIC_API_KEY</code> 환경 변수로 관리하는 것이 안전합니다. 로컬 개발에서는 <code>.env</code> 파일을 사용하되, 반드시 <code>.gitignore</code>에 포함하세요. 운영 환경에서는 AWS Secrets Manager, GCP Secret Manager, HashiCorp Vault 같은 비밀 관리 서비스를 이용해야 합니다.</p>
+
+  <pre><code>export ANTHROPIC_API_KEY="sk-ant-api03-..."
+# 또는 Amazon Bedrock, Google Vertex AI 경유 사용 시
+export CLAUDE_CODE_USE_BEDROCK=1
+export AWS_REGION=us-west-2</code></pre>
+
+  <h2>3. 첫 번째 에이전트: Hello Agent</h2>
+
+  <p>가장 기본이 되는 에이전트는 단순한 질문-응답 루프입니다. 아래 예제는 TypeScript로 작성된 최소 형태의 에이전트이며, 단 20줄 안팎으로 동작하는 자율 루프를 구성합니다.</p>
+
+  <pre><code>import { Agent } from '@anthropic-ai/agent-sdk';
+
+const hello = new Agent({
+  name: 'hello-agent',
+  model: 'claude-opus-4-7',
+  systemPrompt: '당신은 친절한 코딩 도우미입니다. 한국어로 답합니다.'
+});
+
+const result = await hello.run('피보나치 수열을 출력하는 Python 함수를 작성해줘.');
+
+console.log(result.finalMessage);
+console.log('사용 토큰:', result.usage.totalTokens);</code></pre>
+
+  <p>이 코드만으로도 Claude는 요청을 받아 합리적인 답변을 반환합니다. 그러나 진짜 강력함은 "도구"를 붙이는 순간부터 드러납니다.</p>
+
+  <h2>4. 도구(Tool) 정의의 기본</h2>
+
+  <p>도구는 에이전트가 외부 세계와 상호작용할 수 있게 해주는 수단입니다. 각 도구는 이름, 설명, 입력 스키마, 실행 함수로 구성됩니다. 설명은 Claude가 "이 도구를 언제, 어떻게 써야 하는가"를 판단하는 핵심 단서이므로, 영어 또는 자연스러운 한국어로 상세히 적어야 합니다.</p>
+
+  <pre><code>import { Tool } from '@anthropic-ai/agent-sdk';
+import { z } from 'zod';
+import fs from 'node:fs/promises';
+
+const readFile = new Tool({
+  name: 'read_file',
+  description: '지정된 경로의 파일 내용을 UTF-8 텍스트로 반환합니다. 바이너리 파일에는 사용하지 마세요.',
+  inputSchema: z.object({
+    path: z.string().describe('프로젝트 루트 기준 상대 경로')
+  }),
+  async execute({ path }) {
+    return await fs.readFile(path, 'utf-8');
+  }
+});</code></pre>
+
+  <p>도구를 잘 정의하는 5가지 원칙은 다음과 같습니다.</p>
+
+  <ol>
+    <li><strong>단일 책임:</strong> 한 도구는 한 가지 일만 명확히 수행해야 합니다.</li>
+    <li><strong>설명은 사용자 매뉴얼처럼:</strong> Claude가 읽는 첫 힌트이므로 예시와 제약을 충분히 적습니다.</li>
+    <li><strong>입력 검증:</strong> Zod, Pydantic을 활용해 스키마 단계에서 방어 코드를 자동화합니다.</li>
+    <li><strong>오류는 의미 있게:</strong> 실패 시 이유를 문자열로 반환해야 Claude가 다음 행동을 선택할 수 있습니다.</li>
+    <li><strong>부작용 최소화:</strong> 파괴적 도구는 별도의 승인 단계를 거치게 합니다.</li>
+  </ol>
+
+  <h2>5. 파일 시스템 에이전트 실습</h2>
+
+  <p>이제 읽기, 쓰기, 디렉터리 조회 세 개의 도구를 조합한 파일 시스템 에이전트를 만들어 봅시다. 이 에이전트는 "이 폴더에 있는 마크다운 파일들을 모두 읽고, 목차를 생성해 README.md를 만들어줘" 같은 지시를 수행할 수 있습니다.</p>
+
+  <pre><code>const listDir = new Tool({
+  name: 'list_directory',
+  description: '디렉터리 안의 파일 및 하위 폴더 이름 목록을 반환합니다.',
+  inputSchema: z.object({ path: z.string() }),
+  async execute({ path }) {
+    const entries = await fs.readdir(path, { withFileTypes: true });
+    return entries.map(e =&gt; ({ name: e.name, type: e.isDirectory() ? 'dir' : 'file' }));
+  }
+});
+
+const writeFile = new Tool({
+  name: 'write_file',
+  description: '파일을 UTF-8로 덮어씁니다. 존재하지 않으면 생성합니다.',
+  inputSchema: z.object({
+    path: z.string(),
+    content: z.string()
+  }),
+  async execute({ path, content }) {
+    await fs.writeFile(path, content, 'utf-8');
+    return { ok: true, path };
+  }
+});
+
+const docAgent = new Agent({
+  name: 'doc-agent',
+  model: 'claude-opus-4-7',
+  systemPrompt: '당신은 문서 구조 전문가입니다. 파일 시스템을 탐색하고 문서를 정리합니다.',
+  tools: [readFile, writeFile, listDir]
+});
+
+await docAgent.run('./docs 폴더의 모든 md 파일을 읽고, 목차가 포함된 README.md를 만들어줘.');</code></pre>
+
+  <p>이 에이전트는 자율적으로 폴더를 열어 보고, 필요한 파일을 읽은 뒤, 내용을 요약해 새 README를 작성합니다. 개발자가 명시적으로 호출 순서를 지시하지 않아도 됩니다.</p>
+
+  <h2>6. 권한과 안전장치</h2>
+
+  <p>도구의 힘이 커질수록 실수로 인한 피해도 커집니다. Agent SDK는 세 단계의 안전장치를 제공합니다. 첫째는 <code>permissions</code> 옵션으로 허용할 도구와 차단할 도구를 선언적으로 정의하는 방법이고, 둘째는 <code>onToolUse</code> 콜백을 통해 실행 직전에 동적으로 승인/거부를 결정하는 방법, 셋째는 샌드박스 안에서 실행하는 것입니다.</p>
+
+  <pre><code>const agent = new Agent({
+  name: 'safe-agent',
+  tools: [readFile, writeFile, runShell],
+  permissions: {
+    allow: ['read_file', 'write_file'],
+    ask: ['run_shell']
+  },
+  async onToolUse({ name, input }) {
+    if (name === 'run_shell' &amp;&amp; /rm\s+-rf|DROP\s+TABLE/i.test(input.command)) {
+      return { action: 'deny', reason: '파괴적 명령은 허용되지 않습니다.' };
+    }
+    return { action: 'allow' };
+  }
+});</code></pre>
+
+  <div class="callout">
+    <p>참고: 운영 환경에서는 파괴적 도구를 서브 에이전트로 분리하고, 해당 서브 에이전트만 격리된 컨테이너에서 실행하는 전략이 효과적입니다.</p>
+  </div>
+
+  <h2>7. 시스템 프롬프트 설계 패턴</h2>
+
+  <p>시스템 프롬프트는 에이전트의 인격과 작업 원칙을 규정합니다. 짧고 모호한 프롬프트는 에이전트가 흔들리는 주된 원인입니다. 다음 템플릿을 참고해 주세요.</p>
+
+  <ol>
+    <li><strong>정체성:</strong> 당신은 누구인가, 어떤 분야에 특화된 어시스턴트인가.</li>
+    <li><strong>목표:</strong> 궁극적으로 달성해야 할 결과는 무엇인가.</li>
+    <li><strong>행동 규칙:</strong> 반드시 해야 할 일, 절대 하지 말아야 할 일.</li>
+    <li><strong>도구 사용 원칙:</strong> 어떤 순서, 어떤 맥락에서 도구를 써야 하는가.</li>
+    <li><strong>출력 형식:</strong> 마지막 응답이 만족해야 할 포맷.</li>
+  </ol>
+
+  <h2>8. 영속 상태와 세션 재개</h2>
+
+  <p>에이전트가 긴 작업을 수행하다가 중단되어도 이어서 계속할 수 있으려면 상태 직렬화가 필요합니다. Agent SDK는 <code>session.save()</code>, <code>session.load()</code> API를 제공하여 현재까지의 대화 히스토리, 도구 호출 기록, 메모리를 디스크나 데이터베이스에 저장할 수 있습니다.</p>
+
+  <pre><code>const session = await docAgent.createSession();
+await session.run('프로젝트 전체 문서를 감사해줘.');
+
+// 상태를 Redis에 저장
+await redis.set(\`agent:\${userId}\`, JSON.stringify(session.serialize()));
+
+// 나중에 복원
+const restored = docAgent.loadSession(JSON.parse(await redis.get(\`agent:\${userId}\`)));
+await restored.run('어제 작업에 이어, 챕터 4부터 계속해줘.');</code></pre>
+
+  <h2>9. 서브 에이전트와 작업 위임</h2>
+
+  <p>복잡한 작업은 전문 에이전트들에게 위임하는 편이 효율적입니다. Agent SDK의 <code>subagent</code> 도구를 사용하면 메인 에이전트가 특정 작업을 다른 에이전트에게 넘기고, 그 결과만 받아볼 수 있습니다. 위임 패턴은 컨텍스트 오염을 막고 비용을 줄이는 데도 효과적입니다.</p>
+
+  <pre><code>const codeReviewer = new Agent({
+  name: 'code-reviewer',
+  model: 'claude-sonnet-4-6',
+  systemPrompt: '당신은 엄격한 코드 리뷰어입니다.'
+});
+
+const planner = new Agent({
+  name: 'planner',
+  model: 'claude-opus-4-7',
+  tools: [codeReviewer.asTool({ description: '코드 리뷰가 필요할 때 사용합니다.' })]
+});</code></pre>
+
+  <h2>10. 스트리밍과 UI 통합</h2>
+
+  <p>웹 서비스에 에이전트를 통합할 때는 스트리밍이 필수입니다. Agent SDK의 <code>stream()</code> 메서드는 토큰, 도구 호출 이벤트, 중간 상태를 Server-Sent Events로 내보낼 수 있게 설계되었습니다. 프론트엔드에서는 <code>EventSource</code> 한 줄로 실시간 업데이트를 받을 수 있습니다.</p>
+
+  <h2>11. 관찰성(Observability)</h2>
+
+  <p>에이전트는 블랙박스가 아니어야 합니다. SDK는 OpenTelemetry 호환 트레이스, 토큰 사용량 메트릭, 도구 호출 로그를 자동으로 수집합니다. Datadog, Grafana, Langfuse 등과 연동하면 "어느 도구가 가장 많이 실패하는가", "평균 응답 시간이 얼마나 되는가", "실행당 토큰 비용은?" 같은 질문에 즉시 답할 수 있습니다.</p>
+
+  <h2>12. 테스트 전략</h2>
+
+  <p>에이전트 테스트는 일반 함수 테스트와 철학이 다릅니다. 입력 한 개에 대한 출력이 결정적이지 않기 때문에, 다음 3단계 테스트를 권장합니다.</p>
+
+  <ul>
+    <li><strong>계약 테스트:</strong> 도구가 정확히 정의된 인자와 반환 형식을 따르는지 검증.</li>
+    <li><strong>시나리오 테스트:</strong> 수십 개의 대표 목표를 주고, 기대하는 도구 호출 시퀀스와 최종 결과가 나오는지 평가.</li>
+    <li><strong>회귀 테스트:</strong> 프롬프트나 모델을 바꿀 때 기존 시나리오의 성능이 유지되는지 지속적으로 측정.</li>
+  </ul>
+
+  <h2>13. 배포 아키텍처 선택</h2>
+
+  <p>Agent SDK로 만든 에이전트는 다양한 환경에 배포할 수 있습니다. 대표적인 패턴은 다음과 같습니다.</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr><th>아키텍처</th><th>적합한 상황</th><th>주의점</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>단일 프로세스</td><td>소규모 내부 도구, 스크립트</td><td>확장성 제한</td></tr>
+      <tr><td>HTTP 서비스</td><td>웹 클라이언트와 통합</td><td>타임아웃, 스트리밍 고려</td></tr>
+      <tr><td>Worker 큐</td><td>장기 작업, 재시도 필요</td><td>상태 직렬화 필수</td></tr>
+      <tr><td>서버리스</td><td>간헐적 트리거</td><td>Cold start, 실행 시간 제한</td></tr>
+    </tbody>
+  </table>
+
+  <h2>14. 비용 관리 팁</h2>
+
+  <p>에이전트는 본질적으로 여러 번의 모델 호출을 포함하므로, 비용 관리가 중요합니다. 프롬프트 캐시를 적극 활용하고, 간단한 단계는 Haiku 모델로 위임하며, Opus는 추론이 필요한 핵심 단계에만 쓰세요. 이 전략을 제대로 적용하면 체감 성능은 유지하면서 비용을 50~70%까지 줄일 수 있습니다. 자세한 내용은 <a href="claude-code-cost-optimization.html">비용 최적화 가이드</a>를 참고하세요.</p>
+
+  <h2>15. 실전 예제: 지원 티켓 자동 분류 에이전트</h2>
+
+  <p>마지막으로, 실제 업무에 바로 쓸 수 있는 예제를 봅시다. 고객 지원 티켓을 읽고 카테고리 분류, 우선순위 지정, 담당자 배정 초안을 생성하는 에이전트입니다. 이 시나리오는 프롬프트 설계, 도구 정의, 스트리밍, 관찰성, 비용 관리의 모든 요소를 포함합니다.</p>
+
+  <pre><code>const classifyTicket = new Agent({
+  name: 'ticket-triage',
+  model: 'claude-sonnet-4-6',
+  systemPrompt: \`당신은 SaaS 고객지원팀의 트리아지 담당자입니다.
+각 티켓을 다음 카테고리로 분류합니다: 결제, 기술, 기능요청, 기타.
+우선순위는 긴급/높음/보통/낮음 중 하나로 지정합니다.
+출력은 반드시 JSON 형식이어야 합니다.\`,
+  tools: [fetchTicket, searchKB, assignTo]
+});
+
+app.post('/triage', async (req, res) =&gt; {
+  const result = await classifyTicket.run(
+    \`티켓 ID \${req.body.id} 를 분석해 JSON으로 결과를 반환해줘.\`
+  );
+  res.json(JSON.parse(result.finalMessage));
+});</code></pre>
+
+  <div class="tip-box">
+    <p>팁: 실전에서는 분류 결과를 사람이 일부 샘플링해 검증하는 휴먼 인 더 루프(HITL) 구조를 함께 운영하세요. 에이전트의 품질이 시간이 지나도 유지됩니다.</p>
+  </div>
+
+  <h2>16. 마무리: 에이전트는 프레임이다</h2>
+
+  <p>Agent SDK를 처음 사용할 때 개발자들은 흔히 "Claude가 얼마나 똑똑한가"에 집중하지만, 실전에서 더 중요한 것은 "에이전트의 프레임을 얼마나 명료하게 설계했는가"입니다. 시스템 프롬프트의 정확성, 도구의 책임 분리, 권한 경계의 명확함, 관찰성의 완결성이 모두 갖춰질 때 에이전트는 비로소 안정적인 자동화 인프라가 됩니다.</p>
+
+  <p>지금 이 순간에도 전 세계 팀들이 Agent SDK로 온콜 알림 분류, DevOps 자동화, 영업 지원, 데이터 파이프라인 관리 같은 복잡한 문제를 에이전트에 맡기고 있습니다. 여러분도 오늘 소개한 단계별 패턴을 따라 하루 만에 프로토타입을 만들고, 한 달 안에 운영 환경에 배포할 수 있습니다. Claude Korea는 앞으로도 실전 사례를 중심으로 에이전트 개발 콘텐츠를 꾸준히 공개할 예정입니다.</p>
+
+  <blockquote>
+    <p>좋은 에이전트는 "할 수 있는 일"을 늘리는 것이 아니라, "믿고 맡길 수 있는 일"을 늘리는 방향으로 진화합니다.</p>
+  </blockquote>
+
+  <h2>관련 리소스</h2>
+  <div class="related-links">
+    <div class="related-link">
+      <span>🤖</span>
+      <a href="../agents.html">에이전트 목록</a>
+    </div>
+    <div class="related-link">
+      <span>🛠</span>
+      <a href="../skills.html">스킬 목록</a>
+    </div>
+    <div class="related-link">
+      <span>🔌</span>
+      <a href="mcp-guide.html">MCP 가이드</a>
+    </div>
+    <div class="related-link">
+      <span>💡</span>
+      <a href="prompt-engineering-tips.html">프롬프트 엔지니어링</a>
+    </div>
+    <div class="related-link">
+      <span>💰</span>
+      <a href="claude-code-cost-optimization.html">비용 최적화</a>
+    </div>
+    <div class="related-link">
+      <span>🧪</span>
+      <a href="claude-code-testing-guide.html">테스트 가이드</a>
+    </div>
+  </div>
+</article>
+
+<div id="ad-before-footer" class="ad-slot ad-slot--before-footer" aria-label="광고"></div>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__bottom" style="border-top:var(--border-glass);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <a href="../index.html" class="gradient-text" style="font-weight:700;">Claude Korea</a>
+      <a href="../blog.html" style="color:var(--text-muted);font-size:var(--text-xs);">← 블로그 목록으로</a>
+      <span style="color:var(--text-muted);font-size:var(--text-xs);">© 2026 Claude Korea</span>
+    </div>
+  </div>
+</footer>
+
+<div id="ad-sticky-bottom" class="ad-slot ad-slot--sticky" aria-label="광고"></div>
+<output id="toast" class="toast" aria-live="polite"></output>
+<script src="../assets/js/tracker.js?v=2"></script>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/ads.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function(){ try{initNav();}catch(e){} renderAds(); CCTracker.recordSession(); });</script>
+</body>
+</html>

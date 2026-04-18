@@ -219,4 +219,68 @@
     <xhtml:link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/claude-code-pricing-2026.html"/>
   </url>
 
+  <url>
+    <loc>https://claudekorea.com/blog/claude-code-cli-tips.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/claude-code-cli-tips.html"/>
+  </url>
+
+  <url>
+    <loc>https://claudekorea.com/blog/claude-agent-sdk-tutorial.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/claude-agent-sdk-tutorial.html"/>
+  </url>
+
+  <url>
+    <loc>https://claudekorea.com/blog/claude-code-debugging-guide.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/claude-code-debugging-guide.html"/>
+  </url>
+
+  <url>
+    <loc>https://claudekorea.com/blog/claude-code-refactoring.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/claude-code-refactoring.html"/>
+  </url>
+
+  <url>
+    <loc>https://claudekorea.com/blog/claude-code-monorepo.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/claude-code-monorepo.html"/>
+  </url>
+
+  <url>
+    <loc>https://claudekorea.com/blog/claude-code-python-workflow.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/claude-code-python-workflow.html"/>
+  </url>
+
+  <url>
+    <loc>https://claudekorea.com/blog/claude-code-typescript.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/claude-code-typescript.html"/>
+  </url>
+
+  <url>
+    <loc>https://claudekorea.com/blog/claude-code-cost-optimization.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/claude-code-cost-optimization.html"/>
+  </url>
+
 </urlset>

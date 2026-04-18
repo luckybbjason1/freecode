@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GQHEYDXTHG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GQHEYDXTHG');
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5138416840385352" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code로 타입스크립트 마스터하기: 타입 안전성 극대화 가이드 | Claude Korea</title>
+  <meta name="description" content="Claude Code를 활용해 타입스크립트의 타입 안전성을 극대화하는 실전 가이드. 제네릭, 브랜드 타입, 타입 좁히기, 템플릿 리터럴, 타입 레벨 프로그래밍까지 심화 기법을 다룹니다.">
+  <meta name="keywords" content="Claude Code TypeScript, 타입 안전성, 제네릭, 브랜드 타입, 타입 좁히기, 템플릿 리터럴 타입, 타입 레벨 프로그래밍">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Claude Korea">
+  <link rel="canonical" href="https://claudekorea.com/blog/claude-code-typescript.html">
+  <link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/claude-code-typescript.html">
+  <link rel="alternate" hreflang="x-default" href="https://claudekorea.com/blog/claude-code-typescript.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="Claude Code로 타입스크립트 마스터하기">
+  <meta property="og:description" content="제네릭, 브랜드 타입, 타입 좁히기까지 Claude Code와 함께하는 타입스크립트 심화 가이드.">
+  <meta property="og:image" content="https://claudekorea.com/assets/img/og-image.svg">
+  <meta property="og:url" content="https://claudekorea.com/blog/claude-code-typescript.html">
+  <meta property="og:site_name" content="Claude Korea">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Claude Code로 타입스크립트 마스터하기">
+  <meta name="twitter:description" content="타입 안전성을 극대화하는 실전 가이드.">
+  <meta name="twitter:image" content="https://claudekorea.com/assets/img/og-image.svg">
+  <script type="application/ld+json">
+  [
+    {"@context":"https://schema.org","@type":"Article","headline":"Claude Code로 타입스크립트 마스터하기","description":"Claude Code를 활용한 TypeScript 타입 안전성 극대화 실전 가이드.","image":"https://claudekorea.com/assets/img/og-image.svg","datePublished":"2026-04-18","dateModified":"2026-04-18","inLanguage":"ko-KR","author":{"@type":"Organization","name":"Claude Korea","url":"https://claudekorea.com"},"publisher":{"@type":"Organization","name":"Claude Korea","logo":{"@type":"ImageObject","url":"https://claudekorea.com/assets/img/logo.svg"}},"url":"https://claudekorea.com/blog/claude-code-typescript.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://claudekorea.com/blog/claude-code-typescript.html"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://claudekorea.com/"},{"@type":"ListItem","position":2,"name":"블로그","item":"https://claudekorea.com/blog.html"},{"@type":"ListItem","position":3,"name":"Claude Code TypeScript 가이드","item":"https://claudekorea.com/blog/claude-code-typescript.html"}]}
+  ]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <style>
+    .article-hero { padding: 8rem 0 4rem; text-align: center; background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(124,106,245,0.08) 0%, transparent 70%); }
+    .article-body { max-width: 760px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .article-body h2 { font-size: var(--text-xl); font-weight: 700; color: var(--text-primary); margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .article-body h3 { font-size: var(--text-lg); font-weight: 700; color: var(--text-primary); margin: 2rem 0 0.75rem; }
+    .article-body p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { color: var(--text-secondary); padding-left: 1.5rem; margin-bottom: 1.25rem; line-height: 1.8; }
+    .article-body li { margin-bottom: 0.5rem; }
+    .article-body li::marker { color: var(--violet); }
+    .article-body code { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-xs); padding: 0.15rem 0.4rem; font-family: var(--font-mono); font-size: 0.875em; color: var(--cyan); }
+    .article-body pre { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; overflow-x: auto; }
+    .article-body pre code { background: none; border: none; padding: 0; color: var(--text-primary); font-size: 0.9em; }
+    .article-body blockquote { border-left: 3px solid var(--violet); background: var(--violet-dim); padding: 1rem 1.25rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+    .article-body blockquote p { color: var(--text-primary); margin: 0; }
+    .article-body .callout { background: var(--cyan-dim); border: 1px solid rgba(13,240,255,0.18); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; }
+    .article-body .callout p { color: var(--text-primary); margin: 0; }
+    .article-breadcrumb { font-size: var(--text-xs); color: var(--text-muted); margin-bottom: 1.5rem; }
+    .article-breadcrumb a { color: var(--violet-light); }
+    .compare-table { width:100%; border-collapse:collapse; margin: 1.5rem 0; }
+    .compare-table th { background: var(--bg-elevated); color: var(--text-primary); padding: .75rem 1rem; text-align:left; font-size: var(--text-sm); border: 1px solid rgba(255,255,255,0.07); }
+    .compare-table td { padding: .65rem 1rem; color: var(--text-secondary); font-size: var(--text-sm); border: 1px solid rgba(255,255,255,0.05); }
+    .compare-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .tip-box { background: var(--gold-dim); border: 1px solid rgba(245,200,66,0.2); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; }
+    .tip-box p { color: var(--gold-light); margin: 0; font-weight: 500; }
+    .related-links { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1rem; margin:2rem 0; }
+    .related-link { background:var(--glass-bg); border:var(--border-glass); border-radius:var(--radius-md); padding:1rem; text-align:center; transition:border-color .2s; }
+    .related-link:hover { border-color:var(--violet); }
+    .related-link span { display:block; font-size:1.5rem; margin-bottom:.4rem; }
+    .related-link a { color:var(--text-primary); font-weight:600; font-size:var(--text-sm); }
+    .article-body img { max-width: 100%; height: auto; border-radius: var(--radius-md); border: var(--border-glass); margin: 1.5rem 0; }
+  </style>
+</head>
+<body>
+<nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
+  <a href="../index.html" class="nav__logo"><img src="../assets/img/logo.svg" alt="Claude Korea" class="nav__logo-img"></a>
+  <ul class="nav__links">
+    <li><a href="../skills.html">스킬</a></li>
+    <li><a href="../agents.html">에이전트</a></li>
+    <li><a href="../commands.html">명령어</a></li>
+    <li><a href="../mcps.html">MCP</a></li>
+    <li><a href="../blog.html" class="active">블로그</a></li>
+  </ul>
+  <div class="nav__actions"><a href="https://claude.ai" target="_blank" rel="noopener" class="nav__github"><span>Claude 시작</span></a></div>
+  <button class="nav__hamburger" id="nav-hamburger" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<nav class="nav__mobile" id="nav-mobile">
+  <a href="../skills.html">스킬</a><a href="../agents.html">에이전트</a><a href="../commands.html">명령어</a><a href="../mcps.html">MCP</a><a href="../blog.html">블로그</a>
+</nav>
+
+<div id="ad-header-banner" class="ad-slot ad-slot--header" aria-label="광고"></div>
+
+<header class="article-hero">
+  <div class="container">
+    <nav class="article-breadcrumb" aria-label="현재 위치">
+      <a href="../index.html">홈</a> &gt; <a href="../blog.html">블로그</a> &gt; Claude Code TypeScript 가이드
+    </nav>
+    <h1 style="font-size:var(--text-3xl);font-weight:700;margin-bottom:1rem;line-height:1.2;">Claude Code로 타입스크립트 마스터하기: 타입 안전성 극대화 가이드</h1>
+    <p style="color:var(--text-secondary);max-width:620px;margin:0 auto 1.5rem;">제네릭, 브랜드 타입, 판별 유니언, 템플릿 리터럴, 타입 레벨 프로그래밍까지. Claude Code와 함께 타입스크립트의 잠재력을 끝까지 끌어내는 심화 가이드입니다.</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:1rem;font-size:var(--text-xs);color:var(--text-muted);">
+      <span>Claude Korea</span><span>·</span><span>2026년 4월</span><span>·</span><span>14분 읽기</span><span>·</span><span class="badge badge--violet">심화</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body" itemscope itemtype="https://schema.org/Article">
+
+  <p>타입스크립트는 단순히 "타입을 붙인 자바스크립트"가 아닙니다. 제대로 활용하면 버그를 실행 전에 잡아내는 정적 분석기이자, 코드의 문서이자, 팀원 간 커뮤니케이션의 계약이 됩니다. 하지만 이 언어의 타입 시스템은 깊이가 상당해서, 많은 팀이 <code>any</code>와 단순 인터페이스 정도로만 사용하고 있습니다. Claude Code는 이 심화 영역에 진입하는 데 완벽한 동반자입니다. 복잡한 제네릭, 조건부 타입, 매핑 타입을 사람이 작성하려면 많은 시행착오가 필요하지만, Claude는 요구사항만 명확히 전달하면 거의 즉시 정확한 타입을 제안합니다. 이 글은 Claude와 함께 타입스크립트의 타입 안전성을 최대로 끌어내는 실전 기법을 정리합니다.</p>
+
+  <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=760&q=80" alt="코드 에디터에 표시된 TypeScript 코드" loading="lazy">
+
+  <h2>1. 왜 타입 안전성이 중요한가</h2>
+
+  <p>타입 시스템의 가치는 "버그를 잡는 것"에 있지 않습니다. 진짜 가치는 "리팩토링을 두려워하지 않게 만드는 것"에 있습니다. 잘 설계된 타입은 잘못된 변경을 IDE가 즉시 붉은 밑줄로 알려 주며, 이는 팀이 코드를 자주 개선할 수 있는 심리적 안전망을 제공합니다. Claude Code에 "이 함수의 시그니처를 바꾸면 어디가 깨지는가"를 물으면, 타입 체커 없이도 논리적인 영향 범위를 얻을 수 있지만, 타입 시스템이 튼튼하면 그 답이 훨씬 신뢰할 만합니다.</p>
+
+  <h2>2. tsconfig 최적화</h2>
+
+  <p>모든 것은 엄격한 <code>tsconfig.json</code>에서 시작됩니다. Claude에 "이 프로젝트의 tsconfig를 엄격 모드로 업그레이드하고, 발생하는 에러를 모두 수정해 줘"라고 요청하세요. 권장 기본값은 다음과 같습니다.</p>
+
+  <pre><code>{
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "useUnknownInCatchVariables": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  }
+}</code></pre>
+
+  <p>특히 <code>noUncheckedIndexedAccess</code>는 배열/객체 인덱싱 결과를 반드시 undefined 체크하게 만들어, 실무에서 가장 흔한 런타임 에러 부류를 원천 차단합니다.</p>
+
+  <h2>3. 브랜드 타입으로 기본 타입 구분</h2>
+
+  <p>"string인데 UserId일 수도 있고 Email일 수도 있는" 상태는 지연된 버그의 온상입니다. 브랜드 타입으로 구분하면 함수 시그니처 수준에서 혼동을 방지할 수 있습니다. Claude에 "UserId, OrderId, Email을 브랜드 타입으로 정의하고, 파싱 함수를 작성해 줘"라고 요청하면, Zod나 수동 체크 기반의 깔끔한 구현을 얻을 수 있습니다.</p>
+
+  <pre><code>type Brand&lt;T, B&gt; = T &amp; { readonly __brand: B };
+export type UserId = Brand&lt;string, 'UserId'&gt;;
+export type Email = Brand&lt;string, 'Email'&gt;;
+
+export const asUserId = (raw: string): UserId =&gt; {
+  if (!/^[0-9a-f-]{36}$/.test(raw)) throw new Error('invalid user id');
+  return raw as UserId;
+};</code></pre>
+
+  <h2>4. 판별 유니언으로 상태 모델링</h2>
+
+  <p>상태를 "isLoading, error, data" 같은 독립 필드로 표현하면 불가능한 조합이 생깁니다. 판별 유니언으로 재모델링하면 "로딩 중에는 data가 없다"가 타입 수준에서 강제됩니다. Claude에 기존 코드를 넘기고 "이 상태를 판별 유니언으로 재설계해 줘"라고 요청하면, 모범적인 리팩토링을 얻습니다.</p>
+
+  <pre><code>type Query&lt;T, E&gt; =
+  | { status: 'idle' }
+  | { status: 'loading' }
+  | { status: 'success'; data: T }
+  | { status: 'error'; error: E };</code></pre>
+
+  <h2>5. 제네릭의 올바른 사용</h2>
+
+  <p>제네릭은 "타입 파라미터를 끼워 넣는 것" 이상입니다. 올바른 제약조건을 붙여야 강력해집니다. Claude에 "이 함수에 적절한 제약이 있는 제네릭을 적용해 줘"라고 요청하되, 제약은 최소한으로 유지해 달라고 덧붙이세요. 과한 제약은 호출부의 유연성을 해칩니다.</p>
+
+  <pre><code>function pick&lt;T, K extends keyof T&gt;(obj: T, keys: K[]): Pick&lt;T, K&gt; {
+  const out = {} as Pick&lt;T, K&gt;;
+  for (const k of keys) out[k] = obj[k];
+  return out;
+}</code></pre>
+
+  <h2>6. 조건부 타입과 infer</h2>
+
+  <p>조건부 타입은 타입스크립트의 "if문"입니다. <code>infer</code>와 결합하면 타입에서 다른 타입을 추출할 수 있습니다. Claude는 이런 타입 추론을 굉장히 잘 다룹니다. 예를 들어 "함수의 반환 타입을 언래핑해 줘" 같은 요청에도 정확한 <code>Awaited&lt;T&gt;</code> 기반 해법을 제안합니다.</p>
+
+  <pre><code>type UnaryArg&lt;F&gt; = F extends (arg: infer A) =&gt; unknown ? A : never;
+type Result&lt;F&gt; = F extends (...args: any[]) =&gt; Promise&lt;infer R&gt; ? R : never;</code></pre>
+
+  <h2>7. 템플릿 리터럴 타입</h2>
+
+  <p>템플릿 리터럴 타입은 문자열 수준에서 타입 안전성을 강화합니다. 이벤트 이름, 경로, CSS 변수 이름을 타입으로 표현하면 오타가 컴파일 시점에 잡힙니다. Claude에 "우리 이벤트 이름 규칙을 템플릿 리터럴 타입으로 인코딩해 줘"라고 요청하면, 일관된 네이밍이 타입 수준에서 강제됩니다.</p>
+
+  <pre><code>type Event =
+  | \`user.\${'created' | 'updated' | 'deleted'}\`
+  | \`order.\${'placed' | 'canceled' | 'fulfilled'}\`;</code></pre>
+
+  <h2>8. 매핑 타입과 유틸리티</h2>
+
+  <p>매핑 타입은 기존 타입을 변환해 새로운 타입을 만듭니다. <code>Partial</code>, <code>Required</code>, <code>Readonly</code>, <code>Record</code>, <code>Pick</code>, <code>Omit</code>은 기본이며, 이 위에 팀 전용 유틸리티를 조금만 더하면 표현력이 크게 늘어납니다. Claude에 "DeepReadonly, DeepPartial, DeepNonNullable을 작성해 줘"라고 요청하면, 재귀 매핑 타입을 즉시 받을 수 있습니다.</p>
+
+  <h2>9. 런타임과 컴파일 타임의 일치</h2>
+
+  <p>타입 안전성의 최대 적은 "외부 세계"입니다. 네트워크 응답, 폼 입력, LocalStorage는 모두 unknown이어야 하며, 이를 안전하게 T로 좁히는 검증이 필요합니다. <code>zod</code>, <code>valibot</code>, <code>@effect/schema</code> 같은 라이브러리를 쓰면 스키마 한 곳에서 런타임 검증과 컴파일 타임 타입을 동시에 얻을 수 있습니다. Claude에 "이 API 응답 타입을 zod 스키마로 변환해 줘"라고 하면 반복 작업이 사라집니다.</p>
+
+  <pre><code>import { z } from 'zod';
+export const UserSchema = z.object({
+  id: z.string().uuid(),
+  email: z.string().email(),
+  role: z.enum(['admin', 'user', 'guest'])
+});
+export type User = z.infer&lt;typeof UserSchema&gt;;</code></pre>
+
+  <h2>10. 오류 처리: Result 패턴</h2>
+
+  <p>try/catch는 편하지만 타입 시스템이 에러 경로를 추적하지 않습니다. Result 패턴으로 에러를 값으로 승격시키면, 컴파일러가 에러 처리를 강제합니다. Claude에 "이 함수를 Result&lt;T, E&gt; 패턴으로 변환해 줘"라고 요청해 보세요. 처음에는 장황해 보이지만, 한두 주 쓰다 보면 팀의 에러 처리 품질이 크게 올라갑니다.</p>
+
+  <pre><code>type Result&lt;T, E&gt; = { ok: true; value: T } | { ok: false; error: E };
+
+async function fetchUser(id: UserId): Promise&lt;Result&lt;User, 'not_found' | 'network'&gt;&gt; {
+  const res = await fetch(\`/api/users/\${id}\`);
+  if (res.status === 404) return { ok: false, error: 'not_found' };
+  if (!res.ok) return { ok: false, error: 'network' };
+  return { ok: true, value: UserSchema.parse(await res.json()) };
+}</code></pre>
+
+  <h2>11. 함수 오버로드와 타입 좁히기</h2>
+
+  <p>동일한 함수가 여러 시그니처를 가지는 경우, 오버로드로 정확한 관계를 표현할 수 있습니다. Claude에 "이 함수의 오버로드 시그니처를 최소 집합으로 정리해 줘"라고 요청하면, 호출부에서 불필요한 as 캐스팅이 사라집니다.</p>
+
+  <h2>12. Exhaustive check</h2>
+
+  <p>유니언 타입을 처리할 때 한 분기를 빠뜨리면 런타임 버그가 됩니다. 빈틈없는 처리임을 타입 시스템이 보장하도록 <code>never</code> 기반 헬퍼를 사용하세요.</p>
+
+  <pre><code>function assertNever(x: never): never {
+  throw new Error(\`Unexpected: \${JSON.stringify(x)}\`);
+}
+
+switch (event.type) {
+  case 'created': return handleCreate(event);
+  case 'updated': return handleUpdate(event);
+  case 'deleted': return handleDelete(event);
+  default: return assertNever(event);
+}</code></pre>
+
+  <h2>13. 테스트에서의 타입 확인</h2>
+
+  <p>타입도 테스트할 수 있습니다. <code>expect-type</code>이나 <code>tsd</code>를 사용해 "이 함수의 반환 타입이 정확히 X여야 한다"를 보장하세요. 라이브러리 성격의 코드라면 필수입니다. Claude에 "이 타입 유틸리티에 대한 타입 테스트를 작성해 줘"라고 하면 유용한 케이스들을 만들어 줍니다.</p>
+
+  <h2>14. 타입스크립트 성능 관리</h2>
+
+  <p>타입 시스템이 고도화될수록 컴파일 속도가 느려질 수 있습니다. 다음 원칙을 따르면 성능을 유지할 수 있습니다.</p>
+
+  <ul>
+    <li>중간 타입을 변수로 저장해 추론 반복 방지.</li>
+    <li>깊은 재귀 타입은 꼬리 재귀 형태로 작성.</li>
+    <li>사용하지 않는 거대한 제네릭 타입은 <code>never</code>로 좁혀 버리기.</li>
+    <li><code>tsc --generateTrace</code>로 병목 파악.</li>
+  </ul>
+
+  <h2>15. 서드파티 타입과의 공존</h2>
+
+  <p>서드파티 라이브러리의 타입이 엄격하지 않을 때는, 자체 래퍼로 감싸는 전략이 가장 깔끔합니다. Claude에 "이 라이브러리의 API를 더 안전한 형태로 래핑해 줘"라고 요청하면, 입력 검증과 에러 처리가 포함된 어댑터를 얻을 수 있습니다.</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr><th>문제</th><th>권장 해법</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>any가 광범위하게 퍼짐</td><td>Zod 스키마 도입, noImplicitAny 강제</td></tr>
+      <tr><td>유니언 분기 누락</td><td>exhaustive check 헬퍼</td></tr>
+      <tr><td>런타임 에러 타입 추적 불가</td><td>Result 패턴</td></tr>
+      <tr><td>같은 string 혼동</td><td>브랜드 타입</td></tr>
+      <tr><td>객체 일부만 허용하는 계약</td><td>Pick, Omit, satisfies</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip-box">
+    <p>팁: <code>satisfies</code> 연산자를 적극 활용하세요. "이 값이 X를 만족하는가"를 검증하면서도, 더 좁은 구체 타입을 유지할 수 있어 상수 선언에 특히 유용합니다.</p>
+  </div>
+
+  <h2>16. 팀 단위 도입 전략</h2>
+
+  <p>타입 안전성을 팀에 도입할 때는 급진적 전환보다 점진적 개선이 효과적입니다. 다음 단계를 권장합니다.</p>
+
+  <ol>
+    <li>strict 모드의 하위 플래그를 하나씩 켜기.</li>
+    <li>각 모듈별로 any 개수를 측정, 매주 감소 목표 설정.</li>
+    <li>새 코드부터 브랜드 타입, Zod 스키마 적용.</li>
+    <li>Claude에 "레거시 코드에서 any를 찾아 가장 쉬운 것부터 정리해 줘" 요청.</li>
+    <li>PR 템플릿에 "새 any가 도입되지 않았는가?" 체크박스 추가.</li>
+  </ol>
+
+  <h2>마무리: 타입은 문서다</h2>
+
+  <p>타입스크립트를 진지하게 쓰면 쓸수록, 타입이 코드의 의도를 가장 정확히 표현하는 문서라는 사실을 체감하게 됩니다. 주석은 낡지만, 타입은 컴파일러가 매번 검증해 줍니다. Claude Code는 이 문서를 사람보다 빠르게, 그리고 일관된 스타일로 작성해 줄 수 있는 동료입니다.</p>
+
+  <p>오늘 공유한 기법을 한꺼번에 도입할 필요는 없습니다. 다음 주에는 tsconfig를 엄격하게, 그다음 주에는 브랜드 타입을 한두 개, 또 그다음 주에는 Zod 스키마를 한 모듈에. 이런 식으로 한 걸음씩 옮기다 보면, 6개월 뒤에는 "배포 후에야 발견하던 버그들"이 대부분 컴파일 시점에 잡히는 프로젝트를 갖게 될 것입니다. Claude Korea는 계속해서 언어별 심화 가이드를 이어갈 예정입니다.</p>
+
+  <blockquote>
+    <p>타입은 제약이 아닙니다. 오히려 자유롭게 변경할 수 있는 용기를 주는 안전망입니다.</p>
+  </blockquote>
+
+  <h2>관련 리소스</h2>
+  <div class="related-links">
+    <div class="related-link">
+      <span>🧪</span>
+      <a href="claude-code-testing-guide.html">테스트 가이드</a>
+    </div>
+    <div class="related-link">
+      <span>🐍</span>
+      <a href="claude-code-python-workflow.html">Python 워크플로우</a>
+    </div>
+    <div class="related-link">
+      <span>🔧</span>
+      <a href="claude-code-refactoring.html">리팩토링 가이드</a>
+    </div>
+    <div class="related-link">
+      <span>🏗️</span>
+      <a href="claude-code-monorepo.html">모노레포 가이드</a>
+    </div>
+    <div class="related-link">
+      <span>📖</span>
+      <a href="claude-md-guide.html">CLAUDE.md 가이드</a>
+    </div>
+    <div class="related-link">
+      <span>💡</span>
+      <a href="prompt-engineering-tips.html">프롬프트 팁</a>
+    </div>
+  </div>
+</article>
+
+<div id="ad-before-footer" class="ad-slot ad-slot--before-footer" aria-label="광고"></div>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__bottom" style="border-top:var(--border-glass);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <a href="../index.html" class="gradient-text" style="font-weight:700;">Claude Korea</a>
+      <a href="../blog.html" style="color:var(--text-muted);font-size:var(--text-xs);">← 블로그 목록으로</a>
+      <span style="color:var(--text-muted);font-size:var(--text-xs);">© 2026 Claude Korea</span>
+    </div>
+  </div>
+</footer>
+
+<div id="ad-sticky-bottom" class="ad-slot ad-slot--sticky" aria-label="광고"></div>
+<output id="toast" class="toast" aria-live="polite"></output>
+<script src="../assets/js/tracker.js?v=2"></script>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/ads.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function(){ try{initNav();}catch(e){} renderAds(); CCTracker.recordSession(); });</script>
+</body>
+</html>
