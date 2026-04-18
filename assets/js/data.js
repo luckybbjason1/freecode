@@ -11,7 +11,7 @@ const SITE_DATA = {
   },
 
   categories: [
-    { id: 'skills',   label: '스킬',     icon: '⚡', count: 804, color: 'gold',    desc: '워크플로우 자동화 템플릿' },
+    { id: 'skills',   label: '스킬',     icon: '⚡', count: 814, color: 'gold',    desc: '워크플로우 자동화 템플릿' },
     { id: 'agents',   label: '에이전트', icon: '🤖', count: 417, color: 'emerald', desc: 'AI 전문 에이전트' },
     { id: 'commands', label: '명령어',   icon: '⌘',  count: 280, color: 'purple',  desc: '슬래시 커맨드' },
     { id: 'mcps',     label: 'MCP',      icon: '🔌', count: 69,  color: 'blue',    desc: 'Model Context Protocol' },
@@ -220,7 +220,840 @@ const SITE_DATA = {
     { id: 'wordpress-penetration-testing', name: 'WordPress 침투 테스팅', nameEn: 'wordpress-penetration-testing', category: 'skills', desc: 'WordPress 사이트 보안 취약점을 테스트합니다. 플러그인 취약점, 관리자 페이지 보안을 검사합니다.', tags: ['WordPress', '보안'], stars: 4.7, installs: 1, prompt: '이 스킬은 WordPress 사이트 보안 감사가 필요할 때 사용합니다. 취약한 플러그인, 기본 설정 문제, 파일 업로드 취약점을 검사합니다. "WordPress 보안 테스트해줘", "WP 취약점 찾아줘" 요청에 활성화됩니다.' },
     { id: 'quality-documentation-manager', name: '품질 문서 관리자', nameEn: 'quality-documentation-manager', category: 'skills', desc: '프로젝트 문서의 품질을 관리합니다. 문서 일관성, 정확성, 최신성을 유지하는 프로세스를 구축합니다.', tags: ['문서', '품질'], stars: 4.7, installs: 1, prompt: '이 스킬은 프로젝트 문서 품질 관리가 필요할 때 사용합니다. 문서 검토 프로세스, 업데이트 추적, 일관성 검사를 지원합니다. "문서 품질 관리해줘", "문서 표준 수립해줘" 요청에 활성화됩니다.' },
     { id: 'micro-saas-launcher', name: '마이크로 SaaS 런처', nameEn: 'micro-saas-launcher', category: 'skills', desc: '마이크로 SaaS 제품을 빠르게 기획하고 출시합니다. MVP 정의, 기술 스택 선택, 런치 전략을 지원합니다.', tags: ['SaaS', '스타트업'], stars: 4.7, installs: 1, prompt: '이 스킬은 마이크로 SaaS 제품 출시가 필요할 때 사용합니다. MVP 기능 정의, 기술 스택, 수익 모델, 초기 마케팅 전략을 수립합니다. "마이크로 SaaS 만들어줘", "빠른 제품 출시 계획 세워줘" 요청에 활성화됩니다.' },
-    { id: 'command-development', name: '명령어 개발', nameEn: 'command-development', category: 'skills', desc: 'Claude Code 슬래시 커맨드를 개발합니다. 명령어 구조, 파라미터, 실행 로직을 설계합니다.', tags: ['명령어', '개발'], stars: 4.7, installs: 1, prompt: '이 스킬은 Claude Code 슬래시 커맨드 제작이 필요할 때 사용합니다. 명령어 마크다운 파일 구조, 활성화 조건, 실행 지침을 작성합니다. "슬래시 커맨드 만들어줘", "Claude 명령어 개발해줘" 요청에 활성화됩니다.' }
+    { id: 'command-development', name: '명령어 개발', nameEn: 'command-development', category: 'skills', desc: 'Claude Code 슬래시 커맨드를 개발합니다. 명령어 구조, 파라미터, 실행 로직을 설계합니다.', tags: ['명령어', '개발'], stars: 4.7, installs: 1, prompt: '이 스킬은 Claude Code 슬래시 커맨드 제작이 필요할 때 사용합니다. 명령어 마크다운 파일 구조, 활성화 조건, 실행 지침을 작성합니다. "슬래시 커맨드 만들어줘", "Claude 명령어 개발해줘" 요청에 활성화됩니다.' },
+    { id: 'code-review-excellence', name: '코드 리뷰 엑설런스', nameEn: 'code-review-excellence', category: 'skills', desc: '게이트키핑이 아닌 지식 공유로 코드 리뷰를 전환. 건설적 피드백, 체계적 분석, 협업적 개선을 지원합니다.', tags: ['productivity', '코드리뷰'], stars: 4.9, installs: 4200, prompt: `# Code Review Excellence — 코드 리뷰 엑설런스
+
+게이트키핑이 아닌 "지식 공유"로서의 코드 리뷰를 수행합니다. 건설적 피드백, 체계적 분석, 협업적 개선을 통해 팀 전체의 코드 품질과 학습 속도를 동시에 높입니다.
+
+## 이 스킬을 사용해야 할 때
+- 풀 리퀘스트와 코드 변경을 리뷰할 때
+- 팀의 코드 리뷰 표준을 수립할 때
+- 리뷰 피드백을 통해 동료를 멘토링할 때
+- 정확성, 보안, 성능을 감사해야 할 때
+
+## 사용하지 말아야 할 때
+- 리뷰할 코드 변경이 없는 경우
+- 코드가 없는 설계 논의
+- 리뷰가 아니라 직접 수정이 필요한 경우
+
+## 수행 지침
+1. 먼저 배경, 요구사항, 테스트 신호를 읽는다.
+2. 정확성 → 보안 → 성능 → 유지보수성 순서로 리뷰.
+3. 심각도와 근거가 포함된 실행 가능한 피드백을 남긴다.
+4. 의도가 불분명하면 명확화 질문을 먼저 던진다.
+5. 세부 체크리스트가 필요하면 playbook을 펼친다.
+
+## 출력 형식
+- 발견 사항 요약
+- 심각도별 이슈 그룹(차단, 중요, 사소)
+- 개선 제안과 질문
+- 테스트 및 커버리지 노트
+
+## 피드백 작성 원칙
+- 사람이 아닌 코드를 평가한다.
+- 명령형 대신 "~하면 어떨까요?" 화법 사용.
+- 문제만 지적하지 말고 대안을 함께 제시.
+- 긍정적 발견도 반드시 언급(강화).
+- 이유(Why)를 함께 적어 학습 기회로 만든다.
+
+## 활성화 예시
+"PR #123 리뷰해줘", "이 변경사항 검토해줘", "코드 리뷰 체크리스트 만들어줘" 등의 요청에 자동 활성화됩니다.` },
+    { id: 'debugging-strategies', name: '디버깅 전략', nameEn: 'debugging-strategies', category: 'skills', desc: '당혹스러운 추측이 아닌 체계적 문제 해결로 디버깅을 전환합니다. 입증된 전략과 도구, 방법론을 활용합니다.', tags: ['productivity', '디버깅'], stars: 4.9, installs: 4050, prompt: `# Debugging Strategies — 디버깅 전략
+
+혼란스러운 추측이 아닌 체계적 문제 해결 방식으로 디버깅을 수행합니다. 검증된 전략, 강력한 도구, 방법론적 접근을 결합합니다.
+
+## 이 스킬을 사용해야 할 때
+- 재현이 어려운 버그를 추적할 때
+- 성능 이슈를 조사할 때
+- 프로덕션 장애를 분석할 때
+- 크래시 덤프나 스택 트레이스를 해석할 때
+- 분산 시스템 디버깅
+
+## 사용하지 말아야 할 때
+- 재현 가능한 이슈나 관찰 가능한 증상이 없을 때
+- 순수한 기능 개발 작업
+- 로그, 트레이스, 런타임 신호에 접근할 수 없을 때
+
+## 수행 지침
+1. 문제를 재현하고 로그·트레이스·환경 세부정보를 수집.
+2. 가설을 세우고 통제된 실험을 설계.
+3. 이분 탐색과 타깃 계측으로 범위를 좁힌다.
+4. 발견을 문서화하고 수정을 검증.
+5. 세부 플레이북이 필요하면 playbook 열기.
+
+## 단계별 체크리스트
+### 1) 재현 단계
+- 최소 재현 케이스 확보
+- 환경 변수, OS, 런타임 버전 기록
+- 간헐성이면 발생 조건(시간대, 트래픽 양)을 메모
+
+### 2) 관찰 단계
+- 로그 레벨 상향, 대상 함수에 계측 삽입
+- 네트워크 탭, 브레이크포인트, strace/dtrace 활용
+- 정상 경로와 실패 경로의 차이를 대조
+
+### 3) 가설 단계
+- "이게 원인이라면 어떤 증거가 있어야 하는가" 질문
+- 서로 배타적인 2~3개 가설 병렬 수립
+- 가장 검증이 빠른 가설부터 우선순위
+
+### 4) 검증 단계
+- 한 번에 한 변수만 변경
+- git bisect로 도입 커밋 특정
+- 수정 후 회귀 테스트 추가
+
+### 5) 마무리
+- 근본 원인 분석(RCA) 문서 작성
+- 팀 위키에 교훈 공유
+- 모니터링/경보로 재발 방지
+
+## 활성화 예시
+"이 버그 원인 찾아줘", "500 에러 디버깅 도와줘", "스택 트레이스 해석해줘" 요청에 활성화됩니다.` },
+    { id: 'crafting-effective-readmes', name: '효과적인 README 작성', nameEn: 'crafting-effective-readmes', category: 'skills', desc: '독자에 맞춘 README를 작성하고 개선합니다. 프로젝트 유형별 템플릿과 체크리스트를 제공합니다.', tags: ['productivity', '문서화'], stars: 4.8, installs: 3820, prompt: `# Crafting Effective READMEs — 효과적인 README 작성
+
+README는 독자의 질문에 답하는 문서입니다. 오픈소스 기여자가 보는 README와, 3개월 뒤의 본인이 보는 README는 달라야 합니다. **항상 먼저 묻기**: "누가 읽을 것이며, 그들이 무엇을 알아야 하는가?"
+
+## 프로세스
+
+### 1단계: 작업 유형 식별
+| 작업 | 사용 시점 |
+|------|----------|
+| **생성** | 새 프로젝트, README가 아직 없음 |
+| **추가** | 새로 문서화할 내용 있음 |
+| **갱신** | 기능이 바뀌어 내용이 낡음 |
+| **검토** | 여전히 정확한지 점검 |
+
+### 2단계: 작업별 질문
+**신규 README 생성 시**
+1. 어떤 종류의 프로젝트인가?
+2. 한 문장으로 해결하는 문제는?
+3. "동작한다"까지의 최단 경로는?
+4. 강조할 특이사항은?
+
+**섹션 추가 시**
+1. 무엇을 문서화하는가?
+2. 기존 구조에서 어느 위치?
+3. 누구에게 가장 필요한가?
+
+**기존 내용 갱신 시**
+1. 무엇이 바뀌었는가?
+2. 현재 README 읽고 낡은 섹션 식별
+3. 구체적 편집 제안
+
+**검토/리프레시 시**
+1. 현재 README를 읽는다
+2. 실제 프로젝트 상태(package.json, 메인 파일 등)와 대조
+3. 낡은 섹션 표시
+4. "최근 검토일" 갱신
+
+### 3단계: 항상 묻기
+초안 작성 후: **"더 강조할 내용이나 빠진 건 없을까요?"**
+
+## 프로젝트 유형별 템플릿
+
+| 유형 | 독자 | 핵심 섹션 |
+|------|------|-----------|
+| **오픈소스** | 기여자, 전 세계 사용자 | 설치, 사용법, 기여, 라이선스 |
+| **개인** | 미래의 나, 포트폴리오 방문자 | 무엇인가, 스택, 배운 점 |
+| **사내** | 동료, 신규 입사자 | 셋업, 아키텍처, 런북 |
+| **설정** | 헷갈리는 미래의 나 | 뭐가 있는지, 왜, 확장 방법, 함정 |
+
+모호하면 사용자에게 물어본다. 모든 것을 오픈소스 기준으로 가정하지 말 것.
+
+## 모든 유형의 필수 섹션
+1. **이름** — 자명한 제목
+2. **설명** — 무엇/왜를 1~2문장으로
+3. **사용법** — 예제와 함께 어떻게 쓰는지
+
+## 자주 하는 실수
+- 설치 방법은 있지만 "왜 쓰는지"가 빠짐
+- 스크린샷이나 데모 GIF 부재
+- 기여 방법이 불명확
+- 라이선스 누락
+- 배지만 있고 실제 상태 설명이 없음
+
+## 활성화 예시
+"README 만들어줘", "README 개선해줘", "프로젝트 문서 템플릿 만들어줘" 요청에 활성화됩니다.` },
+    { id: 'commit-work', name: '커밋 작업', nameEn: 'commit-work', category: 'skills', desc: '고품질 git 커밋 생성. 의도한 변경만 스테이징하고, 논리적 단위로 분할하며, 명확한 메시지를 작성합니다.', tags: ['git', 'productivity'], stars: 4.9, installs: 4500, prompt: `# Commit Work — 커밋 작업
+
+리뷰하기 쉽고 배포하기 안전한 커밋을 만듭니다:
+- 의도한 변경만 포함
+- 논리적 단위로 쪼개진 커밋
+- 무엇이/왜 바뀌었는지 설명하는 메시지
+
+## 빠진 경우 물어봐야 할 입력
+- 단일 커밋 vs 여러 커밋? (불분명하면 관련 없는 변경이 있을 때 여러 개로 기본값)
+- 커밋 스타일: Conventional Commits 필수.
+- 규칙: 제목 최대 길이, 요구 스코프.
+
+## 워크플로 체크리스트
+
+### 1) 스테이징 전에 작업 트리 점검
+\`\`\`
+git status
+git diff
+git diff --stat  # 변경이 많을 때
+\`\`\`
+
+### 2) 커밋 경계 결정 (필요 시 분할)
+- 기능 vs 리팩토링
+- 백엔드 vs 프론트엔드
+- 포매팅 vs 로직
+- 테스트 vs 프로덕션 코드
+- 의존성 업그레이드 vs 동작 변경
+
+한 파일에 혼재하면 \`git add -p\`로 패치 스테이징 계획.
+
+### 3) 다음 커밋에 속하는 것만 스테이징
+\`\`\`
+git add -p                 # 혼재 변경은 패치 모드
+git restore --staged -p    # 헝크 언스테이징
+git restore --staged <path>
+\`\`\`
+
+### 4) 실제로 커밋될 내용 검토
+\`\`\`
+git diff --cached
+\`\`\`
+체크 항목:
+- 비밀/토큰 없음
+- 디버그 로그 남아있지 않음
+- 관련 없는 포매팅 변경 없음
+
+### 5) 스테이징된 변경을 1~2문장으로 설명
+- "무엇이 바뀌었나?" + "왜?"
+- 깔끔하게 설명이 안 되면 커밋이 너무 크거나 혼합 → 2단계로 복귀.
+
+### 6) 커밋 메시지 작성 (Conventional Commits)
+\`\`\`
+type(scope): short summary
+<blank>
+body (what/why, implementation diary 아님)
+<blank>
+BREAKING CHANGE: ... (필요 시)
+\`\`\`
+멀티라인은 \`git commit -v\` 사용.
+
+### 7) 가장 빠른 유의미한 검증 실행
+유닛 테스트, 린트, 빌드 중 가장 빠른 것.
+
+### 8) 작업 트리가 깨끗해질 때까지 반복
+
+## 최종 산출물
+- 최종 커밋 메시지
+- 커밋별 요약(무엇/왜)
+- 사용한 스테이징/검토 명령
+
+## 활성화 예시
+"커밋해줘", "커밋 메시지 만들어줘", "변경사항을 여러 커밋으로 쪼개줘" 요청에 활성화됩니다.` },
+    { id: 'api-design-principles', name: 'API 설계 원칙', nameEn: 'api-design-principles', category: 'skills', desc: 'REST/GraphQL API 설계 원칙. 직관적이고 확장 가능하며 유지보수 가능한 API를 설계합니다.', tags: ['api', '개발'], stars: 4.9, installs: 3700, prompt: `# API Design Principles — API 설계 원칙
+
+REST와 GraphQL API 설계 원칙을 적용해, 개발자에게 기쁨을 주고 오래가는 직관적·확장 가능·유지보수 가능한 API를 만듭니다.
+
+## 이 스킬을 사용해야 할 때
+- 새 REST/GraphQL API 설계
+- 기존 API를 사용성 기준으로 리팩토링
+- 팀 내 API 설계 표준 수립
+- 구현 전에 API 스펙 리뷰
+- API 패러다임 전환(REST → GraphQL 등)
+- 개발자 친화적 API 문서 작성
+- 특정 용도(모바일, 3자 통합) 최적화
+
+## 사용하지 말아야 할 때
+- 특정 프레임워크 구현 가이드만 필요한 경우
+- API 계약과 무관한 인프라 전용 작업
+- 공개 인터페이스를 바꾸거나 버저닝할 수 없는 경우
+
+## 수행 지침
+1. 소비자, 사용 사례, 제약을 정의.
+2. API 스타일 선택 및 리소스/타입 모델링.
+3. 에러, 버저닝, 페이지네이션, 인증 전략 명세.
+4. 예제로 검증하고 일관성 리뷰.
+
+## 핵심 원칙
+
+### 리소스 네이밍
+- 명사 사용, 복수형, 케밥 혹은 스네이크 케이스 일관되게
+- 동사 대신 HTTP 메서드로 의도 표현
+- 중첩은 2단계까지 (\`/users/{id}/orders\` OK, 더 깊어지면 쿼리 파라미터)
+
+### HTTP 메서드 의미론
+- GET: 안전·멱등, 본문 없음
+- POST: 생성·비멱등 액션
+- PUT: 전체 교체·멱등
+- PATCH: 부분 수정
+- DELETE: 삭제·멱등
+
+### 상태 코드
+- 2xx 성공: 200, 201, 204
+- 4xx 클라이언트 오류: 400(검증), 401(미인증), 403(권한), 404(없음), 409(충돌), 422(의미 오류)
+- 5xx 서버 오류: 500, 502, 503, 504
+
+### 에러 응답 포맷 (RFC 7807 Problem Details)
+\`\`\`json
+{
+  "type": "https://errors.example/validation",
+  "title": "Validation failed",
+  "status": 422,
+  "detail": "email must be a valid address",
+  "instance": "/users/123"
+}
+\`\`\`
+
+### 페이지네이션
+- 커서 기반 권장(무한 스크롤, 일관성)
+- \`?cursor=xxx&limit=20\`, 응답에 \`next_cursor\`
+
+### 버저닝
+- URL 경로(\`/v1/users\`) 또는 \`Accept\` 헤더
+- 단순함·발견 가능성 기준: URL 경로 선호
+
+### 멱등성
+- 멱등 키(\`Idempotency-Key\` 헤더) 지원
+- POST에서도 중복 실행 방지 가능
+
+## GraphQL 원칙
+- 스키마 우선 설계, 네이밍 컨벤션 일관
+- N+1 문제 → DataLoader
+- 변이(Mutation) 입력은 single input object
+- 페이지네이션은 Relay Cursor Connection 스펙
+
+## 활성화 예시
+"API 설계 리뷰해줘", "REST 엔드포인트 만들어줘", "GraphQL 스키마 검토해줘" 요청에 활성화됩니다.` },
+    { id: 'async-python-patterns', name: '비동기 파이썬 패턴', nameEn: 'async-python-patterns', category: 'skills', desc: 'asyncio 기반 비동기 파이썬 애플리케이션 패턴. 동시성, async/await, 고성능 논블로킹 시스템 구축.', tags: ['python', 'async'], stars: 4.8, installs: 3100, prompt: `# Async Python Patterns — 비동기 파이썬 패턴
+
+asyncio, 동시성 프로그래밍 패턴, async/await를 사용해 고성능·논블로킹 시스템을 구축하기 위한 종합 가이드.
+
+## 이 스킬을 사용해야 할 때
+- 비동기 웹 API (FastAPI, aiohttp, Sanic) 구축
+- 동시 I/O 작업 (DB, 파일, 네트워크)
+- 동시 요청 웹 스크레이퍼
+- 실시간 앱 (WebSocket 서버, 채팅)
+- 독립 작업 병렬 처리
+- 비동기 통신 마이크로서비스
+- I/O 바운드 워크로드 최적화
+- 비동기 백그라운드 작업·큐
+
+## 사용하지 말아야 할 때
+- CPU 바운드가 지배적이고 I/O가 미미할 때
+- 단순 동기 스크립트로 충분할 때
+- 런타임 환경이 asyncio를 지원하지 않을 때
+
+## 수행 지침
+- 워크로드 특성(I/O vs CPU), 타깃, 런타임 제약을 명확히.
+- 동시성 패턴 선택(task, gather, queue, pool)과 취소 규칙.
+- 타임아웃, 백프레셔, 구조화된 에러 처리 추가.
+- 비동기 코드 경로 테스트·디버깅 가이드 포함.
+
+## 핵심 패턴
+
+### 1) gather로 병렬 처리
+\`\`\`python
+import asyncio
+async def fetch_all(urls):
+    results = await asyncio.gather(
+        *(fetch(u) for u in urls),
+        return_exceptions=True
+    )
+    return results
+\`\`\`
+
+### 2) TaskGroup (Python 3.11+) — 구조화된 동시성
+\`\`\`python
+async def main():
+    async with asyncio.TaskGroup() as tg:
+        t1 = tg.create_task(worker(1))
+        t2 = tg.create_task(worker(2))
+    # 그룹 종료 시 모든 task 완료, 예외는 ExceptionGroup
+\`\`\`
+
+### 3) Semaphore로 동시성 제한
+\`\`\`python
+sem = asyncio.Semaphore(10)
+async def bounded_fetch(url):
+    async with sem:
+        return await fetch(url)
+\`\`\`
+
+### 4) Queue 기반 생산자-소비자
+\`\`\`python
+queue = asyncio.Queue(maxsize=100)
+async def producer():
+    for item in items:
+        await queue.put(item)
+async def consumer():
+    while True:
+        item = await queue.get()
+        try: await process(item)
+        finally: queue.task_done()
+\`\`\`
+
+### 5) 타임아웃
+\`\`\`python
+# Python 3.11+
+async with asyncio.timeout(5):
+    data = await slow_call()
+
+# 이전 버전
+try:
+    data = await asyncio.wait_for(slow_call(), timeout=5)
+except asyncio.TimeoutError:
+    ...
+\`\`\`
+
+### 6) CPU 바운드는 별도 풀
+\`\`\`python
+loop = asyncio.get_running_loop()
+result = await loop.run_in_executor(None, cpu_heavy, x)
+# ProcessPoolExecutor 권장 — GIL 우회
+\`\`\`
+
+### 7) 블로킹 I/O 래핑
+\`\`\`python
+data = await asyncio.to_thread(blocking_call, arg)
+\`\`\`
+
+## 자주 빠지는 함정
+- async 함수 안에서 time.sleep() 사용 → asyncio.sleep()
+- 블로킹 라이브러리(requests)를 async에서 직접 호출
+- gather(return_exceptions=False)로 첫 예외에서 멈춤
+- 취소(CancelledError)를 삼키는 try/except
+- 전역 이벤트 루프 공유로 테스트가 엉킴
+
+## 활성화 예시
+"async 패턴 적용해줘", "asyncio gather로 병렬 처리해줘", "FastAPI에서 동시 호출 만들어줘" 요청에 활성화됩니다.` },
+    { id: 'architecture-decision-records', name: '아키텍처 의사결정 기록 (ADR)', nameEn: 'architecture-decision-records', category: 'skills', desc: '중요한 기술적 의사결정의 맥락과 근거를 캡처하는 ADR 작성·유지 패턴.', tags: ['아키텍처', '문서화'], stars: 4.8, installs: 3300, prompt: `# Architecture Decision Records (ADR) — 아키텍처 의사결정 기록
+
+중요한 기술적 의사결정의 맥락과 근거를 기록하는 ADR의 작성·유지·관리 종합 패턴.
+
+## 이 스킬을 사용해야 할 때
+- 중요 아키텍처 결정을 내릴 때
+- 기술 선택을 문서화할 때
+- 설계 트레이드오프를 기록할 때
+- 신규 팀원을 온보딩할 때
+- 과거 결정을 검토할 때
+- 의사결정 프로세스를 수립할 때
+
+## 사용하지 말아야 할 때
+- 작은 구현 세부사항만 기록하는 경우
+- 미세 패치나 루틴 유지보수
+- 아키텍처 결정 자체가 없는 경우
+
+## ADR이란?
+- **맥락(Context)**: 왜 결정이 필요했나
+- **결정(Decision)**: 무엇을 결정했나
+- **결과(Consequences)**: 결과로 무엇이 생기나
+
+## ADR을 작성할 때 vs 생략할 때
+| ADR 작성 | 생략 |
+|---------|------|
+| 새 프레임워크 도입 | 마이너 버전 업그레이드 |
+| DB 기술 선택 | 버그 수정 |
+| API 설계 패턴 | 구현 디테일 |
+| 보안 아키텍처 | 루틴 유지보수 |
+| 통합 패턴 | 설정 변경 |
+
+## 라이프사이클
+\`\`\`
+제안됨(Proposed) → 수락됨(Accepted) → 폐지됨(Deprecated) → 대체됨(Superseded)
+                       ↓
+                    거절됨(Rejected)
+\`\`\`
+
+## 표준 템플릿 (MADR 스타일)
+\`\`\`markdown
+# ADR-0001: PostgreSQL을 주 데이터베이스로 채택
+
+## 상태
+Accepted
+
+## 맥락
+신규 이커머스 플랫폼의 주 DB 선택이 필요함. 시스템은
+- 동시 사용자 1만 명
+- 계층형 카테고리의 복잡한 상품 카탈로그
+- 주문·결제 트랜잭션
+- 상품 전문 검색
+을 다뤄야 함.
+
+## 고려한 대안
+1. PostgreSQL — 오픈소스, JSONB, 전문 검색, 강한 일관성
+2. MySQL — 성숙, 널리 쓰임, 복잡 쿼리에 상대적으로 약함
+3. MongoDB — 유연, 트랜잭션 보장 제한
+
+## 결정
+PostgreSQL 채택.
+
+## 근거
+- JSONB로 반정형 카탈로그 유연 처리
+- pg_trgm / full_text search 내장
+- 강한 트랜잭션 일관성 필요
+- 운영 도구(PgBouncer, Patroni) 성숙
+
+## 결과
+**긍정적**: 확장성, 도구 생태계, 하나의 DB로 대부분 기능 커버.
+**부정적**: 기본 HA 구성 복잡, 운영 전문성 필요.
+
+## 관련 ADR
+- ADR-0003: 연결 풀링 전략
+- ADR-0008: 읽기 전용 복제본 전략
+\`\`\`
+
+## 저장소 구조
+\`\`\`
+docs/adr/
+  0001-use-postgresql.md
+  0002-api-versioning-strategy.md
+  0003-event-driven-architecture.md
+  README.md  (인덱스)
+\`\`\`
+
+## 작성 팁
+- 파일명: \`NNNN-짧은-제목.md\`
+- 번호는 되돌리지 않는다. 거절된 것도 번호 유지.
+- 결정을 뒤집으면 새 ADR을 만들어 "Supersedes ADR-0005" 표기.
+- "제안됨" 단계에서 PR로 토론 → 머지 시 "수락됨"으로 상태 변경.
+
+## 활성화 예시
+"이 결정에 대한 ADR 작성해줘", "아키텍처 선택 문서화해줘", "기술 스택 결정 기록 만들어줘" 요청에 활성화됩니다.` },
+    { id: 'postgresql-optimization', name: 'PostgreSQL 최적화', nameEn: 'postgresql-optimization', category: 'skills', desc: 'PostgreSQL 쿼리 튜닝, 인덱싱 전략, 성능 분석, 운영 DB 관리 워크플로우.', tags: ['database', 'PostgreSQL'], stars: 4.9, installs: 3950, prompt: `# PostgreSQL Optimization — PostgreSQL 최적화 워크플로우
+
+쿼리 튜닝, 인덱싱 전략, 성능 분석, 바큠 관리, 운영 DB 관리 등 PostgreSQL 최적화를 위한 전용 워크플로우.
+
+## 사용 시점
+- 느린 PostgreSQL 쿼리 최적화
+- 인덱싱 전략 설계
+- DB 성능 분석
+- PostgreSQL 설정 튜닝
+- 운영 DB 관리
+
+## Phase 1: 성능 평가
+
+**수행 액션**
+1. DB 버전 확인 (\`SELECT version();\`)
+2. 현재 설정 리뷰 (\`SHOW ALL;\`)
+3. 느린 쿼리 분석 (\`pg_stat_statements\`)
+4. 자원 사용량 확인
+5. 병목 식별
+
+\`\`\`sql
+-- pg_stat_statements 상위 느린 쿼리
+SELECT query, calls, total_exec_time, mean_exec_time
+FROM pg_stat_statements
+ORDER BY mean_exec_time DESC
+LIMIT 20;
+\`\`\`
+
+## Phase 2: 쿼리 분석
+
+**수행 액션**
+1. EXPLAIN ANALYZE 실행
+2. 스캔 타입 식별(Seq/Index/Bitmap)
+3. 조인 전략 점검
+4. 실행 시간 분석
+5. 최적화 기회 탐색
+
+\`\`\`sql
+EXPLAIN (ANALYZE, BUFFERS, FORMAT TEXT) SELECT ...;
+\`\`\`
+
+### 주의할 신호
+- Seq Scan on large table → 인덱스 누락
+- Nested Loop with large rows → 조인 순서 문제
+- Bitmap Heap Scan with Recheck → 인덱스 선택성 낮음
+- Sort spilled to disk → \`work_mem\` 증가 검토
+- Rows 추정치와 실제값의 큰 차이 → 통계 갱신(\`ANALYZE\`)
+
+## Phase 3: 인덱싱 전략
+
+**수행 액션**
+1. 누락 인덱스 식별
+2. B-tree 인덱스 생성
+3. 복합 인덱스 추가(왼쪽 접두사 규칙)
+4. 부분 인덱스(WHERE절 포함)
+5. 인덱스 사용률 검토
+
+\`\`\`sql
+-- 사용되지 않는 인덱스
+SELECT s.relname AS table_name, i.indexrelid::regclass AS index_name
+FROM pg_stat_user_indexes i
+JOIN pg_stat_user_tables s ON s.relid = i.relid
+WHERE i.idx_scan = 0 AND NOT s.relname LIKE 'pg_%';
+
+-- 복합 인덱스 예
+CREATE INDEX idx_orders_user_created
+  ON orders (user_id, created_at DESC)
+  WHERE status = 'active';
+\`\`\`
+
+## Phase 4: 쿼리 최적화
+
+**수행 액션**
+1. 비효율 쿼리 재작성
+2. 조인 최적화
+3. 필요 시 CTE 도입(Postgres 12+에서는 인라인화 가능)
+4. 커서 기반 페이지네이션
+5. 개선 측정
+
+## Phase 5: 설정 튜닝
+- \`shared_buffers\`: 메모리의 ~25%
+- \`effective_cache_size\`: 메모리의 ~75%
+- \`work_mem\`: 접속 수 × 예상 정렬 메모리 기준
+- \`maintenance_work_mem\`: VACUUM/CREATE INDEX용
+- \`max_wal_size\`: 쓰기 많은 시스템에서 증가
+- \`random_page_cost\`: SSD면 1.1 권장
+
+## Phase 6: VACUUM·ANALYZE·Bloat 관리
+- \`autovacuum\` 튜닝: scale factor, threshold
+- \`VACUUM FULL\`은 락이 강함 → 운영 중에는 \`pg_repack\` 검토
+- \`ANALYZE\`로 통계 갱신 → 플래너 정확도 향상
+- Bloat 검사: \`pgstattuple\`, \`pg_repack --dry-run\`
+
+## Phase 7: 운영 모니터링
+- Lock 경합: \`pg_locks\`, \`pg_stat_activity\`
+- Replication lag: \`pg_stat_replication\`
+- 연결 수: PgBouncer(트랜잭션 풀링) 고려
+- 장기 실행 쿼리 감시 및 알림
+
+## 활성화 예시
+"느린 쿼리 최적화해줘", "인덱스 설계해줘", "PostgreSQL 성능 진단해줘" 요청에 활성화됩니다.` },
+    { id: 'github-workflow-automation', name: 'GitHub 워크플로우 자동화', nameEn: 'github-workflow-automation', category: 'skills', desc: 'GitHub Actions를 활용한 CI/CD 및 저장소 자동화. 빌드, 테스트, 배포, 릴리스, PR 검사 자동화.', tags: ['github', 'CI/CD'], stars: 4.9, installs: 4300, prompt: `# GitHub Workflow Automation — GitHub 워크플로우 자동화
+
+GitHub Actions를 활용해 CI/CD, 자동 리뷰, 릴리스, 보안 스캔 등 저장소 운영을 자동화합니다.
+
+## 이 스킬을 사용해야 할 때
+- CI/CD 파이프라인 구축
+- PR 자동 검사(린트, 테스트, 커버리지)
+- 자동 릴리스와 체인지로그
+- 시크릿 스캔/의존성 감사 자동화
+- 배포 자동화(Preview, Staging, Prod)
+- Issue/PR 자동 라벨링, 분류
+
+## 핵심 파일 구조
+\`\`\`
+.github/
+  workflows/
+    ci.yml
+    release.yml
+    deploy.yml
+    security.yml
+  dependabot.yml
+  CODEOWNERS
+  pull_request_template.md
+  ISSUE_TEMPLATE/
+    bug_report.md
+    feature_request.md
+\`\`\`
+
+## 베이스 CI 템플릿 (Node/TypeScript)
+\`\`\`yaml
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+concurrency:
+  group: ci-\\\${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  lint-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      - uses: pnpm/action-setup@v3
+        with: { version: 9 }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test --coverage
+      - uses: codecov/codecov-action@v4
+\`\`\`
+
+## 릴리스 자동화 (semantic-release 대체: Changesets)
+\`\`\`yaml
+name: Release
+on:
+  push:
+    branches: [main]
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: changesets/action@v1
+        with:
+          publish: pnpm release
+          title: "chore(release): version packages"
+          commit: "chore(release): version packages"
+        env:
+          GITHUB_TOKEN: \\\${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: \\\${{ secrets.NPM_TOKEN }}
+\`\`\`
+
+## Preview Deploy (Vercel)
+\`\`\`yaml
+name: Preview
+on:
+  pull_request:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: \\\${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: \\\${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: \\\${{ secrets.VERCEL_PROJECT_ID }}
+\`\`\`
+
+## 보안 스캔
+\`\`\`yaml
+name: Security
+on:
+  push:
+  schedule: [{ cron: '0 3 * * *' }]
+jobs:
+  codeql:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: github/codeql-action/init@v3
+        with: { languages: javascript }
+      - uses: github/codeql-action/analyze@v3
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: gitleaks/gitleaks-action@v2
+\`\`\`
+
+## Dependabot 설정
+\`\`\`yaml
+# .github/dependabot.yml
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule: { interval: "weekly" }
+    groups:
+      prod:  { dependency-type: "production" }
+      dev:   { dependency-type: "development" }
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule: { interval: "weekly" }
+\`\`\`
+
+## 품질 향상 팁
+- \`concurrency\`로 동일 브랜치의 중복 실행 취소
+- \`matrix\`로 Node/OS 조합 병렬 실행
+- \`cache: 'pnpm'\` 또는 \`actions/cache@v4\`로 빌드 시간 절약
+- \`workflow_dispatch\`로 수동 트리거 허용(긴급 배포)
+- 큰 워크플로는 \`reusable workflows\`로 분해
+- 시크릿은 Environment 단위로 분리(prod/staging)
+- \`permissions:\` 명시해 최소 권한 원칙
+
+## 디버깅
+- \`ACTIONS_STEP_DEBUG=true\` 시크릿으로 디버그 로그
+- \`tmate\` 액션으로 일시 SSH 접속
+- 실패 시 자동 아티팩트 업로드(로그, 스크린샷)
+
+## 활성화 예시
+"GitHub Actions 워크플로 만들어줘", "CI 파이프라인 개선해줘", "자동 릴리스 설정해줘" 요청에 활성화됩니다.` },
+    { id: 'n8n-workflow-patterns', name: 'n8n 워크플로 패턴', nameEn: 'n8n-workflow-patterns', category: 'skills', desc: 'n8n 자동화 워크플로 설계 패턴. 트리거, 조건 분기, 에러 처리, 재시도, 시크릿 관리.', tags: ['automation', 'n8n'], stars: 4.8, installs: 2900, prompt: `# n8n Workflow Patterns — n8n 워크플로 패턴
+
+n8n으로 견고한 자동화를 만들기 위한 패턴 모음. 트리거 설계, 조건 분기, 에러 처리, 데이터 매핑, 시크릿 관리, 재시도, 테스트까지 다룹니다.
+
+## 이 스킬을 사용해야 할 때
+- SaaS 간 데이터 동기화
+- Webhook 처리 및 변환
+- 예약 작업(Cron) 자동화
+- 외부 API 호출 체인
+- 승인 플로우(Slack/Email 알림)
+- 내부 툴/대시보드용 데이터 수집
+
+## 핵심 노드 카테고리
+- **Trigger**: Webhook, Cron, Manual, IMAP, RabbitMQ
+- **Action**: HTTP Request, Code(JS/Python), Database
+- **Flow Control**: IF, Switch, Merge, SplitInBatches, Wait
+- **Integration**: Slack, Notion, Airtable, Google Sheets, GitHub 등
+
+## 기본 패턴
+
+### 1) Idempotent Webhook
+- Webhook 입력에서 외부 ID를 추출
+- \`Key Value Store\` 또는 DB로 "이미 처리됨" 여부 확인
+- 중복 실행 방지
+
+### 2) Split → Process → Merge
+\`\`\`
+Webhook → SplitInBatches(10) → HTTP Request → Merge → Next
+\`\`\`
+대량 처리 시 API rate limit에 맞춰 배치 크기 조정.
+
+### 3) IF / Switch 분기
+- IF: 2분기
+- Switch: N분기, 규칙 기반
+- 매칭되지 않는 입력도 반드시 기본 경로 정의
+
+### 4) 에러 처리
+- 워크플로 설정: "Error Workflow" 지정
+- 실패 시 별도 워크플로가 Slack/이메일로 알림
+- 민감 정보는 로그에 남기지 않도록 주의
+
+### 5) 재시도 전략
+- HTTP Request 노드의 "Retry On Fail" 활성화
+- 점진적 백오프는 Wait 노드로 직접 구성 가능
+- 영구 실패는 Dead Letter Queue 역할의 테이블/DB에 저장
+
+### 6) 시크릿 관리
+- Credentials에 저장, 노드에서 참조만
+- 절대 Code 노드 안에 하드코딩하지 않기
+- 환경별로 credential 분리(dev/stage/prod)
+
+## Code 노드 Best Practice
+\`\`\`javascript
+// JavaScript Code 노드
+const items = $input.all();
+return items.map(i => ({
+  json: {
+    id: i.json.id,
+    email: i.json.email?.toLowerCase()?.trim(),
+    normalized: true
+  }
+}));
+\`\`\`
+- $input.all() / $input.item / $json 의 차이를 숙지
+- 에러 throw로 워크플로 일시 정지 가능
+
+## 테스트·운영 팁
+- "Pin Data" 기능으로 특정 노드 출력 고정 → 하류 노드 개발·테스트
+- Webhook은 "Test URL"과 "Production URL" 두 가지 — 배포 전 반드시 Production URL로 전환
+- 버전 관리: n8n 워크플로 JSON 내보내기 → Git에 커밋
+- 모니터링: 실행 히스토리 보관 기간 설정, 장애 시 조회
+- 타임아웃: HTTP Request 노드의 타임아웃 명시
+
+## 복잡 패턴
+
+### Saga / 보상 트랜잭션
+여러 외부 API 호출이 있을 때 실패 시 이전 단계의 보상 호출(취소, 환불 등)을 체인으로 구성.
+
+### Pub/Sub 확장
+n8n + Redis Streams / RabbitMQ 조합. Webhook → 큐 → 다수 워커 워크플로.
+
+### 휴먼 인 더 루프
+Slack Interactive Message로 승인 요청 → 사용자 클릭 후 별도 Webhook로 이어지는 플로우.
+
+## 활성화 예시
+"n8n 워크플로 설계해줘", "Slack → Notion 자동화 만들어줘", "Webhook → DB 파이프라인 짜줘" 요청에 활성화됩니다.` }
   ],
 
   agents: [
