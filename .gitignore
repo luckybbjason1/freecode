@@ -1,0 +1,11 @@
+
+# CI/안전 스캔 산출물 (저장소에 커밋하지 않음)
+*-report.json
+*-stderr.txt
+checkov-report.json
+gitleaks-report.json
+grype-report.json
+hadolint-report.json
+semgrep-report.json
+npm-audit.json
+precommit-scan-*.md
