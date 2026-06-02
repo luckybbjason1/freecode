@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GQHEYDXTHG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GQHEYDXTHG');
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5138416840385352" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로컬 LLM으로 환각 없이 기술 글 쓰기 — 사실을 지어내지 않는 자동화 (2026) | Claude Korea</title>
+  <meta name="description" content="로컬 Ollama로 기술 블로그를 자동 생성할 때 GitHub 스타 수·저장소 주소·이미지를 지어내는 환각 문제를 근본부터 막는 방법. 사실 검증 + 섹션별 생성 + 품질 게이트 아키텍처를 실전 코드와 함께 정리했습니다.">
+  <meta name="keywords" content="로컬 LLM, Ollama, AI 글쓰기, 환각 방지, qwen, 콘텐츠 자동화, 기술 블로그, SEO, 개발 생산성">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Claude Korea">
+  <link rel="canonical" href="https://claudekorea.com/blog/local-llm-no-hallucination-writing-2026.html">
+  <link rel="alternate" hreflang="ko" href="https://claudekorea.com/blog/local-llm-no-hallucination-writing-2026.html">
+  <link rel="alternate" hreflang="x-default" href="https://claudekorea.com/blog/local-llm-no-hallucination-writing-2026.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="로컬 LLM으로 환각 없이 기술 글 쓰기 — 사실을 지어내지 않는 자동화 (2026)">
+  <meta property="og:description" content="로컬 Ollama로 기술 블로그를 자동 생성할 때 GitHub 스타 수·저장소 주소·이미지를 지어내는 환각 문제를 근본부터 막는 방법. 사실 검증 + 섹션별 생성 + 품질 게이트 아키텍처를 실전 코드와 함께 정리했습니다.">
+  <meta property="og:image" content="https://claudekorea.com/assets/img/og-image.svg">
+  <meta property="og:url" content="https://claudekorea.com/blog/local-llm-no-hallucination-writing-2026.html">
+  <meta property="og:site_name" content="Claude Korea">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="로컬 LLM으로 환각 없이 기술 글 쓰기 (2026)">
+  <meta name="twitter:description" content="로컬 Ollama가 GitHub 스타·저장소·이미지를 지어내는 환각을 근본부터 막는 사실 검증 + 섹션별 생성 + 품질 게이트 아키텍처.">
+  <meta name="twitter:image" content="https://claudekorea.com/assets/img/og-image.svg">
+  <script type="application/ld+json">
+  [
+    {"@context":"https://schema.org","@type":"Article","headline":"로컬 LLM으로 환각 없이 기술 글 쓰기 — 사실을 지어내지 않는 자동화 (2026)","description":"로컬 Ollama로 기술 블로그를 자동 생성할 때 GitHub 스타 수·저장소 주소·이미지를 지어내는 환각 문제를 근본부터 막는 방법. 사실 검증 + 섹션별 생성 + 품질 게이트 아키텍처를 실전 코드와 함께 정리했습니다.","image":"https://claudekorea.com/assets/img/og-image.svg","datePublished":"2026-06-03","dateModified":"2026-06-03","inLanguage":"ko-KR","author":{"@type":"Organization","name":"Claude Korea","url":"https://claudekorea.com"},"publisher":{"@type":"Organization","name":"Claude Korea","logo":{"@type":"ImageObject","url":"https://claudekorea.com/assets/img/logo.svg"}},"url":"https://claudekorea.com/blog/local-llm-no-hallucination-writing-2026.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://claudekorea.com/blog/local-llm-no-hallucination-writing-2026.html"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://claudekorea.com/"},{"@type":"ListItem","position":2,"name":"블로그","item":"https://claudekorea.com/blog.html"},{"@type":"ListItem","position":3,"name":"로컬 LLM 환각 없이 글쓰기","item":"https://claudekorea.com/blog/local-llm-no-hallucination-writing-2026.html"}]}
+  ]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <style>
+    .article-hero { padding: 8rem 0 4rem; text-align: center; background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(124,106,245,0.08) 0%, transparent 70%); }
+    .article-body { max-width: 760px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .article-body h2 { font-size: var(--text-xl); font-weight: 700; color: var(--text-primary); margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .article-body h3 { font-size: var(--text-lg); font-weight: 700; color: var(--text-primary); margin: 2rem 0 0.75rem; }
+    .article-body p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { color: var(--text-secondary); padding-left: 1.5rem; margin-bottom: 1.25rem; line-height: 1.8; }
+    .article-body li { margin-bottom: 0.5rem; }
+    .article-body li::marker { color: var(--violet); }
+    .article-body code { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-xs); padding: 0.15rem 0.4rem; font-family: var(--font-mono); font-size: 0.875em; color: var(--cyan); }
+    .article-body pre { background: var(--bg-elevated); border: var(--border-glass); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; overflow-x: auto; }
+    .article-body pre code { background: none; border: none; padding: 0; color: var(--text-primary); font-size: 0.9em; }
+    .article-body blockquote { border-left: 3px solid var(--violet); background: var(--violet-dim); padding: 1rem 1.25rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+    .article-body blockquote p { color: var(--text-primary); margin: 0; }
+    .article-body .callout { background: var(--cyan-dim); border: 1px solid rgba(13,240,255,0.18); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; }
+    .article-body .callout p { color: var(--text-primary); margin: 0; }
+    .article-breadcrumb { font-size: var(--text-xs); color: var(--text-muted); margin-bottom: 1.5rem; }
+    .article-breadcrumb a { color: var(--violet-light); }
+    .compare-table { width:100%; border-collapse:collapse; margin: 1.5rem 0; }
+    .compare-table th { background: var(--bg-elevated); color: var(--text-primary); padding: .75rem 1rem; text-align:left; font-size: var(--text-sm); border: 1px solid rgba(255,255,255,0.07); }
+    .compare-table td { padding: .65rem 1rem; color: var(--text-secondary); font-size: var(--text-sm); border: 1px solid rgba(255,255,255,0.05); }
+    .compare-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .tip-box { background: var(--gold-dim); border: 1px solid rgba(245,200,66,0.2); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; }
+    .tip-box p { color: var(--gold-light); margin: 0; font-weight: 500; }
+    .related-links { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1rem; margin:2rem 0; }
+    .related-link { background:var(--glass-bg); border:var(--border-glass); border-radius:var(--radius-md); padding:1rem; text-align:center; transition:border-color .2s; }
+    .related-link:hover { border-color:var(--violet); }
+    .related-link span { display:block; font-size:1.5rem; margin-bottom:.4rem; }
+    .related-link a { color:var(--text-primary); font-weight:600; font-size:var(--text-sm); }
+    .article-body img { max-width: 100%; height: auto; border-radius: var(--radius-md); border: var(--border-glass); margin: 1.5rem 0; }
+  </style>
+<script type="application/ld+json" data-geo-faqpage>
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"로컬 LLM이 GitHub 스타 수를 지어내는 걸 막을 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"네. 모델에게 묻지 않고 GitHub API로 실제 값을 가져와 사실 시트로 건네면 됩니다. 모델은 검증된 값만 배치하고, 없는 값은 지어내지 않고 [UNVERIFIED]로 남깁니다."}},{"@type":"Question","name":"왜 프롬프트를 잘 써도 환각이 안 고쳐지나요?","acceptedAnswer":{"@type":"Answer","text":"모델이 진짜 사실을 모르기 때문입니다. 프롬프트는 표현을 바꿀 뿐 없는 사실을 만들어내지 못합니다. 해법은 사실을 외부 코드로 검증해 주입하는 것입니다."}},{"@type":"Question","name":"7B 모델로 2,000단어 긴 글을 쓸 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"단발로는 약 650단어가 한계지만, 고정 골격을 따라 섹션별로 생성한 뒤 이어 붙이면 2,000단어와 코드블록 15개 이상을 사실을 유지한 채 만들 수 있습니다."}},{"@type":"Question","name":"품질 게이트는 무엇을 검사하나요?","acceptedAnswer":{"@type":"Answer","text":"단어 수, 코드블록 수, 본문 사실이 가져온 스냅샷과 일치하는지, 금지 마케팅 단어, 다국어 번역본의 코드/숫자/이미지 동기화를 검사하고 실패 시 발행을 막습니다."}},{"@type":"Question","name":"GroundTruth Writer Kit은 무엇을 포함하나요?","acceptedAnswer":{"@type":"Answer","text":"사실 수집기, 중복 제거기, 섹션별 작성기, 4개 언어 번역기, 품질 게이트, 오케스트레이터, 그리고 방법론 문서와 실제 생성 예시 글을 포함합니다. 자신의 Ollama 위에서 동작합니다."}}]}
+</script>
+</head>
+<body>
+<nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
+  <a href="../index.html" class="nav__logo"><img src="../assets/img/logo.svg" alt="Claude Korea" class="nav__logo-img"></a>
+  <ul class="nav__links">
+    <li><a href="../skills.html">스킬</a></li>
+    <li><a href="../agents.html">에이전트</a></li>
+    <li><a href="../commands.html">명령어</a></li>
+    <li><a href="../mcps.html">MCP</a></li>
+    <li><a href="../blog.html" class="active">블로그</a></li>
+  </ul>
+  <div class="nav__actions"><a href="https://claude.ai" target="_blank" rel="noopener" class="nav__github"><span>Claude 시작</span></a></div>
+  <button class="nav__hamburger" id="nav-hamburger" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<nav class="nav__mobile" id="nav-mobile">
+  <a href="../skills.html">스킬</a><a href="../agents.html">에이전트</a><a href="../commands.html">명령어</a><a href="../mcps.html">MCP</a><a href="../blog.html">블로그</a>
+</nav>
+
+<!-- kingskill CTA -->
+<div class="kingskill-cta" style="width:100%;margin-top:64px;padding:14px 16px;text-align:center;">
+  <a href="https://kingskill.gumroad.com/l/pfsjmu" target="_blank" rel="noopener"
+     style="display:inline-block;max-width:728px;width:100%;padding:14px 22px;border-radius:10px;font-weight:700;text-decoration:none;color:#0b0b12;background:linear-gradient(90deg,#f5c451,#e8a93d);box-shadow:0 4px 18px rgba(232,169,61,.35);">
+    ⚡ Claude Code Skills Bundle — 검증된 스킬 5종, 바로 적용 ($19) →
+  </a>
+</div>
+<div id="ad-header-banner" class="ad-slot ad-slot--header" aria-label="광고"></div>
+
+<header class="article-hero">
+  <div class="container">
+    <nav class="article-breadcrumb" aria-label="현재 위치">
+      <a href="../index.html">홈</a> &gt; <a href="../blog.html">블로그</a> &gt; 로컬 LLM 환각 없이 글쓰기
+    </nav>
+    <h1 style="font-size:var(--text-3xl);font-weight:700;margin-bottom:1rem;line-height:1.2;">로컬 LLM으로 환각 없이 기술 글 쓰기 — 사실을 지어내지 않는 자동화</h1>
+    <p style="color:var(--text-secondary);max-width:620px;margin:0 auto 1.5rem;">로컬 Ollama가 GitHub 스타·저장소 주소·이미지를 지어내는 환각을, 사실 검증 + 섹션별 생성 + 품질 게이트로 근본부터 막는 실전 아키텍처.</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:1rem;font-size:var(--text-xs);color:var(--text-muted);">
+      <span>Claude Korea</span><span>·</span><span>2026년 6월</span><span>·</span><span>12분 읽기</span><span>·</span><span class="badge badge--gold">실전</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body" itemscope itemtype="https://schema.org/Article">
+<div class="geo-tldr" style="margin:0 0 24px;padding:20px 22px;border-radius:12px;background:rgba(13,240,255,.06);border:1px solid rgba(13,240,255,.22);"><strong style="display:block;margin-bottom:8px;">핵심 요약 (TL;DR)</strong><ul style="margin:0;padding-left:1.2em;line-height:1.7;"><li>로컬 7B 모델의 진짜 문제는 생성이 아니라 <strong>사실 환각</strong>이다 — GitHub 스타 수를 33배 틀리고, 없는 저장소 주소와 깨진 이미지를 자신감 있게 써낸다.</li><li>해법: <strong>모델에게 사실을 묻지 마라.</strong> 결정론적 코드(GitHub API + <code>curl</code> Content-Type 검사)가 사실을 가져오고, 모델은 검증된 사실을 배치만 한다. 없는 값은 <code>[UNVERIFIED]</code>로 남긴다.</li><li>7B의 ~650단어 천장은 <strong>섹션별 생성</strong>으로 돌파한다 — 고정 골격을 따라 각 섹션을 사실 시트와 함께 생성해 이어 붙이면 2,000단어·코드블록 15개+를 사실을 유지한 채 만든다.</li><li><strong>프로그램 품질 게이트</strong>가 단어 수·코드블록·사실 일치·금지어·다국어 동기화를 검사하고 실패 시 발행을 막아, 그럴듯한 쓰레기가 새어 나가지 않는다.</li><li>전체 파이프라인은 <a href="https://kingskill.gumroad.com/l/aznvwd" target="_blank" rel="noopener">GroundTruth Writer Kit ($29)</a>로 패키지되어 있다 — 자신의 Ollama 위에서 바로 돌릴 수 있다.</li></ul></div>
+
+<h2>들어가며: 로컬 AI로 글을 쓰면 겪는 진짜 문제</h2>
+<p>API 비용을 아끼려고 로컬 모델(<code>qwen2.5:7b</code> 같은)로 기술 블로그 초안을 자동화해 본 적 있다면, 한 가지 벽을 만났을 것이다. 생성 자체는 쉽다. 프로젝트를 죽이는 건 <strong>사실 환각(hallucination)</strong>이다.</p>
+<p>예를 들어 모델에게 llama.cpp 가이드를 쓰라고 하면 깔끔하고 자신감 넘치는 문장으로 이렇게 쓴다 — "GitHub 스타 3,450개". 실제는 <strong>114,288개</strong>. 33배 차이다. 저장소 주소도 존재하지 않는 <code>llama-cpp/llama.cpp</code>로, 이미지는 페이지일 뿐인 <code>/blob/</code> URL로 — 라이브 글에서 깨진 이미지가 된다.</p>
+<p>이런 건 독자(나 경쟁자)가 캡처해서 신뢰도를 깎는 정확히 그런 종류다. 그리고 "프롬프트를 더 세게" 써도 안 고쳐진다 — 모델은 거짓말하는 게 아니라 <em>진짜로 그 사실을 모른다</em>.</p>
+
+<h2>왜 7B 모델은 사실을 지어내는가</h2>
+<p>언어 모델은 다음에 올 가장 그럴듯한 토큰을 예측한다. "stars"라는 단어 뒤에는 숫자가 오는 게 그럴듯하니, 모델은 그럴듯한 숫자를 만들어낸다. 그게 진짜인지 확인할 방법이 모델 안에는 없다. 작은 모델일수록, 학습 시점 이후의 사실일수록 이 문제는 심해진다.</p>
+
+<h2>해결책: 사실은 코드가, 글은 모델이</h2>
+<p>이 글의 가장 중요한 한 줄:</p>
+<blockquote><strong>모델에게 사실을 묻지 마라. 검증된 사실을 건네고, 배치만 하게 하라.</strong></blockquote>
+<p>작업을 둘로 쪼갠다:</p>
+<ol>
+<li><strong>결정론적 코드가 진실을 가져온다</strong> — GitHub API로 진짜 스타/라이선스/저장소/메인테이너를, 모든 이미지 URL에 <code>curl</code> Content-Type 검사를 한다. <code>image/*</code>를 실제로 반환하는 것만 통과하고, <code>/blob/</code> HTML 페이지는 거부 후 <code>raw.githubusercontent</code>로 교정한다.</li>
+<li><strong>모델은 그 사실 시트로 글을 쓴다</strong> — 사실 시트가 <em>유일한</em> 진실 소스라고 지시받는다. 시트에 없는 건 지어내지 않고 <code>[UNVERIFIED]</code>로 남긴다.</li>
+</ol>
+<p>같은 llama.cpp 글을 다시 생성하면 이번엔 <strong>114,288 스타, 진짜 ggml-org/llama.cpp, curl로 검증된 이미지만</strong> 나온다. 같은 모델이다. 환각이 줄어든 게 아니라 <em>사라졌다</em> — 모델이 사실을 건드리지 않았으니까.</p>
+
+<h2>두 번째 문제: 7B는 짧게 쓴다</h2>
+<p>7B 모델은 단발 생성에서 약 <strong>650단어</strong> 천장이 있다. "2,000단어 써줘"라고 하면 물 탄 결과가 나온다. 효과가 있던 해법은 <strong>섹션별 생성</strong>이다 — 고정된 골격(도입 → 개념 → 작동 원리 → 설치 → 사용법 → 비교 → 한계 → FAQ → 결론)을 따라 각 섹션을 사실 시트와 함께 생성한다. 이어 붙이면 2,000단어와 코드블록 15개를 넘기면서도, 각 섹션이 사실에 묶여 있어 정확도가 끝까지 유지된다.</p>
+<pre><code># 섹션별로 사실 시트를 컨텍스트에 넣고 생성
+for section in skeleton:
+    prompt = f"FACTS:\n{fact_sheet}\n\nWrite section: {section}"
+    body += ollama(prompt)</code></pre>
+
+<h2>품질 게이트: 불량은 통과 못 한다</h2>
+<p>마지막 방어선은 프로그램 <strong>품질 게이트</strong>다. 단어 수, 코드블록 수, <strong>사실 일치</strong>(본문 스타 수가 가져온 스냅샷과 같은가?), 금지 마케팅 단어("revolutionary", "powerful"…), 다국어 동기화(번역본이 원문과 같은 코드블록/숫자/이미지를 유지하는가?)를 검사한다. 실패하면 <strong>큰 소리로 실패</strong>해서, 오케스트레이터가 재시도하거나 격리한다 — 불량이 발행에 도달하지 않는다.</p>
+
+<h2>직접 만들 시간이 없다면</h2>
+<p>위 파이프라인 전체 — 사실 수집기, 중복 제거기, 섹션별 작성기, 4개 언어 번역기(코드/숫자/URL 고정), 품질 게이트, 이걸 엔드투엔드로 잇는 오케스트레이터 — 를 하나로 패키지하고, <em>왜</em> 각 조각이 필요한지 설명하는 방법론 문서까지 묶었다.</p>
+<p>실제 280편 이상의 사이트에서 검증하며 풀어낸, 수십 시간의 시행착오(<code>/blob</code>-vs-<code>raw</code> 함정, 스냅샷 일관성, 섹션 생성 트릭, 게이트 설계)를 그대로 담았다. "마법처럼 AI가 블로그를 써준다"가 아니라, 로컬 모델을 <strong>믿을 수 있게</strong> 만드는 지루하지만 신뢰할 수 있는 배관이다.</p>
+<p>로컬 LLM이 당신 이름을 걸 만한 콘텐츠를 쓰게 하고 싶다면 — <a href="https://kingskill.gumroad.com/l/aznvwd" target="_blank" rel="noopener"><strong>GroundTruth Writer Kit ($29)</strong></a>를 확인해 보라. 당신의 Ollama + qwen2.5:7b 같은 모델 위에서 돌아간다.</p>
+
+<h2>함께 보면 좋은 것</h2>
+<p>Claude Code로 워크플로우를 더 끌어올리고 싶다면, 검증된 스킬 5종을 묶은 <a href="https://kingskill.gumroad.com/l/pfsjmu" target="_blank" rel="noopener"><strong>Claude Code Skills Bundle ($19)</strong></a>도 함께 보면 좋다. 직접 스킬을 설계하며 쓰는 시간을 아껴 준다.</p>
+
+<h2>마무리</h2>
+<p>로컬 AI로 콘텐츠를 자동화하는 진짜 난관은 생성이 아니라 <strong>사실 신뢰성</strong>이다. 사실을 코드에게 맡기고, 모델에게는 배치만 시키고, 품질 게이트로 막아라. 그러면 로컬 7B로도 발행 가능한 초안을 — 그럴듯한 쓰레기가 아니라 — 만들 수 있다.</p>
+
+
+<div class="kingskill-end-cta" style="margin:48px 0 8px;padding:28px 24px;border-radius:14px;background:linear-gradient(135deg,rgba(245,196,81,.12),rgba(232,169,61,.06));border:1px solid rgba(245,196,81,.3);text-align:center;">
+  <h3 style="margin:0 0 8px;font-size:1.25rem;">개발 생산성을 끌어올리는 도구</h3>
+  <p style="margin:0 0 16px;color:#9aa;font-size:.95rem;">직접 만들 시간을 아끼세요 — 검증된 Claude Code 스킬 번들 + 로컬 AI 글쓰기 자동화 키트.</p>
+  <a href="https://kingskill.gumroad.com/l/pfsjmu" target="_blank" rel="noopener" style="display:inline-block;margin:4px;padding:13px 22px;border-radius:10px;font-weight:700;text-decoration:none;color:#0b0b12;background:linear-gradient(90deg,#f5c451,#e8a93d);box-shadow:0 4px 18px rgba(232,169,61,.35);">⚡ Claude Code Skills Bundle ($19)</a>
+  <a href="https://kingskill.gumroad.com/l/aznvwd" target="_blank" rel="noopener" style="display:inline-block;margin:4px;padding:13px 22px;border-radius:10px;font-weight:700;text-decoration:none;color:#04222b;background:linear-gradient(90deg,#7fe7ff,#3fb6d6);box-shadow:0 4px 18px rgba(63,182,214,.35);">🛡️ GroundTruth Writer Kit ($29)</a>
+</div>
+</article>
+
+<div id="ad-before-footer" class="ad-slot ad-slot--before-footer" aria-label="광고"></div>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__bottom" style="border-top:var(--border-glass);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <a href="../index.html" class="gradient-text" style="font-weight:700;">Claude Korea</a>
+      <a href="../blog.html" style="color:var(--text-muted);font-size:var(--text-xs);">← 블로그 목록으로</a>
+      <span style="color:var(--text-muted);font-size:var(--text-xs);">© 2026 Claude Korea</span>
+    </div>
+  </div>
+</footer>
+
+<div id="ad-sticky-bottom" class="ad-slot ad-slot--sticky" aria-label="광고"></div>
+<output id="toast" class="toast" aria-live="polite"></output>
+<script src="../assets/js/tracker.js?v=2"></script>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/ads.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function(){ try{initNav();}catch(e){} renderAds(); CCTracker.recordSession(); });</script>
+</body>
+</html>
