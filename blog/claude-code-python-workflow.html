@@ -76,6 +76,9 @@
     .related-link a { color:var(--text-primary); font-weight:600; font-size:var(--text-sm); }
     .article-body img { max-width: 100%; height: auto; border-radius: var(--radius-md); border: var(--border-glass); margin: 1.5rem 0; }
   </style>
+<script type="application/ld+json" data-geo-faqpage>
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "Claude Code로 파이썬 프로젝트를 할 때 어떤 도구 조합이 권장되나요?", "acceptedAnswer": {"@type": "Answer", "text": "2026년 기준 가장 권장되는 조합은 패키지 매니저 <code>uv</code> + 린트/포맷 <code>ruff</code> + 타입 체크 <code>pyright</code>(또는 mypy)입니다. 이를 CLAUDE.md에 명시하면 Claude가 `pip install` 대신 `uv add`를 쓰는 식으로 일관성을 유지합니다."}},{"@type": "Question", "name": "FastAPI 엔드포인트를 Claude Code로 효율적으로 만드는 방법은?", "acceptedAnswer": {"@type": "Answer", "text": "경로/메서드 정의, 요청/응답 Pydantic 모델, 의존성(DB 세션·인증 사용자), 서비스 레이어 비즈니스 로직, httpx.AsyncClient 기반 테스트의 5단계를 한 번에 지시하는 것이 효율적입니다. FastAPI는 타입 기반이라 Claude와 궁합이 좋습니다."}},{"@type": "Question", "name": "Claude Code에서 Jupyter 노트북을 어떻게 다루나요?", "acceptedAnswer": {"@type": "Answer", "text": "Claude Code는 터미널 CLI라 노트북을 직접 다루기 어렵습니다. <code>jupytext</code>로 노트북을 `.py`(py:percent) 형식과 동기화하거나, 분석 로직을 `src/` 모듈로 추출하고 노트북은 얇은 호출 인터페이스로만 유지하는 방법이 있으며 후자가 유지보수에 유리합니다."}},{"@type": "Question", "name": "파이썬 파일 수정 시 타입 체크를 자동화할 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "네, Claude Code의 PostToolUse 훅에 Write|Edit 매처로 <code>pyright $CLAUDE_FILE</code> 명령을 걸면 파일이 수정될 때마다 즉시 타입 체크 피드백을 받습니다. 실패 시 Claude가 자동으로 수정 후보를 제시하도록 체인을 구성할 수도 있습니다."}},{"@type": "Question", "name": "Claude로 머신러닝 모델 학습까지 돌려도 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "권장하지 않습니다. Claude의 역할은 실험 보일러플레이트 생성, 전처리 파이프라인 구성, 학습 스크립트 작성, 결과 리포트 요약 같은 코드·문서 작업에 한정하는 것이 안전합니다. 계산 비용이 큰 학습 자체는 사람이 명시적으로 실행해야 합니다."}}]}
+</script>
 </head>
 <body>
 <nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
@@ -117,6 +120,7 @@
 </header>
 
 <article class="article-body" itemscope itemtype="https://schema.org/Article">
+<div class="geo-tldr" style="margin:0 0 24px;padding:20px 22px;border-radius:12px;background:rgba(13,240,255,.06);border:1px solid rgba(13,240,255,.22);"><strong style="display:block;margin-bottom:8px;">핵심 요약 (TL;DR)</strong><ul style="margin:0;padding-left:1.2em;line-height:1.7;"><li>파이썬 환경은 <code>uv</code>(패키지) + <code>ruff</code>(린트) + <code>pyright</code>(타입) + <code>pytest</code> 조합을 CLAUDE.md에 명시해 재현 가능하게 만듭니다.</li><li>FastAPI는 경로 정의 → Pydantic 모델 → 의존성 → 서비스 로직 → httpx 테스트의 5단계를 한 번에 지시하면 효율적입니다.</li><li>Jupyter는 <code>jupytext</code>로 `.py` 동기화하거나 로직을 `src/` 모듈로 추출하고, 비동기는 블로킹 IO를 <code>asyncio.to_thread</code>로 감싸는 등 방어 규칙을 CLAUDE.md에 둡니다.</li><li>타입 체크는 PostToolUse 훅으로 <code>pyright</code>를 자동 실행해 파일 수정마다 피드백을 받습니다.</li><li>보안은 ORM·파라미터 바인딩(SQL injection 방지), <code>pydantic-settings</code> 환경변수, pickle 대신 JSON, <code>pip-audit</code> 점검을 기본으로 합니다.</li></ul></div>
 
   <p>파이썬은 웹 백엔드, 데이터 파이프라인, 머신러닝, 자동화 스크립트, 과학 계산에 이르기까지 폭넓게 쓰이는 언어입니다. 이렇게 다양한 영역에 걸쳐 있기에, Claude Code를 파이썬에서 효과적으로 활용하려면 단일한 "표준" 대신 영역별로 맞춘 전략이 필요합니다. 이 글은 파이썬 개발자가 매일 마주하는 시나리오별로 Claude Code를 어떻게 설정하고, 어떤 프롬프트로 대화하고, 어떤 도구와 연결해야 최대 효과가 나오는지를 체계적으로 정리합니다.</p>
 

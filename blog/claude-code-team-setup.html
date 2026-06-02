@@ -76,6 +76,9 @@
     .related-link a { color:var(--text-primary); font-weight:600; font-size:var(--text-sm); }
     .article-body img { max-width: 100%; height: auto; border-radius: var(--radius-md); border: var(--border-glass); margin: 1.5rem 0; }
   </style>
+<script type="application/ld+json" data-geo-faqpage>
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "Claude Code를 팀에 도입하면 코드 리뷰 시간이 실제로 얼마나 줄어드나요?", "acceptedAnswer": {"@type": "Answer", "text": "팀 단위로 도입한 조직들의 보고에 따르면 PR당 평균 코드 리뷰 시간이 45분에서 25분으로 약 44% 단축되고, 신규 멤버의 첫 PR 제출까지 걸리는 시간이 5일에서 2일로 60% 줄었습니다. 실제 핀테크 스타트업 사례에서는 PR 대기 시간이 3일에서 4시간으로 92% 감소했습니다."}},{"@type": "Question", "name": "팀에 Claude Code를 도입하는 올바른 순서는 무엇인가요?", "acceptedAnswer": {"@type": "Answer", "text": "검증된 3단계 프레임워크는 Pilot(1~2주, 2~3명 챔피언 팀으로 CLAUDE.md 초안 작성), Team(2~4주, 공유 CLAUDE.md를 Git에 커밋하고 스킬·MCP 표준화), Organization(1~3개월, 보안 정책·API 키 관리·감사 로그 수립) 순서입니다. 각 단계 피드백을 충분히 반영한 후 다음으로 넘어가는 것이 핵심입니다."}},{"@type": "Question", "name": "팀 CLAUDE.md에는 어떤 내용을 반드시 포함해야 하나요?", "acceptedAnswer": {"@type": "Answer", "text": "효과적인 팀 CLAUDE.md는 7가지 섹션을 포함해야 합니다: 프로젝트 개요, 코딩 컨벤션, 아키텍처 규칙, 테스트 정책, 금지 패턴, Git 워크플로우, 외부 의존성입니다. 또한 <code>~/.claude/CLAUDE.md</code>(개인)부터 <code>./src/api/CLAUDE.md</code>(하위 모듈)까지 계층적으로 병합되므로 조직·팀·프로젝트 규칙을 분리해 관리할 수 있습니다."}},{"@type": "Question", "name": "팀이 공유하는 MCP 설정 파일에 API 토큰을 직접 넣어도 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "안 됩니다. <code>.claude/mcp-config.json</code>은 프로젝트 저장소에 포함하되 실제 토큰값은 <code>${GITHUB_TOKEN}</code>처럼 환경변수로 참조하고, 팀원 각자가 자신의 <code>.env</code> 파일에 토큰을 설정해야 합니다. 또한 팀 공유 키가 아닌 개인별 API 키를 발급해 유출 시 영향 범위를 최소화하세요."}},{"@type": "Question", "name": "팀 단위로 쓰면 API 비용이 너무 커지는데 어떻게 관리하나요?", "acceptedAnswer": {"@type": "Answer", "text": "월정액 Max 플랜($100 또는 $200)을 쓰면 비용 예측이 쉬워지고, CLAUDE.md를 간결하게 유지해 토큰 소비를 줄이며, 단순 작업은 Sonnet·복잡한 아키텍처 결정은 Opus로 모델을 분리하세요. 단순 포맷팅·린트는 기존 도구에 맡기고 Claude Code는 리팩토링·버그 수정 같은 고부가가치 작업에 집중시킵니다."}}]}
+</script>
 </head>
 <body>
 <nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
@@ -117,6 +120,7 @@
 </header>
 
 <article class="article-body" itemscope itemtype="https://schema.org/Article">
+<div class="geo-tldr" style="margin:0 0 24px;padding:20px 22px;border-radius:12px;background:rgba(13,240,255,.06);border:1px solid rgba(13,240,255,.22);"><strong style="display:block;margin-bottom:8px;">핵심 요약 (TL;DR)</strong><ul style="margin:0;padding-left:1.2em;line-height:1.7;"><li>팀 도입은 <code>Pilot(1~2주)</code> → <code>Team(2~4주)</code> → <code>Organization(1~3개월)</code> 3단계로 점진 확산하는 것이 성공 공식이다.</li><li>도입 효과: PR 리뷰 시간 45분→25분(-44%), 신규 멤버 첫 PR 5일→2일(-60%), 일일 커밋 3.2회→5.1회(+59%).</li><li>공유 <code>CLAUDE.md</code>는 7개 섹션(개요·컨벤션·아키텍처·테스트·금지패턴·Git·의존성)으로 구성하고 코드와 함께 PR로 버전 관리한다.</li><li>MCP 토큰은 코드에 하드코딩하지 말고 <code>${ENV_VAR}</code>로 참조하며, 팀 공유 키 대신 개인별 API 키를 발급한다.</li><li>비용은 월정액 Max 플랜($100/$200)과 모델 분리(단순=Sonnet, 복잡=Opus)로 최적화한다.</li></ul></div>
 
   <h2>왜 팀에 Claude Code를 도입해야 하는가?</h2>
 

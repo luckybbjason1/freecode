@@ -76,6 +76,9 @@
     .related-link a { color:var(--text-primary); font-weight:600; font-size:var(--text-sm); }
     .article-body img { max-width: 100%; height: auto; border-radius: var(--radius-md); border: var(--border-glass); margin: 1.5rem 0; }
   </style>
+<script type="application/ld+json" data-geo-faqpage>
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "Claude Code에서 이전 세션을 이어서 시작하려면?", "acceptedAnswer": {"@type": "Answer", "text": "<code>claude --continue</code>(짧게 <code>-c</code>)로 가장 최근 세션을 컨텍스트와 도구 호출 기록까지 그대로 복원합니다. 특정 세션은 <code>claude --resume abc123def</code>로, 세션 목록은 <code>claude --list-sessions</code>로 지난 30일간 기록을 확인할 수 있습니다."}},{"@type": "Question", "name": "파일이나 로그 내용을 Claude에 바로 전달하려면 어떻게 하나요?", "acceptedAnswer": {"@type": "Answer", "text": "파이프를 사용합니다. <code>cat server.log | claude \"이 에러 로그의 원인을 알려줘\"</code>처럼 표준 입력으로 넘기면 복사-붙여넣기 없이 분석할 수 있고, 멀티라인 요구사항은 히어독(<code>claude &lt;&lt;'PROMPT'</code>) 문법으로 전달합니다."}},{"@type": "Question", "name": "CI 파이프라인이나 스크립트에서 Claude 출력만 캡처하려면?", "acceptedAnswer": {"@type": "Answer", "text": "<code>-p</code> 플래그로 한 번 실행 후 즉시 종료하는 비대화형 모드를 씁니다. <code>claude -p --output-format json \"...\"</code>로 JSON 출력을 받아 <code>jq</code>와 결합하면 자동화가 가능하고, <code>NO_COLOR=1</code>로 ANSI 색상을 끌 수 있습니다."}},{"@type": "Question", "name": "/clear와 /compact의 차이는 무엇인가요?", "acceptedAnswer": {"@type": "Answer", "text": "<code>/clear</code>는 대화 내역을 완전히 초기화해 이전 맥락이 모두 사라집니다. <code>/compact</code>는 현재까지의 대화를 요약한 뒤 그 요약을 새 시작점으로 삼으므로, 긴 작업 중 토큰 한도가 걱정될 때 주기적으로 쓰는 것이 좋습니다."}},{"@type": "Question", "name": "Claude Code의 내부 동작을 디버깅하려면?", "acceptedAnswer": {"@type": "Answer", "text": "<code>CLAUDE_DEBUG=1 claude</code>로 실행하면 내부 API 호출·토큰 사용량·도구 호출 흐름이 자세히 출력됩니다. 토큰 사용량은 <code>~/.claude/logs/usage.json</code>에 기록되어 jq로 분석하면 비용 최적화의 출발점이 됩니다."}}]}
+</script>
 </head>
 <body>
 <nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
@@ -117,6 +120,7 @@
 </header>
 
 <article class="article-body" itemscope itemtype="https://schema.org/Article">
+<div class="geo-tldr" style="margin:0 0 24px;padding:20px 22px;border-radius:12px;background:rgba(13,240,255,.06);border:1px solid rgba(13,240,255,.22);"><strong style="display:block;margin-bottom:8px;">핵심 요약 (TL;DR)</strong><ul style="margin:0;padding-left:1.2em;line-height:1.7;"><li>세션은 <code>claude --continue</code>(-c)로 최근 대화를, <code>--resume &lt;id&gt;</code>로 특정 세션을 복원하고 <code>--list-sessions</code>로 30일 기록을 검색한다.</li><li>프롬프트는 파이프(<code>cat file | claude "..."</code>), 히어독, 비대화형 <code>-p</code> 모드로 전달하며 <code>-p --output-format json</code> + <code>jq</code>로 자동화한다.</li><li>설정은 팀 공유용 <code>.claude/settings.json</code>(모델·권한·훅), 개인용 <code>.claude/settings.local.json</code>(gitignore), 계층형 <code>CLAUDE.md</code>로 관리한다.</li><li>훅으로 PreToolUse(위험 명령 차단)·PostToolUse(Prettier/Black 자동 포맷)·Stop(종료 시 테스트)을 자동화하고, <code>.claude/commands/</code>에 Markdown으로 커스텀 슬래시 명령을 만든다.</li><li>Git 연동은 <code>git diff --cached | claude -p "커밋 메시지 작성"</code>처럼 활용하고, <code>CLAUDE_DEBUG=1</code> 디버깅과 <code>~/.claude/logs/usage.json</code> 토큰 추적을 지원한다.</li></ul></div>
 
   <p>Claude Code를 매일 사용하는 개발자라도 기본 사용법만으로는 이 도구가 가진 잠재력의 절반도 끌어내지 못하는 경우가 많습니다. Claude Code는 단순한 코딩 어시스턴트가 아니라, 터미널에서 동작하는 작은 운영체제에 가까운 강력한 환경을 제공합니다. 셸 명령을 파이프로 이어 붙이고, 세션을 재개하고, 프로젝트별 프롬프트를 고정하고, 출력 형식을 JSON으로 변환하는 식의 깊은 조작이 가능합니다. 이 글에서는 공식 문서만으로는 발견하기 어려운 30가지 실전 팁을 카테고리별로 정리합니다. 각 팁은 실제 업무에서 수개월간 검증된 것이며, 단순한 기능 소개가 아니라 왜 이 방식이 효율적인지까지 함께 설명합니다.</p>
 

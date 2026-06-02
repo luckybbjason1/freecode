@@ -75,6 +75,9 @@
     .related-link span { display:block; font-size:1.5rem; margin-bottom:.4rem; }
     .related-link a { color:var(--text-primary); font-weight:600; font-size:var(--text-sm); }
   </style>
+<script type="application/ld+json" data-geo-faqpage>
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "Claude Code, GitHub Copilot, Cursor의 가장 큰 차이는 무엇인가요?", "acceptedAnswer": {"@type": "Answer", "text": "Claude Code는 터미널에서 실행되는 에이전트형 AI로 파일을 읽고 쓰고 명령어를 실행해 작업을 완수하고, GitHub Copilot은 기존 IDE에 플러그인으로 붙는 인라인 제안 도구이며, Cursor는 VS Code를 포크해 AI를 핵심으로 재설계한 AI 네이티브 에디터입니다."}},{"@type": "Question", "name": "세 도구의 가격은 어떻게 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "Claude Code는 Claude Pro $20/월, GitHub Copilot은 개인 $10·비즈니스 $19/월, Cursor는 무료(월 50회 제한)·Pro $20/월·Business $40/사용자/월입니다."}},{"@type": "Question", "name": "복잡한 멀티파일 작업에는 어떤 도구가 가장 강한가요?", "acceptedAnswer": {"@type": "Answer", "text": "Claude Code가 멀티파일 작업에서 '매우 강함'으로 가장 우수합니다. '인증 기능을 추가해줘' 같은 요청에 프로젝트 구조 파악, 파일 수정, 테스트 생성, 의존성 설치까지 혼자 처리합니다. Cursor는 Composer로 '강함', Copilot은 인라인 제안 중심이라 '제한적'입니다."}},{"@type": "Question", "name": "각 도구는 커스텀 규칙을 어떻게 지정하나요?", "acceptedAnswer": {"@type": "Answer", "text": "Claude Code는 <code>CLAUDE.md</code> 파일, Cursor는 <code>.cursorrules</code> 파일로 프로젝트 규칙을 지정합니다. GitHub Copilot은 커스텀 규칙 지원이 제한적입니다."}},{"@type": "Question", "name": "결국 하나만 고른다면 어떤 도구를 추천하나요?", "acceptedAnswer": {"@type": "Answer", "text": "글은 Claude Code를 추천합니다. AI 코딩의 미래는 '더 나은 자동완성'이 아니라 '실제로 일을 해내는 에이전트'이기 때문입니다. 단, GitHub Enterprise 팀이고 온보딩 비용을 최소화하려면 Copilot, VS Code를 벗어나지 않으면서 깊은 AI 통합을 원하면 Cursor가 최선입니다."}}]}
+</script>
 </head>
 <body>
 <nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
@@ -116,6 +119,7 @@
 </header>
 
 <article class="article-body" itemscope itemtype="https://schema.org/Article">
+<div class="geo-tldr" style="margin:0 0 24px;padding:20px 22px;border-radius:12px;background:rgba(13,240,255,.06);border:1px solid rgba(13,240,255,.22);"><strong style="display:block;margin-bottom:8px;">핵심 요약 (TL;DR)</strong><ul style="margin:0;padding-left:1.2em;line-height:1.7;"><li>실행 방식이 다르다: Claude Code=터미널 CLI 에이전트, Copilot=IDE 플러그인 인라인 제안, Cursor=AI 네이티브 VS Code 포크.</li><li>가격: Claude Code $20/월(Claude Pro), Copilot $10/$19, Cursor 무료/$20/$40.</li><li>멀티파일 작업은 Claude Code가 '매우 강함'으로 1위, Cursor '강함', Copilot '제한적'.</li><li>커스텀 규칙: Claude Code는 <code>CLAUDE.md</code>, Cursor는 <code>.cursorrules</code>, Copilot은 제한적.</li><li>글의 결론은 Claude Code 추천 — 고수 개발자는 일상 편집은 Cursor, 복잡한 자동화는 Claude Code로 병행한다.</li></ul></div>
 
   <h2>2026년 AI 코딩 도구 시장 현황 — 3개 도구가 지배</h2>
 

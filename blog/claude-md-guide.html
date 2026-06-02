@@ -76,6 +76,9 @@
     .related-link a { color:var(--text-primary); font-weight:600; font-size:var(--text-sm); }
     .article-body img { max-width: 100%; height: auto; border-radius: var(--radius-md); border: var(--border-glass); margin: 1.5rem 0; }
   </style>
+<script type="application/ld+json" data-geo-faqpage>
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "CLAUDE.md가 정확히 무엇이고 왜 필요한가요?", "acceptedAnswer": {"@type": "Answer", "text": "CLAUDE.md는 Claude Code가 프로젝트 진입 시 자동으로 읽는 마크다운 파일로, 기술 스택·코딩 컨벤션·아키텍처 규칙·금지 패턴을 정의해두면 매 세션 기본 컨텍스트로 활용됩니다. 없으면 매 대화마다 프로젝트 정보를 반복 입력해야 하므로, 새 시니어 개발자에게 건네는 온보딩 문서 역할을 합니다."}},{"@type": "Question", "name": "CLAUDE.md를 여러 위치에 두면 규칙이 어떻게 적용되나요?", "acceptedAnswer": {"@type": "Answer", "text": "Claude Code는 작업 대상 파일 경로를 기준으로 상위 디렉토리부터 순서대로 읽어 병합하며, 하위 디렉토리 규칙이 상위 규칙보다 우선합니다. 예를 들어 루트에서 '세미콜론 필수'라고 했어도 <code>src/frontend/CLAUDE.md</code>에서 '세미콜론 없음'이라고 하면 프론트엔드 코드에서는 세미콜론 없이 작성됩니다."}},{"@type": "Question", "name": "CLAUDE.md가 너무 길어지면 어떻게 해야 하나요?", "acceptedAnswer": {"@type": "Answer", "text": "프로젝트 루트 CLAUDE.md는 200~500줄 이내를 권장하며, 500줄을 넘으면 서브디렉토리로 분리하세요. 프론트엔드 규칙은 <code>src/frontend/CLAUDE.md</code>로, 백엔드 규칙은 <code>src/backend/CLAUDE.md</code>로 나누면 각 파일이 더 집중적인 내용을 담습니다."}},{"@type": "Question", "name": "효과적인 CLAUDE.md를 작성하는 원칙은 무엇인가요?", "acceptedAnswer": {"@type": "Answer", "text": "구체적으로 작성하고('함수 길이 30줄 이하, 매개변수 3개 이하'), 올바른 예시와 잘못된 예시를 함께 제공하며, 규칙의 이유를 설명하세요('any 금지 - 런타임 에러의 80%가 타입 안전성 부재에서 발생'). 정기적으로 업데이트하는 것도 중요합니다."}},{"@type": "Question", "name": "CLAUDE.md와 .prettierrc, .cursorrules의 차이는 무엇인가요?", "acceptedAnswer": {"@type": "Answer", "text": ".editorconfig·.prettierrc는 포맷팅 도구가 읽는 설정 파일이고, CLAUDE.md는 Claude Code가 읽는 컨텍스트 문서로 아키텍처 패턴·비즈니스 로직·금지 패턴 같은 고수준 규칙을 담습니다. .cursorrules 등 다른 AI 도구 설정과도 별도이며, CLAUDE.md를 기준으로 다른 도구 설정을 생성·동기화하는 전략이 효과적입니다."}}]}
+</script>
 </head>
 <body>
 <nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
@@ -117,6 +120,7 @@
 </header>
 
 <article class="article-body" itemscope itemtype="https://schema.org/Article">
+<div class="geo-tldr" style="margin:0 0 24px;padding:20px 22px;border-radius:12px;background:rgba(13,240,255,.06);border:1px solid rgba(13,240,255,.22);"><strong style="display:block;margin-bottom:8px;">핵심 요약 (TL;DR)</strong><ul style="margin:0;padding-left:1.2em;line-height:1.7;"><li>CLAUDE.md는 Claude Code가 프로젝트 진입 시 자동으로 읽는 마크다운 컨텍스트 파일로, 매번 프로젝트 정보를 반복 입력할 필요를 없앤다.</li><li>여러 위치에 둘 수 있고 경로 기준 상위→하위 순으로 병합되며, <strong>하위 디렉토리 규칙이 상위보다 우선</strong>한다.</li><li>권장 섹션: 프로젝트 개요·기술 스택·구조·코딩 컨벤션·금지 패턴·테스트·커밋 컨벤션·참고 문서.</li><li>작성 원칙: 구체적으로, 예시 포함, 이유 설명, 루트 파일은 <code>200~500줄</code> 이내 유지, 정기 업데이트.</li><li><code>.prettierrc</code>는 포맷팅 도구용, CLAUDE.md는 아키텍처·비즈니스 로직 등 AI용 고수준 규칙으로 역할이 다르다.</li></ul></div>
 
   <h2>CLAUDE.md란 무엇인가</h2>
 

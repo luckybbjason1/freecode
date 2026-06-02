@@ -76,6 +76,9 @@
     .related-link a { color:var(--text-primary); font-weight:600; font-size:var(--text-sm); }
     .article-body img { max-width: 100%; height: auto; border-radius: var(--radius-md); border: var(--border-glass); margin: 1.5rem 0; }
   </style>
+<script type="application/ld+json" data-geo-faqpage>
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "Claude Code로 코드 리뷰를 자동화하려면 무엇부터 설정해야 하나요?", "acceptedAnswer": {"@type": "Answer", "text": "프로젝트 루트에 <code>.claude/settings.json</code>을 만들어 Read/Glob/Grep 같은 읽기 전용 권한과 PostToolUse 훅을 정의하고, <code>CLAUDE.md</code>에 팀의 코딩 컨벤션·보안 규칙·성능 기준을 적습니다. 이렇게 하면 Claude Code가 프로젝트 표준을 이해한 상태로 리뷰합니다."}},{"@type": "Question", "name": "Claude Code의 /review 명령어는 어떻게 쓰나요?", "acceptedAnswer": {"@type": "Answer", "text": "<code>/review</code>는 현재 변경 전체를 리뷰하고, <code>/review src/auth/login.ts</code>로 특정 파일, <code>/review --diff main..feature/auth</code>로 커밋 범위, <code>/review --pr 142</code>로 PR 단위 리뷰가 가능합니다. 결과는 버그 위험·보안·성능·컨벤션 카테고리로 분류되며 각 항목에 critical/warning/info 심각도가 표시됩니다."}},{"@type": "Question", "name": "AI 코드 리뷰가 인간 리뷰를 완전히 대체할 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "아닙니다. AI는 SQL 인젝션·XSS·N+1 쿼리 같은 기계적 검사에 뛰어나지만, 비즈니스 로직의 정확성·아키텍처 적합성·사용자 경험은 인간 리뷰어의 영역입니다. AI와 인간이 강점을 나누는 하이브리드 모델이 가장 효과적입니다."}},{"@type": "Question", "name": "AI 코드 리뷰를 도입하면 실제로 어떤 효과가 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "도입 사례에서 PR 머지까지 평균 시간이 40~60% 단축되고 프로덕션 버그 발생률이 30% 이상 감소했습니다. 목표 지표로는 PR 리뷰 대기 시간 24시간→4시간, 보안 취약점 사전 탐지율 40%→85% 이상이 제시됩니다."}},{"@type": "Question", "name": "GitHub Actions에서 Claude Code 리뷰를 자동 실행하려면 어떻게 하나요?", "acceptedAnswer": {"@type": "Answer", "text": "<code>.github/workflows/ai-review.yml</code>에 pull_request 트리거를 걸고 <code>anthropic/claude-code-action@v1</code>을 사용해 변경 파일을 리뷰하도록 구성합니다. <code>pull-requests: write</code> 권한과 <code>ANTHROPIC_API_KEY</code> 시크릿이 필요하며, 결과는 github-script로 PR 코멘트에 남깁니다."}}]}
+</script>
 </head>
 <body>
 <nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
@@ -117,6 +120,7 @@
 </header>
 
 <article class="article-body" itemscope itemtype="https://schema.org/Article">
+<div class="geo-tldr" style="margin:0 0 24px;padding:20px 22px;border-radius:12px;background:rgba(13,240,255,.06);border:1px solid rgba(13,240,255,.22);"><strong style="display:block;margin-bottom:8px;">핵심 요약 (TL;DR)</strong><ul style="margin:0;padding-left:1.2em;line-height:1.7;"><li>Claude Code 코드 리뷰는 <code>.claude/settings.json</code>(읽기 전용 권한·훅)과 <code>CLAUDE.md</code>(컨벤션·보안·성능 규칙) 설정에서 시작한다.</li><li><code>/review</code> 명령어는 파일(<code>/review file.ts</code>)·커밋 범위(<code>--diff</code>)·PR(<code>--pr 142</code>) 단위 리뷰를 지원하고 결과를 critical/warning/info로 분류한다.</li><li>OWASP Top 10 기준으로 SQL 인젝션·XSS·하드코딩된 비밀키·CSRF·경로 순회·SSRF 등을 자동 탐지하며, ESLint와 달리 맥락 기반 컨벤션·아키텍처 패턴까지 검사한다.</li><li>GitHub Actions에 <code>anthropic/claude-code-action@v1</code>으로 통합하면 PR마다 자동 리뷰 후 코멘트가 달린다.</li><li>도입 효과는 PR 머지 시간 40~60% 단축, 프로덕션 버그 30%+ 감소, 보안 사전 탐지율 40%→85%이며 파일럿→확대→표준화 3단계로 점진 도입을 권장한다.</li></ul></div>
 
   <h2>AI 코드 리뷰가 중요한 이유</h2>
 

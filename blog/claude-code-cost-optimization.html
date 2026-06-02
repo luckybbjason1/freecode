@@ -76,6 +76,9 @@
     .related-link a { color:var(--text-primary); font-weight:600; font-size:var(--text-sm); }
     .article-body img { max-width: 100%; height: auto; border-radius: var(--radius-md); border: var(--border-glass); margin: 1.5rem 0; }
   </style>
+<script type="application/ld+json" data-geo-faqpage>
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "Claude Code 프롬프트 캐시는 비용을 얼마나 줄여주나요?", "acceptedAnswer": {"@type": "Answer", "text": "캐시된 토큰은 일반 입력 비용의 약 10% 수준으로 청구됩니다. 시스템 프롬프트 끝에 <code>cache_control</code> 마커를 달아 재사용하면 효과가 가장 크며, 캐시는 기본 5분 TTL이고 장시간 세션에는 1시간 TTL도 선택할 수 있습니다."}},{"@type": "Question", "name": "Opus, Sonnet, Haiku를 어떻게 나눠 쓰는 게 비용 효율적인가요?", "acceptedAnswer": {"@type": "Answer", "text": "Haiku는 라벨링·포맷팅·단순 요약, Sonnet은 일반 코딩·리뷰·문서 작성, Opus는 아키텍처 판단·대규모 리팩토링·보안 감사에 쓰는 3단 분담이 효율적입니다. 세션 중 <code>/model</code> 명령으로 즉시 전환할 수 있습니다."}},{"@type": "Question", "name": "배치 API는 언제 쓰고 비용은 얼마나 싼가요?", "acceptedAnswer": {"@type": "Answer", "text": "실시간 응답이 필요 없는 문서 번역, 테스트 생성, 대량 코드 감사 등에 적합합니다. 배치 API는 일반 요금의 50%이며 결과는 24시간 이내에 반환되므로 장기 과제를 밤새 돌려 비용을 반으로 줄일 수 있습니다."}},{"@type": "Question", "name": "Claude Code의 토큰 사용량은 어디서 확인하나요?", "acceptedAnswer": {"@type": "Answer", "text": "Claude Code는 세션별 토큰 사용량과 비용을 <code>~/.claude/logs/usage.json</code>에 자동 기록합니다. jq로 일일·주간 사용량을 집계하거나 Anthropic 콘솔의 Usage 페이지에서 팀 단위 추이를 확인해 비용 급등을 조기에 감지할 수 있습니다."}},{"@type": "Question", "name": "비용을 줄이면 결과 품질이 떨어지지 않나요?", "acceptedAnswer": {"@type": "Answer", "text": "일상적인 코딩에서 Sonnet과 Opus의 체감 차이는 10~15% 수준이라 작업 유형별로 모델을 전환하는 것이 합리적입니다. 한 SaaS 스타트업(개발자 40명)은 6가지 전략을 단계 적용해 3개월 만에 월 비용을 62% 절감하면서 생산성은 오히려 높였습니다."}}]}
+</script>
 </head>
 <body>
 <nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
@@ -117,6 +120,7 @@
 </header>
 
 <article class="article-body" itemscope itemtype="https://schema.org/Article">
+<div class="geo-tldr" style="margin:0 0 24px;padding:20px 22px;border-radius:12px;background:rgba(13,240,255,.06);border:1px solid rgba(13,240,255,.22);"><strong style="display:block;margin-bottom:8px;">핵심 요약 (TL;DR)</strong><ul style="margin:0;padding-left:1.2em;line-height:1.7;"><li>프롬프트 캐시는 최대 절감 수단으로, 캐시된 토큰은 일반 입력 비용의 약 <code>10%</code>로 청구된다(기본 5분 TTL, 1시간 TTL 선택 가능).</li><li>모델 믹싱: Haiku=단순 작업, Sonnet=일반 코딩, Opus=아키텍처/보안 감사로 나누고 <code>/model</code>로 전환한다.</li><li>비실시간 작업은 배치 API로 — 일반 요금의 <code>50%</code>, 24시간 내 결과 반환.</li><li>출력 토큰이 입력보다 비싸므로 "핵심만 간결히" 지시와 구조화된 출력으로 응답 길이를 줄인다.</li><li><code>~/.claude/logs/usage.json</code> 모니터링 + 팀 예산 한도(80% 알림)로 거버넌스를 구축하면 사례 기준 월 비용 62% 절감이 가능하다.</li></ul></div>
 
   <p>Claude Code는 생산성을 극적으로 높여 주지만, 팀 규모가 커질수록 비용도 덩달아 커집니다. 한 회사에서는 도입 3개월 만에 월 AI 비용이 예상치의 세 배를 넘었다는 사례도 있습니다. 다행히 Claude Code의 비용 구조는 투명하고, 최적화할 수 있는 여지가 큽니다. 이 글은 품질을 떨어뜨리지 않으면서 비용을 50% 이상 줄이는 10가지 실전 전략을 정리합니다. 개인 개발자부터 수백 명 규모의 팀까지 모두에게 적용 가능한 원칙입니다.</p>
 

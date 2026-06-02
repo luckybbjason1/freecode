@@ -75,6 +75,9 @@
     .related-link span { display:block; font-size:1.5rem; margin-bottom:.4rem; }
     .related-link a { color:var(--text-primary); font-weight:600; font-size:var(--text-sm); }
   </style>
+<script type="application/ld+json" data-geo-faqpage>
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "Claude Code 자동화를 도입하면 시간을 얼마나 절약할 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "실제 팀 사례에서 코드 리뷰 시간이 60%, 문서 작성 시간이 75% 줄었습니다. 하루 약 2시간이 절약되며, 이는 연간 500시간 이상에 해당합니다."}},{"@type": "Question", "name": "PR마다 AI 코드 리뷰를 자동으로 달려면 어떻게 하나요?", "acceptedAnswer": {"@type": "Answer", "text": "GitHub Actions에 <code>npm install -g @anthropic-ai/claude-code</code>로 설치 후 <code>git diff</code>를 <code>claude --print</code>에 넘겨 리뷰를 생성하고, github-script의 <code>createComment</code>로 PR에 결과를 게시합니다. <code>ANTHROPIC_API_KEY</code> 시크릿이 필요합니다."}},{"@type": "Question", "name": "커밋 전에 보안 취약점을 자동으로 검사하려면?", "acceptedAnswer": {"@type": "Answer", "text": "Pre-commit 훅(또는 husky)에서 변경 파일을 <code>claude --print</code>에 넘겨 하드코딩된 시크릿·SQL 인젝션·XSS·인증 우회를 검토하게 합니다. 응답에 <code>CRITICAL:</code>이 포함되면 <code>exit 1</code>로 커밋을 차단하는 방식이 실용적입니다."}},{"@type": "Question", "name": "테스트 코드를 Claude Code로 자동 생성할 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "네. <code>claude \"...에 대한 테스트 파일을 작성해줘\"</code>로 정상·경계값·오류 케이스를 커버하고, <code>.claude/commands/gen-tests.md</code> 커스텀 명령으로 <code>$ARGUMENTS</code> 파일의 테스트를 Jest·Vitest 등 프로젝트 프레임워크에 맞춰 생성할 수 있습니다."}},{"@type": "Question", "name": "Claude Code 자동화는 어떤 순서로 도입하는 것이 좋나요?", "acceptedAnswer": {"@type": "Answer", "text": "1주차 PostToolUse 훅으로 자동 포맷팅, 2주차 커스텀 슬래시 명령어 3개, 3주차 GitHub Actions AI 코드 리뷰, 4주차 Pre-commit 보안 검사, 2개월 차 Stop 훅 문서 업데이트 리마인더 순으로 점진 도입을 권장합니다."}}]}
+</script>
 </head>
 <body>
 <nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
@@ -116,6 +119,7 @@
 </header>
 
 <article class="article-body" itemscope itemtype="https://schema.org/Article">
+<div class="geo-tldr" style="margin:0 0 24px;padding:20px 22px;border-radius:12px;background:rgba(13,240,255,.06);border:1px solid rgba(13,240,255,.22);"><strong style="display:block;margin-bottom:8px;">핵심 요약 (TL;DR)</strong><ul style="margin:0;padding-left:1.2em;line-height:1.7;"><li>Claude Code 자동화 5대 사례는 코드 리뷰·테스트 생성·문서 업데이트·보안 스캔·CI/CD 연동이며, 도입 시 코드 리뷰 60%·문서 75% 시간 절감(하루 약 2시간)이 보고된다.</li><li>코드 리뷰 자동화는 GitHub Actions에서 <code>claude --print</code>로 <code>git diff</code>를 리뷰하고 createComment로 PR에 게시한다.</li><li>보안 스캔은 Pre-commit 훅에서 <code>CRITICAL:</code> 발견 시 <code>exit 1</code>로 커밋을 차단하는 방식이 흐름을 덜 방해한다.</li><li>배포는 빌드 실패 시 <code>claude --print</code>로 빌드 로그를 분석해 수정안을 제안하는 Smart Deploy 워크플로우로 자동화한다.</li><li>도입은 PostToolUse 포맷팅→슬래시 명령어→AI 리뷰→Pre-commit 보안→Stop 훅 문서 리마인더 순으로 단계적으로 진행한다.</li></ul></div>
 
   <h2>왜 개발 자동화가 중요한가? — 반복 작업의 비용</h2>
 

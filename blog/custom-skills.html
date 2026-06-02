@@ -75,6 +75,9 @@
     .related-link span { display:block; font-size:1.5rem; margin-bottom:.4rem; }
     .related-link a { color:var(--text-primary); font-weight:600; font-size:var(--text-sm); }
   </style>
+<script type="application/ld+json" data-geo-faqpage>
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "Claude Code 스킬과 슬래시 명령어의 차이는 무엇인가요?", "acceptedAnswer": {"@type": "Answer", "text": "슬래시 명령어(<code>.claude/commands/</code>)는 단순한 프롬프트 단축키이고, 스킬은 특정 도메인의 깊은 전문 지식·체크리스트·단계별 워크플로우·판단 기준을 담는 구조화된 전문 지식 파일입니다. 마치 숙련된 시니어 개발자의 지식을 파일 하나에 담는 것과 같습니다."}},{"@type": "Question", "name": "스킬 파일은 어떻게 구성하고 어디에 저장하나요?", "acceptedAnswer": {"@type": "Answer", "text": "스킬은 <code>SKILL.md</code> 파일로 작성하며 상단의 YAML frontmatter(name, description, triggers, version, author)와 마크다운 본문(개요·언제 사용·워크플로우·체크리스트·예제)으로 구성됩니다. 저장 위치는 전역 <code>~/.claude/skills/</code> 또는 프로젝트 전용 <code>.claude/skills/</code> 폴더입니다."}},{"@type": "Question", "name": "스킬이 자동으로 발동되게 하려면 트리거 키워드를 어떻게 정해야 하나요?", "acceptedAnswer": {"@type": "Answer", "text": "좋은 트리거는 구체적이고, 같은 의미의 한국어·영어를 모두 포함하며, 실제 개발자가 말하는 방식을 반영하고, 다른 스킬과 오버랩을 최소화해야 합니다. '코드', '작성' 같은 일반어는 피하고 '데이터베이스 쿼리 최적화', 'N+1 쿼리', 'SQL 성능'처럼 구체적으로 작성하세요."}},{"@type": "Question", "name": "스킬에 적용할 수 있는 고급 패턴에는 어떤 것이 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "4가지 고급 패턴이 있습니다: 작업 완료 기준을 정의하는 체크리스트 패턴, 복잡한 작업을 순서로 나누는 단계별 워크플로우 패턴, 레거시/그린필드 등 상황에 따라 다르게 행동하는 조건 분기 패턴, 보안·성능·품질 분석을 동시에 처리하는 서브에이전트 병렬 호출 패턴입니다."}},{"@type": "Question", "name": "만든 스킬을 팀과 어떻게 공유하나요?", "acceptedAnswer": {"@type": "Answer", "text": "스킬 파일을 Git 저장소(예: <code>team-claude-skills/skills/</code>)에 포함시키고 <code>install.sh</code> 설치 스크립트로 <code>$HOME/.claude/skills</code>에 복사하면 됩니다. 좋은 공유 스킬은 명확한 트리거 키워드, 구체적 예제, 예상 결과물 설명, 버전 관리를 갖춥니다."}}]}
+</script>
 </head>
 <body>
 <nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
@@ -116,6 +119,7 @@
 </header>
 
 <article class="article-body" itemscope itemtype="https://schema.org/Article">
+<div class="geo-tldr" style="margin:0 0 24px;padding:20px 22px;border-radius:12px;background:rgba(13,240,255,.06);border:1px solid rgba(13,240,255,.22);"><strong style="display:block;margin-bottom:8px;">핵심 요약 (TL;DR)</strong><ul style="margin:0;padding-left:1.2em;line-height:1.7;"><li>스킬은 도메인 전문 지식·체크리스트·워크플로우를 담은 재사용 템플릿으로, 단순 프롬프트 단축키인 슬래시 명령어보다 깊다.</li><li>스킬은 <code>SKILL.md</code>(YAML frontmatter + 마크다운 본문)로 작성하고 <code>~/.claude/skills/</code> 또는 <code>.claude/skills/</code>에 저장한다.</li><li>트리거 키워드는 구체적이고 한·영을 모두 포함하며 다른 스킬과 겹치지 않게 한다('코드' 같은 일반어 금지).</li><li>고급 패턴 4가지: 체크리스트, 단계별 워크플로우, 조건 분기(레거시 vs 그린필드), 서브에이전트 병렬 호출.</li><li>팀 공유는 스킬 파일을 Git에 넣고 <code>install.sh</code>로 <code>~/.claude/skills</code>에 복사하면 끝난다.</li></ul></div>
 
   <h2>스킬이란? — 재사용 가능한 AI 명령 템플릿</h2>
 

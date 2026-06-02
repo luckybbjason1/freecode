@@ -76,6 +76,9 @@
     .related-link a { color:var(--text-primary); font-weight:600; font-size:var(--text-sm); }
     .article-body img { max-width: 100%; height: auto; border-radius: var(--radius-md); border: var(--border-glass); margin: 1.5rem 0; }
   </style>
+<script type="application/ld+json" data-geo-faqpage>
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "Claude Code Pro 요금제는 한 달에 얼마인가요?", "acceptedAnswer": {"@type": "Answer", "text": "Pro 요금제는 월 $20(약 2만 6천 원)입니다. 개인 개발자가 일상적인 개발 업무에 Claude Code를 쓰기에 충분한 기본 사용량을 제공하며, Opus 모델에도 제한적으로 접근할 수 있습니다."}},{"@type": "Question", "name": "Max 5x와 Max 20x 플랜의 차이는 무엇인가요?", "acceptedAnswer": {"@type": "Answer", "text": "Max 5x는 월 $100(약 13만 원)으로 Pro 대비 5배 사용량을, Max 20x는 월 $200(약 26만 원)으로 Pro 대비 20배 사용량을 제공합니다. Max 20x는 Opus 모델 최우선 접근과 사실상 무제한에 가까운 사용 경험을 제공해 리드 개발자·CTO에게 적합합니다."}},{"@type": "Question", "name": "Claude Code는 API 종량제와 구독 플랜 중 어느 것이 더 저렴한가요?", "acceptedAnswer": {"@type": "Answer", "text": "사용량에 따라 다릅니다. 하루 30분 정도의 가벼운 사용($5~15/월)이면 API 종량제가, 하루 2시간 이상 꾸준히 쓴다면 Pro 구독($20/월)이 비용 관리에 유리합니다. API는 Opus 입력 $15·출력 $75, Sonnet 입력 $3·출력 $15(100만 토큰당) 수준입니다."}},{"@type": "Question", "name": "무료 플랜으로 Claude Code를 실무에 쓸 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "무료 플랜은 하루 몇 회 수준의 매우 제한적인 사용량만 제공하고 Opus 모델에 접근할 수 없어 실무에는 한계가 명확합니다. 동작 방식 체험에는 충분하지만 실제 개발 업무에는 최소 Pro 이상이 필요합니다."}},{"@type": "Question", "name": "Claude Code 사용 비용을 줄이는 방법이 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "CLAUDE.md를 50줄 수준으로 간결하게 유지하고, 단순 작업은 Haiku, 일반 코딩은 Sonnet, 아키텍처 설계만 Opus로 모델을 나눠 쓰세요. 또 작업 단위로 `/clear`로 컨텍스트를 정리하고 반복 작업은 커스텀 스킬로 자동화하면 토큰을 크게 아낄 수 있습니다."}}]}
+</script>
 </head>
 <body>
 <nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
@@ -117,6 +120,7 @@
 </header>
 
 <article class="article-body" itemscope itemtype="https://schema.org/Article">
+<div class="geo-tldr" style="margin:0 0 24px;padding:20px 22px;border-radius:12px;background:rgba(13,240,255,.06);border:1px solid rgba(13,240,255,.22);"><strong style="display:block;margin-bottom:8px;">핵심 요약 (TL;DR)</strong><ul style="margin:0;padding-left:1.2em;line-height:1.7;"><li>2026년 Claude 소비자 요금제는 무료, Pro <code>$20/월</code>, Max 5x <code>$100/월</code>, Max 20x <code>$200/월</code> 4가지로 구성됩니다.</li><li>Pro는 Pro 기본 사용량, Max 5x는 Pro 대비 5배, Max 20x는 Pro 대비 20배 사용량을 제공하며 Max부터 확장 컨텍스트 윈도우와 우선 접근이 열립니다.</li><li>API 종량제는 100만 토큰당 Opus 입력 $15·출력 $75, Sonnet 입력 $3·출력 $15, Haiku 입력 $0.80·출력 $4로, 사용량이 불규칙한 CI/CD 봇에 적합합니다.</li><li>비용 절감 핵심은 모델 분리(Haiku/Sonnet/Opus), 간결한 CLAUDE.md, <code>/clear</code> 컨텍스트 관리, 스킬 자동화입니다.</li><li>개발자 20명 팀 기준 연 $24,000 투자로 생산성 40% 향상을 가정하면 ROI는 약 2,567%에 달합니다.</li></ul></div>
 
   <h2>2026년 Claude 요금제 전체 구조 한눈에 보기</h2>
 

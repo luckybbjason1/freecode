@@ -76,6 +76,9 @@
     .related-link a { color:var(--text-primary); font-weight:600; font-size:var(--text-sm); }
     .article-body img { max-width: 100%; height: auto; border-radius: var(--radius-md); border: var(--border-glass); margin: 1.5rem 0; }
   </style>
+<script type="application/ld+json" data-geo-faqpage>
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "GitHub Actions에서 Claude Code를 어떻게 실행하나요?", "acceptedAnswer": {"@type": "Answer", "text": "Anthropic 공식 <code>anthropic/claude-code-action@v1</code>을 워크플로우에 추가하면 됩니다. Anthropic API 키를 저장소 Settings > Secrets > Actions에서 <code>ANTHROPIC_API_KEY</code> 시크릿으로 등록하고, with 블록에서 참조하면 됩니다."}},{"@type": "Question", "name": "PR 코멘트로 Claude를 호출하려면 어떻게 설정하나요?", "acceptedAnswer": {"@type": "Answer", "text": "워크플로우의 on 트리거에 <code>issue_comment</code>를 추가하고, 코멘트 본문에 <code>@claude</code>가 포함될 때만 실행되도록 if 조건(<code>contains(github.event.comment.body, '@claude')</code>)을 설정하면 자동 리뷰와 대화형 리뷰를 모두 지원합니다."}},{"@type": "Question", "name": "CI/CD에서 Claude Code 비용을 어떻게 줄이나요?", "acceptedAnswer": {"@type": "Answer", "text": "paths 필터로 소스 변경만 감지(30~50% 절감), 변경 파일을 <code>head -50</code>으로 제한, 간단한 검사는 Haiku·심층 분석은 Sonnet으로 모델 선택(40~60% 절감), draft PR 건너뛰기, concurrency로 이전 실행 취소 등을 조합합니다."}},{"@type": "Question", "name": "보안 취약점이 발견되면 PR 머지를 자동으로 막을 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "가능합니다. <code>gh pr view</code>로 리뷰 코멘트에서 <code>[CRITICAL]</code> 개수를 세어 0보다 크면 <code>exit 1</code>로 실패시키고, GitHub Branch Protection Rule과 결합하면 보안 기준을 통과하지 못한 코드는 메인 브랜치에 들어갈 수 없습니다."}},{"@type": "Question", "name": "Claude Code + GitHub Actions 도입 효과는 어느 정도인가요?", "acceptedAnswer": {"@type": "Answer", "text": "도입 팀 사례 기준 PR 처리 속도가 평균 50% 향상, 테스트 커버리지가 20~30% 증가, 보안 취약점 사전 탐지율이 80% 이상으로 올라갔습니다. 다만 코드 리뷰부터 시작해 각 단계마다 최소 2주 안정화를 두는 점진적 도입이 권장됩니다."}}]}
+</script>
 </head>
 <body>
 <nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
@@ -117,6 +120,7 @@
 </header>
 
 <article class="article-body" itemscope itemtype="https://schema.org/Article">
+<div class="geo-tldr" style="margin:0 0 24px;padding:20px 22px;border-radius:12px;background:rgba(13,240,255,.06);border:1px solid rgba(13,240,255,.22);"><strong style="display:block;margin-bottom:8px;">핵심 요약 (TL;DR)</strong><ul style="margin:0;padding-left:1.2em;line-height:1.7;"><li>Anthropic 공식 <code>anthropic/claude-code-action@v1</code>과 <code>ANTHROPIC_API_KEY</code> 시크릿으로 PR 자동 리뷰·테스트 생성·문서 업데이트·보안 스캔을 자동화한다.</li><li><code>issue_comment</code> 트리거 + <code>@claude</code> 멘션 조건으로 자동 리뷰와 대화형 리뷰를 동시 지원한다.</li><li>비용 최적화: paths 필터(30~50% 절감), 파일 수 제한(<code>head -50</code>), 파일 수에 따라 Haiku/Sonnet 모델 선택(40~60% 절감), draft PR 건너뛰기.</li><li><code>[CRITICAL]</code> 취약점 개수를 세어 <code>exit 1</code> + Branch Protection Rule로 위험 코드의 메인 머지를 차단한다.</li><li>도입 효과(사례): PR 처리 속도 +50%, 테스트 커버리지 +20~30%, 보안 사전 탐지율 80%↑ — 단계별 점진 도입 권장.</li></ul></div>
 
   <h2>CI/CD에서 Claude Code가 필요한 이유</h2>
 

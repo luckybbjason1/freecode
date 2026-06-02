@@ -76,6 +76,9 @@
     .related-link a { color:var(--text-primary); font-weight:600; font-size:var(--text-sm); }
     .article-body img { max-width: 100%; height: auto; border-radius: var(--radius-md); border: var(--border-glass); margin: 1.5rem 0; }
   </style>
+<script type="application/ld+json" data-geo-faqpage>
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "모노레포에서 Claude Code 컨텍스트는 어떻게 관리해야 하나요?", "acceptedAnswer": {"@type": "Answer", "text": "전체 리포를 통째로 넘기지 말고 작업 범위를 앱/패키지 단위로 제한하고, 공유 패키지는 수정이 필요할 때만 포함하며, Turbo·Nx 그래프 도구로 영향 패키지 목록을 먼저 계산해 전달해야 합니다. 1M 토큰이라도 과한 컨텍스트는 집중을 흐립니다."}},{"@type": "Question", "name": "Turborepo에서 변경 영향 범위를 Claude로 어떻게 파악하나요?", "acceptedAnswer": {"@type": "Answer", "text": "<code>turbo run build --dry=json --filter=...[HEAD^1]</code> 출력을 Claude에 넘겨 \"영향 받는 패키지와 테스트를 표로 정리해줘\"라고 요청하면 됩니다. Nx는 <code>nx graph --file=graph.json</code>, pnpm은 <code>pnpm -r list --json</code>과 <code>pnpm why</code>를 연결합니다."}},{"@type": "Question", "name": "모노레포에서 CLAUDE.md는 어떻게 구성하는 게 좋나요?", "acceptedAnswer": {"@type": "Answer", "text": "최상위 CLAUDE.md에 apps/·packages/·tools/ 전체 구조와 경계 규칙을 명시하고, 각 워크스페이스 루트에 더 구체적인 CLAUDE.md를 두는 계층화 전략이 효과적입니다. 루트 <code>.claude/settings.json</code>에는 공통 훅·권한·모델 기본값을 정의합니다."}},{"@type": "Question", "name": "여러 패키지를 동시에 작업할 때 충돌을 어떻게 막나요?", "acceptedAnswer": {"@type": "Answer", "text": "Claude Code의 워크트리 격리를 사용하면 됩니다. 예를 들어 <code>cd apps/api && claude --worktree feature/api-auth</code>와 <code>cd packages/ui && claude --worktree feature/ui-revamp</code>처럼 별도 브랜치에서 돌리면 한쪽 실패가 다른 쪽에 영향을 주지 않습니다."}},{"@type": "Question", "name": "모노레포에서 Claude Code 도입 효과는 어느 정도인가요?", "acceptedAnswer": {"@type": "Answer", "text": "15개 앱·40개 패키지 pnpm workspace를 운영하는 한 핀테크 회사는 도입 후 PR 평균 CI 시간이 40분에서 12분으로 줄었고, 잘못된 import가 PR 단계에서 걸러졌으며, 스키마 변경 PR의 리뷰 타임이 절반으로 줄었습니다."}}]}
+</script>
 </head>
 <body>
 <nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
@@ -117,6 +120,7 @@
 </header>
 
 <article class="article-body" itemscope itemtype="https://schema.org/Article">
+<div class="geo-tldr" style="margin:0 0 24px;padding:20px 22px;border-radius:12px;background:rgba(13,240,255,.06);border:1px solid rgba(13,240,255,.22);"><strong style="display:block;margin-bottom:8px;">핵심 요약 (TL;DR)</strong><ul style="margin:0;padding-left:1.2em;line-height:1.7;"><li>전체 리포를 통째로 넘기지 말고 앱/패키지 단위로 범위를 제한하고, 영향 패키지를 Turbo·Nx 그래프로 먼저 계산해 전달한다.</li><li>도구별 연동: Turborepo <code>turbo run build --dry=json</code>, Nx <code>nx graph --file=graph.json</code>, pnpm <code>pnpm why</code>를 Claude에 넘긴다.</li><li>CLAUDE.md를 계층화 — 루트에 전체 구조·경계 규칙, 워크스페이스별 도메인 규칙, <code>.claude/settings.json</code>에 공통 훅/권한/모델.</li><li>워크트리 격리(<code>claude --worktree</code>)로 여러 패키지를 충돌 없이 병렬 작업하고, 대규모 변경은 작은 PR 시리즈로 분리한다.</li><li>사례(15앱·40패키지 pnpm): 영향 범위 자동 계산으로 PR 평균 CI 시간 <code>40분 → 12분</code>, 스키마 변경 리뷰 타임 절반 단축.</li></ul></div>
 
   <p>모노레포는 점점 더 많은 조직이 선택하는 구조이지만, 동시에 개발자에게 독특한 도전 과제를 안겨 줍니다. 여러 패키지가 서로를 참조하고, 앱마다 빌드 구성이 다르며, 변경 하나가 예상치 못한 패키지에 영향을 줄 수 있습니다. Claude Code는 이 복잡성을 관리하기 위한 강력한 도구이지만, 기본 설정 그대로 쓰면 컨텍스트가 과하게 커지거나 잘못된 패키지를 수정하는 실수가 발생할 수 있습니다. 이 글은 Turborepo, Nx, pnpm workspace 같은 대표 도구와 Claude Code를 결합해 효율적으로 작업하는 실전 전략을 정리합니다.</p>
 

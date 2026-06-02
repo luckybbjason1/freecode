@@ -76,6 +76,9 @@
     .related-link a { color:var(--text-primary); font-weight:600; font-size:var(--text-sm); }
     .article-body img { max-width: 100%; height: auto; border-radius: var(--radius-md); border: var(--border-glass); margin: 1.5rem 0; }
   </style>
+<script type="application/ld+json" data-geo-faqpage>
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "2026년 Claude Code의 컨텍스트 윈도우는 얼마나 커졌나요?", "acceptedAnswer": {"@type": "Answer", "text": "기존 200K 토큰에서 100만(1M) 토큰으로 확장되었습니다. 수천 개의 소스 파일을 한 세션에서 분석할 수 있어 전체 프로젝트 리팩토링, 레거시 코드 분석, 크로스 리포지토리 작업이 가능해졌습니다."}},{"@type": "Question", "name": "Opus 4 모델은 이전 모델보다 얼마나 향상되었나요?", "acceptedAnswer": {"@type": "Answer", "text": "이전 세대인 Sonnet 3.5 대비 코딩 벤치마크에서 평균 40% 이상 성능이 향상되었습니다. 멀티파일 리팩토링, 대규모 코드베이스 분석, 1,000줄 이상 장문 코드 생성 시 일관성에서 특히 강합니다."}},{"@type": "Question", "name": "Claude Code에서 Opus 4 모델을 사용하려면 어떻게 하나요?", "acceptedAnswer": {"@type": "Answer", "text": "터미널에서 <code>claude --model opus-4</code>로 시작하거나 <code>export CLAUDE_MODEL=opus-4</code> 환경변수를 설정합니다. 프로젝트별로는 <code>.claude/settings.json</code>에 <code>\"model\": \"opus-4\"</code>와 <code>\"contextWindow\": \"1m\"</code>을 지정합니다."}},{"@type": "Question", "name": "워크트리 격리(Worktree Isolation)는 무엇인가요?", "acceptedAnswer": {"@type": "Answer", "text": "Claude의 작업을 독립적인 Git 워크트리에서 수행해 현재 작업 디렉토리에 영향을 주지 않는 기능입니다. <code>claude --worktree \"feature/oauth-integration\" \"...\"</code>로 실행하며, 결과가 만족스럽지 않으면 해당 워크트리를 삭제만 하면 됩니다."}},{"@type": "Question", "name": "2026년 Claude Code에서 MCP 지원은 어떻게 강화되었나요?", "acceptedAnswer": {"@type": "Answer", "text": "MCP 서버 자동 탐색·추천이 추가되었고, 프로젝트 루트의 <code>.mcp.json</code>으로 postgres·github·slack 같은 서버를 선언적으로 관리할 수 있습니다. 자주 쓰는 도구는 <code>~/.claude/settings.json</code>에 전역으로도 설정할 수 있습니다."}}]}
+</script>
 </head>
 <body>
 <nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
@@ -117,6 +120,7 @@
 </header>
 
 <article class="article-body" itemscope itemtype="https://schema.org/Article">
+<div class="geo-tldr" style="margin:0 0 24px;padding:20px 22px;border-radius:12px;background:rgba(13,240,255,.06);border:1px solid rgba(13,240,255,.22);"><strong style="display:block;margin-bottom:8px;">핵심 요약 (TL;DR)</strong><ul style="margin:0;padding-left:1.2em;line-height:1.7;"><li>2026년 Claude Code의 핵심은 Opus 4 모델(Sonnet 3.5 대비 코딩 벤치마크 40%+ 향상)과 200K→100만(1M) 토큰 컨텍스트 윈도우다.</li><li>Opus 4는 <code>claude --model opus-4</code> 또는 <code>.claude/settings.json</code>의 <code>"model": "opus-4"</code>로 선택하며, 1M 컨텍스트는 전체 리팩토링·레거시 분석·크로스 리포지토리 작업에 활용된다.</li><li>TypeScript/Python Agent SDK 정식 출시, <code>.mcp.json</code> 기반 MCP 자동 탐색, VS Code 정식 + JetBrains 플러그인, claude.ai/code 웹 앱이 새로 추가됐다.</li><li>백그라운드 에이전트(<code>claude --background</code>)와 워크트리 격리(<code>claude --worktree</code>)로 비동기·안전한 대규모 작업이 가능하고, 훅에 PreCommit·OnError·Stop이 추가됐다.</li><li>성능 면에서 첫 응답 시간(TTFT)이 평균 30% 단축됐으며, 업그레이드는 <code>npm install -g @anthropic-ai/claude-code@latest</code>로 한다.</li></ul></div>
 
   <p>2026년은 Claude Code에 있어 가장 혁신적인 해라 할 수 있습니다. Anthropic은 올해 들어 Opus 4 모델 출시, 100만 토큰 컨텍스트 윈도우 확장, Agent SDK 공개, 그리고 MCP(Model Context Protocol) 통합 강화 등 개발자 경험을 근본적으로 바꾸는 대규모 업데이트를 연이어 발표했습니다. 이 글에서는 2026년 Claude Code에 추가된 모든 신기능을 체계적으로 정리하고, 각 기능이 실제 개발 워크플로우에 어떤 영향을 미치는지 구체적인 코드 예제와 함께 살펴봅니다.</p>
 
