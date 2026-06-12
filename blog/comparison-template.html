@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{TITLE}} | Claude Korea 비교 가이드</title>
+  <meta name="description" content="{{DESCRIPTION}}">
+  <link rel="canonical" href="https://claudekorea.com/comparisons/{{SLUG}}.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{TITLE}}">
+  <meta property="og:description" content="{{DESCRIPTION}}">
+  <meta property="og:image" content="https://claudekorea.com/assets/img/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"{{TITLE}}","description":"{{DESCRIPTION}}","inLanguage":"ko","author":{"@type":"Organization","name":"Claude Korea","url":"https://claudekorea.com/"},"publisher":{"@type":"Organization","name":"Claude Korea","url":"https://claudekorea.com/","logo":{"@type":"ImageObject","url":"https://claudekorea.com/assets/img/logo.svg"}},"datePublished":"2026-06-13","image":"https://claudekorea.com/assets/img/og-image.svg","articleSection":"비교 가이드","keywords":"Claude Code, AI 도구 비교"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"{{FAQ_Q1}}","acceptedAnswer":{"@type":"Answer","text":"{{FAQ_A1}}"}},{"@type":"Question","name":"{{FAQ_Q2}}","acceptedAnswer":{"@type":"Answer","text":"{{FAQ_A2}}}"}]}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
+  <a href="../index.html" class="nav__logo" aria-label="Claude Korea 홈">
+    <img src="../assets/img/logo.svg" alt="Claude Korea 로고" class="nav__logo-img">
+  </a>
+  <ul class="nav__links">
+    <li><a href="../index.html">홈</a></li>
+    <li><a href="../skills.html">스킬</a></li>
+    <li><a href="../agents.html">에이전트</a></li>
+    <li><a href="../commands.html">명령어</a></li>
+    <li><a href="../mcps.html">MCP</a></li>
+    <li><a href="../blog.html">블로그</a></li>
+  </ul>
+</nav>
+
+<main class="container" style="padding:2rem 1rem;">
+  <header style="margin-bottom:2rem;">
+    <a href="../blog.html" style="color:var(--text-muted);font-size:var(--text-sm);text-decoration:none;display:inline-flex;align-items:center;gap:0.3rem;margin-bottom:1rem;">← 블로그로 돌아가기</a>
+    <h1 style="font-family:var(--font-display);font-size:var(--text-3xl);margin:0 0 0.5rem;">{{TITLE}}</h1>
+    <p style="color:var(--text-secondary);font-size:var(--text-base);">{{DESCRIPTION}}</p>
+  </header>
+
+  <!-- 비교 테이블 -->
+  <section style="margin-bottom:3rem;">
+    <h2 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:1rem;">{{COMPARISON_TITLE}}</h2>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:var(--text-sm);">
+        <thead>
+          <tr style="border-bottom:2px solid rgba(124,106,245,0.3);">
+            <th style="text-align:left;padding:0.75rem 1rem;color:var(--text-secondary);font-weight:600;">기능</th>
+            {{TABLE_HEADERS}}
+          </tr>
+        </thead>
+        <tbody>
+          {{TABLE_ROWS}}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 상세 비교 -->
+  <section style="margin-bottom:3rem;">
+    <h2 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:1rem;">상세 분석</h2>
+    {{DETAIL_SECTIONS}}
+  </section>
+
+  <!-- FAQ -->
+  <section style="margin-bottom:3rem;">
+    <h2 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:1rem;">자주 묻는 질문</h2>
+    <div style="display:grid;gap:1rem;">
+      <details style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-sm);padding:1rem;">
+        <summary style="font-weight:600;cursor:pointer;">{{FAQ_Q1}}</summary>
+        <p style="margin-top:0.75rem;color:var(--text-secondary);line-height:1.7;">{{FAQ_A1}}</p>
+      </details>
+      <details style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-sm);padding:1rem;">
+        <summary style="font-weight:600;cursor:pointer;">{{FAQ_Q2}}</summary>
+        <p style="margin-top:0.75rem;color:var(--text-secondary);line-height:1.7;">{{FAQ_A2}}</p>
+      </details>
+      <details style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-sm);padding:1rem;">
+        <summary style="font-weight:600;cursor:pointer;">{{FAQ_Q3}}</summary>
+        <p style="margin-top:0.75rem;color:var(--text-secondary);line-height:1.7;">{{FAQ_A3}}</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- 결론 -->
+  <section style="background:var(--bg-elevated);border:1px solid rgba(124,106,245,0.18);border-radius:var(--radius-md);padding:2rem;">
+    <h2 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:1rem;">결론</h2>
+    {{CONCLUSION}}
+  </section>
+</main>
+
+<footer style="margin-top:3rem;padding:2rem 1rem;border-top:1px solid rgba(255,255,255,0.06);text-align:center;color:var(--text-muted);font-size:var(--text-xs);">
+  <p>© 2026 Claude Korea. All rights reserved.</p>
+</footer>
+</body>
+</html>
