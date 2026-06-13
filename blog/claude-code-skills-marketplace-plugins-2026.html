@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code 스킬 마켓플레이스 & 플러그인 2026 — 커뮤니티 생태계 활용법 | Claude Korea 비교 가이드</title>
+  <meta name="description" content="Claude Code 스킬 마켓플레이스, 플러그인, 커스텀 스킬을 활용하는 완전 가이드. 3,600+ 오픈소스 스킬, 공식 스킬, MCP 통합, 그리고 나만의 스킬 만드는 법.">
+  <link rel="canonical" href="https://claudekorea.com/comparisons/claude-code-skills-marketplace-plugins-2026.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Claude Code 스킬 마켓플레이스 & 플러그인 2026 — 커뮤니티 생태계 활용법">
+  <meta property="og:description" content="Claude Code 스킬 마켓플레이스, 플러그인, 커스텀 스킬을 활용하는 완전 가이드. 3,600+ 오픈소스 스킬, 공식 스킬, MCP 통합, 그리고 나만의 스킬 만드는 법.">
+  <meta property="og:image" content="https://claudekorea.com/assets/img/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Claude Code 스킬 마켓플레이스 & 플러그인 2026 — 커뮤니티 생태계 활용법","description":"Claude Code 스킬 마켓플레이스, 플러그인, 커스텀 스킬을 활용하는 완전 가이드.","inLanguage":"ko","author":{"@type":"Organization","name":"Claude Korea","url":"https://claudekorea.com/"},"publisher":{"@type":"Organization","name":"Claude Korea","url":"https://claudekorea.com/","logo":{"@type":"ImageObject","url":"https://claudekorea.com/assets/img/logo.svg"}},"datePublished":"2026-06-14","image":"https://claudekorea.com/assets/img/og-image.svg","articleSection":"스킬 & 플러그인","keywords":"Claude Code 스킬, Claude Code 플러그인, 스킬 마켓플레이스, MCP, 커스텀 스킬, 2026"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"공식 스킬과 커스텀 스킬의 차이점은 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"공식 스킬은 Anthropic이 직접 만든 스킬로, PDF/DOCX/XLSX 생성, 프론트엔드 디자인, 브랜드 가이드라인 등 16종의 기본 스킬을 제공합니다. 커스텀 스킬은 개인이나 조직이 만든 스킬로, 프로젝트 특화 규칙, 도메인 지식, 자동화 워크플로우 등을 포함합니다. 공식 스킬은 안정적이고 검증되었지만, 커스텀 스킬은 훨씬 다양하고 구체적인 작업에 최적화되어 있습니다."}},{"@type":"Question","name":"스킬과 MCP의 차이점은 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"스킬은 Claude Code에게 '무엇을 어떻게 해야 하는지' 알려주는 инструкция 집합입니다. SKILL.md 파일에 단계별 절차와 컨텍스트를 포함합니다. MCP(Model Context Protocol)는 Claude Code가 외부 서비스(GitHub, Slack, Notion 등)와 통신할 수 있게 하는 프로토콜입니다. 쉽게 말해 스킬은 '지능'이고 MCP는 '손발'입니다. 둘을 함께 사용하면 시너지가 발생합니다."}},{"@type":"Question","name":"커스텀 스킬을 만드는 데 얼마나 걸리나요?","acceptedAnswer":{"@type":"Answer","text":"기본적인 스킬은 10-15분이면 만들 수 있습니다. SKILL.md 파일 하나에 작업 절차를 작성하면 됩니다. 복잡한 스킬(여러 스크립트, 템플릿, 참조 자료를 포함하는)은 1-2시간 정도 소요됩니다. 가장 중요한 것은 명확한 트리거 조건, 단계별 실행 절차, 그리고 실패 시 대응 방안을 포함하는 것입니다. 좋은 스킬은 한 번 만들면 무한히 재사용할 수 있습니다."}}]}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
+  <a href="../index.html" class="nav__logo" aria-label="Claude Korea 홈">
+    <img src="../assets/img/logo.svg" alt="Claude Korea 로고" class="nav__logo-img">
+  </a>
+  <ul class="nav__links">
+    <li><a href="../skills.html">스킬</a></li>
+    <li><a href="../agents.html">에이전트</a></li>
+    <li><a href="../commands.html">명령어</a></li>
+    <li><a href="../mcps.html">MCP</a></li>
+    <li><a href="../blog.html">블로그</a></li>
+  </ul>
+</nav>
+
+<main class="container" style="padding:2rem 1rem;">
+  <header style="margin-bottom:2rem;">
+    <a href="../blog.html" style="color:var(--text-muted);font-size:var(--text-sm);text-decoration:none;display:inline-flex;align-items:center;gap:0.3rem;margin-bottom:1rem;">← 블로그로 돌아가기</a>
+    <h1 style="font-family:var(--font-display);font-size:var(--text-3xl);margin:0 0 0.5rem;">Claude Code 스킬 마켓플레이스 & 플러그인 2026</h1>
+    <p style="color:var(--text-secondary);font-size:var(--text-base);">3,600+ 오픈소스 스킬, 공식 스킬, 커스텀 스킬, MCP 통합 — 생태계 전체 활용법</p>
+  </header>
+
+  <!-- TL;DR 비교 테이블 -->
+  <section style="margin-bottom:3rem;">
+    <h2 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:1rem;">TL;DR — 스킬 유형별 비교</h2>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:var(--text-sm);">
+        <thead>
+          <tr style="border-bottom:2px solid rgba(124,106,245,0.3);">
+            <th style="text-align:left;padding:0.75rem 1rem;color:var(--text-secondary);font-weight:600;">특성</th>
+            <th style="text-align:left;padding:0.75rem 1rem;color:var(--text-secondary);font-weight:600;">공식 스킬</th>
+            <th style="text-align:left;padding:0.75rem 1rem;color:var(--text-secondary);font-weight:600;">커뮤니티 스킬</th>
+            <th style="text-align:left;padding:0.75rem 1rem;color:var(--text-secondary);font-weight:600;">커스텀 스킬</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:0.75rem 1rem;">수량</td>
+            <td style="padding:0.75rem 1rem;">16개 (Anthropic)</td>
+            <td style="padding:0.75rem 1rem;">3,600+ (오픈소스)</td>
+            <td style="padding:0.75rem 1rem;">무제한</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:0.75rem 1rem;">검증 수준</td>
+            <td style="padding:0.75rem 1rem;">Anthropic 공식 검증</td>
+            <td style="padding:0.75rem 1rem;">커뮤니티 리뷰</td>
+            <td style="padding:0.75rem 1rem;">자신만 검증</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:0.75rem 1rem;">도메인 특화</td>
+            <td style="padding:0.75rem 1rem;">일반적</td>
+            <td style="padding:0.75rem 1rem;">다양함</td>
+            <td style="padding:0.75rem 1rem;">프로젝트 특화</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:0.75rem 1rem;">설치 방법</td>
+            <td style="padding:0.75rem 1rem;">자동 (내장)</td>
+            <td style="padding:0.75rem 1rem;">GitHub clone</td>
+            <td style="padding:0.75rem 1rem;">수동 작성</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:0.75rem 1rem;">유지보수</td>
+            <td style="padding:0.75rem 1rem;">Anthropic 담당</td>
+            <td style="padding:0.75rem 1rem;">커뮤니티/개인</td>
+            <td style="padding:0.75rem 1rem;">자신</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem 1rem;">추천 우선순위</td>
+            <td style="padding:0.75rem 1rem;">시작 필수</td>
+            <td style="padding:0.75rem 1rem;">필요한 것만</td>
+            <td style="padding:0.75rem 1rem;">모든 팀 필수</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 상세 분석 -->
+  <section style="margin-bottom:3rem;">
+    <h2 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:1rem;">상세 분석</h2>
+
+    <h3 style="font-size:var(--text-lg);margin:2rem 0 1rem;">1. 스킬 마켓플레이스 생태계 개요</h3>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">2026년 중반 기준, Claude Code 스킬 생태계는 세 가지 층위로 구성되어 있습니다. 첫 번째는 Anthropic이 제공하는 공식 스킬 16종입니다. 두 번째는 agentskill.club, claude-skills.info 등 서드파티 마켓플레이스에 등록된 3,600+ 오픈소스 스킬입니다. 세 번째는 각 조직이 자체적으로 만든 커스텀 스킬입니다.</p>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">공식 스킬 리포지토리(<code>github.com/anthropics/skills</code>)는 Apache 2.0 라이선스로 일부가 오픈소스이며, DOCX/PDF/XLSX 생성 스킬은 소스-가용(source-available)으로 제공됩니다. 이는 실제 프로덕션에서 사용되는 복잡한 스킬 패턴을 학습하는 데 유용합니다.</p>
+
+    <h3 style="font-size:var(--text-lg);margin:2rem 0 1rem;">2. 공식 스킬 — 기본부터 심화까지</h3>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">Anthropic의 공식 스킬은 Claude Code에 기본 내장되어 있습니다. 주요 스킬들을 살펴보겠습니다:</p>
+
+    <h4 style="font-size:var(--text-base);margin:1.5rem 0 0.75rem;color:var(--text-primary);">문서 생성 스킬</h4>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">DOCX, PDF, PPTX, XLSX 생성 스킬은 Claude Code가 구조화된 문서를 생성할 수 있게 합니다. 특히 PDF 스킬은 토큰 기반 디자인 시스템을 사용해 전문적인 레이아웃을 생성합니다.</p>
+    <pre style="background:var(--bg-elevated);padding:1rem;border-radius:var(--radius-sm);overflow-x:auto;"><code class="language-bash"># 문서 생성 스킬 활성화 (기본 내장)
+# Claude Code가 자동으로 감지하지만, 명시적으로 로드하려면:
+/clause skills list  # 설치된 스킬 목록 확인
+
+# PDF 생성 예제
+" quarterly-report.pdf를 생성해줘.
+- 1페이지: executive summary with KPIs
+- 2페이지: revenue breakdown table  
+- 3페이지: trend charts with YoY comparison"</code></pre>
+
+    <h4 style="font-size:var(--text-base);margin:1.5rem 0 0.75rem;color:var(--text-primary);">프론트엔드 디자인 스킬</h4>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">Frontend Design 스킬은 Tailwind CSS와 shadcn/ui를 사용한 프로덕션 레벨의 인터페이스를 생성합니다. React 컴포넌트, 반응형 레이아웃, 접근성(A11y) 가이드라인을 모두 포함합니다.</p>
+    <pre style="background:var(--bg-elevated);padding:1rem;border-radius:var(--radius-sm);overflow-x:auto;"><code class="language-bash"># 프론트엔드 디자인 스킬 사용
+" 대시보드 페이지를 만들어줘.
+- 왼쪽 사이드바 네비게이션
+- 메인 영역에 3개의 카드 위젯 (사용자 수, 활성 세션, 오류율)
+- 오른쪽에 실시간 차트
+- 다크 모드 지원
+- shadcn/ui 컴포넌트 사용"</code></pre>
+
+    <h4 style="font-size:var(--text-base);margin:1.5rem 0 0.75rem;color:var(--text-primary);">MCP 빌더 스킬</h4>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">MCP Builder 스킬은 외부 API와 통신하는 MCP 서버를 생성합니다. REST API, GraphQL, WebSocket 등 다양한 프로토콜을 지원합니다.</p>
+    <pre style="background:var(--bg-elevated);padding:1rem;border-radius:var(--radius-sm);overflow-x:auto;"><code class="language-bash"># MCP 서버 생성 스킬 사용
+" 네이버 클로드 API와 통신하는 MCP 서버를 만들어줘.
+- /neardoc:search로 문서 검색
+- /neardoc:upload로 문서 업로드
+- /neardoc:list로 문서 목록 조회
+- API 키는 환경변수로 관리"</code></pre>
+
+    <h3 style="font-size:var(--text-lg);margin:2rem 0 1rem;">3. 커뮤니티 스킬 — 서드파티 마켓플레이스</h3>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">커뮤니티 스킬은 가장 풍부하고 다채로운 에코시스템입니다. 주요 마켓플레이스와 인기 스킬들을 소개합니다.</p>
+
+    <h4 style="font-size:var(--text-base);margin:1.5rem 0 0.75rem;color:var(--text-primary);">주요 마켓플레이스</h4>
+    <ul style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">
+      <li><strong>agentskill.club:</strong> 3,600+ 스킬 — 가장 큰 오픈소스 라이브러리. GitHub 동기화 자동. 카테고리별 필터링.</li>
+      <li><strong>claude-skills.info:</strong> 658+ 스킬 — Anthropic 공식 스킬과 커뮤니티 스킬을 통합. 제품 hunt에도 등록됨.</li>
+      <li><strong>GitHub (anthropics/skills):</strong> 16개 공식 스킬 + 다양한 예제. Apache 2.0 라이선스.</li>
+    </ul>
+
+    <h4 style="font-size:var(--text-base);margin:1.5rem 0 0.75rem;color:var(--text-primary);">인기 커뮤니티 스킬 Top 5</h4>
+    <ol style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">
+      <li><strong>algorithmic-art (5.3k ⭐):</strong> p5.js 기반 생성 예술. 시드 기반 무작위성과 파라미터 탐색.</li>
+      <li><strong>artifacts-builder (5.3k ⭐):</strong> React + Tailwind + shadcn/ui로 복잡한 HTML 아티팩트 생성.</li>
+      <li><strong>brand-guidelines (5.3k ⭐):</strong> Anthropic 공식 브랜드 색상과 타이포그래피 적용.</li>
+      <li><strong>mcp-builder (5.3k ⭐):</strong> 외부 API용 MCP 서버 생성 가이드.</li>
+      <li><strong>canvas-design (5.3k ⭐):</strong> .png과 .pdf 포맷의 시각 예술 생성.</li>
+    </ol>
+
+    <h4 style="font-size:var(--text-base);margin:1.5rem 0 0.75rem;color:var(--text-primary);">실용적인 커뮤니티 스킬</h4>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">스타 숫자보다는 실용성에 초점을 맞춘 스킬들도 많습니다:</p>
+    <ul style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">
+      <li><strong>vercel-automation:</strong> Rube MCP(Composio)를 통한 Vercel 배포, 도메인, DNS, 환경 변수 자동화</li>
+      <li><strong>twitter-automation:</strong> Twitter/X 게시, 검색, 사용자 정보, 북마크 자동화</li>
+      <li><strong>twitter-algorithm-optimizer:</strong> 트위터 알고리즘 기반 트윗 최적화 분석</li>
+      <li><strong>trello-automation:</strong> Trello 보드, 카드, 워크플로우 자동화</li>
+      <li><strong>todoist-automation:</strong> Todoist 작업 관리, 프로젝트, 필터링 자동화</li>
+    </ul>
+
+    <h3 style="font-size:var(--text-lg);margin:2rem 0 1rem;">4. 커스텀 스킬 만들기</h3>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">가장 강력하고 개인화된 접근법은 자신만의 스킬을 만드는 것입니다. 스킬은 폴더 단위로 구성되며, 각 폴더에 <code>SKILL.md</code> 파일이 있습니다.</p>
+
+    <h4 style="font-size:var(--text-base);margin:1.5rem 0 0.75rem;color:var(--text-primary);">SKILL.md 구조</h4>
+    <pre style="background:var(--bg-elevated);padding:1rem;border-radius:var(--radius-sm);overflow-x:auto;"><code class="language-markdown">---
+name: my-project-rules
+version: 1.0.0
+---
+
+# 내 프로젝트 규칙
+
+## 개요
+이 스킬은 {project-name} 프로젝트의 개발 규칙을 정의합니다.
+
+## 트리거 조건
+- 파일이 .claude/rules/ 폴더에 있을 때 자동 로드
+- /myproject 명령어로 수동 로드 가능
+
+## 핵심 규칙
+1. 모든 함수에는 JSDoc 주석이 있어야 함
+2. 테스트 커버리지 80% 이상 유지
+3. PR은 최소 1명의 리뷰어 승인 필요
+4. 메인 브랜치에 직접 푸시 금지
+
+## 실행 절차
+1. 코드 변경사항 확인
+2. 규칙 위반 항목 식별
+3. 수정 제안 생성
+4. PR에 댓글로 보고</code></pre>
+
+    <h4 style="font-size:var(--text-base);margin:1.5rem 0 0.75rem;color:var(--text-primary);">프로젝트별 스킬 설치</h4>
+    <pre style="background:var(--bg-elevated);padding:1rem;border-radius:var(--radius-sm);overflow-x:auto;"><code class="language-bash"># 프로젝트 루트에서 스킬 설정
+mkdir -p .claude/skills/my-project-rules
+cp SKILL.md .claude/skills/my-project-rules/
+
+# 또는 GitHub 리포지토리에서 클론
+git clone https://github.com/myorg/claude-skills.git .claude/skills/
+
+# 스킬 로드 확인
+claude skills list  # 설치된 스킬 확인
+claude /myproject   # 수동으로 스킬 로드</code></pre>
+
+    <h4 style="font-size:var(--text-base);margin:1.5rem 0 0.75rem;color:var(--text-primary);">실전 예제: 파이썬 프로젝트 스킬</h4>
+    <pre style="background:var(--bg-elevated);padding:1rem;border-radius:var(--radius-sm);overflow-x:auto;"><code class="language-markdown">---
+name: python-best-practices
+version: 1.0.0
+---
+
+# Python 프로젝트 베스트 프랙티스
+
+## 트리거
+- .py 파일이 열렸을 때
+- /python 명령어 실행 시
+
+## 핵심 규칙
+1. 타입 힌트 필수 (Optional[str], list[int])
+2. Pydantic v2로 모델 정의
+3. pytest로 단위 테스트 작성
+4. ruff로 린트, black으로 포매팅
+5. dependency-injection 패턴 사용
+
+## 코드 제너레이션 규칙
+- 모든 함수 시그니처에 타입 포함
+- docstring은 Google 스타일
+- 예외는 구체적으로 (ValueError, KeyError)
+- async/await는 비동기 I/O 전용</code></pre>
+
+    <h3 style="font-size:var(--text-lg);margin:2rem 0 1rem;">5. MCP 서버와의 시너지</h3>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">스킬과 MCP는 서로 보완적입니다. 스킬이 "무엇을 해야 하는지" 정의하면, MCP가 "어떻게 외부와 통신할지" 담당합니다.</p>
+    <pre style="background:var(--bg-elevated);padding:1rem;border-radius:var(--radius-sm);overflow-x:auto;"><code class="language-bash"># MCP 서버 설치
+npx -y @modelcontextprotocol/server-github
+npx -y @modelcontextprotocol/server-slack
+npx -y @modelcontextprotocol/server-notion
+
+# 스킬 + MCP 조합 예제
+# 스킬: 코드 리뷰 절차 정의
+# MCP: GitHub PR 읽기 + Slack 알림 보내기
+
+" 이 PR을 리뷰해줘.
+- 코드 스타일, 보안, 성능 확인
+-发现的问题를 GitHub PR에 댓글
+- #code-review 채널에 요약 보내기"</code></pre>
+
+    <h3 style="font-size:var(--text-lg);margin:2rem 0 1rem;">6. 한국 개발자를 위한 스킬 추천</h3>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">한국 개발 생태계에 특화된 스킬과 고려사항:</p>
+    <ul style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">
+      <li><strong>네이버 클로드 통합:</strong> 네이버 클로드 API를 MCP로 연결하면, 한국형 AI 검색 최적화(GEO) 스킬과 연동 가능</li>
+      <li><strong>카카오/네이버 OAuth:</strong> 카카오 로그인, 네이버 클로딩 API 연동 스킬을 커스텀 제작</li>
+      <li><strong>한국어 코드 네이밍:</strong> 스네이크 케이스(파이썬) vs 카멜 케이스(자바스크립트) 혼용 프로젝트에 대한 규칙 스킬</li>
+      <li><strong>개인정보보호법 준수:</strong> KPPA(한국 개인정보보호법) 준수를 위한 데이터 처리 규칙 스킬</li>
+    </ul>
+
+    <h3 style="font-size:var(--text-lg);margin:2rem 0 1rem;">7. 스킬 관리 및 유지보수</h3>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">스킬은 일회성이 아닙니다. 정기적인 유지보수가 필요합니다:</p>
+    <ul style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">
+      <li><strong>분기별 리뷰:</strong> 사용하지 않는 스킬 정리, 업데이트된 스킬 확인</li>
+      <li><strong>버전 관리:</strong> SKILL.md에 version 필드를 명시하고, 변경사항은 changelog에 기록</li>
+      <li><strong>테스트:</strong> 새 스킬은 실제 프로젝트에서 최소 3번 이상 테스트 후 배포</li>
+      <li><strong>공유:</strong> 조직 내 스킬은 Git 리포지토리로 관리하고, 팀원들과 공유</li>
+    </ul>
+
+    <h3 style="font-size:var(--text-lg);margin:2rem 0 1rem;">8. 스킬 한계점</h3>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">스킬 생태계에도 한계가 있습니다:</p>
+    <ul style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">
+      <li><strong>품질 편차:</strong> 커뮤니티 스킬의 품질은 천차만별. 다운로드 전 리뷰와 별점 확인 필수</li>
+      <li><strong>호환성:</strong> 특정 Claude Code 버전에서만 작동하는 스킬이 있을 수 있음</li>
+      <li><strong>보안:</strong> 서드파티 스킬은 셸 명령어를 실행할 수 있으므로, 설치 전 코드 검토 권장</li>
+      <li><strong>유지보수 부채:</strong> 너무 많은 스킬은 서로 충돌할 수 있음. 필요한 것만 선택</li>
+    </ul>
+  </section>
+
+  <!-- FAQ -->
+  <section style="margin-bottom:3rem;">
+    <h2 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:1rem;">자주 묻는 질문</h2>
+    <div style="display:grid;gap:1rem;">
+      <details style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-sm);padding:1rem;">
+        <summary style="font-weight:600;cursor:pointer;">공식 스킬과 커스텀 스킬의 차이점은 무엇인가요?</summary>
+        <p style="margin-top:0.75rem;color:var(--text-secondary);line-height:1.7;">공식 스킬은 Anthropic이 직접 만든 스킬로, PDF/DOCX/XLSX 생성, 프론트엔드 디자인, 브랜드 가이드라인 등 16종의 기본 스킬을 제공합니다. 커스텀 스킬은 개인이나 조직이 만든 스킬로, 프로젝트 특화 규칙, 도메인 지식, 자동화 워크플로우 등을 포함합니다. 공식 스킬은 안정적이고 검증되었지만, 커스텀 스킬은 훨씬 다양하고 구체적인 작업에 최적화되어 있습니다. 대부분의 성공적인 사용자는 공식 스킬 + 커뮤니티 스킬 + 커스텀 스킬을 조합합니다.</p>
+      </details>
+      <details style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-sm);padding:1rem;">
+        <summary style="font-weight:600;cursor:pointer;">스킬과 MCP의 차이점은 무엇인가요?</summary>
+        <p style="margin-top:0.75rem;color:var(--text-secondary);line-height:1.7;">스킬은 Claude Code에게 '무엇을 어떻게 해야 하는지' 알려주는 지침 집합입니다. SKILL.md 파일에 단계별 절차와 컨텍스트를 포함합니다. MCP(Model Context Protocol)는 Claude Code가 외부 서비스(GitHub, Slack, Notion 등)와 통신할 수 있게 하는 프로토콜입니다. 쉽게 말해 스킬은 '지능'이고 MCP는 '손발'입니다. 둘을 함께 사용하면 시너지가 발생합니다. 예를 들어 코드 리뷰 스킬(스킬)이 GitHub PR을 읽도록 하면(MCP), 완전한 자동 리뷰 워크플로우가 완성됩니다.</p>
+      </details>
+      <details style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-sm);padding:1rem;">
+        <summary style="font-weight:600;cursor:pointer;">커스텀 스킬을 만드는 데 얼마나 걸리나요?</summary>
+        <p style="margin-top:0.75rem;color:var(--text-secondary);line-height:1.7;">기본적인 스킬은 10-15분이면 만들 수 있습니다. SKILL.md 파일 하나에 작업 절차를 작성하면 됩니다. 복잡한 스킬(여러 스크립트, 템플릿, 참조 자료를 포함하는)은 1-2시간 정도 소요됩니다. 가장 중요한 것은 명확한 트리거 조건, 단계별 실행 절차, 그리고 실패 시 대응 방안을 포함하는 것입니다. 좋은 스킬은 한 번 만들면 무한히 재사용할 수 있으며, 조직 전체의 지식으로 축적됩니다.</p>
+      </details>
+      <details style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-sm);padding:1rem;">
+        <summary style="font-weight:600;cursor:pointer;">서드파티 스킬은 안전한가요?</summary>
+        <p style="margin-top:0.75rem;color:var(--text-secondary);line-height:1.7;">대부분의 스킬은 안전하지만, 설치 전에 반드시 확인해야 합니다. 스킬은 셸 명령어를 실행할 수 있으므로, SKILL.md 파일의 내용을 먼저 읽어보고 의심스러운 명령어가 있는지 확인하세요. GitHub 스타 수가 100 이상이고 최근 업데이트가 있다면 비교적 안전합니다. 조직에서 사용하는 스킬은 보안 팀의 검토를 거치는 것이 좋습니다. 공식 스킬(Apache 2.0)은 가장 안전한 선택입니다.</p>
+      </details>
+      <details style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-sm);padding:1rem;">
+        <summary style="font-weight:600;cursor:pointer;">여러 사람이 같은 스킬을 공유하려면 어떻게 하나요?</summary>
+        <p style="margin-top:0.75rem;color:var(--text-secondary);line-height:1.7;">조직 전체 스킬 공유의 가장 좋은 방법은 Git 리포지토리를 사용하는 것입니다. <code>.claude/skills/</code> 폴더를 리포지토리에 committing하고, 팀원들은 <code>git clone</code>으로 복사합니다. 또한 GitHub 리포지토리를 플러그인 마켓플레이스로 등록하면, <code>claude plugin install</code> 명령 하나로 모든 팀원이 동일한 스킬을 설치할 수 있습니다. 조직 표준 스킬은 CLAUDE.md에 참조하여 모든 세션에서 자동으로 로드되도록 설정하세요.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- 결론 -->
+  <section style="background:var(--bg-elevated);border:1px solid rgba(124,106,245,0.18);border-radius:var(--radius-md);padding:2rem;">
+    <h2 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:1rem;">결론</h2>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">Claude Code의 진정한 힘은 단일 도구로서의 기능이 아니라, 생태계 전체에 있습니다. 공식 스킬로 시작하고, 커뮤니티 스킬로 확장하고, 커스텀 스킬로 개인화하면, Claude Code는 당신의 프로젝트에 완전히 적응하는 에이전트가 됩니다.</p>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">핵심 원칙은 "적은 것이 많음"입니다. 100개의 스킬을 설치하는 것보다, 5개의 잘 만들어진 스킬을 사용하는 것이 낫습니다. 각 스킬은 명확한 트리거, 구체적인 절차, 검증된 결과를 가져야 합니다.</p>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">더 많은 Claude Code 활용법을 원하시면 아래 관련 가이드를 확인하세요:</p>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;"><a href="custom-skills.html" style="color:var(--gold);text-decoration:none;">나만의 Claude Code 스킬 만들기</a> · <a href="mcp-guide.html" style="color:var(--gold);text-decoration:none;">MCP 서버 완전 정복</a> · <a href="claude-code-subagents.html" style="color:var(--gold);text-decoration:none;">서브에이전트 완벽 가이드</a> · <a href="hooks-guide.html" style="color:var(--gold);text-decoration:none;">훅 완전 가이드</a> · <a href="slash-commands-guide.html" style="color:var(--gold);text-decoration:none;">슬래시 명령어 완전 정복</a></p>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">지금 바로 Claude Code를 사용해 보세요: <a href="https://claude.ai/new" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">claude.ai</a></p>
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;"><strong>소스 및 추가 자료:</strong></p>
+    <ul style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">
+      <li>공식 스킬 리포지토리: <a href="https://github.com/anthropics/skills" target="_blank" rel="noopener" style="color:var(--gold);">github.com/anthropics/skills</a></li>
+      <li>커뮤니티 마켓플레이스: <a href="https://agentskill.club" target="_blank" rel="noopener" style="color:var(--gold);">agentskill.club</a></li>
+      <li>Agent Skills 표준: <a href="https://agentskills.io" target="_blank" rel="noopener" style="color:var(--gold);">agentskills.io</a></li>
+    </ul>
+    <hr style="border:none;border-top:1px solid rgba(255,255,255,0.06);margin:1.5rem 0;">
+    <p style="color:var(--text-muted);font-size:var(--text-xs);line-height:1.6;">이 페이지의 링크에는 제휴 링크가 포함되어 있을 수 있습니다. 제휴 링크를 통해 구매하시면 소정의 수수료를 받을 수 있습니다. 자세한 내용은 <a href="https://www.gumroad.com/l/skillsbundle" target="_blank" rel="noopener" style="color:var(--gold);">Gumroad Skills Bundle ($19)</a> 및 <a href="https://www.gumroad.com/l/groundtruth" target="_blank" rel="noopener" style="color:var(--gold);">GroundTruth Writer Kit ($29)</a>을 참조하세요.</p>
+  </section>
+</main>
+
+<footer style="margin-top:3rem;padding:2rem 1rem;border-top:1px solid rgba(255,255,255,0.06);text-align:center;color:var(--text-muted);font-size:var(--text-xs);">
+  <p>© 2026 Claude Korea. All rights reserved.</p>
+</footer>
+</body>
+</html>
