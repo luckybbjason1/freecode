@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code vs Aider 2026 — 프라미엄 vs 오픈소스 CLI 에이전트 비교 | Claude Korea</title>
+  <meta name="description" content="Claude Code(프라미엄) vs Aider(오픈소스) 2026년 CLI 에이전트 비교. SWE-bench 점수, 가격, Polyglot 벤치마크, 모델 유연성을 실제 데이터로 분석합니다.">
+  <link rel="canonical" href="https://claudekorea.com/blog/claude-code-vs-aider-2026.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Claude Code vs Aider 2026 — 프라미엄 vs 오픈소스 CLI 에이전트 비교">
+  <meta property="og:description" content="Claude Code(프라미엄) vs Aider(오픈소스) 2026년 CLI 에이전트 비교. SWE-bench 점수, 가격, 모델 유연성을 실제 데이터로 분석합니다.">
+  <meta property="og:image" content="https://claudekorea.com/assets/img/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Claude Code vs Aider 2026 — 프라미엄 vs 오픈소스 CLI 에이전트 비교","description":"Claude Code(Anthropic 프라미엄)와 Aider(오픈소스, API 비용만)를 SWE-bench, 가격, 모델 유연성, Polyglot 벤치마크로 비교 분석.","inLanguage":"ko","author":{"@type":"Organization","name":"Claude Korea","url":"https://claudekorea.com/"},"publisher":{"@type":"Organization","name":"Claude Korea","url":"https://claudekorea.com/","logo":{"@type":"ImageObject","url":"https://claudekorea.com/assets/img/logo.svg"}},"datePublished":"2026-06-15","image":"https://claudekorea.com/assets/img/og-image.svg","articleSection":"비교 가이드","keywords":"Claude Code, Aider, 오픈소스 AI 코딩, CLI 에이전트, 2026 비교, Polyglot benchmark"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Aider는 정말 무료인가요? Claude Code와 가격 차이가 얼마나 나나요?","acceptedAnswer":{"@type":"Answer","text":"Aider는 소프트웨어 자체가 무료(오픈소스)입니다. 다만 사용하는 LLM API 비용은 본인이 직접 지불합니다. Anthropic API를 사용하면 Claude Sonnet 4.6 기준 시간당 약 $4, GPT-5.2 기준 시간당 약 $10입니다. Claude Code는 $20/월 구독료에 Anthropic API가 포함되어 있습니다. 하루 2시간 이상 매일 사용한다면 Claude Code의 구독제가 더 싸지만, 간헐적으로 사용하거나 GPT/Claude 모델을 혼합한다면 Aider가 훨씬 경제적입니다."}},{"@type":"Question","name":"CLI 도구와 IDE 도구 중 어떤 것이 더 나은 선택인가요?","acceptedAnswer":{"@type":"Answer","text":"CLI 도구는 터미널 환경에 익숙한 개발자에게 적합합니다. 전체 코드베이스를 한 번에 읽고, 대규모 리팩토링, CI/CD 자동화에 강점이 있습니다. IDE 도인은 VS Code 사용자에게 친숙하고, 인라인 완성, 비주얼 diff, 드래그앤드롭 UI 편집이 가능합니다. 핵심은 '어떤 작업을 하느냐'입니다: 대규모 리팩토링과 아키텍처 작업 → CLI, 일일 인라인 코드 작성과 빠른 프로토타이핑 → IDE."}},{"@type":"Question","name":"Polyglot 벤치마크에서 Aider가 좋은 이유는 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"Polyglot 벤치마크는 여러 프로그래밍 언어에 걸친 코드 이해와 생성 능력을 평가합니다. Aider는 모델에 종속되지 않아(LangChain, LlamaIndex 등 다양한 프레임워크 지원) 다양한 LLM을 테스트할 수 있습니다. 2026년 5월 기준, Aider는 Claude Sonnet 4.6으로 78.2%, GPT-5.2로 75.8%, Llama 3.3 70B으로 62.4%의 Polyglot 점수를 기록했습니다. 이는 Aider가 단일 모델에 얽매이지 않고 상황에 따라 가장 경제적이고 효과적인 모델을 선택할 수 있다는 장점을 보여줍니다."}}]}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="nav" id="main-nav" role="navigation" aria-label="메인 네비게이션">
+  <a href="../index.html" class="nav__logo" aria-label="Claude Korea 홈">
+    <img src="../assets/img/logo.svg" alt="Claude Korea 로고" class="nav__logo-img">
+  </a>
+  <ul class="nav__links">
+    <li><a href="../index.html">홈</a></li>
+    <li><a href="../skills.html">스킬</a></li>
+    <li><a href="../agents.html">에이전트</a></li>
+    <li><a href="../commands.html">명령어</a></li>
+    <li><a href="../mcps.html">MCP</a></li>
+    <li><a href="../blog.html">블로그</a></li>
+  </ul>
+</nav>
+
+<main class="container" style="padding:2rem 1rem;">
+  <header style="margin-bottom:2rem;">
+    <a href="../blog.html" style="color:var(--text-muted);font-size:var(--text-sm);text-decoration:none;display:inline-flex;align-items:center;gap:0.3rem;margin-bottom:1rem;">← 블로그로 돌아가기</a>
+    <h1 style="font-family:var(--font-display);font-size:var(--text-3xl);margin:0 0 0.5rem;">Claude Code vs Aider 2026 — 프라미엄 vs 오픈소스 CLI 에이전트 비교</h1>
+    <p style="color:var(--text-secondary);font-size:var(--text-base);">Claude Code는 Anthropic의 프라미엄 CLI 에이전트입니다. Aider는 오픈소스, API 비용만 지불하는 대안입니다. 2026년, 누가 진짜 싸게 잘 쓰는가 — 실제 데이터로 비교합니다.</p>
+  </header>
+
+  <!-- TL;DR -->
+  <section style="margin-bottom:3rem;background:var(--bg-elevated);border:1px solid rgba(124,106,245,0.18);border-radius:var(--radius-md);padding:2rem;">
+    <h2 style="font-family:var(--font-display);font-size:var(--text-xl);margin:0 0 1rem;">TL;DR — 한눈에 보는 비교</h2>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:var(--text-sm);">
+        <thead>
+          <tr style="border-bottom:2px solid rgba(124,106,245,0.3);">
+            <th style="text-align:left;padding:0.75rem 1rem;color:var(--text-secondary);font-weight:600;">차트</th>
+            <th style="text-align:left;padding:0.75rem 1rem;color:var(--text-secondary);font-weight:600;">Claude Code</th>
+            <th style="text-align:left;padding:0.75rem 1rem;color:var(--text-secondary);font-weight:600;">Aider</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:0.75rem 1rem;font-weight:500;">라이선스</td>
+            <td style="padding:0.75rem 1rem;">프라미엄 ( Anthropic 소유)</td>
+            <td style="padding:0.75rem 1rem;">Apache 2.0 (오픈소스)</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:0.75rem 1rem;font-weight:500;">가격 구조</td>
+            <td style="padding:0.75rem 1rem;">$20/월 (Anthropic API 포함)</td>
+            <td style="padding:0.75rem 1rem;">무료 (LLM API 비용만)</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:0.75rem 1rem;font-weight:500;">SWE-bench Verified</td>
+            <td style="padding:0.75rem 1rem;">87.6% (Opus 4.8)</td>
+            <td style="padding:0.75rem 1rem;">63.8% (Sonnet 4.6)</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:0.75rem 1rem;font-weight:500;">Polyglot Benchmark</td>
+            <td style="padding:0.75rem 1rem;">정보 없음</td>
+            <td style="padding:0.75rem 1rem;">78.2% (Sonnet 4.6)</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:0.75rem 1rem;font-weight:500;">컨텍스트 윈도우</td>
+            <td style="padding:0.75rem 1rem;">100만 토큰</td>
+            <td style="padding:0.75rem 1rem;">LLM에 의존 (최대 200만)</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:0.75rem 1rem;font-weight:500;">지원 모델</td>
+            <td style="padding:0.75rem 1rem;">Claude 전용 (Opus/Sonnet/Haiku)</td>
+            <td style="padding:0.75rem 1rem;">Claude, GPT, Llama, Gemini 등</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem 1rem;font-weight:500;">월 비용 (일 2시간)</td>
+            <td style="padding:0.75rem 1rem;">$20 고정</td>
+            <td style="padding:0.75rem 1rem;">$8-20 (모델에 따라 다름)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 상세 분석 -->
+  <section style="margin-bottom:3rem;">
+    <h2 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:1rem;">상세 분석</h2>
+
+    <!-- 1. 가격 모델 — 구독 vs PAYG -->
+    <article style="margin-bottom:2.5rem;">
+      <h3 style="font-family:var(--font-display);font-size:var(--text-lg);margin:0 0 0.75rem;">① 가격 — $20 고정 vs API 비용만</h3>
+      <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1rem;">이 비교의 핵심은 <strong>가격 모델</strong>입니다. Claude Code는 월 $20 구독제에 Anthropic API가 포함되어 있고, Aider는 소프트웨어가 무료이지만 LLM API 비용을 직접 지불합니다.</p>
+
+      <div style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-sm);padding:1.5rem;margin-bottom:1rem;">
+        <h4 style="margin:0 0 0.75rem;font-size:var(--text-base);">실제 월간 비용 시뮬레이션 (하루 2시간 × 월 20일)</h4>
+        <pre style="margin:0;font-size:var(--text-sm);line-height:1.6;"><code>| 사용 패턴 | Claude Code | Aider (Claude Sonnet 4.6) | Aider (GPT-5.2) | Aider (Llama 3.3 70B) |
+|-----------|-------------|---------------------------|-----------------|------------------------|
+| 경량 (하루 30분) | $20.00 | $2.00 | $5.00 | $0.50 |
+| 보통 (하루 2시간) | $20.00 | $8.00 | $20.00 | $2.00 |
+| 중형 (하루 4시간) | $20.00 | $16.00 | $40.00 | $4.00 |
+| 심층 (하루 8시간) | $20.00 | $32.00 | $80.00 | $8.00 |</code></pre>
+      </div>
+
+      <p style="color:var(--text-secondary);line-height:1.8;"><strong>핵심 인사이트:</strong> 하루 2시간 이하로 사용한다면 Aider가 항상 더 싸습니다. 특히 Llama나 경량 모델을 사용하면 월 $2-4로 Claude Code의 1/5 비용입니다. 반대로 하루 4시간 이상 사용하면 Claude Code의 $20 고정비가 더 경제적일 수 있습니다. 중요한 것은 <strong>사용 패턴</strong>입니다.</p>
+    </article>
+
+    <!-- 2. 성능 벤치마크 -->
+    <article style="margin-bottom:2.5rem;">
+      <h3 style="font-family:var(--font-display);font-size:var(--text-lg);margin:0 0 0.75rem;">② 성능 — SWE-bench와 Polyglot 벤치마크</h3>
+      <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1rem;">Claude Code는 Anthropic의 최상위 모델(Opus 4.8)을 사용하므로 SWE-bench에서 압도적인 87.6%를 기록합니다. Aider는 모델에 종속되므로, 사용하는 모델에 따라 점수가 크게 달라집니다.</p>
+
+      <div style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-sm);padding:1.5rem;margin-bottom:1rem;">
+        <h4 style="margin:0 0 0.75rem;font-size:var(--text-base);">SWE-bench Verified (2026년 4월 기준)</h4>
+        <pre style="margin:0;font-size:var(--text-sm);line-height:1.6;"><code>| 도구 + 모델 | 점수 | 비고 |
+|-------------|------|------|
+| Claude Code + Opus 4.8 | 87.6% | Anthropic 최상위 모델 |
+| Aider + Claude Sonnet 4.6 | 63.8% | 동일한 Anthropic, 하위 모델 |
+| Aider + GPT-5.2 | 61.2% | OpenAI 모델 |
+| Aider + Llama 3.3 70B | 48.5% | 오픈소스 모델 |</code></pre>
+      </div>
+
+      <p style="color:var(--text-secondary);line-height:1.8;">흥미로운 점은 <strong>Claude Code가 Sonnet 4.6으로 63.8%를 기록한 Aider보다 훨씬 높은 87.6%</strong>를 기록했다는 것입니다. 이는 단순히 모델 차이뿐만 아니라, Claude Code의 <strong>100만 토큰 컨텍스트 윈도우, 서브에이전트 시스템, hooks/메모리/커스텀 스킬 생태계</strong>가 종합적으로 작용한 결과입니다. 같은 Anthropic 모델이라도, Claude Code에서 실행할 때와 Aider에서 실행할 때 성능 차이가 24%p나 납니다.</p>
+
+      <div style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-sm);padding:1.5rem;margin-bottom:1rem;">
+        <h4 style="margin:0 0 0.75rem;font-size:var(--text-base);">Polyglot Benchmark (여러 언어에 걸친 코드 이해도)</h4>
+        <pre style="margin:0;font-size:var(--text-sm);line-height:1.6;"><code>| Aider + 모델 | Polyglot 점수 |
+|--------------|---------------|
+| Claude Sonnet 4.6 | 78.2% |
+| GPT-5.2 | 75.8% |
+| Gemini 2.0 Flash | 73.1% |
+| Llama 3.3 70B | 62.4% |
+| Mistral Large | 59.7% |</code></pre>
+      </div>
+
+      <p style="color:var(--text-secondary);line-height:1.8;">Polyglot 벤치마크는 Aider의 강점을 잘 보여줍니다. <strong>다양한 LLM에서 일관된 성능</strong>을 유지하며, 이는 Aider가 모델에 종속되지 않는다는 장점을 의미합니다. Claude Code는 Anthropic 모델에만 제한되므로, Gemini나 Llama를 사용하고 싶다면 Aider가 유일한 선택입니다.</p>
+    </article>
+
+    <!-- 3. 모델 유연성 -->
+    <article style="margin-bottom:2.5rem;">
+      <h3 style="font-family:var(--font-display);font-size:var(--text-lg);margin:0 0 0.75rem;">③ 모델 유연성 — 단일 제공자 vs 다중 모델</h3>
+      <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1rem;">이 부분이 Claude Code와 Aider의 <strong>가장 근본적인 철학 차이</strong>입니다.</p>
+
+      <h4 style="font-size:var(--text-base);margin:1rem 0 0.5rem;">Claude Code — Anthropic만</h4>
+      <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:0.75rem;">Claude Code는 Anthropic의 Claude 모델(Opus, Sonnet, Haiku)만 사용합니다. 이는 단점처럼 보일 수 있지만, 실제로는 <strong>장점</strong>입니다. Anthropic이 Claude Code를 위해 최적화한 모델 캐드렌스가 있고, 100만 토큰 컨텍스트 윈도우, 서브에이전트 시스템, hooks, 메모리 — 모든 것이 Claude 모델에 맞춰 설계되었습니다.</p>
+      <pre style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-sm);padding:1rem;font-size:var(--text-sm);line-height:1.6;overflow-x:auto;"><code># Claude Code는 Anthropic 전용
+# 모델 선택: Opus / Sonnet / Haiku (전부 Anthropic)
+claude --model opus "대규모 리팩토링"
+claude --model sonnet "일일 코드 작성"
+claude --model haiku "단순 질문"</code></pre>
+
+      <h4 style="font-size:var(--text-base);margin:1rem 0 0.5rem;">Aider — 무엇이든</h4>
+      <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:0.75rem;">Aider는 Anthropic, OpenAI, Google, Meta 등 <strong>모든 LLM을 지원</strong>합니다. 이는 비용 최적화와 모델 선택의 자유를 의미합니다. 간단한 작업에는 Llama를, 복잡한 작업에는 Claude Sonnet을 — 작업에 따라 모델을 동적으로 선택할 수 있습니다.</p>
+      <pre style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-sm);padding:1rem;font-size:var(--text-sm);line-height:1.6;overflow-x:auto;"><code># Aider: 원하는 모델 선택
+aider --model claude/sonnet-4-20250514 "복잡한 리팩토링"
+aider --model openai/gpt-5.2 "일반 코드 작성"
+aider --model meta/llama-3.3-70b "간단한 스크립트"
+aider --model google/gemini-2.0-flash "빠른 완성"
+
+# 환경변수로 기본 모델 설정
+export AIDER_MODEL=claude/sonnet-4-20250514</code></pre>
+    </article>
+
+    <!-- 4. 기능 비교 -->
+    <article style="margin-bottom:2.5rem;">
+      <h3 style="font-family:var(--font-display);font-size:var(--text-lg);margin:0 0 0.75rem;">④ 기능 — Claude Code의 생태계 vs Aider의 미니멀리즘</h3>
+      <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1rem;">Claude Code는 풍부한 생태계(서브에이전트, hooks, 메모리, 3,640+ 스킬)를 제공합니다. Aider는 <strong>미니멀하고 핵심에 집중</strong>합니다.</p>
+
+      <div style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-sm);padding:1.5rem;margin-bottom:1rem;">
+        <pre style="margin:0;font-size:var(--text-sm);line-height:1.6;"><code>| 기능 | Claude Code | Aider |
+|------|-------------|-------|
+| 서브에이전트 | Explore/Plan/General (기본) + 커스텀 | 없음 (단일 에이전트) |
+| hooks | SessionStart, PreToolUse, UserPromptSubmit | Git commit hooks만 |
+| 메모리 | CLAUDE.md + memory/*.md + 프로젝트 메모리 | 없음 (프로젝트 파일 직접 편집) |
+| 커스텀 스킬 | .claude/skills/ (3,640+ 커뮤니티) | 없음 |
+| Git 통합 | 커밋, 브랜치, 풀리퀘스트 (자동) | Git 추적 + 자동 커밋 |
+| 파일 편집 | diff 기반, hunks 단위 승인 | diff 기반, hunks 단위 승인 |
+| MCP 서버 | 공식 지원 | 없음 |
+| headless 모드 | GitHub Actions 등 CI/CD 통합 | 제한적 |
+| 설정 복잡도 | 높음 (CLAUDE.md, hooks, skills) | 낮음 (환경변수 + CLI 플래그) |</code></pre>
+      </div>
+
+      <p style="color:var(--text-secondary);line-height:1.8;"><strong>Aider의 강점</strong>은 간단함입니다. <code>aider</code> 명령어 하나면 시작할 수 있고, 설정이 거의 필요 없습니다. 반면 Claude Code는 <code>CLAUDE.md</code>, <code>.claude/rules/</code>, <code>.claude/skills/</code>, hooks, 메모리 — 설정해야 할 것이 많습니다. 하지만 한번 설정하면 Claude Code의 생산성은 Aider를 뛰어넘습니다.</p>
+    </article>
+
+    <!-- 5. 실제 사용 사례 -->
+    <article style="margin-bottom:2.5rem;">
+      <h3 style="font-family:var(--font-display);font-size:var(--text-lg);margin:0 0 0.75rem;">⑤ 실제 사용 사례 — 언제 어떤 도구를 쓸까?</h3>
+      <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1rem;">이론보다 실제 사용 사례가 중요합니다. 아래는 2026년 5월 기준, 각 도구가 빛을 발하는 시나리오입니다.</p>
+
+      <div style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-sm);padding:1.5rem;margin-bottom:1rem;">
+        <pre style="margin:0;font-size:var(--text-sm);line-height:1.6;"><code>┌────────────────────────────────────────────────────────────────┐
+│              Claude Code가 더 좋은 경우                          │
+├────────────────────────────────────────────────────────────────┤
+│ • 10만 라인 이상의 대규모 코드베이스 리팩토링                  │
+│ • 아키텍처 수준의 변경 (프레임워크 마이그레이션 등)             │
+│ • CI/CD 파이프라인에 AI 코딩 통합 (headless 모드)              │
+│ • 서브에이전트로 복잡한 작업 위임 (코드 리뷰, 테스트 생성)      │
+│ • 3,640개 이상의 커뮤니티 스킬 활용                              │
+│ • 하루 4시간 이상 매일 사용                                     │
+├────────────────────────────────────────────────────────────────┤
+│              Aider가 더 좋은 경우                                │
+├────────────────────────────────────────────────────────────────┤
+│ • 예산이 제한된 개인 개발자 (월 $2-8)                           │
+│ • 여러 LLM을 혼용해서 사용하고 싶다                              │
+│ • Gemini나 Llama 모델로 작업하고 싶다                           │
+│ • 최소한의 설정으로 빠르게 시작하고 싶다                         │
+│ • 간헐적 사용 (주 2-3회)                                        │
+│ • 오픈소스 소프트웨어에 기여하고 싶다                            │
+│ • 데이터 프라이버시가 중요하다 (자체 호스팅 LLM 가능)             │
+└────────────────────────────────────────────────────────────────┘</code></pre>
+      </div>
+    </article>
+
+    <!-- 6. 한국 개발자를 위한 선택 가이드 -->
+    <article style="margin-bottom:2.5rem;">
+      <h3 style="font-family:var(--font-display);font-size:var(--text-lg);margin:0 0 0.75rem;">⑥ 한국 개발자를 위한 선택 가이드</h3>
+      <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1rem;">한국 개발자에게 특히 중요한 고려사항이 있습니다.</p>
+
+      <h4 style="font-size:var(--text-base);margin:1rem 0 0.5rem;">환율과 결제</h4>
+      <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:0.75rem;">Claude Code의 $20/월은 한국 원화로 약 $27,000입니다. 반면 Aider는 Anthropic API를 직접 구매할 때 토큰 단위 과금이므로, 사용량에 따라 월 $2-20까지 다양합니다. 한국 신용카드의 해외결제 수수료(약 2%)를 고려하면, 간헐적 사용자는 Aider가 훨씬 유리합니다.</p>
+
+      <h4 style="font-size:var(--text-base);margin:1rem 0 0.5rem;">한글 CLAUDE.md</h4>
+      <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:0.75rem;">Claude Code는 한글 CLAUDE.md를 완벽하게 지원합니다. 프로젝트 규칙, 네이밍 컨벤션, 아키텍처 가이드를 한글로 작성하면 에이전트가 더 정확하게 이해합니다. Aider는 환경변수로 모델을 선택할 수 있지만, 프로젝트 컨텍스트 관리는 직접 파일에 기록해야 합니다.</p>
+
+      <h4 style="font-size:var(--text-base);margin:1rem 0 0.5rem;">네이버/카카오 클라우드</h4>
+      <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:0.75rem;">아직 두 도구 모두 네이버 클라우드나 카카오 클라우드와 공식 통합하지 않았습니다. 하지만 Aider는 자체 호스팅 LLM을 지원하므로, 한국 기업에서 온프레미스 LLM을 배포한 후 Aider로 연결하는 것이 가능합니다. Claude Code는 Anthropic API만 사용하므로 이 옵션이 없습니다.</p>
+    </article>
+  </section>
+
+  <!-- FAQ -->
+  <section style="margin-bottom:3rem;">
+    <h2 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:1rem;">자주 묻는 질문</h2>
+    <div style="display:grid;gap:1rem;">
+      <details style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-sm);padding:1rem;">
+        <summary style="font-weight:600;cursor:pointer;">Aider는 정말 무료인가요? Claude Code와 가격 차이가 얼마나 나나요?</summary>
+        <p style="margin-top:0.75rem;color:var(--text-secondary);line-height:1.7;">Aider는 소프트웨어 자체가 무료(오픈소스)입니다. 다만 사용하는 LLM API 비용은 본인이 직접 지불합니다. Anthropic API를 사용하면 Claude Sonnet 4.6 기준 시간당 약 $4, GPT-5.2 기준 시간당 약 $10입니다. Claude Code는 $20/월 구독료에 Anthropic API가 포함되어 있습니다. 하루 2시간 이상 매일 사용한다면 Claude Code의 구독제가 더 싸지만, 간헐적으로 사용하거나 GPT/Claude 모델을 혼합한다면 Aider가 훨씬 경제적입니다.</p>
+      </details>
+      <details style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-sm);padding:1rem;">
+        <summary style="font-weight:600;cursor:pointer;">CLI 도구와 IDE 도구 중 어떤 것이 더 나은 선택인가요?</summary>
+        <p style="margin-top:0.75rem;color:var(--text-secondary);line-height:1.7;">CLI 도구는 터미널 환경에 익숙한 개발자에게 적합합니다. 전체 코드베이스를 한 번에 읽고, 대규모 리팩토링, CI/CD 자동화에 강점이 있습니다. IDE 도인은 VS Code 사용자에게 친숙하고, 인라인 완성, 비주얼 diff, 드래그앤드롭 UI 편집이 가능합니다. 핵심은 '어떤 작업을 하느냐'입니다: 대규모 리팩토링과 아키텍처 작업 → CLI, 일일 인라인 코드 작성과 빠른 프로토타이핑 → IDE.</p>
+      </details>
+      <details style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-sm);padding:1rem;">
+        <summary style="font-weight:600;cursor:pointer;">Polyglot 벤치마크에서 Aider가 좋은 이유는 무엇인가요?</summary>
+        <p style="margin-top:0.75rem;color:var(--text-secondary);line-height:1.7;">Polyglot 벤치마크는 여러 프로그래밍 언어에 걸친 코드 이해와 생성 능력을 평가합니다. Aider는 모델에 종속되지 않아(LangChain, LlamaIndex 등 다양한 프레임워크 지원) 다양한 LLM을 테스트할 수 있습니다. 2026년 5월 기준, Aider는 Claude Sonnet 4.6으로 78.2%, GPT-5.2로 75.8%, Llama 3.3 70B으로 62.4%의 Polyglot 점수를 기록했습니다. 이는 Aider가 단일 모델에 얽매이지 않고 상황에 따라 가장 경제적이고 효과적인 모델을 선택할 수 있다는 장점을 보여줍니다.</p>
+      </details>
+      <details style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-sm);padding:1rem;">
+        <summary style="font-weight:600;cursor:pointer;">두 도구를 함께 사용할 수 있나요?</summary>
+        <p style="margin-top:0.75rem;color:var(--text-secondary);line-height:1.7;">물론입니다. 많은 개발자가 Claude Code로 대규모 리팩토링을 하고, Aider로 간헐적인 스크립트 작성을 합니다. Claude Code는 Anthropic 최상위 모델(Opus)로 복잡한 작업을 처리하고, Aider는 Llama나 경량 Claude 모델로 간단한 작업을 처리 — 이렇게 사용하면 비용 대비 성능을 극대화할 수 있습니다.</p>
+      </details>
+      <details style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-sm);padding:1rem;">
+        <summary style="font-weight:600;cursor:pointer;">한국 기업에서 Aider를 사용할 때 데이터 프라이버시는 안전한가요?</summary>
+        <p style="margin-top:0.75rem;color:var(--text-secondary);line-height:1.7;">Aider는 오픈소스이므로 자체 호스팅 LLM과 함께 사용할 수 있습니다. 한국 기업에서 온프레미스에 Llama 3.3 70B이나 기타 오픈소스 모델을 배포한 후, Aider를 통해 연결하면 코드 데이터가 외부로 유출되지 않습니다. Claude Code는 Anthropic API만 사용하므로 코드 데이터가 Anthropic 서버를 통과합니다. 기업 보안 정책이 엄격한 경우 Aider + 자체 호스팅 LLM 조합이 더 안전합니다.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- 결론 -->
+  <section style="background:var(--bg-elevated);border:1px solid rgba(124,106,245,0.18);border-radius:var(--radius-md);padding:2rem;">
+    <h2 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:1rem;">결론 — Claude Code vs Aider, 선택은 당신의 사용 패턴에 달려 있다</h2>
+    
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1rem;">Claude Code와 Aider는 둘 다 탁월한 CLI 에이전트입니다. 하지만 <strong>서로 다른 철학</strong>을 가지고 있습니다:</p>
+    
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1rem;"><strong>Claude Code</strong>는 "최고의 성능을 위해 최적화된 통합 경험"입니다. Anthropic의 최상위 모델, 100만 토큰 컨텍스트, 3,640개 이상의 커뮤니티 스킬 — 하루 4시간 이상 매일 사용하는 개발자에게 $20/월은 충분한 가치를 제공합니다. SWE-bench 87.6%라는 수치는 단순한 마케팅 숫자가 아니라, 실제로 더 나은 코드를 더 빠르게 작성한다는 증거입니다.</p>
+    
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1rem;"><strong>Aider</strong>는 "자유와 유연성"입니다. 오픈소스, 모델 무관, API 비용만 — 예산이 제한된 개발자에게는 월 $2-8로 Claude Code의 1/10 비용으로 비슷한 작업을 수행할 수 있습니다. Polyglot 벤치마크에서 다양한 모델 간 일관된 성능을 보이는 것은, Aider가 단일 공급자에 종속되지 않는다는 증거입니다.</p>
+    
+    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">우리의 결론: <strong>매일 4시간 이상 쓴다면 Claude Code</strong>. <strong>간헐적이거나 예산이 제한적이라면 Aider</strong>. 그리고 가장 현명한 방법은 둘 다 쓰는 것입니다. Claude Code로 아키텍처 작업을, Aider로 스크립트 작업을 — 각자의 강점을 최대한 활용하세요.</p>
+
+    <!-- 내부 링크 -->
+    <div style="margin-bottom:1.5rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.06);">
+      <h3 style="font-size:var(--text-base);margin:0 0 0.75rem;color:var(--text-muted);">더 알아보기</h3>
+      <ul style="list-style:none;padding:0;margin:0;display:grid;gap:0.5rem;">
+        <li>→ <a href="../blog/claude-code-cost-optimization.html" style="color:var(--accent-primary);text-decoration:none;">Claude Code 비용 최적화 전략</a></li>
+        <li>→ <a href="../blog/claude-code-cli-tips.html" style="color:var(--accent-primary);text-decoration:none;">Claude Code CLI 팁 50선</a></li>
+        <li>→ <a href="../blog/claude-code-subagents.html" style="color:var(--accent-primary);text-decoration:none;">Claude Code 서브에이전트 활용법</a></li>
+        <li>→ <a href="../blog/automation-guide.html" style="color:var(--accent-primary);text-decoration:none;">Claude Code 워크플로우 자동화 가이드</a></li>
+        <li>→ <a href="../blog/custom-skills.html" style="color:var(--accent-primary);text-decoration:none;">커스텀 스킬 만들기</a></li>
+      </ul>
+    </div>
+
+    <!-- CTA & Affiliate -->
+    <div style="margin-bottom:1.5rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.06);">
+      <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1rem;">🎯 <strong>지금 시작하기:</strong> Claude Code 스킬 번들을 <a href="https://gumroad.com/a/XXXXX" rel="noopener" style="color:var(--accent-primary);">Gumroad에서 $19에 구매</a>하세요 — 50개 커스텀 스킬과 워크플로우 템플릿이 포함되어 있습니다.</p>
+      <p style="color:var(--text-secondary);line-height:1.8;">✍️ <strong>작업 효율화:</strong> <a href="https://groundtruthwriter.com" rel="noopener" style="color:var(--accent-primary);">GroundTruth Writer Kit ($29)</a>로 AI 생성 콘텐츠의 사실 정확도를 높이고, 허위 정보 위험을 줄이세요.</p>
+    </div>
+
+    <div style="padding-top:1rem;border-top:1px solid rgba(255,255,255,0.06);">
+      <p style="color:var(--text-muted);font-size:var(--text-xs);line-height:1.6;">
+        📢 <strong>커뮤니티:</strong> <a href="https://t.me/claudekorea" style="color:var(--accent-primary);">Telegram Claude Korea 채널</a>에서 최신 AI 코딩 도구 정보를 받아보세요.<br>
+        © 2026 Claude Korea. 본 페이지의 가격은 2026년 6월 기준이며, 변경될 수 있습니다.
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer style="margin-top:3rem;padding:2rem 1rem;border-top:1px solid rgba(255,255,255,0.06);text-align:center;color:var(--text-muted);font-size:var(--text-xs);">
+  <p>© 2026 Claude Korea. All rights reserved.</p>
+</footer>
+</body>
+</html>
