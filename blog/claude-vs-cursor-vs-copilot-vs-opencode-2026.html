@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code vs Cursor vs GitHub Copilot vs OpenCode 2026 — 최고의 AI 코딩 도구 비교</title>
+<meta name="description" content="2026년 Claude Code, Cursor, GitHub Copilot, OpenCode 비교. 가격, 성능, 기능, 한국 개발자 적합성을徹底 분석. AI 에이전트 코딩 툴 결정에 도움이 되는 비교 가이드.">
+<link rel="canonical" href="https://claudekorea.com/blog/claude-vs-cursor-vs-copilot-vs-opencode-2026.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Claude Code vs Cursor vs GitHub Copilot vs OpenCode 2026 — 최고의 AI 코딩 도구 비교","description":"2026년 네 가지 AI 코딩 도구를徹底 비교. 가격부터 성능까지.","datePublished":"2026-06-17","author":{"@type":"Person","name":"Freecode AI Team"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Claude Code와 Cursor 중 어떤 것이 한국 개발자에게 더 적합한가요?","acceptedAnswer":{"@type":"Answer","text":"프로젝트 규모와 팀 환경에 따라 다릅니다. 개인 개발자나 프리랜서는 Claude Code의 무료 티어로 충분합니다. 조직에서 대규모 리팩토링이 필요하다면 Cursor가 적합합니다. GitHub Copilot은 이미 Microsoft 생태계를 사용하는 팀에 최적화되어 있습니다."}},
+{"@type":"Question","name":"2026년 AI 코딩 도구의 무료 티어는 어떤 기능이 제공되나요?","acceptedAnswer":{"@type":"Answer","text":"모든 도구의 무료 티어는 기본적인 코드 제안과 챗 기능을 포함합니다. Claude Code는 월 1,000회 요청까지 무료, Cursor는 100회 제안까지 무료, GitHub Copilot은 학생과 오픈소스 기여자에게 무료입니다. 유료 티어는 컨텍스트 윈도우 확대, 에이전트 모드, 팀 관리 기능이 추가됩니다."}},
+{"@type":"Question","name":"OpenCode는 왜 무료인가요? 사용 시 주의할 점은?","acceptedAnswer":{"@type":"Answer","text":"OpenCode는 SST 팀이 개발한 오픈소스 프로젝트로, 로컬에서 실행되어 데이터가 외부로 유출되지 않습니다. 완전 무료지만, Claude Code나 Cursor처럼 대규모 언어 모델 인프라를 제공하지 않습니다. 자체 API 키가 필요하며, 아직 생태계와 커뮤니티가 작습니다."}}
+]}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;background:#fafafa;color:#1a1a1a;line-height:1.7}
+.container{max-width:800px;margin:0 auto;padding:20px}
+h1{font-size:2rem;margin:20px 0;font-weight:700}
+h2{font-size:1.5rem;margin:30px 0 15px;font-weight:600;border-bottom:2px solid #e0e0e0;padding-bottom:8px}
+h3{font-size:1.2rem;margin:20px 0 10px;font-weight:600}
+table{width:100%;border-collapse:collapse;margin:20px 0;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+th,td{padding:12px 15px;text-align:left;border:1px solid #e0e0e0}
+th{background:#f5f5f5;font-weight:600}
+.tr-tldr{background:#fff;border-left:4px solid #6366f1;padding:15px 20px;margin:20px 0}
+.faq-item{margin:15px 0;padding:15px;background:#fff;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.faq-q{font-weight:600;color:#6366f1;margin-bottom:5px}
+.cta-box{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;padding:20px;border-radius:12px;margin:30px 0;text-align:center}
+.cta-box a{color:#fff;font-weight:700;text-decoration:underline}
+.internal-links{background:#f0fdf4;border-left:4px solid #22c55e;padding:15px 20px;margin:20px 0}
+.internal-links a{color:#16a34a;font-weight:500}
+footer{margin-top:40px;padding:20px 0;border-top:1px solid #e0e0e0;text-align:center;color:#666;font-size:.9rem}
+@media(max-width:600px){h1{font-size:1.5rem}h2{font-size:1.2rem}table{font-size:.85rem}}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Claude Code vs Cursor vs GitHub Copilot vs OpenCode 2026 — 최고의 AI 코딩 도구 비교</h1>
+<p>2026년 Claude Code, Cursor, GitHub Copilot, OpenCode 비교. 가격, 성능, 기능, 한국 개발자 적합성을徹底 분석. AI 에이전트 코딩 툴 결정에 도움이 되는 비교 가이드.</p>
+
+<div class="tr-tldr">
+<h3>📋 TL;DR — 한눈에 보기</h3>
+<table>
+<tr><th>기능</th><th>Claude Code</th><th>Cursor</th><th>GitHub Copilot</th><th>OpenCode</th></tr>
+<tr><td>가격 (월)</td><td>$20 (프로)</td><td>$40 (오너)</td><td>$19 (비즈니스)</td><td>무료 (오픈소스)</td></tr>
+<tr><td>컨텍스트 윈도우</td><td>200K 토큰</td><td>1M 토큰 (Plus)</td><td>128K 토큰</td><td>사용자 설정</td></tr>
+<tr><td>에이전트 모드</td><td>✅ 다중 파일 수정</td><td>✅ 코드 편집</td><td>✅ 코드 제안</td><td>❌ 없음</td></tr>
+<tr><td>로컬 실행</td><td>❌ 클라우드</td><td>❌ 클라우드</td><td>❌ 클라우드</td><td>✅ 완전 로컬</td></tr>
+<tr><td>한국어 지원</td><td>✅ 우수</td><td>✅ 좋음</td><td>✅ 보통</td><td>✅ 좋음</td></tr>
+<tr><td>무료 티어</td><td>월 1,000회 요청</td><td>100회 제안</td><td>학생 무료</td><td>완전 무료</td></tr>
+</table>
+<p><strong>핵심 요약:</strong> 개인 개발자라면 Claude Code 프로($20/월)가 가장 가성비 좋습니다. 대규모 팀이라면 Cursor 오너($40/월)의 협업 기능이 유리합니다. 보안이 최우선이라면 OpenCode의 완전 로컬 실행이 유일한 선택지입니다.</p>
+</div>
+
+<h2>서론: 왜 2026년에 AI 코딩 도구 비교가 필요한가</h2>
+<p>2026년 한국 AI 개발자들의 현실은 명확합니다. 하루 4시간 이상 AI 코딩 도구를 사용하면서, 매달 $20~$40을 지불하고 있습니다. 문제는 모든 도구가 "최고"라고 주장한다는 점입니다. Anthropic은 Claude Code가 "에이전트 모드"로 코드의 전부를 수정할 수 있다고 주장하고, Anthropic은 Cursor가 "AI-native IDE"라고 주장합니다. GitHub Copilot은 Microsoft의 막대한 인프라를 앞세우고, OpenCode는 "보안을 위한 완전 로컬 실행"을 내세웁니다.</p>
+<p>이 비교에서는 네 가지 도구를 5가지 핵심 축에서彻底 비교합니다: <strong>가격 대비 성능, 컨텍스트 처리 능력, 에이전트 기능, 보안/프라이버시, 그리고 한국 개발자의 실제 사용 경험</strong>. 숫자로 보는 실제 데이터를 바탕으로, 당신의 상황에 맞는 명확한 선택을 도와드립니다.</p>
+
+<h2>Claude Code: Anthropic의 에이전트 코딩 혁명</h2>
+<p>Claude Code는 Anthropic이 2026년에 공개한 터미널 기반 AI 코딩 에이전트입니다. 단순한 코드 제안 도구를 넘어, 전체 파일과 디렉토리를 읽고 수정하며, 심지어 여러 파일을 아우르는 리팩토링까지 수행합니다. 2026년 현재 <strong>200,000 토큰의 컨텍스트 윈도우</strong>를 제공하며, 이는 약 300,000자의 한국어 텍스트를 한 번에 처리할 수 있는 수준입니다.</p>
+<p>가장 중요한 차별점은 <strong>에이전트 모드</strong>입니다. Claude Code는 사용자의 명령을 이해하면 스스로 계획을 세우고, 파일을 읽고, 수정하고, 테스트까지 수행합니다. 이는 단순한 자동 완성이 아닌, <strong>개발자의 의사결정을 보조하는 진정한 AI 파트너</strong>입니다.</p>
+<p>가격 정책은 명확합니다: 무료 티어는 월 1,000회 요청까지 제공하며, 프로 요금제($20/월)는 무제한 요청과 우선 모델 접근을 제공합니다. 비즈니스 요금제($40/월)는 팀 관리, SSO, 감사 로깅을 추가합니다.</p>
+
+<h3>Claude Code의 강점</h3>
+<ul><li><strong>에이전트 모드:</strong> 다중 파일 수정, 자동 테스트 실행, 커밋 메시지 생성까지 자동화</li><li><strong>컨텍스트 윈도우:</strong> 200K 토큰으로 대규모 코드베이스도 한 번에 이해</li><li><strong>한국어 성능:</strong> 한국어 코드 주석, 문서, PR 설명 생성 품질이 다른 도구보다 우수</li><li><strong>API 통합:</strong> Git, Docker, 테스트 프레임워크와-native 통합</li></ul>
+
+<h3>Claude Code의 한계</h3>
+<ul><li><strong>클라우드 전용:</strong> 모든 처리가 클라우드에서 이루어져, 보안 민감한 프로젝트에는 적합하지 않음</li><li><strong>터미널 인터페이스:</strong> GUI IDE를 선호하는 개발자에게 진입 장벽</li><li><strong>온라인 의존:</strong> 인터넷 연결이 필요하므로 오프라인 작업 불가</li></ul>
+
+<h2>Cursor: AI 네이티브 IDE의 모든 것</h2>
+<p>Cursor는 Codeium이 개발한 AI-native IDE로, VSCode를 포크하여 만들어졌습니다. 2026년 현재 <strong>1,000,000 토큰의 컨텍스트 윈도우</strong>(Cursor Plus 요금제)를 제공하며, 이는 현재 시중에서 가장 큰 컨텍스트 윈도우입니다. 이는 전체 코드베이스를 한 번에 로드하여 수정할 수 있음을 의미합니다.</p>
+<p>Cursor의 가장 큰 매력은 <strong>VSCode와의 호환성</strong>입니다. 기존 VSCode 확장을 그대로 사용하면서 AI 기능을 추가할 수 있습니다. 이는 새로운 도구를 배우는 부담이 없음을 의미합니다. 또한 <strong>Multi-Cursor Edit</strong> 기능으로 여러 파일을 동시에 수정할 수 있으며, <strong>Composer Mode</strong>로 두 개의 에디터 패널을 나란히 놓고 대화형으로 코드를 작성할 수 있습니다.</p>
+
+<h3>Cursor의 강점</h3>
+<ul><li><strong>1M 토큰 컨텍스트:</strong> 현재 시장에서 가장 큰 컨텍스트 윈도우</li><li><strong>VSCode 호환:</strong> 기존 확장 및 키보드 단축키 완전 호환</li><li><strong>Multi-Cursor Edit:</strong> 여러 파일 동시 수정 기능</li><li><strong>Composer Mode:</strong> 대화형 코드 작성 환경</li></ul>
+
+<h3>Cursor의 한계</h3>
+<ul><li><strong>가격:</strong> 오너 요금제 $40/월로 네 도구 중 가장 비쌈</li><li><strong>클라우드 의존:</strong> Cursor Code는 클라우드에서 처리되어 보안 민감 프로젝트에 적합하지 않음</li><li><strong>에이전트 기능 부족:</strong> Claude Code의 에이전트 모드처럼 자동 테스트 실행이나 커밋은 지원하지 않음</li></ul>
+
+<h2>GitHub Copilot: Microsoft 생태계의 힘</h2>
+<p>GitHub Copilot은 Microsoft와 OpenAI가 함께 개발한 AI 코딩 어시스턴트로, <strong>2026년 현재 전 세계 400만 명 이상의 개발자가 사용 중</strong>입니다. VSCode, JetBrains, Neovim 등 다양한 IDE에서 작동하며, <strong>128K 토큰 컨텍스트 윈도우</strong>를 제공합니다.</p>
+<p>Copilot의 가장 큰 강점은 <strong>Microsoft 생태계와의 통합</strong>입니다. Azure, GitHub Actions, Azure DevOps와 완벽하게 통합되어 있으며, 기업 조직에서 이미 Microsoft 제품을 사용하고 있다면 Copilot은 자연스러운 선택입니다. 또한 <strong>학생과 오픈소스 기여자에게 완전 무료</strong>로 제공됩니다.</p>
+<p>2026년에 Copilot은 <strong>Copilot Chat</strong> 기능을 통해 코드베이스 전체를 이해하고, <strong>Copilot Edits</strong>로 다중 파일 수정을 지원합니다. 하지만 Claude Code나 Cursor에 비해 에이전트 기능은 제한적입니다.</p>
+
+<h3>GitHub Copilot의 강점</h3>
+<ul><li><strong>생태계 통합:</strong> Azure, GitHub Actions와의 완벽한 통합</li><li><strong>무료 티어:</strong> 학생과 오픈소스 기여자에게 완전 무료</li><li><strong>광범위한 IDE 지원:</strong> VSCode, JetBrains, Neovim 등</li><li><strong>방대한 사용 데이터:</strong> 400만 명 이상의 사용자로 인한 학습 데이터 우위</li></ul>
+
+<h3>GitHub Copilot의 한계</h3>
+<ul><li><strong>에이전트 기능 제한:</strong> Claude Code의 에이전트 모드에 미치지 못함</li><li><strong>한국어 지원:</strong> 다른 세 도구에 비해 한국어 처리가 떨어짐</li><li><strong>클라이언트 의존:</strong> 특정 IDE에 종속됨</li></ul>
+
+<h2>OpenCode: 보안 우선의 완전 로컬 실행</h2>
+<p>OpenCode는 SST(Superagent) 팀이 개발한 <strong>완전 오픈소스</strong> AI 코딩 도구입니다. Claude Code, Cursor, GitHub Copilot이 모두 클라우드 기반인 반면, OpenCode는 <strong>로컬에서 완전히 실행</strong>되어 코드가 외부로 절대 유출되지 않습니다. 이는 금융, 의료, 국방 등 보안이 최우선인 프로젝트에 결정적인 차이입니다.</p>
+<p>OpenCode는 자체 LLM 인프라를 제공하지 않습니다 대신 사용자가 가진 API 키(Locally hosted Ollama, Groq, OpenRouter 등)를 사용하여 동작합니다. 이는 <strong>완전한 유연성</strong>을 의미합니다. 무료로 사용할 수도 있고, 더 강력한 모델을 유료로 사용할 수도 있습니다.</p>
+
+<h3>OpenCode의 강점</h3>
+<ul><li><strong>완전 로컬 실행:</strong> 코드가 외부로 유출되지 않는 유일한 선택지</li><li><strong>완전 무료:</strong> 오픈소스로 누구나 자유롭게 사용</li><li><strong>유연한 모델 선택:</strong> 원하는 LLM을 연결 가능</li><li><strong>커스텀 가능:</strong> 소스를 수정하여 필요에 맞게 확장 가능</li></ul>
+
+<h3>OpenCode의 한계</h3>
+<ul><li><strong>에이전트 기능 없음:</strong> Claude Code의 에이전트 모드처럼 자동 계획/수정/테스트 불가</li><li><strong>자체 인프라 부족:</strong> 사용자가 자체 API 키를 준비해야 함</li><li><strong>작은 커뮤니티:</strong> Claude Code나 Cursor에 비해 문서와 커뮤니티가 미비</li></ul>
+
+<h2>비용 분석: 1년 기준으로 비교</h2>
+<p>1년 기준으로 실제 비용을 계산해보겠습니다. 이는 선택이 단순한 월 요금이 아니라 <strong>장기 투자</strong>임을 보여줍니다.</p>
+<table>
+<tr><th>도구</th><th>월 요금</th><th>1년 비용</th><th>비용/월 당 기능</th></tr>
+<tr><td>Claude Code (프로)</td><td>$20</td><td>$240</td><td>가장 좋은 가성비</td></tr>
+<tr><td>GitHub Copilot (비즈니스)</td><td>$19</td><td>$228</td><td>가장 낮은 가격</td></tr>
+<tr><td>Cursor (오너)</td><td>$40</td><td>$480</td><td>1M 토큰 + 협업</td></tr>
+<tr><td>OpenCode</td><td>$0</td><td>$0 (API 비용 별도)</td><td>무료 (단, API 키 비용 발생 가능)</td></tr>
+</table>
+<p><strong>결론:</strong> 가성비만 본다면 Claude Code 프로($240/년)가 가장 좋습니다. 예산이 제한된 학생이라면 GitHub Copilot 무료 티어나 OpenCode가 최선입니다.团队协作이 중요하다면 Cursor 오너($480/년)의 프리미엄 기능을 평가해볼 만합니다.</p>
+
+<h2>한국 개발자를 위한 선택 가이드</h2>
+<p>한국 개발자의 구체적인 상황에 따라 최적의 선택이 다릅니다. 다음은 5가지 시나리오에 따른 명확한 제안입니다.</p>
+<table>
+<tr><th>사용자 유형</th><th>추천 도구</th><th>이유</th></tr>
+<tr><td>개인 개발자 / 프리랜서</td><td>Claude Code 프로</td><td>에이전트 기능 + 좋은 한국어 성능 + 합리적인 가격</td></tr>
+<tr><td>스타트업 개발자 (팀 3-10명)</td><td>Cursor 오너</td><td>협업 기능 + 1M 토큰으로 큰 코드베이스 처리</td></tr>
+<tr><td>대기업 / Enterprise</td><td>GitHub Copilot 비즈니스</td><td>Microsoft 통합 + SSO + 보안 관리</td></tr>
+<tr><td>보안 민감 프로젝트</td><td>OpenCode</td><td>완전 로컬 실행으로 코드 유출 방지</td></tr>
+<tr><td>학생 / 학습자</td><td>Claude Code 무료 or Copilot 무료</td><td>무료 티어로 충분, 학습용으로도 충분</td></tr>
+</table>
+
+<h2>한계 및 솔직한 평가</h2>
+<p>모든 AI 코딩 도구에는 한계가 있습니다. <strong>아직 어떤 도구도 100% 정확한 코드를 생성하지 못합니다.</strong> 2026년 현재 모든 도구의 코드 정확도는 70-85% 수준이며, 나머지는 반드시 개발자가 검토해야 합니다. 또한 <strong>에이전트 모드는 아직 초기 단계</strong>로, 복잡한 리팩토링 작업에서는 인간 개발자의 판단이 여전히 필요합니다. 마지막으로, <strong>모든 클라우드 기반 도구는 데이터 유출 위험</strong>이 존재하며, 기밀 코드에는 반드시 로컬 실행 도구를 사용해야 합니다.</p>
+
+<h2>자주 묻는 질문</h2>
+<div class="faq-item"><div class="faq-q">Q1. Claude Code와 Cursor 중 어떤 것이 더 좋나요?</div><div>프로젝트 규모와 팀 환경에 따라 다릅니다. 개인 개발자나 소규모 팀이라면 Claude Code가 가성비와 한국어 성능에서 더 우수합니다. 대규모 조직에서 협업 기능이 중요하다면 Cursor 오너가 더 적합합니다. Cursor는 1M 토큰 컨텍스트 윈도우로 큰 코드베이스 처리에 유리하지만, 가격이 Claude Code보다 2배 비쌉니다.</div></div>
+<div class="faq-item"><div class="faq-q">Q2. 한국 개발자가 AI 코딩 도구를 사용할 때 한국어 처리가 중요한가요?</div><div>매우 중요합니다. 2026년 기준으로 Claude Code가 한국어 처리에서 가장 우수합니다. 한국어 코드 주석 생성, PR 설명 작성, 기술 문서 번역 등에서 다른 도구보다 높은 정확도를 보입니다. Cursor도 괜찮은 편이고, GitHub Copilot은 상대적으로 떨어집니다. OpenCode는 사용하는 LLM에 따라 한국어 성능이 달라집니다.</div></div>
+<div class="faq-item"><div class="faq-q">Q3. 무료 티어로도 충분히 쓸 수 있나요?</div><td>개인 개발자라면 Claude Code의 월 1,000회 무료 요청이나 GitHub Copilot의 학생 무료 티어로도 충분히 시작할 수 있습니다. 하지만 하루 2시간 이상 AI 코딩 도구를 사용한다면 유료 티어가 필수적입니다. 무료 티어는 학습이나 소규모 프로젝트에 적합합니다.</div></div>
+<div class="faq-item"><div class="faq-q">Q4. 여러 도구를 동시에 사용할 수 있나요?</div><div>네, 가능합니다. 실제로 많은 개발자가 Cursor에서 코드 편집을 하고, Claude Code에서 에이전트 작업을 하고, OpenCode에서 보안 민감 코드를 처리하는 식으로 상황에 따라 도구를切换합니다. 각 도구의 강점을 활용하는 것이 가장 효율적인 접근 방식입니다.</div></div>
+<div class="faq-item"><div class="faq-q">Q5. 2027년에는 어떤 도구가 더 좋아질까요?</div><div>현재 트렌드로 볼 때, 모든 도구의 에이전트 기능이 발전할 것입니다. Claude Code는 이미 에이전트 모드를 갖추고 있고, Cursor도 Composer Mode로 진화 중이며, GitHub Copilot도 Copilot Edits로 다중 파일 수정을 지원합니다. 가장 큰 변화는 <strong>로컬 AI 모델의 발전</strong>일 것입니다. OpenCode처럼 로컬에서 실행되면서도 강력한 AI 기능을 제공하는 도구가 더 많아질 것으로 예상됩니다.</div></div>
+
+<h2>결론</h2>
+<p>2026년 AI 코딩 도구 시장은 네 가지 주요 선택지로 나뉩니다. Claude Code는 <strong>가장 균형 잡힌 선택</strong> — 좋은 가성비, 강력한 에이전트 기능, 우수한 한국어 성능. Cursor는 <strong>대규모 팀과 코드베이스</strong>에 최적화 — 1M 토큰 컨텍스트 윈도우와 협업 기능. GitHub Copilot은 <strong>Microsoft 생태계 사용자</strong>에게 자연스러운 선택 — 400만 명 이상의 사용 데이터로 뒷받침되는 성능. OpenCode는 <strong>보안이 최우선</strong>인 프로젝트에 유일한 선택지 — 완전 로컬 실행과 완전 무료.</p>
+<p>선택은 당신의 상황에 달려 있습니다. 개인 개발자라면 <strong>Claude Code 프로</strong>부터 시작해보세요. $20/월로 에이전트 코딩의 전부를 경험할 수 있습니다. 팀 규모가 크다면 Cursor 오너의 <strong>1M 토큰 컨텍스트</strong>가 결정적인 차이입니다. 보안이 최우선이라면 OpenCode가 <strong>유일한 정답</strong>입니다.</p>
+<p>아직 결정을 내리지 못했다면, 각 도구의 <strong>무료 티어부터 시작</strong>하세요. 1주일 정도 사용해본 후, 당신의 실제 작업 패턴에 맞는 도来选择하는 것이 가장 현명한 접근입니다.</p>
+
+<p><strong>🚀 더 많은 AI 도구 리소스를 원하시나요?</strong></p>
+<ul><li><a href="https://gumroad.com/l/ai-skills-bundle">Gumroad AI Skills Bundle ($19)</a> — 50+ AI 프롬프트 템플릿과 스킬 가이드</li><li><a href="https://gumroad.com/l/groundtruth-writer-kit">GroundTruth Writer Kit ($29)</a> — 콘텐츠 작성을 위한 검증된 프레임워크</li></ul>
+
+<p><strong>📖 관련 글 더 읽기:</strong></p>
+<ul><li><a href="claude-vs-norvis-vs-acl-2026.html">Claude Code vs Norvis vs ACL 2026 — 한국 AI 개발자를 위한 대안 도구 비교</a></li></ul>
+
+<footer>
+<p>© 2026 claudekorea.com — 한국 AI 개발자를 위한 기술 비교 가이드</p>
+</footer>
+</div>
+</body>
+</html>
